@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эль Лаваш — Протокол разговора 28.05.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+ :root {
+ --bg: #F7F2E9;
+ --bg-card: #FFFFFF;
+ --ink: #1F1611;
+ --ink-soft: #5A4A3F;
+ --line: #E8DDCB;
+ --brand: #B3471F;
+ --brand-deep: #7A2E13;
+ --accent: #5C6E3A;
+ --warn: #C9892A;
+ --shadow: 0 1px 2px rgba(31,22,17,.04), 0 8px 24px rgba(31,22,17,.06);
+ }
+ * { box-sizing: border-box; }
+ html, body { margin: 0; padding: 0; }
+ body {
+ font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+ background: var(--bg);
+ color: var(--ink);
+ font-size: 17px;
+ line-height: 1.65;
+ letter-spacing: -0.005em;
+ }
+.container { max-width: 1100px; margin: 0 auto; padding: 56px 32px 96px; }
+.header {
+ display: flex; align-items: center; gap: 28px;
+ padding-bottom: 32px;
+ border-bottom: 1px solid var(--line);
+ margin-bottom: 48px;
+ }
+.header img { width: 120px; height: auto; }
+.header h1 {
+ font-family: 'Fraunces', serif;
+ font-weight: 600;
+ font-size: 44px;
+ line-height: 1.05;
+ letter-spacing: -0.02em;
+ margin: 0;
+ }
+.header.meta {
+ font-size: 14px;
+ color: var(--ink-soft);
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ margin-bottom: 8px;
+ font-weight: 600;
+ }
+.badges { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.badge {
+ font-size: 12px;
+ padding: 5px 11px;
+ border: 1px solid var(--line);
+ border-radius: 999px;
+ color: var(--ink-soft);
+ background: var(--bg-card);
+ letter-spacing: 0.03em;
+ }
+.badge.brand { background: var(--brand); color: #FFF7EE; border-color: var(--brand); }
+ h2 {
+ font-family: 'Fraunces', serif;
+ font-weight: 600;
+ font-size: 28px;
+ margin: 56px 0 20px;
+ letter-spacing: -0.015em;
+ }
+ h3 {
+ font-size: 17px;
+ text-transform: uppercase;
+ letter-spacing: 0.1em;
+ color: var(--brand-deep);
+ font-weight: 700;
+ margin: 32px 0 12px;
+ }
+.section-eyebrow {
+ font-size: 13px;
+ text-transform: uppercase;
+ letter-spacing: 0.14em;
+ color: var(--brand);
+ font-weight: 700;
+ margin-bottom: 6px;
+ }
+.card {
+ background: var(--bg-card);
+ border: 1px solid var(--line);
+ border-radius: 18px;
+ padding: 32px;
+ margin: 20px 0;
+ box-shadow: var(--shadow);
+ }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+ @media (max-width: 800px) {.grid-2,.grid-3 { grid-template-columns: 1fr; } }
+ ul { padding-left: 0; list-style: none; margin: 14px 0; }
+ ul li {
+ padding: 10px 0 10px 28px;
+ position: relative;
+ border-bottom: 1px dashed var(--line);
+ font-size: 16px;
+ }
+ ul li:last-child { border-bottom: none; }
+ ul li::before {
+ content: "";
+ position: absolute;
+ left: 0; top: 18px;
+ width: 8px; height: 8px;
+ background: var(--brand);
+ border-radius: 2px;
+ transform: rotate(45deg);
+ }
+ ol { padding-left: 22px; }
+ ol li { padding: 6px 0; font-size: 16px; }
+.kicker { color: var(--ink-soft); font-size: 15px; margin: 0 0 4px; }
+.stat {
+ display: flex; flex-direction: column;
+ padding: 24px; border-radius: 14px;
+ background: linear-gradient(135deg, #FFF7EE 0%, #F7E9D2 100%);
+ border: 1px solid var(--line);
+ }
+.stat.num {
+ font-family: 'Fraunces', serif;
+ font-size: 44px;
+ line-height: 1;
+ font-weight: 600;
+ color: var(--brand-deep);
+ letter-spacing: -0.02em;
+ }
+.stat.label {
+ margin-top: 8px;
+ font-size: 13px;
+ color: var(--ink-soft);
+ letter-spacing: 0.05em;
+ text-transform: uppercase;
+ font-weight: 600;
+ }
+.block-ok { border-left: 4px solid var(--accent); background: #F4F6EE; }
+.block-warn { border-left: 4px solid var(--warn); background: #FBF3E0; }
+.block-stop { border-left: 4px solid var(--brand); background: #FBEEE5; }
+.block-info { border-left: 4px solid #3F6E9A; background: #EEF3F8; }
+.label-row {
+ display: inline-block;
+ font-size: 11px;
+ letter-spacing: 0.15em;
+ text-transform: uppercase;
+ padding: 3px 9px;
+ border-radius: 4px;
+ font-weight: 700;
+ margin-right: 8px;
+ }
+.lbl-do { background: var(--accent); color: #FFF; }
+.lbl-block { background: var(--brand); color: #FFF; }
+.lbl-wait { background: var(--warn); color: #2A1E0E; }
+.lbl-client { background: #3F6E9A; color: #FFF; }
+ table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+ th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); font-size: 15px; vertical-align: top; }
+ th { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); background: #FAF4E8; }
+.footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; }
+.nav-pill {
+ display: inline-block;
+ padding: 8px 16px;
+ background: var(--brand);
+ color: #FFF7EE;
+ border-radius: 999px;
+ text-decoration: none;
+ font-size: 14px;
+ margin-right: 8px;
+ margin-bottom: 8px;
+ font-weight: 600;
+ }
+.nav-pill.ghost { background: transparent; color: var(--brand-deep); border: 1px solid var(--brand); }
+
+.ico { display: inline-block; vertical-align: -4px; margin-right: 8px; }
+.ico-inline { display: inline-block; vertical-align: -3px; margin-right: 4px; width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+ <header class="header">
+ <img src="logo_web.png" alt="Эль Лаваш" />
+ <div>
+ <div class="meta">Протокол совещания · 28.05.2026</div>
+ <h1>Эль Лаваш — что обсудили, что дальше</h1>
+ <div class="badges">
+ <span class="badge brand">v6</span>
+ <span class="badge">Антон ↔ Элен</span>
+ <span class="badge">Льорет-де-Мар · Каталония</span>
+ </div>
+ </div>
+ </header>
+
+ <nav style="margin-bottom: 48px;">
+ <a class="nav-pill" href="index_v6.html">← К панели проекта</a>
+ <a class="nav-pill ghost" href="roadmap_v5.html">Roadmap</a>
+ <a class="nav-pill ghost" href="El_Lavash_Plan_v6.md">План v1</a>
+ <a class="nav-pill ghost" href="Transkripciya_v1.md">Полная транскрипция</a>
+ </nav>
+
+ <section>
+ <div class="section-eyebrow">Кратко</div>
+ <h2>О чём этот документ</h2>
+ <p style="font-size: 19px; max-width: 720px; line-height: 1.55;">
+ Протокол по итогам голосовой переписки от 28.05.2026 между Антоном и владелицей нового производства лаваша в Льорет-де-Мар. Личная тема (здоровье Вероники) намеренно вынесена за рамки этого документа — здесь только бизнес.
+ </p>
+
+ <div class="grid-3" style="margin-top: 28px;">
+ <div class="stat"><span class="num">1</span><span class="label">Торговая марка<br>«Эль Лаваш»</span></div>
+ <div class="stat"><span class="num">50 кВт</span><span class="label">Подключение света<br>заблокировано 1 месяц</span></div>
+ <div class="stat"><span class="num">2</span><span class="label">Работника<br>из Украины уже на месте</span></div>
+ </div>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Согласовано</div>
+ <h2>Ключевые договорённости</h2>
+
+ <div class="card block-ok">
+ <h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>Что зафиксировано</h3>
+ <ul>
+ <li><strong>Всё — под единой торговой маркой «Эль Лаваш».</strong> Лаваш, потом полуфабрикаты (пельмени, котлеты), потом готовая еда — одно юр.лицо, один бренд.</li>
+ <li><strong>Первая задача — продажи.</strong> Не сайт, не CRM, а первый канал сбыта.</li>
+ <li><strong>Сайт идёт на втором месте.</strong> Сейчас приоритет: чат-бот / WhatsApp + сети распространения через доставщиков + розница по Льорету.</li>
+ <li><strong>«Не распыляться».</strong> Сначала закрыть лаваш, потом всё остальное.</li>
+ </ul>
+ </div>
+
+ <div class="card block-info">
+ <h3>i Зона дистрибуции</h3>
+ <ul>
+ <li>Льорет-де-Мар — розница уже устно договорена локально (русские магазины Льорета)</li>
+ <li>Бланес — следующий шаг доставки</li>
+ <li>Барселона — выход через дистрибьюторов общепита, цель — и испанские магазины, не только этнические</li>
+ <li>Глобальные сети (Mercadona, Carrefour, Lidl) — НЕ цель на старте</li>
+ </ul>
+ </div>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Что блокирует</div>
+ <h2>Главное препятствие</h2>
+
+ <div class="card block-stop">
+ <h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="9"/><line x1="6.5" y1="6.5" x2="17.5" y2="17.5"/></svg>Подключение 50 кВт</h3>
+ <p style="margin-top: 0;">
+ Испанская энергетическая компания держит подключение уже месяц. В письме указано «до конца месяца неофициально», но фактически нет ETA.
+ </p>
+ <p>
+ Без света не запускаются машины → нет продукта → нет фото → невозможно полноценно стартовать.
+ Антон сейчас использует stock-фото как заглушку для дизайнов.
+ </p>
+ <p style="margin: 16px 0 0; padding: 12px 16px; background: #FFFFFF; border-radius: 8px; font-size: 15px; color: var(--ink-soft);">
+ <strong style="color: var(--brand-deep);">Рутлес-ментор:</strong> в Испании Endesa/Iberdrola могут тянуть и 2–3 месяца. Плана Б нет.
+ Нужна эскалация письмом (через abogado если надо) и параллельно — рассмотреть генератор или временное подключение.
+ </p>
+ </div>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Какие этапы</div>
+ <h2>Структура работы по фазам</h2>
+
+ <div class="grid-2">
+ <div class="card">
+ <h3 style="color: var(--accent);">Фаза 1 — пока ждём свет</h3>
+ <p class="kicker">Все задачи делаются параллельно, без зависимости от запуска производства</p>
+ <ul>
+ <li>Telegram-группа с топиками для организации</li>
+ <li>WhatsApp Business настройка</li>
+ <li>Одностраничный лендинг-визитка (заглушка)</li>
+ <li>Google Business / Google Maps карточки</li>
+ <li>Подготовка к регистрации в Glovo / Uber Eats / Just Eat</li>
+ <li>Сбор баз: русские магазины + дистрибьюторы общепита</li>
+ <li>SVG-логотип (Антон перерисовывает из PNG/AI)</li>
+ </ul>
+ </div>
+
+ <div class="card">
+ <h3 style="color: var(--brand);">Фаза 2 — после запуска</h3>
+ <p class="kicker">Стартует когда подключат свет и пойдёт первый лаваш</p>
+ <ul>
+ <li>Профессиональная фотосессия: машины, процесс, продукт</li>
+ <li>Замена stock-фоток везде</li>
+ <li>Активация в службах доставки</li>
+ <li>Запуск Instagram-контента</li>
+ <li>WhatsApp-бот для приёма заказов (опционально)</li>
+ <li>Питчинг магазинам Барселоны с пакетом</li>
+ </ul>
+ </div>
+
+ <div class="card">
+ <h3 style="color: var(--brand-deep);">Фаза 3 — расширение</h3>
+ <p class="kicker">Через 1–2 месяца стабильных продаж лаваша</p>
+ <ul>
+ <li>Линия полуфабрикатов: пельмени, котлеты</li>
+ <li>Холодильная логистика (HACCP-сертифицированная)</li>
+ <li>Готовая еда: крылышки, тосты, доставка</li>
+ <li>Полноценный e-commerce сайт</li>
+ <li>CRM-система</li>
+ <li>Брендинг: упаковка, раздатки, пакеты</li>
+ </ul>
+ </div>
+
+ <div class="card">
+ <h3 style="color: #3F6E9A;">Фаза 4 — продвижение</h3>
+ <p class="kicker">Параллельно с фазами 2–3, закладывается с самого начала</p>
+ <ul>
+ <li>Органическое SEO (закладывается в сайт сразу)</li>
+ <li>AI-индексация (ChatGPT, Gemini, GSE / GEO)</li>
+ <li>Контекстная реклама (после ROI-моделирования)</li>
+ <li>3D-карточки Google / Google Maps</li>
+ <li>Добавление на местные испанские каталоги (Páginas Amarillas, Lloret.cat и т.п.)</li>
+ <li>Каталоги еды (TripAdvisor, TheFork)</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Кто что делает</div>
+ <h2>Распределение задач</h2>
+
+ <table>
+ <thead>
+ <tr>
+ <th>Задача</th>
+ <th>Кто</th>
+ <th>Когда</th>
+ <th>Статус</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr><td>Прислать полный список наименований и SKU</td><td>Элен</td><td>«Завтра-послезавтра»</td><td><span class="label-row lbl-wait">ждём</span></td></tr>
+ <tr><td>Прислать все имеющиеся фото</td><td>Элен</td><td>В течение недели</td><td><span class="label-row lbl-wait">ждём</span></td></tr>
+ <tr><td>Прислать список локальных дистрибьюторов</td><td>Элен</td><td>Промониторит сама</td><td><span class="label-row lbl-wait">ждём</span></td></tr>
+ <tr><td>Качественная фотосессия позиций</td><td>Элен + SMM</td><td>«Эту неделю — середину следующей»</td><td><span class="label-row lbl-block">после света</span></td></tr>
+ <tr><td>Создать Telegram-группу с топиками</td><td>Антон</td><td>27.05 — начал</td><td><span class="label-row lbl-do">в работе</span></td></tr>
+ <tr><td>WhatsApp Business + опционально бот</td><td>Антон</td><td>Эта неделя</td><td><span class="label-row lbl-do">делать</span></td></tr>
+ <tr><td>Одностраничный лендинг</td><td>Антон</td><td>«На днях»</td><td><span class="label-row lbl-do">делать</span></td></tr>
+ <tr><td>Регистрация Glovo / Uber Eats / Just Eat</td><td>Антон</td><td>Изучает требования сегодня</td><td><span class="label-row lbl-do">в работе</span></td></tr>
+ <tr><td>База русских магазинов в округе</td><td>Антон</td><td>«10 минут» (на самом деле — см. CSV-базу v1)</td><td><span class="label-row lbl-do">черновик готов</span></td></tr>
+ <tr><td>База дистрибьюторов общепита</td><td>Антон</td><td>«На днях» — есть наработки с кофе</td><td><span class="label-row lbl-do">черновик готов</span></td></tr>
+ <tr><td>Создать Instagram-страницу</td><td>Элен</td><td>Начала создавать</td><td><span class="label-row lbl-client">в работе</span></td></tr>
+ <tr><td>Подключение электричества 50 кВт</td><td>Энергокомпания</td><td>«До конца месяца» — неофициально</td><td><span class="label-row lbl-block">блокирует</span></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Открытые вопросы</div>
+ <h2>Что нужно выяснить у Элен СЕЙЧАС</h2>
+
+ <div class="card block-warn">
+ <p style="margin-top: 0;">Без этих ответов лендинг и регистрации в Glovo могут оказаться напрасной работой:</p>
+ <ol>
+ <li><strong>Есть ли Registro Sanitario (RGSEAA)?</strong> Для общеиспанской дистрибуции — обязателен.</li>
+ <li><strong>Есть ли RSIPAC (региональный для Каталонии, ~64,25 €)?</strong> Минимально обязателен для производства.</li>
+ <li><strong>Есть ли licencia de actividad от Ajuntament Льорет-де-Мар?</strong></li>
+ <li><strong>HACCP / APPCC план оформлен?</strong></li>
+ <li><strong>SKU-структура лаваша:</strong> вес, упаковка, варианты?</li>
+ <li><strong>Цены:</strong> розничная, оптовая, через службы доставки (Glovo берёт 30%+)?</li>
+ <li><strong>Язык упаковки:</strong> только испанский, или двуязычная (рус+исп)? Reglamento UE 1169/2011 требует обязательные поля на испанском.</li>
+ <li><strong>Кто отвечает на заказы в WhatsApp:</strong> Элен лично, сотрудник, оба?</li>
+ <li><strong>Официальный дедлайн</strong> от энергокомпании и есть ли план Б?</li>
+ <li><strong>Налогообложение лаваша:</strong> IVA 4% (pan común) или IVA 10% (pan especial)? Это разница в 6% маржи — критично запросить письменно у Subdirecció Regional de Girona.</li>
+ </ol>
+ </div>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Идеи, прозвучавшие в разговоре</div>
+ <h2>Дополнительные направления (на потом)</h2>
+ <div class="grid-2">
+ <div class="card">
+ <h3>Каналы продаж</h3>
+ <ul>
+ <li>Glovo, Uber Eats, Just Eat, Bolt Food, Yango Eats</li>
+ <li>WhatsApp Business + опционально бот</li>
+ <li>Прямая розница: русские магазины Льорета + халяль-карникерии (часть уже устно договорена)</li>
+ <li>Дистрибьюторы общепита для Барселоны (см. базу v1)</li>
+ <li>Mercabarna как хаб (косвенно через дистрибьютора)</li>
+ </ul>
+ </div>
+ <div class="card">
+ <h3>Маркетинговая инфраструктура</h3>
+ <ul>
+ <li>Google Business / Google Maps — обязательно</li>
+ <li>Páginas Amarillas, EnLloret, Botigues de Catalunya</li>
+ <li>TripAdvisor, TheFork (когда появится доставка готовой еды)</li>
+ <li>3D-карточки на Google</li>
+ <li>GEO-оптимизация под ChatGPT / Gemini / Perplexity</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <section>
+ <div class="section-eyebrow">Что дальше</div>
+ <h2>Ближайшие 3 шага</h2>
+ <ol style="font-size: 18px; max-width: 720px;">
+ <li><strong>Элен скидывает:</strong> список наименований, имеющиеся фото, ответы на 10 вопросов выше.</li>
+ <li><strong>Антон финализирует</strong> Telegram-группу и одностраничный лендинг-заглушку (без публикации в публичных каталогах до фоток).</li>
+ <li><strong>Параллельно изучаются</strong> требования Glovo / Uber Eats / Just Eat и эскалируется вопрос со светом.</li>
+ </ol>
+ </section>
+
+ <footer class="footer">
+ <p>Документ создан Антоном Зиновьевым на основе голосовой переписки 28.05.2026.<br>
+ Личная тема (здоровье Вероники) сознательно опущена — она хранится в полной транскрипции отдельно.<br>
+ Версия v6. При изменениях создаётся v2, v3 — этот файл не редактируется.</p>
+ </footer>
+
+</div>
+</body>
+</html>
