@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Battlecard конкурентов v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C;
+  --win:#A9C26C; --lose:#E61E28; --tie:#F8D202; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1240px;margin:0 auto;padding:40px 24px 80px}
+.hero{padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:10px}
+h1{font-family:'Fraunces',serif;font-weight:600;font-size:46px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 10px;color:var(--ink)}
+h1 em{font-style:italic;color:var(--brand);font-weight:500}
+.sub{font-size:17px;color:var(--ink-soft);max-width:760px}
+.pill{padding:8px 14px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:40px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{padding:10px 16px;background:var(--bg-card);border:1px solid var(--line);border-radius:8px;color:var(--ink-soft);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.18s;min-height:44px}
+.tab:hover{border-color:var(--brand);color:var(--brand)}
+.tab.active{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.tab-content{display:none;animation:fadein 0.2s ease}
+.tab-content.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:32px 0 16px;letter-spacing:-0.02em}
+h3{font-size:18px;color:var(--brand);font-weight:700;margin:24px 0 10px}
+.matrix-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:16px 0}
+.matrix{width:100%;border-collapse:collapse;font-size:13px;min-width:900px}
+.matrix th, .matrix td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.matrix th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;position:sticky;top:0;z-index:2}
+.matrix th:first-child{position:sticky;left:0;z-index:3}
+.matrix td:first-child{position:sticky;left:0;background:var(--bg-card);font-weight:700;color:var(--ink)}
+.matrix tr:hover td{background:var(--bg-soft)}
+.matrix tr:hover td:first-child{background:var(--bg-soft)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.dot.win{background:var(--win)} .dot.lose{background:var(--lose)} .dot.tie{background:var(--tie)}
+.profile{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.field{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.field .label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+.field .value{font-size:15px;color:var(--ink)}
+.field .value a{color:var(--brand);text-decoration:none;border-bottom:1px dashed}
+.win-lose{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.win-card{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--win);border-radius:10px;padding:18px}
+.lose-card{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--lose);border-radius:10px;padding:18px}
+.win-card h4{color:var(--win);margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em}
+.lose-card h4{color:var(--lose);margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em}
+ul{padding-left:18px;margin:8px 0}
+li{padding:4px 0}
+.talk-track{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:12px 0}
+.talk-track .scenario{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin-bottom:6px}
+.talk-track .what{font-size:14px;color:var(--ink-soft);font-style:italic;margin-bottom:8px}
+.talk-track .response{font-size:15px;color:var(--ink);padding:10px 14px;background:var(--bg-soft);border-radius:8px}
+.landmines{background:var(--bg-card);border:1px solid var(--brand);border-radius:10px;padding:18px;margin:16px 0}
+.landmines h4{color:var(--brand);margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em}
+.landmines ol{padding-left:18px;margin:0}
+.landmines li{padding:6px 0;font-size:14px}
+.note{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:18px 22px;margin:18px 0}
+.note h3{color:var(--brand);margin-top:0}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 14px 56px}
+  h1{font-size:clamp(28px,8vw,40px)}
+  h2{font-size:clamp(22px,6vw,26px)}
+  .tabs{gap:4px}
+  .tab{font-size:11px;padding:8px 10px}
+  .profile{grid-template-columns:1fr;gap:8px}
+  .win-lose{grid-template-columns:1fr;gap:10px}
+  .matrix{font-size:11px;min-width:700px}
+  .matrix th, .matrix td{padding:8px 10px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <div class="eyebrow">Battlecard конкурентов · версия 2 · 29.05.2026</div>
+  <h1>El Lavash <em>vs соседи на полке</em></h1>
+  <div class="sub">Матрица сравнения по 8 параметрам + карточки по 9 игрокам с talk-tracks. Версия 2 переписана под реальный масштаб: мы артизан-локал из Льорета, день в день, без фростки. С Europastry и Bellsolà мы не воюем — это другой market.</div>
+  <div style="margin-top:16px;">
+    <a class="pill primary" href="index.html">← Панель проекта</a>
+    <a class="pill" href="El_Lavash_Competitive_Analysis_v9.html">Полный анализ конкурентов</a>
+    <a class="pill" href="El_Lavash_Market_Analysis_v10.html">Анализ рынка</a>
+    <a class="pill" href="El_Lavash_Sales_Strategy_v5.html">Стратегия продаж</a>
+  </div>
+</header>
+
+<div class="note">
+  <h3>Что изменилось в v2 относительно v1</h3>
+  <ul>
+    <li>9 конкурентов оставлены, но скрипты разговора переписаны под реальный масштаб.</li>
+    <li>Вместо «мы быстрее Don Pan» — <strong>«мы локальные, артизан, день в день, без фростки»</strong>.</li>
+    <li>Убран сюжет «IFS-сертифицированный конкурент vs мы IFS» — у нас нет IFS в год 1 и нам он не нужен (мы не идём в Lidl/Aldi).</li>
+    <li>Карточка El Lavash приведена к реальной команде: одна Элен, помощник на полставки во 2-м полугодии — сценарий.</li>
+    <li>Break-even переведён в реалистичную вилку 12-20 кг/день вместо «49 кг/день».</li>
+    <li>Win/Loss guide переписан: уточнили, что в Mercadona / Lidl мы не идём в год 1 (это не «проигрыш», это вне нашего масштаба).</li>
+  </ul>
+</div>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" data-tab="matrix">Матрица сравнения</button>
+  <button class="tab" data-tab="us">El Lavash (мы)</button>
+  <button class="tab" data-tab="donpan">Don Pan 3000</button>
+  <button class="tab" data-tab="libano">Libanofoods</button>
+  <button class="tab" data-tab="monolith">Monolith</button>
+  <button class="tab" data-tab="hacendado">Hacendado / Mercadona</button>
+  <button class="tab" data-tab="europastry">Europastry</button>
+  <button class="tab" data-tab="bellsola">Bellsolà / Monbake</button>
+  <button class="tab" data-tab="liven">Liven (Paulig)</button>
+  <button class="tab" data-tab="mestemacher">Mestemacher</button>
+  <button class="tab" data-tab="laboulangere">La Boulangère / Bridor</button>
+</div>
+
+<!-- ========= MATRIX ========= -->
+<section id="matrix" class="tab-content active">
+  <h2>Head-to-Head матрица</h2>
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Параметр</th>
+          <th>El Lavash</th>
+          <th>Don Pan 3000</th>
+          <th>Libanofoods</th>
+          <th>Monolith</th>
+          <th>Hacendado</th>
+          <th>Europastry</th>
+          <th>Bellsolà</th>
+          <th>Liven</th>
+          <th>Mestemacher</th>
+          <th>La Boulangère</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Локация производства</td><td>Льорет-де-Мар</td><td>Tenerife</td><td>Sant Just Desvern BCN</td><td>La Nucia (Alicante)</td><td>Завод Abrera</td><td>Sant Cugat del Vallès</td><td>Aiguaviva (Жирона)</td><td>Berga (Каталония)</td><td>Германия (импорт)</td><td>Франция (импорт)</td></tr>
+        <tr><td>Расстояние до Льорета</td><td><span class="dot win"></span>0 км</td><td>2400 км (Канары)</td><td>80 км</td><td>700 км</td><td>120 км</td><td>105 км</td><td>33 км</td><td>150 км</td><td>&gt;1500 км</td><td>&gt;900 км</td></tr>
+        <tr><td>Размер компании</td><td>Микро-артизан (1 чел.)</td><td>1-10 сотр., €0,75-1,5М</td><td>3000+ клиентов HoReCa</td><td>~11 сотр. Norte SLU</td><td>Mercadona PL (миллиарды)</td><td>€1,506 млрд 2024</td><td>€1 млрд (Monbake)</td><td>€84,6М (Paulig)</td><td>Премиум-импорт</td><td>Le Duff Group</td></tr>
+        <tr><td>Формат лаваша</td><td><span class="dot win"></span>Свежий день в день</td><td>Ambient 200 г</td><td>Пита 510 г vacío</td><td>Frozen 340 г</td><td>Pita ambient</td><td>Pita промышленная</td><td>Нет лаваша</td><td>Тортильи / piadini</td><td>Vollkornbrot</td><td>Pita ambient</td></tr>
+        <tr><td>Цена розница €/кг</td><td>7-9 (план)</td><td>8-10</td><td>~3 опт</td><td>~5,76</td><td>3,90-4,88</td><td>B2B</td><td>B2B</td><td>B2C + B2B</td><td>~14</td><td>~7,53</td></tr>
+        <tr><td>Halal сертификат</td><td>Решается в Q1</td><td><span class="dot lose"></span>Нет</td><td>Да</td><td><span class="dot lose"></span>Нет</td><td><span class="dot lose"></span>Нет</td><td><span class="dot lose"></span>Нет</td><td><span class="dot lose"></span>Нет</td><td><span class="dot lose"></span>Нет</td><td><span class="dot lose"></span>Нет</td><td><span class="dot lose"></span>Нет</td></tr>
+        <tr><td>KM0 / артизан</td><td><span class="dot win"></span>Да, локал Льорет</td><td><span class="dot lose"></span>Импорт с Канар</td><td><span class="dot lose"></span>Industrial</td><td><span class="dot lose"></span>Импорт</td><td><span class="dot lose"></span>Industrial</td><td><span class="dot lose"></span>Industrial</td><td><span class="dot tie"></span>Premium</td><td><span class="dot lose"></span>Industrial</td><td><span class="dot tie"></span>Премиум</td><td><span class="dot lose"></span>Industrial</td></tr>
+        <tr><td>Каналы дистрибуции</td><td>Локальные точки Льорета и радиуса 30 км</td><td>Mercadona, Carrefour, Eroski, ECI, Alcampo, Froiz</td><td>3000+ HoReCa</td><td>200+ русских магазинов</td><td>Только Mercadona</td><td>Промышленный B2B</td><td>Премиум frozen B2B</td><td>Lidl El Tequito + retail</td><td>El Corte Inglés</td><td>Carrefour, ECI</td></tr>
+        <tr><td>Пересечение с нами в год 1</td><td>—</td><td><span class="dot tie"></span>Только полка русского магазина Льорета</td><td><span class="dot tie"></span>Только кебабные Льорета</td><td><span class="dot lose"></span>Прямой сосед в русских магазинах</td><td><span class="dot win"></span>Нет — другая лига</td><td><span class="dot win"></span>Нет — другой market</td><td><span class="dot win"></span>Нет — другой market</td><td><span class="dot win"></span>Нет — другой продукт</td><td><span class="dot win"></span>Нет — другой канал</td><td><span class="dot win"></span>Нет — другой канал</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Quick Win/Loss Guide</h2>
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Где мы органично выигрываем</h4>
+      <ul>
+        <li><strong>Розница Льорета и ближнего радиуса</strong> — мы свежие и местные, импортёры замороженные или ambient</li>
+        <li><strong>Русские/украинские/армянские магазины Льорета</strong> — артизан-локал vs замороженный Monolith</li>
+        <li><strong>Кебабные Льорета, Бланеса, Тоссы, Калельи</strong> — локальная доставка день в день vs Fabricapan из Мадрида</li>
+        <li><strong>Glovo / Uber Eats / Just Eat</strong> — pickup-меню, где никто из крупных не присутствует поштучно</li>
+        <li><strong>Опциональный халяль-канал</strong> — после сертификации, в карникериях Льорета</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы вне игры в год 1 (и это нормально)</h4>
+      <ul>
+        <li><strong>Mercadona / Lidl / Aldi private label</strong> — мы туда не идём, это для индустриальных игроков</li>
+        <li><strong>Цена для бюджет-полки €3-5/кг</strong> — мы дороже, и это сознательное позиционирование</li>
+        <li><strong>Кебаб-сети с центральной закупкой по Каталонии</strong> — мы заходим только в локальные точки Льорета</li>
+        <li><strong>Большие тендеры HoReCa (Bidfood, Makro)</strong> — требуют объёмы, которых у нас нет в год 1</li>
+        <li><strong>Круизные суда Барселоны</strong> — IFS Logistics нужен, у нас его нет и не планируется в год 1</li>
+        <li><strong>Сетевые отельные группы (Eurest, Serunion)</strong> — закрытые контракты, не наш масштаб</li>
+        <li><strong>Экспорт</strong> — Германия, UK, Франция, Италия не в планах года 1</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= EL LAVASH (US) ========= -->
+<section id="us" class="tab-content">
+  <h2>El Lavash — наша позиция</h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Льорет-де-Мар, Каталония</div></div>
+    <div class="field"><div class="label">Основательница</div><div class="value">Элен (Helen)</div></div>
+    <div class="field"><div class="label">Старт</div><div class="value">Май-июнь 2026</div></div>
+    <div class="field"><div class="label">Команда</div><div class="value">Одна Элен. Помощник на полставки во 2-м полугодии — сценарий, не факт</div></div>
+    <div class="field"><div class="label">Бренд-позиционирование</div><div class="value">Артизан-локал из Льорета, свежий день в день, без фростки</div></div>
+    <div class="field"><div class="label">Целевая цена опт</div><div class="value">€5,50 ± €0,50/кг</div></div>
+    <div class="field"><div class="label">Целевая цена розница</div><div class="value">€7-9/кг</div></div>
+    <div class="field"><div class="label">Break-even объём</div><div class="value">12-20 кг/день (вилка)</div></div>
+    <div class="field"><div class="label">Стартовая мощность</div><div class="value">5-10 кг/день в месяце 1</div></div>
+    <div class="field"><div class="label">Цель к 12-му месяцу</div><div class="value">18-25 кг/день (базовый сценарий)</div></div>
+  </div>
+
+  <h3>Ключевые преимущества</h3>
+  <ul>
+    <li><strong>Локальный артизан из Льорета</strong> — единственный такой формат в нашем радиусе 30 км</li>
+    <li><strong>Свежий день в день, без фростки</strong> — экономически нерационально для индустриальных игроков</li>
+    <li><strong>Гибкая логистика на маленьких партиях</strong> — 3-7 кг в одну точку, что неудобно крупным дистрибьюторам</li>
+    <li><strong>Two-нарративный бренд</strong> — славяноязычная диаспора + (опционально) халяль</li>
+    <li><strong>База контактов</strong> — 527 верифицированных точек</li>
+    <li><strong>Низкий старт-кост</strong> — Элен одна, без штата, без аренды дорогих помещений</li>
+  </ul>
+
+  <h3>Слабости (честно)</h3>
+  <ul>
+    <li>Нет узнаваемости — стартап</li>
+    <li>Нет halal-сертификата пока (€3500-8000, 2-4 мес)</li>
+    <li>Малая мощность — 5-10 кг/день на старте, нужно верифицировать первой рабочей неделей</li>
+    <li>Нет B2B-опыта продаж по Испании</li>
+    <li>Команда — одна Элен. Если она болеет — производство останавливается</li>
+    <li>Сезонность Коста-Бравы (ноябрь-март — провал туристического HoReCa)</li>
+  </ul>
+</section>
+
+<!-- ========= DON PAN 3000 ========= -->
+<section id="donpan" class="tab-content">
+  <h2><a href="https://www.empresite.eleconomista.es/DON-PAN-3000.html" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Don Pan 3000 SL</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">NIF</div><div class="value">B76550458</div></div>
+    <div class="field"><div class="label">Локация</div><div class="value">Tenerife, Канары</div></div>
+    <div class="field"><div class="label">Размер</div><div class="value">1-10 сотрудников, €0,75-1,5М оборот</div></div>
+    <div class="field"><div class="label">Позиционирование</div><div class="value">Generic «pan lavash», ambient</div></div>
+    <div class="field"><div class="label">Каналы</div><div class="value"><a href="https://www.mercadona.es">Mercadona</a>, <a href="https://www.carrefour.es">Carrefour</a>, <a href="https://www.eroski.es">Eroski</a>, <a href="https://www.elcorteingles.es">ECI</a>, <a href="https://www.alcampo.es">Alcampo</a>, <a href="https://www.froiz.com">Froiz</a></div></div>
+    <div class="field"><div class="label">Цена</div><div class="value">€1,60-2,00 за 200 г = €8-10/кг розница</div></div>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Распространение во всех крупных сетях Испании</li>
+        <li>Узнаваемость в категории «pan lavash»</li>
+        <li>Долгий срок хранения (ambient)</li>
+        <li>Низкая цена для категории</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы — другой продукт рядом</h4>
+      <ul>
+        <li>Они импорт с Канар, мы локал из Льорета</li>
+        <li>Они ambient, мы свежий день в день</li>
+        <li>Они generic, мы артизан-нарратив</li>
+        <li>Они без halal, у нас халяль решается в Q1</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Talk-tracks по сценариям</h3>
+  <div class="talk-track">
+    <div class="scenario">Раннее упоминание: «А у нас уже Don Pan»</div>
+    <div class="what">Хозяин магазина: «Мы покупаем Don Pan, нас устраивает»</div>
+    <div class="response">«Понимаю, Don Pan хороший базовый ambient. Мы — другая категория: локальный артизан из Льорета, без фростки, испечён сегодня утром. Можно поставить рядом как премиум-позицию для постоянных. Дайте 5 пакетов попробовать — без обязательств, посмотрим, что покупатель выберет.»</div>
+  </div>
+  <div class="talk-track">
+    <div class="scenario">Сравнение цены</div>
+    <div class="what">«Don Pan вроде дешевле»</div>
+    <div class="response">«Розница Don Pan €8-10/кг, наша €7-9/кг — то есть мы сопоставимы или дешевле. Разница в том, что Don Pan везут с Канар через дистрибьютора, а мы привозим утром из Льорета. Это и есть формат „день в день без фростки“.»</div>
+  </div>
+
+  <div class="landmines">
+    <h4>Landmine-вопросы (нам в кармане)</h4>
+    <ol>
+      <li>«Сколько по сроку от заказа Don Pan до полки? У них логистика с Канар через дистра — это всегда 5-10 дней»</li>
+      <li>«Что вы говорите халяль-клиенту? У Don Pan halal-сертификата нет»</li>
+      <li>«Какой реальный break в поставках Don Pan был в этом году? Импорт с Канар бывает рваный»</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========= LIBANOFOODS ========= -->
+<section id="libano" class="tab-content">
+  <h2><a href="https://libanofoods.com" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Libanofoods / Baraka</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Sant Just Desvern (Барселона)</div></div>
+    <div class="field"><div class="label">Размер</div><div class="value">3000+ клиентов HoReCa</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">Пита 510 г × 6 vacío, ливанский хлеб, durum для кебаб</div></div>
+    <div class="field"><div class="label">Позиционирование</div><div class="value">«Auténtico libanés» — арабские/ливанские каналы</div></div>
+    <div class="field"><div class="label">Цена опт</div><div class="value">~€2,45-3,24/кг</div></div>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Лидер сектора Ближнего Востока в Каталонии</li>
+        <li>Сильная узнаваемость в кебабных Барселоны и побережья</li>
+        <li>Логистика по Каталонии налажена</li>
+        <li>3000+ существующих клиентов</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы — другой продукт рядом</h4>
+      <ul>
+        <li>Это пита, мы тонкий армянский лаваш — разные SKU</li>
+        <li>Vacío 6-pack у них, у нас свежий день в день</li>
+        <li>Они арабский нарратив, мы артизан-локал</li>
+        <li>В кебабных мы заходим как доп-SKU для wraps и durum, не как замена пите</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Talk-tracks</h3>
+  <div class="talk-track">
+    <div class="scenario">Кебабная Льорета: «У нас Libanofoods»</div>
+    <div class="what">Кебабщик: «У нас уже Libano, и нас устраивает»</div>
+    <div class="response">«Libano — это пита, мы тонкий армянский лаваш. У вас наверняка есть клиенты, кто просит wrap или durum в тонком — это наша зона. Мы локальные, привозим утром, без фростки. Дайте поставить пробную партию 3-5 кг на эту неделю — без обязательств. Посмотрим, что покупатели выберут.»</div>
+  </div>
+  <div class="talk-track">
+    <div class="scenario">Если в кебабной нужен большой объём</div>
+    <div class="what">«А вы сможете нам 50 кг в день?»</div>
+    <div class="response">«В первый месяц нет — мы артизан-производство, делаем 5-10 кг в день на старте. Но 3-7 кг для вас день в день, утром, свежий — это нам подходит. Если объём вам нужен больше — берите Libano как базу, а нас как премиум-позицию для постоянных гостей.»</div>
+  </div>
+
+  <div class="landmines">
+    <h4>Landmine-вопросы</h4>
+    <ol>
+      <li>«Сколько срок хранения у их vacío pita после открытия пакета? Наш свежий — 2-3 дня без vacío»</li>
+      <li>«В кебаб для wrap-формата нужен тонкий лаваш — это наш профиль, не их»</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========= MONOLITH ========= -->
+<section id="monolith" class="tab-content">
+  <h2><a href="https://monolith-gruppe.net/en/company/locations/monolith-alimentacion-espana.html" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Monolith Alimentación España SLU</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">NIF</div><div class="value">B54318977</div></div>
+    <div class="field"><div class="label">Локация</div><div class="value">La Nucia (Alicante) + склад Llorenç del Penedès</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">«Pan de Armenia Lavash» 340 г frozen</div></div>
+    <div class="field"><div class="label">Каналы</div><div class="value">200+ русско-славянских магазинов Испании</div></div>
+    <div class="field"><div class="label">Цена розница</div><div class="value">€1,96 = €5,76/кг</div></div>
+    <div class="field"><div class="label">Бренд</div><div class="value">Generic русско-армянский импорт</div></div>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>200+ русских магазинов уже подключены</li>
+        <li>Склад в Llorenç del Penedès (~100 км от Льорета)</li>
+        <li>«Pan de Armenia» — узнаваемый бренд в диаспоре</li>
+        <li>Стабильная логистика</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы — другой продукт рядом</h4>
+      <ul>
+        <li>Они замороженный, мы свежий день в день, без фростки</li>
+        <li>Они импорт, мы локал из Льорета</li>
+        <li>У них generic packaging, у нас артизан-нарратив</li>
+        <li>Цена сопоставима (€5,50 опт у нас) — разница только в формате</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Talk-tracks</h3>
+  <div class="talk-track">
+    <div class="scenario">Русский магазин Льорета</div>
+    <div class="what">Хозяин: «Берём Monolith через дистра, всё хорошо»</div>
+    <div class="response">«Я знаю Monolith, хорошие ребята. Но это замороженный, привезён из-за рубежа. Мы свежие, испечены сегодня в Льорете, в 5 км отсюда. Я привезу вам утром 5 штук бесплатно — отдайте постоянным покупателям. Если разницу увидят и попросят — берёте нас рядом с Monolith или вместо. Цена та же.»</div>
+  </div>
+  <div class="talk-track">
+    <div class="scenario">Альтернатива: партнёрство (через 6-12 мес)</div>
+    <div class="what">Может быть открыт к нам как local supply для Каталонии</div>
+    <div class="response">Прямой контакт с Monolith Norte SLU (+34 977 677 635) — но только после 6-12 мес стабильной работы и узнаваемости в Льорете: «Я делаю свежий артизан-лаваш в Льорет-де-Мар. Возможно, для каталонского рынка вам интересен local supply вместо frozen-импорта? White-label или co-brand.»</div>
+  </div>
+
+  <div class="landmines">
+    <h4>Landmine-вопросы</h4>
+    <ol>
+      <li>«Был ли break в поставках Monolith этой зимой? Логистика из-за рубежа бывает рваной»</li>
+      <li>«Видели вкус замороженного vs свежего рядом? Дайте 10 минут — покажу»</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========= HACENDADO ========= -->
+<section id="hacendado" class="tab-content">
+  <h2><a href="https://www.mercadona.es" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Hacendado (Mercadona PL)</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация завода</div><div class="value">Mercadona Abrera, 26 000 шт/час</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">Pita 400 г mass-market</div></div>
+    <div class="field"><div class="label">Цена</div><div class="value">€1,56-1,95 за 400 г = €3,90-4,88/кг</div></div>
+    <div class="field"><div class="label">Каналы</div><div class="value">Только Mercadona (1400+ магазинов)</div></div>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Гигантская мощность 26 000 шт/час</li>
+        <li>Лучшая цена в категории</li>
+        <li>Дистрибуция через Mercadona = миллионы покупателей</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы — вне игры (и это нормально)</h4>
+      <ul>
+        <li>Мы не идём в Mercadona — это не наша лига в год 1</li>
+        <li>Они пита, мы лаваш — разные продукты</li>
+        <li>Hacendado только в Mercadona, мы во всех остальных локальных точках Льорета</li>
+        <li>Категория одна, рынки разные</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="landmines">
+    <h4>Логика для разговора с не-Mercadona точками</h4>
+    <ol>
+      <li>«Hacendado pita прокачивает категорию — покупатель привык к flatbread. Наш лаваш расширяет полку рядом с пита, не заменяет её»</li>
+      <li>«Mercadona — это про объём и цену. Локальный артизан Льорета — это про свежесть и историю. Разные потребности покупателя»</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========= EUROPASTRY ========= -->
+<section id="europastry" class="tab-content">
+  <h2><a href="https://europastry.com" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Europastry</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Sant Cugat del Vallès (Каталония)</div></div>
+    <div class="field"><div class="label">Размер</div><div class="value">€1,506 млрд оборот 2024</div></div>
+    <div class="field"><div class="label">№1</div><div class="value">№1 пекарня Испании, B2B-фокус</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">Каталог: Pita (#15542) + flatbreads + pizza bases. Лаваша пока нет.</div></div>
+  </div>
+
+  <div class="note">
+    <h3>Важно: с Europastry мы не конкурируем напрямую</h3>
+    <p style="margin:0;">Это <strong>другой market</strong>. У них €1,5 млрд оборот, индустриальный B2B, поставки тоннами, тендерные циклы 6-12 мес, IFS Food / BRCGS обязательны. Для нас в год 1 это не релевантно. Мы заходим в локальные точки Льорета, где Europastry физически нерационально работать. Пересечение — нулевое.</p>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Гигантская мощность производства</li>
+        <li>Сеть прямых поставок в крупный ритейл</li>
+        <li>HoReCa-аккаунты по всей Испании</li>
+        <li>Frozen технология — быстрое масштабирование</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Почему мы их даже не упоминаем в Льорете</h4>
+      <ul>
+        <li>Они B2B-индустриал, не локальный канал</li>
+        <li>Минимальная партия — тонны, не 5 кг в кебабную</li>
+        <li>Нет armenian / fresh / artisan positioning</li>
+        <li>Лаваша в каталоге пока нет — не наш конкурент</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Talk-tracks</h3>
+  <div class="talk-track">
+    <div class="scenario">Если покупатель упомянет Europastry</div>
+    <div class="what">Buyer небольшого магазина: «А у Europastry же есть pita»</div>
+    <div class="response">«Europastry — индустриальный B2B, они поставляют в Carrefour центральными контрактами. Для одной точки в Льорете они работать не будут — нерентабельно. Мы как раз для этого: 3-7 кг утром день в день, без фростки, локально.»</div>
+  </div>
+</section>
+
+<!-- ========= BELLSOLA ========= -->
+<section id="bellsola" class="tab-content">
+  <h2><a href="https://www.antigacasabellsola.com" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Bellsolà (Monbake / CVC Capital)</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Aiguaviva (Жирона) — 33 км от Льорета</div></div>
+    <div class="field"><div class="label">Размер</div><div class="value">Часть Monbake (€1 млрд), CVC Capital с марта 2024</div></div>
+    <div class="field"><div class="label">Команда</div><div class="value">2500+ сотрудников группы, 11 фабрик, 30+ стран</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">Premium frozen ciabatta, focaccia. <strong>Pan plano / lavash нет</strong></div></div>
+  </div>
+
+  <div class="note">
+    <h3>Bellsolà — это другой market, не конкурент</h3>
+    <p style="margin:0;">€1 млрд индустриальный premium frozen для B2B HoReCa и retail. С нами не пересекается ни в одном канале года 1. Долгосрочно — возможный партнёр по co-manufacturing (через 12-24 мес), но не конкурент.</p>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Местная каталонская фабрика рядом с Льоретом</li>
+        <li>CVC Capital — большие ресурсы</li>
+        <li>Налажена дистрибуция</li>
+        <li>Premium-positioning</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы их не пересекаем</h4>
+      <ul>
+        <li>У них нет лаваша / pan plano</li>
+        <li>Industrial, не artisan</li>
+        <li>Они B2B-объёмы, мы локальные точки</li>
+        <li>Возможный сценарий — partnership через 12-24 мес</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Долгосрочная стратегия — диалог, не битва</h3>
+  <div class="talk-track">
+    <div class="scenario">Long-term контакт с Monbake (через 12-24 мес)</div>
+    <div class="what">После 12+ мес стабильной работы и узнаваемости</div>
+    <div class="response">Через partnerships-команду Monbake: «Bellsolà покрывает Каталонию ciabatta/focaccia. Мы — локальный артизан-лаваш в Льорете. Можем стать co-manufacturer для линейки pan plano. Малая партия, высокая маржа, не конкурент вашему ciabatta».</div>
+  </div>
+</section>
+
+<!-- ========= LIVEN ========= -->
+<section id="liven" class="tab-content">
+  <h2><a href="https://liven.es" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Liven SAU (Paulig Group)</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Berga (Каталония) + Puig-Reig + Ocaña</div></div>
+    <div class="field"><div class="label">Оборот</div><div class="value">€84,6 млн</div></div>
+    <div class="field"><div class="label">Владелец</div><div class="value">Paulig Group (Финляндия) с 2022</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">Тортильи, пиадины, врапы (Lidl El Tequito + retail)</div></div>
+  </div>
+
+  <div class="note">
+    <h3>Liven — другой продукт, другой рынок</h3>
+    <p style="margin:0;">Тортильи и пиадины — не армянский лаваш. И канал у них Lidl El Tequito + retail с центральной закупкой, куда мы в год 1 не идём. Пересечения нет.</p>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Технологически близкий продукт (тортильи)</li>
+        <li>Объём — могут поставить любую партию</li>
+        <li>Lidl El Tequito private label — стабильный контракт</li>
+        <li>Paulig — крупные ресурсы</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы их не пересекаем</h4>
+      <ul>
+        <li>Они делают пшеничные тортильи, не армянский лаваш</li>
+        <li>Industrial process, не свежий день в день</li>
+        <li>Generic Mexican/Italian, не armenian-нарратив</li>
+        <li>Lidl-канал нам не нужен в год 1</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="landmines">
+    <h4>Landmine-вопросы (если упомянут)</h4>
+    <ol>
+      <li>«Liven делает тортильи, не лаваш — это разные SKU»</li>
+      <li>«Их продукт frozen для retail. Наш свежий для локальных точек»</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========= MESTEMACHER ========= -->
+<section id="mestemacher" class="tab-content">
+  <h2><a href="https://www.mestemacher-gmbh.com" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">Mestemacher</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Германия (импорт в Испанию)</div></div>
+    <div class="field"><div class="label">Каналы</div><div class="value">El Corte Inglés, premium-магазины</div></div>
+    <div class="field"><div class="label">Цена</div><div class="value">~€14/кг (Vollkornbrot 500 г / €3,80)</div></div>
+    <div class="field"><div class="label">Что у них есть</div><div class="value">Vollkornbrot, Roggenbrot, Pumpernickel. <strong>Лаваша в Испании нет</strong></div></div>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Премиум-нарратив «German artisan bread»</li>
+        <li>Стабильно на полке El Corte Inglés</li>
+        <li>Покупатель готов платить €14/кг</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Почему мы их даже не пересекаем</h4>
+      <ul>
+        <li>Они не делают лаваш в Испании</li>
+        <li>Они импорт, мы локал — KM0 преимущество</li>
+        <li>Они в ECI, мы в локальных точках Льорета</li>
+        <li>Mestemacher показывает только одно: покупатель готов платить premium за артизан</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="landmines">
+    <h4>Логика для разговора с премиум-магазинами Льорета</h4>
+    <ol>
+      <li>«Mestemacher продаётся по €14/кг — рынок premium артизана существует. Наш €7-9/кг — рабочая зона ниже импорта»</li>
+      <li>«Импорт vs локал — у Mestemacher €1+ только логистика. Мы тут.»</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========= LA BOULANGERE ========= -->
+<section id="laboulangere" class="tab-content">
+  <h2><a href="https://www.laboulangere.com" style="color:var(--brand);text-decoration:none;border-bottom:1px dashed">La Boulangère / Bridor (Le Duff Group)</a></h2>
+  <div class="profile">
+    <div class="field"><div class="label">Локация</div><div class="value">Франция (импорт)</div></div>
+    <div class="field"><div class="label">Каналы</div><div class="value">Carrefour, Eroski, El Corte Inglés</div></div>
+    <div class="field"><div class="label">Цена</div><div class="value">€2,41 за 320 г = €7,53/кг</div></div>
+    <div class="field"><div class="label">Продукт</div><div class="value">Pan plano premium, croissants, ambient</div></div>
+  </div>
+
+  <div class="note">
+    <h3>La Boulangère — другой канал, другая логистика</h3>
+    <p style="margin:0;">Премиум французский ambient в крупных сетях. Мы локальный свежий артизан в Льорете. В одном помещении не пересекаемся — они в Carrefour, мы в магазине через дорогу в Льорете.</p>
+  </div>
+
+  <div class="win-lose">
+    <div class="win-card">
+      <h4>Их сильные стороны</h4>
+      <ul>
+        <li>Le Duff Group — глобальный гигант выпечки</li>
+        <li>Сеть в крупных ритейлерах</li>
+        <li>Стабильное качество ambient-продукта</li>
+      </ul>
+    </div>
+    <div class="lose-card">
+      <h4>Где мы их не пересекаем</h4>
+      <ul>
+        <li>Они импорт из Франции = долгая логистика</li>
+        <li>Они ambient, мы свежий день в день</li>
+        <li>Они в Carrefour/ECI, мы в локальных точках Льорета</li>
+        <li>Цена сопоставима (€7,53 vs €7-9), но формат разный</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Battlecard конкурентов · El Lavash · v2 · 29.05.2026. Source of truth: <code>SOURCE_OF_TRUTH_v1.md</code>. Обновлять каждые 3 месяца или после крупного релиза конкурента или собственного. Версия 2 переписала скрипты под формат «локальный артизан Льорета, день в день, без фростки», убрала ложные сюжеты «отвоевать у Don Pan» и «IFS-сертифицированный конкурент vs мы IFS».</p>
+</footer>
+
+<script>
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tab).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+</script>
+
+</div>
+</body>
+</html>

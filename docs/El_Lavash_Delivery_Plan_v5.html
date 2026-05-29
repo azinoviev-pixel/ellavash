@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Куда регистрироваться El Lavash — план служб доставки v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #2A1810;
+  --bg-card: #4A2E1D;
+  --bg-card-2: #3A2218;
+  --ink: #FFF3D9;
+  --ink-soft: rgba(255, 243, 217, 0.72);
+  --ink-mute: rgba(255, 243, 217, 0.45);
+  --brand: #F8D202;
+  --accent: #E61E28;
+  --coffee: #6F3E22;
+  --line: rgba(248, 210, 2, 0.18);
+  --line-strong: rgba(248, 210, 2, 0.32);
+  --ok: #7ED957;
+  --warn: #F8D202;
+  --crit: #E61E28;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+a { color: var(--brand); text-decoration: none; border-bottom: 1px dashed transparent; transition: border-color .15s; }
+a:hover { border-bottom-color: var(--brand); }
+.h-display { font-family: 'Fraunces', serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.04; }
+.h-mono { font-family: 'Manrope', monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; color: var(--brand); }
+
+/* Hero */
+.hero {
+  padding: 88px 0 64px;
+  background: radial-gradient(ellipse at top right, rgba(248, 210, 2, 0.08), transparent 60%),
+              radial-gradient(ellipse at bottom left, rgba(230, 30, 40, 0.06), transparent 50%);
+  border-bottom: 1px solid var(--line);
+}
+.hero-grid { display: grid; grid-template-columns: 180px 1fr; gap: 48px; align-items: start; }
+.hero-mark { width: 180px; height: 180px; border: 2px solid var(--brand); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; }
+.hero-mark::after { content: ""; position: absolute; inset: 12px; border: 1px solid var(--line-strong); border-radius: 50%; }
+.hero-mark span { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--brand); }
+.hero h1 { font-size: clamp(2.2rem, 5.5vw, 4.2rem); margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: var(--brand); }
+.hero .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 700px; }
+.hero .meta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.86rem; color: var(--ink-mute); }
+.hero .meta span { display: inline-flex; align-items: center; gap: 8px; }
+.hero .meta strong { color: var(--ink-soft); font-weight: 500; }
+
+/* Sections */
+section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+section h2 { font-family: 'Fraunces', serif; font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+section .h-mono { display: block; margin-bottom: 10px; }
+section .intro { color: var(--ink-soft); margin-bottom: 36px; max-width: 820px; }
+
+/* Top 5 */
+.top5-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.top5-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; position: relative; transition: transform .18s, border-color .18s; }
+.top5-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.top5-card .rank { font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 700; color: var(--brand); line-height: 1; margin-bottom: 12px; }
+.top5-card h3 { font-size: 1.05rem; margin-bottom: 8px; line-height: 1.25; }
+.top5-card .when { font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; font-weight: 600; }
+.top5-card p { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.45; }
+.top5-card .link { display: inline-block; margin-top: 14px; font-size: 0.8rem; color: var(--brand); }
+
+/* Filter buttons */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.filter-btn {
+  background: transparent; border: 1px solid var(--line-strong); color: var(--ink-soft);
+  padding: 9px 18px; border-radius: 24px; cursor: pointer; font-family: inherit; font-size: 0.85rem; font-weight: 500;
+  transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--brand); color: var(--ink); }
+.filter-btn.active { background: var(--brand); color: var(--bg); border-color: var(--brand); font-weight: 600; }
+
+/* Platform table */
+.platform-table { background: var(--bg-card-2); border-radius: 14px; border: 1px solid var(--line); overflow: hidden; }
+.platform-row {
+  display: grid; grid-template-columns: 2.4fr 1fr 1.2fr 1.6fr 1.4fr 70px;
+  gap: 18px; padding: 18px 22px; border-bottom: 1px solid var(--line);
+  align-items: center;
+  transition: background .12s;
+}
+.platform-row:last-child { border-bottom: none; }
+.platform-row:hover { background: rgba(248, 210, 2, 0.04); }
+.platform-row.header { background: rgba(0,0,0,0.18); font-family: 'Manrope', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); font-weight: 700; }
+.platform-row .name { font-weight: 600; font-size: 0.98rem; }
+.platform-row .name .desc { display: block; font-weight: 400; font-size: 0.78rem; color: var(--ink-mute); margin-top: 4px; }
+.platform-row .pill { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; }
+.pill-nat { background: rgba(230, 30, 40, 0.16); color: #FF6B7A; }
+.pill-reg { background: rgba(248, 210, 2, 0.16); color: var(--brand); }
+.pill-loc { background: rgba(126, 217, 87, 0.16); color: var(--ok); }
+.pill-b2b { background: rgba(111, 62, 34, 0.4); color: #D4A77B; }
+.pill-self { background: rgba(255, 243, 217, 0.12); color: var(--ink-soft); }
+.pill-courier { background: rgba(180, 120, 240, 0.16); color: #C49AFF; }
+.pill-niche { background: rgba(72, 168, 200, 0.16); color: #6FD0E8; }
+.platform-row .reach { font-size: 0.85rem; color: var(--ink-soft); }
+.platform-row .fees { font-size: 0.85rem; color: var(--ink-soft); }
+.platform-row .alta { font-size: 0.82rem; }
+.platform-row .alta.bad { color: var(--accent); font-weight: 600; }
+.platform-row .alta.ok { color: var(--ok); }
+.score {
+  width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700;
+}
+.score-1 { background: rgba(126, 217, 87, 0.22); color: var(--ok); border: 2px solid var(--ok); }
+.score-2 { background: rgba(248, 210, 2, 0.22); color: var(--brand); border: 2px solid var(--brand); }
+.score-3 { background: rgba(255, 243, 217, 0.12); color: var(--ink-soft); border: 2px solid var(--ink-mute); }
+.score-4 { background: rgba(230, 30, 40, 0.14); color: #FF8089; border: 2px solid #FF8089; }
+.score-5 { background: rgba(230, 30, 40, 0.22); color: var(--accent); border: 2px solid var(--accent); }
+
+/* Checklist */
+.checklist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.check-col { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
+.check-col h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 18px; color: var(--brand); }
+.check-col ul { list-style: none; padding: 0; }
+.check-col li { padding: 8px 0 8px 28px; position: relative; font-size: 0.9rem; color: var(--ink-soft); border-bottom: 1px dashed var(--line); }
+.check-col li:last-child { border-bottom: none; }
+.check-col li::before {
+  content: ""; position: absolute; left: 0; top: 12px;
+  width: 16px; height: 16px; border: 1.5px solid var(--brand); border-radius: 3px;
+}
+
+/* Weekly plan */
+.weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.week {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-2) 100%);
+  border: 1px solid var(--line); border-radius: 14px; padding: 26px;
+  position: relative;
+}
+.week .num { position: absolute; top: 18px; right: 22px; font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 700; color: rgba(248, 210, 2, 0.18); line-height: 1; }
+.week h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
+.week .when { font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; font-weight: 600; }
+.week ul { list-style: none; padding: 0; }
+.week li { padding: 7px 0 7px 18px; position: relative; font-size: 0.88rem; color: var(--ink-soft); border-bottom: 1px dashed var(--line); }
+.week li:last-child { border-bottom: none; }
+.week li::before { content: "▸"; position: absolute; left: 0; top: 7px; color: var(--brand); }
+
+/* Avoid box */
+.warn-box {
+  background: linear-gradient(135deg, rgba(230, 30, 40, 0.14) 0%, rgba(230, 30, 40, 0.05) 100%);
+  border: 1px solid rgba(230, 30, 40, 0.4); border-radius: 14px; padding: 28px; margin-top: 32px;
+  display: grid; grid-template-columns: 56px 1fr; gap: 22px; align-items: start;
+}
+.warn-box .icon { width: 56px; height: 56px; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.warn-box h3 { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; color: #FF8089; }
+.warn-box p { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* Footer */
+footer { padding: 56px 0 40px; background: rgba(0,0,0,0.18); border-top: 1px solid var(--line); }
+footer h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; margin-bottom: 18px; color: var(--brand); }
+footer .src-grid { columns: 2; column-gap: 36px; font-size: 0.78rem; color: var(--ink-mute); }
+footer .src-grid a { color: var(--ink-soft); display: block; margin-bottom: 6px; word-break: break-word; }
+footer .meta { margin-top: 32px; font-size: 0.78rem; color: var(--ink-mute); border-top: 1px solid var(--line); padding-top: 20px; }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .wrap { padding: 0 18px; }
+  .hero { padding: 52px 0 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero-mark { width: 110px; height: 110px; }
+  .hero-mark span { font-size: 1.3rem; }
+  section { padding: 44px 0; }
+  .top5-grid { grid-template-columns: 1fr; gap: 14px; }
+  .platform-row { grid-template-columns: 1fr; gap: 8px; padding: 16px 18px; }
+  .platform-row.header { display: none; }
+  .platform-row .label-m { display: inline-block; font-size: 0.7rem; text-transform: uppercase; color: var(--ink-mute); margin-right: 8px; letter-spacing: 0.05em; }
+  .platform-row .score-wrap { margin-top: 6px; }
+  .checklist-grid { grid-template-columns: 1fr; gap: 16px; }
+  .weeks { grid-template-columns: 1fr; gap: 16px; }
+  .warn-box { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
+  .warn-box .icon { width: 44px; height: 44px; }
+  footer .src-grid { columns: 1; }
+}
+@media (min-width: 801px) {
+  .platform-row .label-m { display: none; }
+}
+@media (max-width: 480px) {
+  body { font-size: 15px; }
+  .hero h1 { font-size: 2rem; }
+  .hero .lead { font-size: 1rem; }
+}
+
+/* Icons */
+.svg-i { width: 18px; height: 18px; stroke: var(--brand); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.svg-i-lg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 2; }
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-mark"><span>EL</span></div>
+      <div>
+        <div class="h-mono">El Lavash · план распределения · v5 · 29.05.2026</div>
+        <h1>Куда регистрировать <em>El Lavash</em>: реалистичный план каналов доставки в год 1</h1>
+        <p class="lead">Все каналы — от больших национальных платформ до локальных WhatsApp/Telegram-каналов Льорета. Что подключать на 1-й, 2-й, 3-й неделе после первого лаваша. Без своих курьеров, без склада в BCN, без рефрижераторного фургона — только то, что реально для одиночного артизан-производства в Льорете.</p>
+        <div class="meta">
+          <span><svg class="svg-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><strong>Старт:</strong> неделя 0 (свет уже подключают, вторник — первый лаваш)</span>
+          <span><svg class="svg-i" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><strong>Локация:</strong> Льорет-де-Мар, Каталония</span>
+          <span><svg class="svg-i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg><strong>Платформ изучено:</strong> 36</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP 5 -->
+<section>
+  <div class="wrap">
+    <div class="h-mono">Топ-5</div>
+    <h2>Куда регистрироваться немедленно</h2>
+    <p class="intro">Пять каналов, без которых старт не имеет смысла. WhatsApp — нулевая цена и прямой канал к клиенту. Glovo Self-Delivery и Uber Eats Pickup срезают комиссию вдвое — клиент сам приходит за лавашом или забирает курьер платформы. Just Eat — после переговоров по alta-плате.</p>
+    <div class="top5-grid">
+      <div class="top5-card">
+        <div class="rank">1</div>
+        <div class="when">Неделя 1</div>
+        <h3>WhatsApp Business</h3>
+        <p>Каталог + чек-аут. Бесплатно. 78% клиентов предпочитают писать вместо звонка. Прямой контакт без комиссии.</p>
+        <a class="link" href="https://business.whatsapp.com/" target="_blank" rel="noopener">business.whatsapp.com →</a>
+      </div>
+      <div class="top5-card">
+        <div class="rank">2</div>
+        <div class="when">Неделя 2</div>
+        <h3>Glovo Self-Delivery</h3>
+        <p>Комиссия до 15% против 30%. Клиент забирает заказ сам или Элен везёт на велосипеде/машине в радиусе 3-5 км.</p>
+        <a class="link" href="https://sell.glovoapp.com/es/es/services/self-delivery/" target="_blank" rel="noopener">sell.glovoapp.com →</a>
+      </div>
+      <div class="top5-card">
+        <div class="rank">3</div>
+        <div class="when">Неделя 2</div>
+        <h3>Uber Eats (Pickup)</h3>
+        <p>Pickup-режим минимизирует комиссию до 6-10%. Льорет покрыт. Клиент сам забирает у производства.</p>
+        <a class="link" href="https://merchants.ubereats.com/es/en/s/signup/" target="_blank" rel="noopener">merchants.ubereats.com →</a>
+      </div>
+      <div class="top5-card">
+        <div class="rank">4</div>
+        <div class="when">Неделя 2-3</div>
+        <h3>Telegram / WhatsApp каналы Льорета</h3>
+        <p>Русско- / украино- / арабско-язычные коммьюнити города. Бесплатные посты, прямые заказы.</p>
+        <a class="link" href="#" target="_blank" rel="noopener">локальные каналы Льорета</a>
+      </div>
+      <div class="top5-card">
+        <div class="rank">5</div>
+        <div class="when">Неделя 3</div>
+        <h3>Just Eat España</h3>
+        <p>101 точка в Льорете. Внимание: alta-плата требует переговоров (до €699). Подключать только если есть готовый пакет фото и ficha.</p>
+        <a class="link" href="https://restaurantes.just-eat.es/" target="_blank" rel="noopener">restaurantes.just-eat.es →</a>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <div class="icon">
+        <svg class="svg-i-lg" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div>
+        <h3>Чего избегать на старте</h3>
+        <p>Just Eat: активационная плата до €699 (по другим источникам — €299 + €100 депозит). Не подписывать без попытки выторговать waiver. Glovo Premium / Sponsored placements — сначала органика, потом платное продвижение. Bolt Food в Льорете <strong>не подтверждён</strong> — подключать когда расширят покрытие. Bolt Food в Жироне — <strong>пока недоступен, ждать расширения</strong>. Deliveroo, Yango Eats, La Nevera Roja, MyMenú в Испании 2026 либо не работают, либо поглощены. <strong>Своя курьерская служба, склад в BCN, рефрижераторный фургон на тонну — не нужны и не финансируются в год 1.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL PLATFORMS TABLE -->
+<section>
+  <div class="wrap">
+    <div class="h-mono">Все платформы</div>
+    <h2>36 каналов, отсортированных по приоритету</h2>
+    <p class="intro">Используй фильтр по типу. Колонка «приоритет»: 1 = регистрироваться обязательно сейчас; 2 = в течение 2-3 месяцев; 3 = опционально / на потом (когда вырастут объёмы); 4 = низкий приоритет / год 2+; 5 = не подходит или не работает в Испании.</p>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Все</button>
+      <button class="filter-btn" data-filter="nat">Национальные B2C</button>
+      <button class="filter-btn" data-filter="loc">Локальные Льорет</button>
+      <button class="filter-btn" data-filter="b2b">B2B HORECA</button>
+      <button class="filter-btn" data-filter="niche">Этнические / niche</button>
+      <button class="filter-btn" data-filter="courier">Курьерские (свои заказы)</button>
+      <button class="filter-btn" data-filter="self">Самопродажи</button>
+    </div>
+
+    <div class="platform-table" id="ptable">
+      <div class="platform-row header">
+        <div>Платформа</div>
+        <div>Тип</div>
+        <div>Льорет</div>
+        <div>Комиссия / цена</div>
+        <div>Alta-плата</div>
+        <div>Приор.</div>
+      </div>
+
+      <!-- 1 -->
+      <div class="platform-row" data-cat="self">
+        <div class="name"><a href="https://business.whatsapp.com/" target="_blank" rel="noopener">WhatsApp Business</a><span class="desc">Каталог + чек-аут, директ-канал к клиенту</span></div>
+        <div><span class="pill pill-self">Самопрод.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> 0 €</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-1">1</div></div>
+      </div>
+
+      <!-- 2 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://sell.glovoapp.com/es/es/services/self-delivery/" target="_blank" rel="noopener">Glovo Self-Delivery</a><span class="desc">Glovo как канал заказов, доставку организует производитель</span></div>
+        <div><span class="pill pill-nat">Нац B2C</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> до 15%</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-1">1</div></div>
+      </div>
+
+      <!-- 3 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://merchants.ubereats.com/es/en/s/signup/" target="_blank" rel="noopener">Uber Eats (Pickup)</a><span class="desc">Самовывоз клиентом, минимизирует комиссию</span></div>
+        <div><span class="pill pill-nat">Нац B2C</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> 6-10%</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-1">1</div></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="platform-row" data-cat="loc">
+        <div class="name">Telegram / WhatsApp каналы Льорета<span class="desc">Локальные русско / украино / арабско-язычные коммьюнити</span></div>
+        <div><span class="pill pill-loc">Локаль.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> 0 €</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-1">1</div></div>
+      </div>
+
+      <!-- 5 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://restaurantes.just-eat.es/" target="_blank" rel="noopener">Just Eat España</a><span class="desc">Крупнейшая сеть, 101 точка в Льорете</span></div>
+        <div><span class="pill pill-nat">Нац B2C</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> 101 точка</div>
+        <div class="fees"><span class="label-m">Цена:</span> 14-30% + €0,50/заказ</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> до €699 [уточнить]</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 6 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://sell.glovoapp.com/es/es/" target="_blank" rel="noopener">Glovo (полная доставка)</a><span class="desc">С курьерами Glovo, комиссия 25-35%</span></div>
+        <div><span class="pill pill-nat">Нац B2C</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> 25-35%</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 7 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://merchants.ubereats.com/es/en/s/signup/" target="_blank" rel="noopener">Uber Eats (полная доставка)</a><span class="desc">Премиум-комиссия, курьер Uber</span></div>
+        <div><span class="pill pill-nat">Нац B2C</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> до 30%</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 8 -->
+      <div class="platform-row" data-cat="loc">
+        <div class="name"><a href="https://www.clubvillamar.es/content/lloret-de-mar/es/perdir-comida-lloret-de-mar/" target="_blank" rel="noopener">Club Villamar / EnLloret list</a><span class="desc">Туристический гид Льорета, listing бесплатно</span></div>
+        <div><span class="pill pill-loc">Локаль.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> listing [уточнить]</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 9 -->
+      <div class="platform-row" data-cat="loc">
+        <div class="name"><a href="https://www.restaurantes.info/Girona/a-domicilio/Lloret-de-Mar.htm" target="_blank" rel="noopener">Restaurantes.info Lloret</a><span class="desc">Каталог-агрегатор, бесплатное listing</span></div>
+        <div><span class="pill pill-loc">Локаль.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> 0 €</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 10 -->
+      <div class="platform-row" data-cat="niche">
+        <div class="name"><a href="https://skazka.es/" target="_blank" rel="noopener">SKAZKA.es</a><span class="desc">Русский ритейл онлайн, доставка по Испании</span></div>
+        <div><span class="pill pill-niche">Этнич.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 11 -->
+      <div class="platform-row" data-cat="niche">
+        <div class="name"><a href="https://mundofoods.com/845-pan-libanes" target="_blank" rel="noopener">Mundo Foods</a><span class="desc">Этнический ритейл по всей Испании, есть pan libanés</span></div>
+        <div><span class="pill pill-niche">Этнич.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 12 -->
+      <div class="platform-row" data-cat="niche">
+        <div class="name"><a href="https://www.teremok.es/es/" target="_blank" rel="noopener">Teremok</a><span class="desc">Русская сеть деликатесов в Барселоне (разведочный визит)</span></div>
+        <div><span class="pill pill-niche">Этнич.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Барселона</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 13 -->
+      <div class="platform-row" data-cat="niche">
+        <div class="name"><a href="https://libanofoods.com/" target="_blank" rel="noopener">Libanofoods</a><span class="desc">Производитель/импортёр Middle Eastern foods (бенчмарк, не клиент)</span></div>
+        <div><span class="pill pill-niche">Этнич.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 14 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.botiguesdecatalunya.cat/" target="_blank" rel="noopener">Botigues de Catalunya</a><span class="desc">Артизанальный маркетплейс Каталонии, бесплатные карточки</span></div>
+        <div><span class="pill pill-b2b">Artisan</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> listing fee</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> малая</div>
+        <div class="score-wrap"><div class="score score-2">2</div></div>
+      </div>
+
+      <!-- 15 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://bolt.eu/en/food/merchant/" target="_blank" rel="noopener">Bolt Food (Льорет / Жирона)</a><span class="desc">Эстонский конкурент; покрытие Льорета и Жироны пока НЕ подтверждено — подключать когда расширят</span></div>
+        <div><span class="pill pill-nat">Нац B2C</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> [ждать]</div>
+        <div class="fees"><span class="label-m">Цена:</span> 15-30%</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 16 -->
+      <div class="platform-row" data-cat="niche">
+        <div class="name"><a href="https://www.euruschuk.com.es/" target="_blank" rel="noopener">EU RUSCHUK</a><span class="desc">Болгария / Россия / Украина retail, Мадрид (онлайн)</span></div>
+        <div><span class="pill pill-niche">Этнич.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Мадрид + онлайн</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 17 -->
+      <div class="platform-row" data-cat="self">
+        <div class="name"><a href="https://www.last.app/" target="_blank" rel="noopener">Last.app</a><span class="desc">TPV + online-orders SaaS, замена WhatsApp при росте (год 2+)</span></div>
+        <div><span class="pill pill-self">Самопрод.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> SaaS-план</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> малая</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 18 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.bonpreuesclat.cat/" target="_blank" rel="noopener">Bonpreu / Esclat (KM0)</a><span class="desc">Каталонский ритейл с фокусом на местных производителей. Цикл 6-12 мес — НЕ для года 1, разведочный контакт</span></div>
+        <div><span class="pill pill-b2b">Retail</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> retail margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> цикл 6-12 мес</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 19 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.caprabo.com/" target="_blank" rel="noopener">Caprabo (KM0)</a><span class="desc">Программа местных производителей. НЕ для года 1, разведка</span></div>
+        <div><span class="pill pill-b2b">Retail</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> retail margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> цикл 6-12 мес</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 20 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://assolim.com/es/" target="_blank" rel="noopener">Assolim</a><span class="desc">Каталонский HORECA-дистрибьютор, 7000+ клиентов. Год 2+ когда будут стабильные объёмы</span></div>
+        <div><span class="pill pill-b2b">B2B</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует объёмы</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 21 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://bidfoodiberia.com/proveedores/" target="_blank" rel="noopener">Bidfood Iberia</a><span class="desc">Большой HORECA-каталог, 4000+ позиций. Требует объёмы тонн/нед — НЕ для года 1</span></div>
+        <div><span class="pill pill-b2b">B2B</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует объёмы + IFS</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 22 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.makro.es/distribucion-hosteleria" target="_blank" rel="noopener">Makro España</a><span class="desc">Cash &amp; Carry + HORECA, 8000+ продуктов. Требует объёмы и сертификации — НЕ для года 1</span></div>
+        <div><span class="pill pill-b2b">B2B</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует объёмы</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 23 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.bgrup.es/" target="_blank" rel="noopener">BGrup</a><span class="desc">Барселонский мажорист. Год 2+ если будут объёмы</span></div>
+        <div><span class="pill pill-b2b">B2B</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует объёмы</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 24 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.lasirena.es/" target="_blank" rel="noopener">La Sirena (frozen retail)</a><span class="desc">Сеть замороженных продуктов, 250+ магазинов. Год 2+ для frozen-линии</span></div>
+        <div><span class="pill pill-b2b">B2B</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует frozen + IFS</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 25 -->
+      <div class="platform-row" data-cat="courier">
+        <div class="name"><a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-frio/" target="_blank" rel="noopener">SEUR Frío</a><span class="desc">Cold-chain 2-8°C, 24 ч по Испании. Для разовых дальних заказов — годится. Не для регулярки в год 1</span></div>
+        <div><span class="pill pill-courier">Курьер</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> за вес/расстояние</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 26 -->
+      <div class="platform-row" data-cat="courier">
+        <div class="name"><a href="https://www.correos.es/es/es/empresas/enviar/envios-nacionales/correos-frio" target="_blank" rel="noopener">Correos Frío</a><span class="desc">Альтернатива SEUR, дешевле для малых разовых отправок</span></div>
+        <div><span class="pill pill-courier">Курьер</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> за вес</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 27 -->
+      <div class="platform-row" data-cat="courier">
+        <div class="name"><a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-food/" target="_blank" rel="noopener">SEUR Food</a><span class="desc">Специализация еда/вино/гурме. Для разовых дальних B2B-проб</span></div>
+        <div><span class="pill pill-courier">Курьер</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> за вес</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 28 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://slowfoodcatalunya.cat/" target="_blank" rel="noopener">Slow Food Catalunya</a><span class="desc">Артизанальное движение, premium-позиционирование</span></div>
+        <div><span class="pill pill-b2b">Artisan</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> listing fee</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> малая</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 29 -->
+      <div class="platform-row" data-cat="b2b">
+        <div class="name"><a href="https://www.mercabarna.es/" target="_blank" rel="noopener">Mercabarna marketplace</a><span class="desc">Главный B2B-рынок Барселоны. НЕ для одиночного стартапа в год 1</span></div>
+        <div><span class="pill pill-b2b">B2B</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Каталония</div>
+        <div class="fees"><span class="label-m">Цена:</span> через mayorista</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует mayorista</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 30 -->
+      <div class="platform-row" data-cat="niche">
+        <div class="name"><a href="https://alandalusdistribuidores.com/20-halal" target="_blank" rel="noopener">Al Ándalus Halal Distribuidores</a><span class="desc">B2B халяль, нужна Halal-сертификация. Месяц 6+ если решат с halal</span></div>
+        <div><span class="pill pill-niche">Halal</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> wholesale margin</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> требует Halal cert</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 31 -->
+      <div class="platform-row" data-cat="courier">
+        <div class="name"><a href="https://stuart.com/" target="_blank" rel="noopener">Stuart Delivery</a><span class="desc">Last-mile B2B. Для разовых задач в радиусе. Не для регулярки в год 1</span></div>
+        <div><span class="pill pill-courier">Курьер</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> за заказ</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 32 -->
+      <div class="platform-row" data-cat="courier">
+        <div class="name"><a href="https://merchants.ubereats.com/es/en/services/uber-direct/" target="_blank" rel="noopener">Uber Direct</a><span class="desc">White-label last-mile для своего сайта/WhatsApp. Год 2+ когда будет регулярный поток заказов</span></div>
+        <div><span class="pill pill-courier">Курьер</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> да</div>
+        <div class="fees"><span class="label-m">Цена:</span> от €5,20/доставка</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-3">3</div></div>
+      </div>
+
+      <!-- 33 -->
+      <div class="platform-row" data-cat="courier">
+        <div class="name"><a href="https://cabify.com/es/pasajeros/envios" target="_blank" rel="noopener">Cabify Envíos / Logistics</a><span class="desc">Last-mile + storage. Не подходит для Льорета — нет покрытия</span></div>
+        <div><span class="pill pill-courier">Курьер</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> Мадрид / BCN</div>
+        <div class="fees"><span class="label-m">Цена:</span> за заказ</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> не в Льорете</div>
+        <div class="score-wrap"><div class="score score-4">4</div></div>
+      </div>
+
+      <!-- 34 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://www.resto-in.es/" target="_blank" rel="noopener">Resto-In</a><span class="desc">Premium-доставка Барселона / Мадрид. Не покрывает Льорет</span></div>
+        <div><span class="pill pill-reg">Регион.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> нет</div>
+        <div class="fees"><span class="label-m">Цена:</span> 15-25% [оценка]</div>
+        <div class="alta bad"><span class="label-m">Alta:</span> не в Льорете</div>
+        <div class="score-wrap"><div class="score score-5">5</div></div>
+      </div>
+
+      <!-- 35 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name"><a href="https://www.thefork.es/" target="_blank" rel="noopener">The Fork (ElTenedor)</a><span class="desc">Reservation-платформа, НЕ доставка — для ресторанов</span></div>
+        <div><span class="pill pill-reg">Reserv.</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> весь ES</div>
+        <div class="fees"><span class="label-m">Цена:</span> 0,95% + €0,50/гость</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> нет</div>
+        <div class="score-wrap"><div class="score score-5">5</div></div>
+      </div>
+
+      <!-- 36 -->
+      <div class="platform-row" data-cat="nat">
+        <div class="name">Deliveroo / Yango Eats / La Nevera Roja / MyMenú<span class="desc">Не работают в Испании / поглощены / не запущены</span></div>
+        <div><span class="pill pill-nat">Нет</span></div>
+        <div class="reach"><span class="label-m">Льорет:</span> —</div>
+        <div class="fees"><span class="label-m">Цена:</span> —</div>
+        <div class="alta ok"><span class="label-m">Alta:</span> —</div>
+        <div class="score-wrap"><div class="score score-5">5</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section>
+  <div class="wrap">
+    <div class="h-mono">Чек-лист</div>
+    <h2>Что готовить перед регистрацией</h2>
+    <p class="intro">Большинство платформ требуют один и тот же пакет. Подготовить один раз — отправлять везде. Для одиночного производства минимальный пакет = NIF + RSIPAC + фото + прайс.</p>
+
+    <div class="checklist-grid">
+      <div class="check-col">
+        <h3>Юр. документы</h3>
+        <ul>
+          <li>NIF / CIF</li>
+          <li>Alta IAE (деятельность Каталония)</li>
+          <li>RSIPAC (Каталония) — €64,25</li>
+          <li>HACCP / план самоконтроля</li>
+          <li>Страховка ответственности продукта</li>
+          <li>Опц.: RGSEAA для общеиспанской дистрибуции</li>
+          <li>Опц.: Halal — решить на месяце 3-6</li>
+        </ul>
+      </div>
+      <div class="check-col">
+        <h3>Финансы</h3>
+        <ul>
+          <li>Банковский счёт IBAN ES</li>
+          <li>SEPA-мандат</li>
+          <li>Email для invoicing</li>
+          <li>Прайс-лист: €5,50/кг опт, €7-9/кг розница</li>
+          <li>Минимальные заказы (для опта — от 5 кг)</li>
+          <li>Калькуляция себестоимости (€1,30-1,80/кг COGS)</li>
+          <li>Учётная политика НДС (IVA 4%)</li>
+        </ul>
+      </div>
+      <div class="check-col">
+        <h3>Контент</h3>
+        <ul>
+          <li>Логотип PNG + SVG</li>
+          <li>Каталог продукции (имя, аллергены, вес)</li>
+          <li>Фото каждой позиции ≥ 1200×1200</li>
+          <li>Фото производства / печки</li>
+          <li>Описание бренда RU + ES + CA</li>
+          <li>Таглайн 15-30 знаков</li>
+          <li>Часы работы по каналам</li>
+        </ul>
+      </div>
+      <div class="check-col">
+        <h3>Логистика</h3>
+        <ul>
+          <li>Адрес производства / pickup</li>
+          <li>Радиус самовывоза Льорет (3-5 км)</li>
+          <li>Стандарт упаковки fresh / охл.</li>
+          <li>Личная доставка на машине: Льорет + Бланес + Тосса (до 15 км)</li>
+          <li>SEUR Frío / Correos Frío — для разовых дальних заказов</li>
+          <li>Контактный телефон WhatsApp</li>
+          <li>Когда вырастет объём — Uber Direct для last-mile (год 2)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY PLAN -->
+<section>
+  <div class="wrap">
+    <div class="h-mono">План по неделям</div>
+    <h2>Когда что регистрировать</h2>
+    <p class="intro">От недели 0 (сейчас) до месяца 6+. Каждый блок — независимый, можно параллелить, но порядок оптимизирован под cash-flow и операционную нагрузку одиночного производства.</p>
+
+    <div class="weeks">
+      <div class="week">
+        <div class="num">0</div>
+        <h3>Инфраструктура</h3>
+        <div class="when">Эта неделя</div>
+        <ul>
+          <li>Свет подключают — сейчас</li>
+          <li>Вторник: первый лаваш + фотосессия (30+ кадров)</li>
+          <li>Google Business Profile (адрес производства)</li>
+          <li>Instagram-бизнес-аккаунт</li>
+          <li>Привязка Instagram + WhatsApp Business</li>
+          <li>Landing ellavash.es/order</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">1</div>
+        <h3>WhatsApp + Insta + Google</h3>
+        <div class="when">Прямая связь с клиентом</div>
+        <ul>
+          <li>WhatsApp Business: каталог, цены, часы</li>
+          <li>Instagram Shopping: подключить каталог</li>
+          <li>Google Business: фото, услуги, контакт</li>
+          <li>Telegram-каналы Льорета: 5-10 постов</li>
+          <li>Sticker pack El Lavash для Telegram/WhatsApp</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">2</div>
+        <h3>Glovo + Uber (Pickup)</h3>
+        <div class="when">Национальные платформы</div>
+        <ul>
+          <li>Glovo Self-Delivery: заявка</li>
+          <li>Uber Eats: pickup-режим</li>
+          <li>Первые тестовые заказы по каждому каналу</li>
+          <li>Фотосессия товара под платформы (если требуют)</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">3</div>
+        <h3>Just Eat + локальные гиды</h3>
+        <div class="when">Региональная видимость</div>
+        <ul>
+          <li>Just Eat: переговоры по alta-плате (попытка выторговать waiver)</li>
+          <li>Подать документы Just Eat — если waiver согласован</li>
+          <li>Club Villamar / EnLloret: попадание в туристический гид</li>
+          <li>Restaurantes.info Lloret: listing</li>
+          <li>Botigues de Catalunya: artisan-карточка</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">4</div>
+        <h3>Этнический ритейл</h3>
+        <div class="when">B2B-каналы по 1-2 точкам</div>
+        <ul>
+          <li>Mundo Foods: первый контакт (email + sample)</li>
+          <li>SKAZKA / Teremok: разведочная переписка</li>
+          <li>Libanofoods: познакомиться (как игроки одной ниши, не клиент)</li>
+          <li>Решение про halal-сертификацию: да/нет/потом</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">5-12</div>
+        <h3>Стабилизация и калибровка</h3>
+        <div class="when">Месяц 2-3</div>
+        <ul>
+          <li>Анализ оборота по каналам — какой реально приносит заказы</li>
+          <li>Отключение убыточных (платные размещения, где ROI &lt; 1)</li>
+          <li>Расширение в Бланес / Тосса / Калелья (точечно, ближе 30 км)</li>
+          <li>Solo поездка в BCN с холодной сумкой: 3-5 разведочных контактов</li>
+          <li>Bolt Food: проверить раз в месяц, появилось ли покрытие Льорет/Жирона</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">+</div>
+        <h3>Месяц 6+</h3>
+        <div class="when">Если объёмы стабильны</div>
+        <ul>
+          <li>Halal-сертификация (€3500-8000) — если halal-канал работает</li>
+          <li>Botigues de Catalunya / Slow Food Catalunya — артизанальные клубы</li>
+          <li>Bonpreu / Caprabo KM0 — разведочная заявка (цикл 6-12 мес)</li>
+          <li>SEUR Frío аккаунт — для разовых дальних B2B-проб</li>
+          <li>Уточнить с Элен — нужен помощник на полставки?</li>
+        </ul>
+      </div>
+      <div class="week">
+        <div class="num">!</div>
+        <h3>Не делать в год 1</h3>
+        <div class="when">Antipatterns</div>
+        <ul>
+          <li>Своя курьерская служба — нет, в год 1 это сжигает деньги</li>
+          <li>Склад в Барселоне — нет, не для одиночного производства</li>
+          <li>Рефрижераторный фургон / тонные перевозки — нет</li>
+          <li>Just Eat €699 alta без переговоров — попробовать waiver</li>
+          <li>Glovo / Uber Sponsored placements до стабильного объёма</li>
+          <li>Bidfood / Makro / Mercabarna контракты в год 1 — нет, цикл 12+ мес</li>
+          <li>Сетевой ритейл (Bonpreu, Caprabo листинг) в год 1 — только разведочный контакт</li>
+          <li>Deliveroo / Yango / La Nevera Roja — не работают в Испании</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <h3>Источники</h3>
+    <div class="src-grid">
+      <a href="https://sell.glovoapp.com/es/es/" target="_blank" rel="noopener">sell.glovoapp.com — Glovo Spain</a>
+      <a href="https://sell.glovoapp.com/es/es/services/self-delivery/" target="_blank" rel="noopener">Glovo Self-Delivery</a>
+      <a href="https://glovoapp.com/en/es/lloret-de-mar/categories/comida_1" target="_blank" rel="noopener">Glovo Lloret de Mar — comida</a>
+      <a href="https://blog.menuviel.com/glovo-fees-and-commissions-for-restaurants/" target="_blank" rel="noopener">Menuviel — Glovo fees 2026</a>
+      <a href="https://commandeici.com/en/blogs/online-ordering/glovo-restaurant-commission-rates-comparison" target="_blank" rel="noopener">Commande Ici — Glovo rates</a>
+      <a href="https://qamarero.com/blog/cuanto-cobra-glovo-a-los-restaurantes-en-espana-guia/" target="_blank" rel="noopener">qamarero.com — Glovo cobra ES 2026</a>
+      <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1356" target="_blank" rel="noopener">EC — Glovo/Delivery Hero cartel fine 2025</a>
+      <a href="https://merchants.ubereats.com/es/en/s/signup/" target="_blank" rel="noopener">Uber Eats merchants signup</a>
+      <a href="https://www.ubereats.com/es/city/lloret-de-mar-es-ct" target="_blank" rel="noopener">Uber Eats Lloret de Mar</a>
+      <a href="https://merchants.ubereats.com/es/en/services/uber-direct/" target="_blank" rel="noopener">Uber Direct merchants</a>
+      <a href="https://restaurantes.just-eat.es/" target="_blank" rel="noopener">Just Eat restaurantes signup</a>
+      <a href="https://www.just-eat.es/partner/registrate/" target="_blank" rel="noopener">Just Eat partner registro</a>
+      <a href="https://www.just-eat.es/a-domicilio/lloret-de-mar" target="_blank" rel="noopener">Just Eat Lloret de Mar (101 точка)</a>
+      <a href="https://commandeici.com/en/blogs/online-ordering/just-eat-commission-fees-contracts-alternatives" target="_blank" rel="noopener">Commande Ici — Just Eat fees</a>
+      <a href="https://bolt.eu/en/food/merchant/" target="_blank" rel="noopener">Bolt Food merchant</a>
+      <a href="https://foodpartner.bolt.eu/" target="_blank" rel="noopener">Bolt Food Partner Portal</a>
+      <a href="https://www.catalannews.com/business/item/deliveroo-to-cease-operations-in-spain-at-the-end-of-november" target="_blank" rel="noopener">Catalan News — Deliveroo exit Spain</a>
+      <a href="https://www.alimarket.es/restauracion/noticia/222790/just-eat-spain-absorbe-la-actividad-de-la-nevera-roja" target="_blank" rel="noopener">Alimarket — Just Eat absorbe Nevera Roja</a>
+      <a href="https://www.thefork.es/" target="_blank" rel="noopener">The Fork España</a>
+      <a href="https://www.clubvillamar.es/content/lloret-de-mar/es/perdir-comida-lloret-de-mar/" target="_blank" rel="noopener">Club Villamar — служб доставки Льорета</a>
+      <a href="https://www.restaurantes.info/Girona/a-domicilio/Lloret-de-Mar.htm" target="_blank" rel="noopener">Restaurantes.info Lloret</a>
+      <a href="https://www.lasirena.es/es/1075-pan-masas-y-hojaldres" target="_blank" rel="noopener">La Sirena — Pan congelado</a>
+      <a href="https://bidfoodiberia.com/" target="_blank" rel="noopener">Bidfood Iberia</a>
+      <a href="https://www.makro.es/distribucion-hosteleria" target="_blank" rel="noopener">Makro Distribución hostelería</a>
+      <a href="https://assolim.com/es/" target="_blank" rel="noopener">Assolim</a>
+      <a href="https://www.bgrup.es/" target="_blank" rel="noopener">BGrup — mayoristas Barcelona</a>
+      <a href="https://stuart.com/" target="_blank" rel="noopener">Stuart Delivery</a>
+      <a href="https://cabify.com/es/pasajeros/envios" target="_blank" rel="noopener">Cabify Envíos</a>
+      <a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-frio/" target="_blank" rel="noopener">SEUR Frío</a>
+      <a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-food/" target="_blank" rel="noopener">SEUR Food</a>
+      <a href="https://www.correos.es/es/es/empresas/enviar/envios-nacionales/correos-frio" target="_blank" rel="noopener">Correos Frío</a>
+      <a href="https://business.whatsapp.com/" target="_blank" rel="noopener">WhatsApp Business</a>
+      <a href="https://mundofoods.com/845-pan-libanes" target="_blank" rel="noopener">Mundo Foods — pan libanés</a>
+      <a href="https://skazka.es/" target="_blank" rel="noopener">SKAZKA.es</a>
+      <a href="https://www.teremok.es/es/" target="_blank" rel="noopener">Teremok Barcelona</a>
+      <a href="https://www.euruschuk.com.es/" target="_blank" rel="noopener">EU RUSCHUK Madrid</a>
+      <a href="https://libanofoods.com/" target="_blank" rel="noopener">Libanofoods</a>
+      <a href="https://alandalusdistribuidores.com/20-halal" target="_blank" rel="noopener">Al Ándalus Halal</a>
+      <a href="https://slowfoodcatalunya.cat/" target="_blank" rel="noopener">Slow Food Catalunya</a>
+      <a href="https://www.botiguesdecatalunya.cat/" target="_blank" rel="noopener">Botigues de Catalunya</a>
+      <a href="https://www.bonpreuesclat.cat/" target="_blank" rel="noopener">Bonpreu / Esclat</a>
+      <a href="https://www.caprabo.com/" target="_blank" rel="noopener">Caprabo</a>
+      <a href="https://www.last.app/" target="_blank" rel="noopener">Last.app</a>
+    </div>
+
+    <div class="meta">
+      El Lavash · Plan de servicios de delivery · версия 5 · 29.05.2026 · Льорет-де-Мар · Каталония. Реалистичный план для одиночного артизан-производства: без своих курьеров, без склада в BCN, без рефрижераторного фургона. Все цены и комиссии — на момент сбора данных, проверять перед подписанием контракта.
+    </div>
+  </div>
+</footer>
+
+<script>
+const btns = document.querySelectorAll('.filter-btn');
+const rows = document.querySelectorAll('.platform-row[data-cat]');
+btns.forEach(b => b.addEventListener('click', () => {
+  btns.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  const f = b.dataset.filter;
+  rows.forEach(r => {
+    r.style.display = (f === 'all' || r.dataset.cat === f) ? '' : 'none';
+  });
+}));
+</script>
+
+</body>
+</html>

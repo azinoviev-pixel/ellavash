@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Анализ рынка v10 (реалистичный масштаб)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  tr:hover td{background:var(--bg-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:700px}
+  .scroll-x::-webkit-scrollbar{height:8px}
+  .scroll-x::-webkit-scrollbar-thumb{background:var(--ink-dim);border-radius:4px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  .source{font-size:12px;color:var(--ink-dim);font-style:italic}
+  .source a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    .hero .sub{font-size:15px}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){
+    .grid-4{grid-template-columns:1fr}
+    .container{padding:22px 14px 56px}
+  }
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="El Lavash">
+  <div>
+    <div class="eyebrow">Анализ рынка · версия 10 · 29.05.2026</div>
+    <h1>Рынок лаваша Испании<br><em>цифры, источники, наша роль</em></h1>
+    <div class="sub">Контекст рынка верифицирован по 80+ источникам. Версия 10 переписывает блок «наша роль на рынке» под реальный масштаб: один артизан-стартап с домашним радиусом 30 км вокруг Льорет-де-Мар. Без претензий на «лидерство в нише» — мы только заходим.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Business_Model_v5.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v5.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Marketing_Plan_v5.html">Маркетинг-план</a>
+  <a class="pill" href="El_Lavash_Competitive_Analysis_v9.html">Конкуренты</a>
+  <a class="pill" href="El_Lavash_Battlecard_v2.html">Battlecard</a>
+</nav>
+
+<section>
+  <div class="callout callout-warn">
+    <h3>Что изменилось в v10 относительно v9</h3>
+    <ul>
+      <li>Раздел «наша роль на рынке» переписан: мы — один малый артизан-стартап с радиусом 30 км, а не «лидер артизанальной ниши Каталонии».</li>
+      <li>CAGR испанского frozen bakery приведён к одному числу — <strong>6 % базовый</strong> (диапазон 5-8 % из источников).</li>
+      <li>Убраны упоминания экспорта в Германию, UK и Францию в год 1.</li>
+      <li>Сектора «куда заходить» переориентированы на ближний радиус (Льорет, Бланес, Тосса, Калелья, Жирона), а не на национальную дистрибуцию.</li>
+      <li>Объём для безубыточности переведён в реалистичную вилку 12-20 кг/день вместо 12-18 тонн/мес.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Ключевые цифры рынка</div>
+  <h2>Что показал рынок</h2>
+  <div class="grid-4">
+    <div class="stat"><div class="stat-num">987 309 т</div><div class="stat-label">Промышленный хлеб Испании 2024 (Asemac)</div></div>
+    <div class="stat"><div class="stat-num">€1,94 млрд</div><div class="stat-label">Facturación сектора 2025 (+3,2 % YoY)</div></div>
+    <div class="stat"><div class="stat-num">~6 %</div><div class="stat-label">CAGR frozen bakery Spain (базовый, диапазон 5-8 %)</div></div>
+    <div class="stat"><div class="stat-num">+7,3 %</div><div class="stat-label">CAGR flatbread/unleavened (top сегмент)</div></div>
+    <div class="stat"><div class="stat-num">51 %</div><div class="stat-label">Доля Каталонии в испанском пан-секторе (€1 млрд)</div></div>
+    <div class="stat"><div class="stat-num">152</div><div class="stat-label">Кебабных в Каталонии (#1 в Испании)</div></div>
+    <div class="stat"><div class="stat-num">39,7 %</div><div class="stat-label">Иностранцев в Льорете (#1 город Каталонии)</div></div>
+    <div class="stat"><div class="stat-num">IVA 4 %</div><div class="stat-label">На лаваш с октября 2024 (BOE-A-2025-3950)</div></div>
+  </div>
+  <p class="source" style="margin-top:14px;">Источники: <a href="https://www.asemac.es/noticias-asemac/45-la-industria-de-panaderia-y-bolleria-roza-el-millon-de-toneladas-de-produccion-de-masas-congeladas">Asemac пресс-релиз 22.04.2025</a>, <a href="https://deepmarketinsights.com/vista/insights/frozen-bakery-product-market/spain">Deep Market Insights</a>, <a href="https://www.idescat.cat">Idescat 2024-2025</a>, <a href="https://www.boe.es">BOE-A-2025-3950</a>.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Наша роль на рынке — реалистично</div>
+  <h2>Кто мы в этих цифрах</h2>
+  <div class="callout">
+    <h3>Один малый артизан-стартап с домашним радиусом 30 км</h3>
+    <p>Все цифры выше — это национальный рынок. <strong>Мы — не игрок этого рынка целиком.</strong> El Lavash — один человек (Элен) на собственной кухне в Льорет-де-Мар. Стартовая мощность 5-10 кг/день, цель к 12-му месяцу — 18-25 кг/день базовый сценарий. В тоннах рынка это статистическая погрешность.</p>
+    <p>Наш реальный TAM в год 1 — это не «Испания» и не «Каталония», а <strong>Льорет, Бланес, Тосса, Калелья + 1-2 точки в Жироне</strong>. Радиус 30 км, максимум 60-80 точек продаж к концу года.</p>
+    <p style="margin-bottom:0;">Сетевой ритейл (Bonpreu, Mercadona, Carrefour, El Corte Inglés), дистрибьюторы HoReCa (Transgourmet, Bidfood, Friman), круизы и экспорт — это <strong>не первый год</strong>. Это разговор после 6-12 месяцев стабильной локальной работы, когда мы покажем оборот и репутацию.</p>
+  </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="callout callout-good">
+      <h3>Что мы реально делаем в год 1</h3>
+      <ul>
+        <li>Льорет розница: русские магазины, локальные карникерии, мини-маркеты — до 30 точек</li>
+        <li>Льорет HoReCa: кебабные, шавермные, локальные рестораны — до 15-20 точек</li>
+        <li>Бланес, Тосса, Калелья — ближний радиус 30 км, до 20 точек</li>
+        <li>Жирона — 1-2 точки по тёплой рекомендации</li>
+        <li>Glovo / Uber Eats / Just Eat — pickup-меню после запуска</li>
+        <li>Прямые мини-заказы через WhatsApp и Telegram</li>
+      </ul>
+    </div>
+    <div class="callout callout-warn">
+      <h3>Чего не делаем в год 1</h3>
+      <ul>
+        <li>Сетевой ритейл (Bonpreu, Caprabo, Veritas, Sorli, Condis, Mercadona, Carrefour, Lidl, Aldi, ECI)</li>
+        <li>Дистрибьюторы HoReCa (Bidfood, Transgourmet, Friman, GM Cash) — кампания только после 6 мес</li>
+        <li>Mercabarna C&amp;C — не для одиночного стартапа</li>
+        <li>Институциональный канал (школы, больницы, тюрьмы, госзакупки)</li>
+        <li>Круизы и ship chandlers — требуют IFS Logistics</li>
+        <li>Экспорт (Германия, UK, Франция, Италия) — мираж в год 1</li>
+        <li>Аэропорт Жироны F&amp;B — тендеры на 24+ мес</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Регуляторный сдвиг октября 2024</div>
+  <h2>IVA на лаваш снижен до 4 %</h2>
+  <div class="callout callout-good">
+    <h3>Главное регуляторное событие 2024 для нашей категории</h3>
+    <p style="margin-top:0;">После <strong>Sentencia TS 1610/2024</strong> и <strong>Resolución DGT BOE-A-2025-3950</strong> все категории пана (включая pan especial, pita, лаваш и аналоги) облагаются <strong>IVA 4 %</strong> вместо старой ставки 10 %. Это +6 процентных пунктов маржи для всей категории.</p>
+    <p style="margin-bottom:0;font-size:14px;color:var(--ink-soft);">Источник: <a href="https://www.boe.es" style="color:var(--brand-soft);">BOE-A-2025-3950</a>. Применять прямо сейчас в расчётах цен.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Демография Каталонии 2024-2025</div>
+  <h2>Кто реально может покупать лаваш</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Диаспора</th><th>В Каталонии</th><th>Главная concentración</th><th>Релевантность для лаваша</th></tr></thead>
+      <tbody>
+        <tr><td>Марокко</td><td>252 843</td><td>Барселона + побережье</td><td><span class="tag tag-hot">Очень высокая</span> — традиционные едоки flatbread</td></tr>
+        <tr><td>Пакистан</td><td>~59 150 (48 % всей нац. в Испании)</td><td>Барселона (Raval, Sants)</td><td><span class="tag tag-warm">Высокая</span> — naan + кебаб</td></tr>
+        <tr><td>Украина</td><td>~54 444 (с защитой)</td><td>Барселона, Жирона</td><td><span class="tag tag-hot">Высокая</span> — узнают лаваш, ищут «свой»</td></tr>
+        <tr><td>Россия</td><td>34 340</td><td>Барселона, побережье</td><td><span class="tag tag-hot">Высокая</span> — знают и любят</td></tr>
+        <tr><td>Грузия</td><td>10 675</td><td>Барселона</td><td><span class="tag tag-warm">Средняя</span> — едят шотис, не лаваш</td></tr>
+        <tr><td>Армения</td><td>~4 300</td><td>Барселона, Жирона</td><td><span class="tag tag-cool">Целевая ниша</span> — мала, нельзя строить план только на ней</td></tr>
+        <tr><td>Иран</td><td>2 934</td><td>Барселона</td><td><span class="tag tag-cool">Низкая</span> — барбари/лавашак, другой формат</td></tr>
+        <tr><td>Сирия + Ливан</td><td>~2 600</td><td>Барселона</td><td><span class="tag tag-cool">Низкая</span> — едят пита, есть <a href="https://libanofoods.com">Libanofoods</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source">Источник: <a href="https://www.idescat.cat">Idescat 2024-2025</a>.</p>
+  <div class="callout">
+    <h3>Главный вывод по демографии</h3>
+    <p style="margin:0;">252 843 марокканцев + ~89 тысяч славяноязычных = ~340 тысяч потенциальной целевой аудитории в Каталонии. <strong>Но для нас в год 1 релевантна только та часть, что живёт в Льорете и радиусе 30 км.</strong> Армянская ниша слишком мала (4 300 по всей Каталонии), нельзя строить план только на ней. В Льорете нужны два нарратива: «русско-/украиноязычный артезанал» и «магрибский халяльный flatbread» (последнее — только если возьмём халяль-сертификацию).</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Конкурентная карта (verified)</div>
+  <h2>Кто на полке прямо сейчас</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / Компания</th><th>Локация</th><th>Что делают</th><th>Цена / граммаж</th><th>Пересечение с нами</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Don Pan 3000 SL</strong> (NIF B76550458)</td><td>Tenerife, Канары</td><td><a href="https://www.mercadona.es">Mercadona</a>, <a href="https://www.carrefour.es">Carrefour</a>, <a href="https://www.eroski.es">Eroski</a>, <a href="https://www.elcorteingles.es">ECI</a>, <a href="https://www.alcampo.es">Alcampo</a>, <a href="https://www.froiz.com">Froiz</a>. Pan Lavash 200 г. Малый завод (1-10 сотр., €0,75-1,5М оборот)</td><td>~€1,60-2,00 / 200 г</td><td><span class="tag tag-dim">Не пересекаемся в год 1 — они в сетях, мы в локальных точках</span></td></tr>
+        <tr><td><strong><a href="https://libanofoods.com">Libanofoods / Baraka</a></strong></td><td>Sant Just Desvern (BCN)</td><td>Пита, ливанский хлеб, durum. 3000+ клиентов HoReCa</td><td>510 г × 6 шт ambient/vacío</td><td><span class="tag tag-warm">Частично — в кебабных Льорета, другой продукт</span></td></tr>
+        <tr><td><strong>Monolith Alimentación España SLU</strong> (NIF B54318977)</td><td>La Nucia (Alicante) + склад в Llorenç del Penedès</td><td>Импорт Pan de Armenia Lavash 340 г для русских магазинов</td><td>~€1,96 / 340 г = €5,76/кг</td><td><span class="tag tag-warm">Прямое — русские магазины Льорета</span></td></tr>
+        <tr><td><strong>Hacendado Pita</strong> (Mercadona PL)</td><td>Завод Abrera (Mercadona, 26 000 шт/час)</td><td>Pita 400 г mass-market через 1400+ магазинов</td><td>€1,56-1,95 / 400 г</td><td><span class="tag tag-dim">Не пересекаемся — другая лига и продукт</span></td></tr>
+        <tr><td><a href="https://europastry.com"><strong>Europastry</strong></a></td><td>Sant Cugat del Vallès</td><td>№1 пекарня Испании. €1,506 млрд оборот 2024. Pita + flatbreads в B2B</td><td>B2B (industrial)</td><td><span class="tag tag-dim">Другой рынок — €100M+ оборот, не наша лига</span></td></tr>
+        <tr><td><a href="https://www.antigacasabellsola.com"><strong>Bellsolà</strong></a> (Monbake / CVC Capital)</td><td>Aiguaviva (Жирона) — 33 км от Льорета</td><td>Premium frozen хлеб, ciabatta, focaccia. Лаваша / pan plano нет</td><td>B2B premium</td><td><span class="tag tag-dim">Другой рынок — industrial premium B2B</span></td></tr>
+        <tr><td><strong><a href="https://liven.es">Liven SAU</a></strong> (Paulig Group)</td><td>Berga + Puig-Reig + Ocaña</td><td>Тортильи, пиадины, врапы. €84,6 млн оборот</td><td>B2B + retail</td><td><span class="tag tag-dim">Другой рынок — мы не конкурируем за Lidl-PL</span></td></tr>
+        <tr><td><strong>Sistema Logístico Alimentario / Fabricapan</strong> (B86007812)</td><td>Fuenlabrada (Madrid)</td><td>Турецкий тонкий хлеб для kebab-сетей</td><td>B2B кебаб-канал</td><td><span class="tag tag-warm">Частично — в кебабных Льорета</span></td></tr>
+        <tr><td><strong><a href="https://www.laboulangere.com">La Boulangère / Bridor</a></strong> (Le Duff)</td><td>Франция (импорт)</td><td>Premium pan plano в Carrefour, ECI</td><td>~€2,41 / 320 г = €7,53/кг</td><td><span class="tag tag-dim">Не пересекаемся — премиум-импорт в сетях</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source">Поправки по cross-проверке: адрес Monolith скорректирован, Hacendado цена обновлена, Bellsolà расстояние, Liven выручка. Колонка «пересечение» обновлена для масштаба год 1.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">3 главных канала для нас в год 1</div>
+  <h2>Куда заходить — реальный ближний радиус</h2>
+  <div class="grid-3">
+    <div class="callout callout-good">
+      <h3>Канал 1: розница Льорет-де-Мар</h3>
+      <p style="margin-top:0;"><strong>Русские, украинские, локальные мини-маркеты и карникерии в Льорете.</strong> Прямая поставка — Элен или Антон отвозят утром. Без посредников.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Цель: до 30 точек к 6-му месяцу. Цена опт €5,50 ± €0,50/кг.</p>
+    </div>
+    <div class="callout callout-good">
+      <h3>Канал 2: HoReCa Льорета и ближнего радиуса</h3>
+      <p style="margin-top:0;"><strong>Кебабные, шавермные, рестораны Льорета, Бланеса, Тоссы, Калельи.</strong> Тонкий лаваш под wraps и durum, свежий, день в день.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Цель: до 15-20 точек к 6-му месяцу. Дополнительно 1-2 точки в Жироне по тёплой рекомендации.</p>
+    </div>
+    <div class="callout callout-good">
+      <h3>Канал 3: онлайн и доставка</h3>
+      <p style="margin-top:0;"><strong>Glovo, Uber Eats, Just Eat</strong> — после получения RSIPAC и регистрации. Plus прямые заказы через <strong>WhatsApp и Telegram</strong>.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Цена через службы €8-10/кг (с учётом комиссии 30 %).</p>
+    </div>
+  </div>
+  <div class="callout">
+    <h3>Объём для безубыточности — реалистично</h3>
+    <p style="margin:0;font-size:17px;">При маржинальности €3-4/кг и фикс-косте €900-1700/мес: break-even = <strong>12-20 кг/день</strong>. Цель к 12-му месяцу (базовый сценарий) — 18-25 кг/день. Это не «тонны», это десятки килограммов. Это и есть масштаб артизан-стартапа на первом году.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Тренды 2026 (подтверждённые данными)</div>
+  <h2>Где растёт спрос</h2>
+  <ul>
+    <li><strong>Frozen bakery растёт быстрее общего рынка хлеба</strong>: ~6 % CAGR базовый (диапазон 5-8 %) vs 3,46 % общий bread market <span class="source">[<a href="https://deepmarketinsights.com/vista/insights/frozen-bakery-product-market/spain">Deep Market Insights</a>]</span>. Это контекст — мы свежие, но категория в тренде.</li>
+    <li><strong>Этно-категория интегрируется в mainstream</strong>: «integrada y diversificada en las opciones de compra del Gran Consumo» <span class="source">[<a href="https://www.alimarket.es">Alimarket Informe 2024</a>]</span>.</li>
+    <li><strong>Супермаркеты доминируют каналы</strong>: 67,2 % volumen, +1,8 % YoY <span class="source">[Alimarket]</span>. Для нас в год 1 это контекст — мы туда не идём.</li>
+    <li><strong>KM0 / proximidad</strong>: программы локальных поставщиков у Bonpreu (+12 % YoY), Carrefour, Veritas, Lidl. Релевантно нам через 12+ мес.</li>
+    <li><strong>Healthy positioning</strong>: лаваш как «низкожирный flatbread» вписывается в health-нарратив.</li>
+    <li><strong>Kebab boom</strong>: Каталония 152 точки (#1 Испании), +18 % год к году. Прямой релевантный тренд для нас в кебабных Льорета.</li>
+    <li><strong>M&amp;A консолидация</strong>: CVC Capital→Monbake (март 2024), Bridor→Panamar (2026), Paulig→Liven. Это про индустриальный рынок — нашу нишу артизана-локала гиганты не трогают, она для них нерентабельна.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="section-eyebrow">Регулирование детально</div>
+  <h2>Что нужно по документам</h2>
+  <div class="grid-2">
+    <div class="card"><h3>RSIPAC (Каталония)</h3><p>Региональный санитарный регистр. Стоимость регистрации <strong>€64,25</strong>. Минимально обязателен для производства в Каталонии.</p><span class="tag tag-hot">Обязательно</span></div>
+    <div class="card"><h3>RGSEAA (Испания)</h3><p>Общеиспанский Registro General Sanitario. Обязателен для распределения за пределы Каталонии. <a href="https://www.glovoapp.com">Glovo</a> / <a href="https://www.ubereats.com">Uber Eats</a> отклонят без него.</p><span class="tag tag-hot">Обязательно</span></div>
+    <div class="card"><h3>HACCP / APPCC</h3><p>План самоконтроля. Дистрибьюторы откажут без HACCP даже базового.</p><span class="tag tag-hot">Обязательно</span></div>
+    <div class="card"><h3>Licencia de actividad</h3><p>От Ajuntament Льорет-де-Мар. Без — закрытие.</p><span class="tag tag-hot">Обязательно</span></div>
+    <div class="card"><h3>IVA на лаваш</h3><p>С октября 2024 — <strong>4 %</strong> (BOE-A-2025-3950, Sentencia TS 1610/2024). Не 10 % как было раньше.</p><span class="tag tag-cool">Применять сразу</span></div>
+    <div class="card"><h3>Halal-сертификация</h3><p><a href="https://www.institutohalal.com">Instituto Halal</a> — €3500-8000 первый год + €1500-3000/год последующие аудиты. Открывает марокканский канал. Решить в первые 3 мес.</p><span class="tag tag-warm">Опционально, решить рано</span></div>
+    <div class="card"><h3>IFS Food / BRCGS</h3><p>€15-30k + 6-9 месяцев. Для Lidl / Aldi / private label / круизных судов. <strong>НЕ нужно в год 1.</strong></p><span class="tag tag-dim">Через 12+ мес</span></div>
+    <div class="card"><h3>Bio / CCPAE Каталония</h3><p>12-18 месяцев конверсии. Открывает Veritas (70 точек) + Veritas Pro. Не приоритет в год 1.</p><span class="tag tag-dim">Через 12+ мес если bio-линия</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">5 критических решений первых 90 дней</div>
+  <h2>Что решать сейчас</h2>
+  <ol style="font-size:17px;max-width:760px;line-height:1.7;">
+    <li><strong>Применить IVA 4 % в pricing.</strong> Не 10 %. Это +6 п.п. маржи. Документировать BOE-A-2025-3950.</li>
+    <li><strong>Halal-сертификация — да или нет.</strong> Без неё закрыт марокканский канал в Льорете. С ней — €3500-8000 (первый год) и 2-4 мес ожидания. Решение принимается в апреле-мае 2026.</li>
+    <li><strong>Frozen или fresh бизнес-модель.</strong> Для нашего масштаба — fresh, day-of-bake. Frozen требует -18°C логистики, нашему объёму это нерационально.</li>
+    <li><strong>Реальная мощность.</strong> Стартовая база 5-10 кг/день, цель к 12-му месяцу 18-25 кг/день. Уточнить фактическую производительность печи после первой рабочей недели Элен.</li>
+    <li><strong>Упаковка РУС/SPA.</strong> Двойная маркировка (русская + испанская) для прохода в локальные магазины и для будущего расширения. Решить до первой партии.</li>
+  </ol>
+</section>
+
+<footer>
+  <p>Анализ рынка v10 · 29.05.2026. Source of truth: <code>SOURCE_OF_TRUTH_v1.md</code>. Версия 10 переписала блок «наша роль на рынке» и каналы под реалистичный масштаб одного артизан-стартапа с радиусом 30 км. CAGR унифицирован — 6 % базовый. Экспорт и национальные сети из планов года 1 убраны. v9 сохранён как история.</p>
+</footer>
+
+</div>
+</body>
+</html>

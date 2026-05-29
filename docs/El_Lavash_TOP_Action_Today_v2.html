@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Что делать сегодня v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.08) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.06) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1100px;margin:0 auto;padding:48px 28px 80px}
+  .hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:760px;color:var(--ink-soft)}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:30px;margin:48px 0 18px;letter-spacing:-0.02em;color:var(--brand)}
+  h2 .badge{display:inline-block;background:var(--accent);color:#FFF;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;padding:4px 10px;border-radius:6px;margin-left:12px;vertical-align:middle;text-transform:uppercase;letter-spacing:0.1em}
+  h2 .badge.warm{background:var(--brand);color:var(--bg)}
+  h2 .badge.cool{background:var(--green);color:var(--bg)}
+  .target{background:var(--bg-card);border:1px solid var(--line);border-left:6px solid var(--brand);border-radius:12px;padding:24px 28px;margin:18px 0;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+  .target.hot{border-left-color:var(--accent)}
+  .target.warm{border-left-color:var(--brand)}
+  .target.cool{border-left-color:var(--green)}
+  .target .rank{font-family:'Fraunces',serif;font-size:46px;font-weight:600;color:var(--brand);line-height:1;letter-spacing:-0.03em;min-width:64px}
+  .target .body{flex:1}
+  .target h3{margin:0 0 8px;font-size:22px;color:var(--ink);font-weight:700}
+  .target .where{font-size:14px;color:var(--ink-soft);margin-bottom:14px}
+  .target .where a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed}
+  .target .where strong{color:var(--ink)}
+  .target .why{font-size:15px;color:var(--ink);margin-bottom:14px}
+  .target .why strong{color:var(--brand)}
+  .target .do{font-size:14px;color:var(--ink-soft);padding:12px 16px;background:var(--bg-soft);border-radius:8px}
+  .target .do strong{color:var(--brand-soft);text-transform:uppercase;letter-spacing:0.06em;font-size:12px;display:block;margin-bottom:6px}
+  .contacts{display:flex;gap:14px;margin:10px 0;flex-wrap:wrap;font-size:14px}
+  .contacts a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed;display:inline-flex;align-items:center;gap:4px}
+  .summary{background:linear-gradient(135deg,#4A2E1D 0%,#3A2417 100%);border:1px solid var(--brand);border-radius:14px;padding:28px;margin:30px 0}
+  .summary h3{margin-top:0;color:var(--brand);font-family:'Fraunces',serif;font-size:24px}
+  .summary ol{padding-left:22px;font-size:16px}
+  .summary ol li{padding:6px 0}
+  footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:24px 16px 56px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(20px,6vw,26px);margin:32px 0 14px}
+    h2 .badge{display:block;margin:8px 0 0 0;width:fit-content}
+    .target{grid-template-columns:1fr;gap:14px;padding:18px}
+    .target .rank{font-size:38px;min-width:auto}
+    .target h3{font-size:18px}
+    .pill{font-size:12px;padding:8px 12px}
+  }
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <div class="eyebrow">Что делать сегодня · v2 · 29.05.2026</div>
+  <h1>Куда идти прямо сейчас<br><em>10 реалистичных шагов на эту неделю</em></h1>
+  <div class="sub">Цель — одна Элен, одно производство, реалистичная нагрузка. <strong>5 пешком в Льорете</strong> (визиты с образцами), <strong>3 онлайн-регистрации</strong> (бесплатные, на телефоне за 2 часа), <strong>2 первых email-контакта</strong>. Барселона, опт-дистрибьюторы, сетевой ритейл — это для месяца 2-3+, не сейчас. Первые 10 точек разобраны отдельно в Starter-листе.</div>
+  <div style="margin-top:18px;">
+    <a class="pill primary" href="index_v17.html">← Панель проекта</a>
+    <a class="pill" href="El_Lavash_Starter_10_v1.html">Первые 10 точек — здесь →</a>
+    <a class="pill" href="El_Lavash_Distribution_DB_v6.xlsx">Полная база (Excel)</a>
+    <a class="pill" href="El_Lavash_Sales_Strategy_v6.html">Стратегия продаж</a>
+  </div>
+</header>
+
+<section>
+  <h2>Дни 1-3 — пешком в Льорете <span class="badge">5 ВИЗИТОВ</span></h2>
+  <p style="color:var(--ink-soft);margin-bottom:24px;">Берёшь 5 пакетов лаваша по 400 г + фотку производства на телефоне + ficha técnica на одной странице (можно даже от руки). Идёшь утром 10:00-13:00 — это окно когда у продавцов нет пиковой нагрузки. Не больше 2 визитов в день: важнее остаться в памяти, чем пробежаться.</p>
+
+  <div class="target hot">
+    <div class="rank">1</div>
+    <div class="body">
+      <h3>Nash Supermarket (бывший Supermercado Russia)</h3>
+      <div class="where"><strong>Av. Vila de Blanes 165, Льорет-де-Мар</strong> · <a href="https://www.google.com/maps/search/?api=1&query=Supermercado+Russia+Av+Vila+de+Blanes+165+Lloret">Карта</a></div>
+      <div class="contacts">
+        <a href="tel:+34972364615">+34 972 364 615</a>
+        <a href="tel:+34693918999">+34 693 918 999</a>
+      </div>
+      <div class="why"><strong>Почему №1:</strong> Главный русский магазин Льорета. Уже устно договорено по голосовому от Элен. Прямой канал к славяноязычной диаспоре. Если возьмут — это первая партия и реальные деньги уже на следующей неделе. Реалистичный объём для старта: <strong>3-5 кг/неделя</strong>.</div>
+      <div class="do"><strong>Что взять и сказать</strong>«Здравствуйте! Я Элен, открываю производство лаваша прямо в Льорете. Принесла попробовать — свежий, утрешний. Хочу поставлять вам регулярно по €5,50/кг опт. Можем подъехать завтра, послезавтра?». Оставить 2-3 образца + визитку. Спросить когда удобно созвониться.</div>
+    </div>
+  </div>
+
+  <div class="target hot">
+    <div class="rank">2</div>
+    <div class="body">
+      <h3>Carnicería Halal Fátima</h3>
+      <div class="where"><strong>C/ Just Marles 27, Льорет-де-Мар</strong> · <a href="https://www.google.com/maps/search/?api=1&query=Carniceria+Halal+Fatima+Lloret+de+Mar">Карта</a></div>
+      <div class="contacts">
+        <a href="tel:+34972372896">+34 972 372 896 (проверить)</a>
+      </div>
+      <div class="why"><strong>Почему №2:</strong> 10+ лет в Льорете, ежедневно открыто, halal-канал. Хозяин знает всех других карникерий в районе — если ты ему понравишься, он сам передаст рекомендацию. Но: для halal-полки нужен <strong>halal-сертификат</strong> от <a href="https://institutohalal.com" style="color:var(--brand-soft);">Instituto Halal</a> (€3500-8000, решить на месяце 3-6). Сейчас — sample «попробовать без сертификата», для калибровки формата и вкуса.</div>
+      <div class="do"><strong>Что взять и сказать</strong>«Привет! Я делаю лаваш в Льорете. Хочу понять подходит ли вам формат для шавермы. Сейчас без halal-сертификата, рассматриваю оформление. Попробуйте на вкус и скажите — толщина, размер, нравится?» Не пытайся продать сегодня — узнавай.</div>
+    </div>
+  </div>
+
+  <div class="target hot">
+    <div class="rank">3</div>
+    <div class="body">
+      <h3>Beach Doner Kebab</h3>
+      <div class="where"><strong>Carrer Sant Pere 76, Льорет-де-Мар</strong> · <a href="https://www.google.com/maps/search/?api=1&query=Beach+Doner+Kebab+Lloret">Карта</a></div>
+      <div class="why"><strong>Почему №3:</strong> ТОП-кебабная Льорета по рейтингу Google. Работает почти 24/7 в сезон. Сейчас возят pan durum от <a href="https://www.fabricapankebab.com" style="color:var(--brand-soft);">Fabricapan</a> из Мадрида — это 2-3 дня логистики. Мы можем привозить свежий утром каждый день. <strong>Начинаем с пробной поставки 3-5 кг/день, наращиваем по факту</strong> — если возьмут больше, это уже подвиг для одиночного производства.</div>
+      <div class="do"><strong>Что взять и сказать</strong>Прийти после обеденного пика (15:00-17:00). «Я открываю производство лаваша в Льорете, могу поставлять durum-формат свежий каждое утро. Цена €5,50/кг. Хотите попробовать на пробу 3 кг на эту неделю? Если понравится — расширим». Если согласится — идеальное начало.</div>
+    </div>
+  </div>
+
+  <div class="target warm">
+    <div class="rank">4</div>
+    <div class="body">
+      <h3>Mercat Municipal Lloret de Mar</h3>
+      <div class="where"><strong>Plaça Pompeu Fabra (новый рынок открыт 2024)</strong> · <a href="https://www.google.com/maps/search/?api=1&query=Mercat+Municipal+Lloret+de+Mar">Карта</a></div>
+      <div class="contacts">
+        <a href="tel:+34972361821">+34 972 361 821</a>
+        <a href="mailto:comerc@lloret.cat">comerc@lloret.cat</a>
+        <a href="https://www.lloret.cat/ca/seccions/comerc/mercat-de-lloret">Сайт рынка</a>
+      </div>
+      <div class="why"><strong>Почему №4:</strong> Новый муниципальный рынок Льорета. Не открывать свой стенд — договориться с одним из парадистов (мясник, делитесь, восточный магазин) чтобы он перепродавал лаваш на своей точке. Это нулевые расходы на аренду. На рынке также есть <strong>Yerevan Pastisseria</strong> (армянский, +34 649 184 697) — он знает что такое лаваш.</div>
+      <div class="do"><strong>Что взять и сказать</strong>Сначала зайти в Yerevan Pastisseria — поговорить как с земляком, спросить совет про парадистов. Потом обойти 2-3 deli/восточных парадистов с образцом. Цель — найти одного который перепродаёт. Маржа ему — €1-2/кг.</div>
+    </div>
+  </div>
+
+  <div class="target warm">
+    <div class="rank">5</div>
+    <div class="body">
+      <h3>2-я халяль-карникерия Льорета (на выбор из списка)</h3>
+      <div class="where"><strong>Carrer Sant Joaquim / Av. Vidreres — карникерии халяль Льорета</strong> · <a href="https://www.google.com/maps/search/?api=1&query=carniceria+halal+lloret+de+mar">Карта поиска</a></div>
+      <div class="why"><strong>Почему №5:</strong> В Льорете 5-8 халяль-карникерий и арабских магазинов. После Fátima зайти ещё в одну — например, по дороге назад. Цель — найти ту, где у хозяина есть открытость к свежему лавашу. Если возьмут хотя бы две — это уже стабильные 6-10 кг/неделя суммарно.</div>
+      <div class="do"><strong>Что взять и сказать</strong>То же что Fátima. Без давления. Если хозяин говорит «нужен halal» — узнать какой именно сертификат принимают (Junta Islámica vs Instituto Halal), это поможет с решением по сертификации.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Дни 3-4 — онлайн-регистрации <span class="badge warm">3 БЕСПЛАТНЫЕ КАРТОЧКИ</span></h2>
+  <p style="color:var(--ink-soft);margin-bottom:24px;">Регистрации на телефоне за 30-60 минут каждая. Все бесплатные. Дают мгновенную видимость в Льорете и в Google.</p>
+
+  <div class="target hot">
+    <div class="rank">6</div>
+    <div class="body">
+      <h3>Google Business Profile</h3>
+      <div class="where"><strong>Регистрация: <a href="https://business.google.com" style="color:var(--brand-soft);">business.google.com</a></strong></div>
+      <div class="why"><strong>Почему:</strong> Бесплатно. Появится в Google Maps и в выдаче «лаваш Льорет». 5-15 минут регистрация, 30 минут на загрузку фото и описания. После верификации — поток органических заказов.</div>
+      <div class="do"><strong>Что делать</strong>Зарегистрировать профиль на адрес производства. Загрузить логотип + 10-15 фото (продукт + процесс + Элен в фартуке). Описание ES/CA/RU. Часы работы. Категория: Bakery / Wholesale food.</div>
+    </div>
+  </div>
+
+  <div class="target hot">
+    <div class="rank">7</div>
+    <div class="body">
+      <h3>WhatsApp Business + каталог</h3>
+      <div class="where"><strong>Скачать: <a href="https://business.whatsapp.com" style="color:var(--brand-soft);">business.whatsapp.com</a></strong></div>
+      <div class="why"><strong>Почему:</strong> Главный канал прямых заказов. Бесплатно. 78% клиентов в Испании предпочитают WhatsApp звонку. Каталог с продуктом, ценами, фото — клиент заказывает за 2 минуты.</div>
+      <div class="do"><strong>Что делать</strong>Скачать WhatsApp Business, привязать к рабочему номеру. Создать каталог: лаваш 400 г фото + цена €3 розница (за упаковку). Настроить автоответ «Здравствуйте, спасибо за сообщение, отвечу в течение 30 минут». Часы работы 9:00-18:00.</div>
+    </div>
+  </div>
+
+  <div class="target warm">
+    <div class="rank">8</div>
+    <div class="body">
+      <h3>Instagram Business + Telegram-каналы Льорета</h3>
+      <div class="where"><strong>Instagram + локальные русско / украино / арабско-язычные каналы Льорета</strong></div>
+      <div class="why"><strong>Почему:</strong> @mar.elien уже есть. Переключить в Business, привязать к WhatsApp. Параллельно — найти 5-7 активных Telegram-каналов Льорета (русский, украинский, испанский), вступить, написать «здравствуйте, я Элен, открываю производство лаваша, ищу первых покупателей, могу принести образец».</div>
+      <div class="do"><strong>Что делать</strong>Instagram → переключить в Business, добавить «кнопку заказа» → WhatsApp. Найти каналы: «Льорет чат», «Lloret для русских», «Объявления Льорет». Один пост в каждом канале с фото лаваша + контакт + цена.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Дни 4-5 — первые email-контакты <span class="badge cool">2 РАЗВЕДОЧНЫХ ПИСЬМА</span></h2>
+  <p style="color:var(--ink-soft);margin-bottom:24px;">Не «продажа» — цель первого контакта в email — узнать процедуру, получить email ответственного. Не более 2 писем сейчас, иначе устанешь и забросишь.</p>
+
+  <div class="target warm">
+    <div class="rank">9</div>
+    <div class="body">
+      <h3>Aroma Catering — 15 км от Льорета</h3>
+      <div class="where"><strong>Sant Feliu de Guíxols (Costa Brava)</strong> · <a href="https://www.google.com/maps/search/?api=1&query=Aroma+Catering+Sant+Feliu+de+Guixols">Карта</a></div>
+      <div class="contacts">
+        <a href="https://www.facebook.com/AromaCateringGirona/">Facebook</a>
+      </div>
+      <div class="why"><strong>Почему:</strong> Premium-кейтеринг на свадьбы Коста-Бравы. 15 км от тебя. Активны в Instagram. Одна референция = знак качества для премиум-сегмента Жироны. Реалистичный объём — 5-15 кг на свадьбу, нерегулярно, но красиво в портфолио.</div>
+      <div class="do"><strong>Что делать</strong>Связаться через Facebook Messenger или Instagram DM. «Здравствуйте! Я Элен, делаю свежий лаваш в Льорете. Подумала, что Mediterranean canapé на лаваше — идеальная подача для ваших свадеб. Могу принести образец для следующего тастинг-меню. Когда удобно?»</div>
+    </div>
+  </div>
+
+  <div class="target cool">
+    <div class="rank">10</div>
+    <div class="body">
+      <h3>Cesta Selecta — русско-восточный B2B (разведка)</h3>
+      <div class="where"><strong>Madrid, охват вся Испания</strong> · <a href="https://www.cestaselecta.es" style="color:var(--brand-soft);">cestaselecta.es</a></div>
+      <div class="why"><strong>Почему:</strong> Главный оптовик восточноевропейской продукции в Испании. Сейчас — только разведочный контакт. Цель: получить email ответственного, узнать процедуру. <strong>Не цель года 1</strong> — реальные переговоры через 6+ мес после стабильных продаж в Льорете. Но email сейчас — обнуляет «холодность» позже.</div>
+      <div class="do"><strong>Что делать</strong>Зайти на сайт, найти «contacto» или «proveedores», отправить email: «Soy Elen, productora artesanal de lavash en Lloret de Mar. ¿Pueden indicarme con quién contactar para presentar nuestra ficha técnica como nuevo proveedor? Adjunto fotos del producto y proceso». Не ждать ответа сразу — поставить напоминание на месяц 3.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="summary">
+    <h3>Итог первой недели — что реалистично получить</h3>
+    <ol>
+      <li><strong>Дни 1-3:</strong> 5 визитов в Льорете (по 2 в день максимум) → <strong>1-2 первых заказа</strong> на следующую неделю (Nash + Beach Doner или одна из халяль-карникерий).</li>
+      <li><strong>Дни 3-4:</strong> Google Business Profile + WhatsApp Business + Instagram Business + Telegram-каналы → первые органические запросы через 1-2 недели.</li>
+      <li><strong>Дни 4-5:</strong> 2 email-контакта (Aroma Catering + Cesta Selecta) → возможно 1 ответ с email ответственного. Это разведка, не продажа.</li>
+      <li><strong>К концу первого месяца (а не недели):</strong> 2-3 точки реально берут лаваш регулярно. Объём <strong>50-150 кг/мес</strong> = 3-7 кг/день. Это нормальный старт для одиночного производства, без переутомления.</li>
+      <li><strong>Чего НЕ делать в первую неделю:</strong> поездка в Барселону (это месяц 2-3), холодные звонки в Bidfood/Friman/Balkanica (это год 1 разведка, не для старта), Bonpreu KM0 portal (цикл 6-12 мес — позже), bронировать стенд на Gastronomic Forum, писать F&amp;B-директорам отелей Roca brothers / Sant Pere del Bosc.</li>
+    </ol>
+  </div>
+</section>
+
+<section style="margin-top:32px;">
+  <h2>Что взять с собой (на все 10 шагов)</h2>
+  <div class="target" style="border-left-color:var(--green);">
+    <div class="body">
+      <ul style="list-style:none;padding:0;font-size:15px;line-height:1.8;">
+        <li><strong style="color:var(--brand);">10 пакетов лаваша по 400 г</strong> — свежий, утрешний (для 5 пеших визитов + запас)</li>
+        <li><strong style="color:var(--brand);">Ficha técnica</strong> на 1 страницу — название, состав, граммаж, срок хранения, цена опт €5,50/кг, цена розница €7-9/кг, контакты (PDF на телефоне + 5 распечатанных)</li>
+        <li><strong style="color:var(--brand);">Фото производства</strong> на телефоне — печь, замес, готовый лаваш, Элен в фартуке</li>
+        <li><strong style="color:var(--brand);">Визитки</strong> 20 штук — имя, тел, WhatsApp, ellavash.es, email</li>
+        <li><strong style="color:var(--brand);">Прайс-лист</strong> на телефоне — €5,50/кг опт (дистрибьюторы, рестораны), €7-9/кг розница (магазины)</li>
+        <li><strong style="color:var(--brand);">RSIPAC документ</strong> (когда получен, €64,25 за регистрацию) — копия для серьёзных клиентов</li>
+        <li><strong style="color:var(--brand);">Терпение</strong> — две точки в день максимум. Сегодня лучше «остаться в памяти» чем «обежать всех и забыть»</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Что делать сегодня · v2 · El Lavash · 29.05.2026. Реалистично для одной Элен с одним производством, 5-10 кг/день стартовая мощность. Полный список первых 10 точек — в <a href="El_Lavash_Starter_10_v1.html" style="color:var(--brand);">El_Lavash_Starter_10_v1.html</a>. Барселона, опт-дистрибьюторы и сетевой ритейл — для месяца 2-3+, не для первой недели.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Маркетинг-план v9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:700px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="El Lavash">
+  <div>
+    <div class="eyebrow">Маркетинг-план · версия 9 · 29.05.2026</div>
+    <h1>Маркетинг-план<br><em>реалистичный масштаб одинокого артизана</em></h1>
+    <div class="sub">Бюджет года 1: €1 500-3 000 ВСЕГО. Каналы — органика и бесплатные карточки. Платная реклама — только после break-even. Никаких PR-агентств, штатных SMM или контент-фабрик.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Business_Model_v9.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v9.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Competitive_Analysis_v8.html">Конкуренты</a>
+</nav>
+
+<section>
+  <div class="section-eyebrow">Reality check</div>
+  <h2>Что мы из себя представляем для маркетинга</h2>
+  <div class="callout callout-warn">
+    <h3>Одинокий артизан, а не бренд с маркетинговым бюджетом</h3>
+    <p style="margin-top:0;">Элен работает одна. Производство — 5-10 кг/день на старте, цель к 12 месяцу — 18-25 кг/день. Реалистичная месячная выручка года 1: €500-3 000. Из этого денег на платный маркетинг нет.</p>
+    <p>Значит маркетинг года 1 — это <strong>органика, бесплатные площадки и личные контакты</strong>. Любая статья «€400-800/мес на SMM-щицу» — это убыток, не инвестиция.</p>
+    <p style="margin-bottom:0;color:var(--ink-soft);font-size:14px;">Реальные числа: годовой маркетинг-бюджет <strong>€1 500-3 000 ВСЕГО</strong> (а не €10 000 за 3 месяца). Источник: <a href="SOURCE_OF_TRUTH_v1.md" style="color:var(--brand);">SOURCE_OF_TRUTH_v1.md</a>.</p>
+  </div>
+  <div class="grid-4">
+    <div class="stat">
+      <div class="stat-num">€1,5-3k</div>
+      <div class="stat-label">Годовой маркетинг-бюджет</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">€0</div>
+      <div class="stat-label">На SMM-щицу, PR-агентство, штат</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1-2</div>
+      <div class="stat-label">Поста Instagram в неделю (Элен сама)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Q4</div>
+      <div class="stat-label">Первый тест платной рекламы — не раньше</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Brand Positioning</div>
+  <h2>Кто мы и почему</h2>
+  <div class="card">
+    <h3>Главное позиционирование</h3>
+    <p style="font-size:19px;color:var(--ink);line-height:1.5;"><strong>«Authentic armenian-style lavash, baked fresh in Lloret de Mar — the only one in Costa Brava.»</strong></p>
+    <p style="color:var(--ink-soft);">Артизанальный лаваш, локальное производство в Льорет-де-Мар, единственный такой на Коста-Браве. Свежий, не замороженный, проксимити-история, армянская традиция.</p>
+  </div>
+  <div class="grid-2">
+    <div class="callout">
+      <h3>Нарратив 1: Русско-/украиноязычная аудитория</h3>
+      <p style="margin-top:0;"><strong>«Лаваш как дома, теперь в Льорете».</strong></p>
+      <p>Свежий артизанальный лаваш для нашей диаспоры. Не замороженный из дистрибьютора, а свежий и локальный. История Элен — переезд, семья, армянская традиция через украинскую перспективу.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Аудитория Льорета и ближайшего радиуса: ~5-10 тыс. русскоязычных жителей + туристы.</p>
+    </div>
+    <div class="callout callout-good">
+      <h3>Нарратив 2: Локальный foodie / халяль-аудитория</h3>
+      <p style="margin-top:0;"><strong>«Pa pla artesà fet a Lloret».</strong></p>
+      <p>Свежий местный продукт для каталанских и марокканских покупателей Льорета. Артизан, без консервантов, проксимити (Льорет → Жирона), нестандартный flatbread.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Целевая микро-аудитория: халяль-карникерии и кебабные Льорета (~10-15 точек), локальные foodies через Instagram.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Каналы по кварталам</div>
+  <h2>Что делаем и в каком порядке</h2>
+
+  <h3>Q1 · Фундамент (бесплатно)</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Instagram органика (Элен сама)</h3>
+      <ul>
+        <li>1-2 поста в неделю — производство, лаваш, рутина</li>
+        <li>Stories ежедневно, телефон вместо студии</li>
+        <li>Хештеги: #ellavash #lloretdemar #panplano #armenianlavash #costabravafoods</li>
+        <li>Геотеги Льорет-де-Мар, Жирона</li>
+        <li>Без платного продвижения, без SMM-агентства</li>
+      </ul>
+      <p><span class="tag tag-warm">Главный bottom-of-funnel</span> <span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+    <div class="card">
+      <h3>Google Business Profile</h3>
+      <ul>
+        <li>Карточка производства Льорет</li>
+        <li>Фото пекарни и продукта (телефон)</li>
+        <li>Часы работы, контакт WhatsApp</li>
+        <li>Просьба отзывов у первых клиентов</li>
+        <li>Бесплатно, локальный SEO</li>
+      </ul>
+      <p><span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+    <div class="card">
+      <h3>WhatsApp Business</h3>
+      <ul>
+        <li>Каталог (фото + цена + вес)</li>
+        <li>Авто-приветствие, рабочие часы</li>
+        <li>Прямые заказы B2C из Льорета</li>
+        <li>Аккаунт-менеджмент B2B-точек</li>
+      </ul>
+      <p><span class="tag tag-hot">Главный sales-канал</span> <span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+    <div class="card">
+      <h3>Локальная пресса (пресс-релиз)</h3>
+      <ul>
+        <li><a href="https://www.diaridegirona.cat" style="color:var(--brand);">Diari de Girona</a> — локальная новость о запуске</li>
+        <li><a href="https://www.enlloret.com" style="color:var(--brand);">EnLloret.com</a> — туристический портал</li>
+        <li><a href="https://www.costabrava.org" style="color:var(--brand);">Costa Brava Tourism</a> — питч локального продукта</li>
+        <li>Пресс-релиз пишет Антон, рассылка email</li>
+      </ul>
+      <p><span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+  </div>
+
+  <h3>Q2 · Расширение бесплатных карточек</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Каталоги испанских малых производителей</h3>
+      <ul>
+        <li><a href="https://www.paginasamarillas.es" style="color:var(--brand);">Páginas Amarillas</a> — бесплатная карточка</li>
+        <li><a href="https://www.enlloret.com" style="color:var(--brand);">EnLloret</a> — производители Льорета</li>
+        <li><a href="https://botiguescatalunya.cat" style="color:var(--brand);">Botigues de Catalunya</a> — карточка магазина/производителя</li>
+        <li><a href="https://www.guiarepsol.com" style="color:var(--brand);">Guía Repsol</a> — каталог местных продуктов</li>
+      </ul>
+      <p><span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+    <div class="card">
+      <h3>Telegram / WhatsApp-каналы диаспоры</h3>
+      <ul>
+        <li>Русскоязычные чаты Льорета и Жироны</li>
+        <li>Украинские группы Каталонии</li>
+        <li>Объявление от Элен, не реклама</li>
+        <li>Без накруток, без покупных каналов</li>
+      </ul>
+      <p><span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+    <div class="card">
+      <h3>Сайт ellavash.es</h3>
+      <ul>
+        <li>Главная: история + продукты + WhatsApp кнопка</li>
+        <li>/docs: документы проекта</li>
+        <li>SEO: lavash Lloret, pan plano Costa Brava</li>
+        <li>Хостинг — GitHub Pages бесплатно</li>
+      </ul>
+      <p><span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+    <div class="card">
+      <h3>Локальные foodie-блогеры (бартер)</h3>
+      <ul>
+        <li>Микро-инфлюенсеры Льорета и Жироны (1-5k подписчиков)</li>
+        <li>Образцы лаваша в обмен на пост</li>
+        <li>Без оплаты, без агентств</li>
+        <li>2-3 контакта в квартал</li>
+      </ul>
+      <p><span class="tag tag-cool">€0-50 на образцы</span></p>
+    </div>
+  </div>
+
+  <h3>Q3 · Платформы (если появится готовая еда)</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h3>TripAdvisor / TheFork</h3>
+      <ul>
+        <li>Только если запускаем point-of-sale или готовую еду</li>
+        <li>Карточка пекарни-производства</li>
+        <li>Бесплатная регистрация</li>
+        <li>Фокус на туристическую аудиторию Льорета</li>
+      </ul>
+      <p><span class="tag tag-dim">Условно, не базовый план</span></p>
+    </div>
+    <div class="card">
+      <h3>Локальные партнёрства</h3>
+      <ul>
+        <li>1-2 кебабные Льорета — co-promo поста</li>
+        <li>1 халяль-карникерия — фото в их магазине</li>
+        <li>Cross-промо с туристическим инфо-центром Льорета</li>
+        <li>Никаких звёздных коллабов</li>
+      </ul>
+      <p><span class="tag tag-cool">€0 бюджет</span></p>
+    </div>
+  </div>
+
+  <h3>Q4 · Первый платный тест (только после break-even)</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Meta Ads (Instagram + Facebook)</h3>
+      <ul>
+        <li>Триггер: достигнут break-even (12-20 кг/день стабильно)</li>
+        <li>Бюджет теста: €100-300 ВСЕГО на квартал</li>
+        <li>Гео: Льорет + 30 км радиус</li>
+        <li>Цель: WhatsApp-сообщения, не охват</li>
+        <li>Если CAC &gt; маржа — выключить</li>
+      </ul>
+      <p><span class="tag tag-dim">Только при положительной экономике</span></p>
+    </div>
+    <div class="card">
+      <h3>Google Ads (локально)</h3>
+      <ul>
+        <li>Ключевые: «lavash Lloret», «pan plano Costa Brava»</li>
+        <li>Бюджет теста: €50-150/мес</li>
+        <li>Только если на сайте есть карточки продукта</li>
+        <li>Целевая страница — ellavash.es</li>
+      </ul>
+      <p><span class="tag tag-dim">Только при положительной экономике</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Контент</div>
+  <h2>Что публикуем — простой ритм для одного человека</h2>
+  <div class="callout">
+    <p style="margin-top:0;"><strong>Ритм года 1: 1-2 поста в неделю, Stories по настроению.</strong> Без редакционного плана на 90 дней, без 12 Reels-сценариев — Элен ведёт сама, без штатного SMM. Контент рождается из реальной работы пекарни.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Что снимаем</h3>
+      <ul>
+        <li>Утренний замес, печь в работе</li>
+        <li>Разворачивание свежего лаваша</li>
+        <li>Доставка первым клиентам</li>
+        <li>Отзывы покупателей (Stories)</li>
+        <li>Рецепты-роллы дома</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Что НЕ снимаем</h3>
+      <ul>
+        <li>Не используем стоковые фото до запуска производства</li>
+        <li>Не публикуем пустую страницу: ждём 8-12 настоящих постов</li>
+        <li>Не покупаем подписчиков</li>
+        <li>Не делаем платных постов в Q1-Q3</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Инструменты</h3>
+      <ul>
+        <li>Телефон (нет студийной съёмки)</li>
+        <li>Бесплатный Canva для подписей</li>
+        <li>Бесплатный CapCut для Reels</li>
+        <li>Естественный свет окна пекарни</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Минимальный набор материалов</div>
+  <h2>Что нужно сделать один раз</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Визуал бренда (одноразово)</h3>
+      <ul>
+        <li>SVG-логотип (перерисовка из существующего)</li>
+        <li>Цветовая палитра: саффрон #F8D202, томатный #E61E28, кофейный #6F3E22, кремовый #FFF3D9</li>
+        <li>Шрифты: Fraunces (display) + Manrope (body)</li>
+        <li>Делает Антон, бюджет €0</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Фото и видео (одна сессия)</h3>
+      <ul>
+        <li>1 фотосессия после запуска производства</li>
+        <li>10-15 кадров: печь, лаваш, упаковка, Элен за работой</li>
+        <li>Бюджет: €300-600 (один локальный фотограф Льорета)</li>
+        <li>Reels — Элен сама на телефон, без отдельного видеографа</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Упаковка (минимум)</h3>
+      <ul>
+        <li>Стандарт 400 г (розница магазинов)</li>
+        <li>Стандарт 700 г (HoReCa / семейный)</li>
+        <li>EAN, ficha питания, аллергены, RSIPAC-номер</li>
+        <li>Языки: ES обязательно, RU по возможности</li>
+        <li>Дизайн €300-500, печать стартовая партия €400-700</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Документы для B2B</h3>
+      <ul>
+        <li>Ficha técnica на 1-2 SKU (PDF, Антон)</li>
+        <li>Каталог-однополосник для розничных точек</li>
+        <li>Шаблон email с прайсом</li>
+        <li>Бюджет: €0 (своими силами)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Локальная пресса и партнёрства</div>
+  <h2>Куда питчимся (бесплатно)</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Локальная пресса Льорета и Жироны</h3>
+      <ul>
+        <li><a href="https://www.diaridegirona.cat" style="color:var(--brand);">Diari de Girona</a></li>
+        <li><a href="https://www.elpuntavui.cat" style="color:var(--brand);">El Punt Avui</a> (региональное издание)</li>
+        <li><a href="https://www.enlloret.com" style="color:var(--brand);">EnLloret.com</a> — туристический портал</li>
+        <li><a href="https://www.costabrava.org" style="color:var(--brand);">Costa Brava Tourism</a></li>
+        <li>Питч: «первый локальный лаваш Коста-Бравы»</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Микро-инфлюенсеры (бартер)</h3>
+      <ul>
+        <li>Локальные foodie-аккаунты Льорета и Жироны (1-5k подписчиков)</li>
+        <li>Образец продукта в обмен на честный пост</li>
+        <li>Без оплаченных постов, без агентств</li>
+        <li>Цель: 2-3 публикации в квартал</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>События — посещаем, не выставляемся</h3>
+      <ul>
+        <li>Локальные ярмарки Льорета и Жироны — посетить, познакомиться</li>
+        <li>Mercat Setmanal Льорета — пробные продажи (по разрешению)</li>
+        <li>Slow Food Catalunya — networking бесплатно</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Локальные партнёры по бартеру</h3>
+      <ul>
+        <li>1-2 кебабные Льорета — общий пост</li>
+        <li>1 халяль-карникерия — фото в магазине</li>
+        <li>Туристический инфо-центр Льорета — карточка локального продукта</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Реальный бюджет</div>
+  <h2>Куда тратим (и куда НЕ тратим)</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Статья</th><th>Год 1 ВСЕГО</th><th>Когда</th><th>Приоритет</th></tr></thead>
+      <tbody>
+        <tr><td>Дизайн упаковки (одноразово)</td><td>€300-500</td><td>До запуска</td><td><span class="tag tag-hot">КРИТИЧНО</span></td></tr>
+        <tr><td>Печать упаковки — стартовая партия</td><td>€400-700</td><td>До запуска</td><td><span class="tag tag-hot">КРИТИЧНО</span></td></tr>
+        <tr><td>Фотосессия (1 раз, локальный фотограф)</td><td>€300-600</td><td>М1-М2</td><td><span class="tag tag-warm">Высокий</span></td></tr>
+        <tr><td>Образцы для блогеров и магазинов</td><td>€100-200</td><td>Q1-Q4 распределённо</td><td><span class="tag tag-warm">Высокий</span></td></tr>
+        <tr><td>Печать визиток / однополосника B2B</td><td>€50-100</td><td>М2</td><td><span class="tag tag-warm">Средний</span></td></tr>
+        <tr><td>Meta Ads тест (только если break-even)</td><td>€100-300</td><td>Q4</td><td><span class="tag tag-dim">Условно</span></td></tr>
+        <tr><td>Google Ads тест (только если break-even)</td><td>€100-300</td><td>Q4</td><td><span class="tag tag-dim">Условно</span></td></tr>
+        <tr><td>Резерв на непредвиденное</td><td>€150-300</td><td>—</td><td><span class="tag tag-dim">Буфер</span></td></tr>
+        <tr><td><strong>ИТОГО ГОД 1</strong></td><td><strong>€1 500 - 3 000</strong></td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-soft);margin-top:12px;">Источник вилки: <a href="SOURCE_OF_TRUTH_v1.md" style="color:var(--brand);">SOURCE_OF_TRUTH_v1.md</a>, секция 5. Маркетинг — реальный бюджет.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Что НЕ делаем</div>
+  <h2>Маркетинг года 1 — список запретов</h2>
+  <div class="callout callout-warn">
+    <h3>Чего нет в плане года 1</h3>
+    <ul>
+      <li><strong>ТВ-реклама</strong> — нет.</li>
+      <li><strong>Наружка / билборды / транспорт</strong> — нет.</li>
+      <li><strong>Спонсорство фестивалей &gt; €500</strong> — нет.</li>
+      <li><strong>Стенд на Gastronomic Forum, Alimentaria, любых отраслевых выставках</strong> — нет (стенд €1 500-3 000+, без портфеля SKU и фото бессмысленно).</li>
+      <li><strong>PR-агентство</strong> — нет. Антон сам пишет пресс-релизы.</li>
+      <li><strong>Штатный SMM / контент-фабрика</strong> — нет. €400-800/мес на SMM при выручке €500-1 500/мес = убыток.</li>
+      <li><strong>Профессиональный видеограф / 12 Reels-пакет</strong> — нет. Reels снимает Элен на телефон.</li>
+      <li><strong>Платная реклама в Q1-Q3</strong> — нет. Только в Q4 если достигнут break-even.</li>
+      <li><strong>Звёздные коллабы</strong> — нет. Без Roca brothers, без мишленовских ресторанов, без звёздных шефов.</li>
+      <li><strong>Отраслевая пресса крупных производителей</strong> (Aral.es, Alimarket) — нет, мы не их аудитория.</li>
+      <li><strong>Веб-магазин с оплатой</strong> — нет. Достаточно лендинга + WhatsApp.</li>
+      <li><strong>TV3 / RAC1 / большие СМИ</strong> — нет. Только локальная пресса Льорета и Жироны.</li>
+      <li><strong>Покупка подписчиков, лайков, отзывов</strong> — нет, никогда.</li>
+    </ul>
+    <p style="margin-bottom:0;font-size:14px;color:var(--ink-soft);">Все эти запреты — про год 1. На году 2-3 при стабильных продажах часть пунктов можно пересмотреть.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Метрика успеха</div>
+  <h2>Как поймём что маркетинг работает</h2>
+  <div class="grid-3">
+    <div class="stat">
+      <div class="stat-num">300-500</div>
+      <div class="stat-label">Подписчиков Instagram к концу года 1 (органика)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10-20</div>
+      <div class="stat-label">Активных B2B-точек к М12</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5-10</div>
+      <div class="stat-label">WhatsApp B2C-заказов в неделю к М6</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2-3</div>
+      <div class="stat-label">Локальных публикаций в прессе за год</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15-30</div>
+      <div class="stat-label">Отзывов Google Business к М12</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">€0</div>
+      <div class="stat-label">Долгов перед маркетингом (живём по средствам)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Marketing Plan v9 · 29.05.2026. Реалистичный масштаб одинокого артизана. Бюджет, каналы и метрики приведены в соответствие с <a href="SOURCE_OF_TRUTH_v1.md" style="color:var(--brand);">SOURCE_OF_TRUTH_v1.md</a> и <a href="INVENTORY_SCALE_v1.md" style="color:var(--brand);">INVENTORY_SCALE_v1.md</a>. Пересмотр плана — после первых 30 дней работы и 90 дней Instagram-активности.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Анализ конкурентов v9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:700px}
+  .competitor{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0}
+  .competitor h3{margin-top:0}
+  .competitor .meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;font-size:13px}
+  .competitor .meta .item{background:var(--bg-soft);padding:10px 14px;border-radius:8px}
+  .competitor .meta .item .l{color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+  .competitor .meta .item .v{color:var(--brand);font-weight:600;margin-top:2px}
+  .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .pros, .cons{padding:14px 18px;border-radius:8px}
+  .pros{background:rgba(169,194,108,0.1);border:1px solid var(--green)}
+  .cons{background:rgba(230,30,40,0.1);border:1px solid var(--accent)}
+  .pros h4, .cons h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em}
+  .pros h4{color:var(--green)}
+  .cons h4{color:var(--accent)}
+  .pros ul li, .cons ul li{padding:4px 0 4px 18px;border:none;font-size:13px}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .competitor{padding:16px}
+    .competitor .meta{grid-template-columns:1fr;gap:6px}
+    .pros-cons{grid-template-columns:1fr;gap:10px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="El Lavash">
+  <div>
+    <div class="eyebrow">Конкурентный анализ · версия 9 · 29.05.2026</div>
+    <h1>Конкуренты<br><em>с кем мы пересекаемся, с кем нет</em></h1>
+    <div class="sub">Разбор реальных игроков на испанском рынке flatbread и их пересечения с нашим радиусом 30 км. Версия 9 уточняет: гиганты с оборотом €100M+ — это другой market, мы заходим в нишу артизана-локала, которая для них нерентабельна.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v10.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Business_Model_v5.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v5.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Marketing_Plan_v5.html">Маркетинг-план</a>
+  <a class="pill" href="El_Lavash_Battlecard_v2.html">Battlecard</a>
+</nav>
+
+<section>
+  <div class="callout callout-warn">
+    <h3>Что изменилось в v9 относительно v8</h3>
+    <ul>
+      <li>Конкуренты остались — Don Pan, Libanofoods, Europastry, Bellsolà, Monolith — это реальные игроки рынка.</li>
+      <li>Раздел «как мы конкурируем» переписан: <strong>с Europastry и Bellsolà мы не конкурируем напрямую</strong>. У них €100M+ оборот и B2B-фокус — это другой market.</li>
+      <li>Убран раздел «отвоевать долю у Don Pan» — для одиночного стартапа нереалистично. Don Pan уже в сетях, мы туда не идём.</li>
+      <li>Уточнено: мы занимаем нишу артизана-локала (свежий, день в день, без фростки), которая для индустриальных гигантов нерентабельна.</li>
+      <li>SWOT обновлён: команда — одна Элен, помощник на полставки во 2-м полугодии (сценарий), а не «2 пекаря из Украины».</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Карта рынка</div>
+  <h2>Кто играет на этом рынке</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Категория</th><th>Главные игроки</th><th>Пересечение с El Lavash в год 1</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Прямые (Lavash в сетях)</strong></td><td>Don Pan 3000, Monolith</td><td><span class="tag tag-warm">Частичное — только в русских магазинах Льорета</span></td></tr>
+        <tr><td><strong>Прямые (Pita mass-market)</strong></td><td>Hacendado (Mercadona PL), <a href="https://libanofoods.com">Libanofoods</a></td><td><span class="tag tag-dim">Не пересекаемся в год 1</span></td></tr>
+        <tr><td><strong>Прямые (Pita premium / импорт)</strong></td><td>Bridor (La Boulangère), Mestemacher</td><td><span class="tag tag-dim">Не пересекаемся — другой канал</span></td></tr>
+        <tr><td><strong>Adjacent (Tortilla / wrap)</strong></td><td><a href="https://liven.es">Liven</a> (Paulig), Mission Foods, Azteca</td><td><span class="tag tag-dim">Другой продукт и канал</span></td></tr>
+        <tr><td><strong>Промышленные гиганты</strong></td><td><a href="https://europastry.com">Europastry</a>, <a href="https://www.antigacasabellsola.com">Bellsolà</a> (Monbake/CVC), <a href="https://www.bimbo.es">Bimbo</a></td><td><span class="tag tag-dim">Другой market — €100M+ B2B</span></td></tr>
+        <tr><td><strong>Кебаб-канал поставщики</strong></td><td>Sistema Logístico (Fabricapan), Iraf Kebab Brothers, BenKebab</td><td><span class="tag tag-warm">Частичное — в кебабных Льорета</span></td></tr>
+        <tr><td><strong>Опт-импортёры ethnic</strong></td><td>Cesta Selecta, Balkanica Distral, Twiza, Aljawda</td><td><span class="tag tag-cool">Возможные партнёры, не конкуренты</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Главный тезис позиционирования</div>
+  <h2>Мы занимаем нишу, которая для гигантов нерентабельна</h2>
+  <div class="callout callout-good">
+    <h3>Артизан-локал с радиусом 30 км — это не их market</h3>
+    <p>Europastry (€1,506 млрд оборот 2024), Bellsolà / Monbake (€1 млрд), Liven / Paulig (€84,6 млн), Don Pan, Bimbo — это <strong>индустриальные игроки</strong>. Минимальная партия отгрузки, frozen-логистика, тендерные циклы 6-12 мес, требования IFS Food / BRCGS.</p>
+    <p>Свежий лаваш, испечённый утром в Льорете и доставленный днём в кебабную через дорогу, — это для них <strong>экономически нерационально</strong>. Поставка 5-10 кг в одну точку, ежедневная логистика, без длительного хранения — у них нет машинного потока под такую задачу.</p>
+    <p style="margin-bottom:0;">Мы заходим там, где они <strong>физически не могут работать рентабельно</strong>. Это другой рынок внутри одного продукта.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Глубокий разбор</div>
+  <h2>5 ключевых игроков и наше пересечение</h2>
+
+  <div class="competitor">
+    <h3>1. Don Pan 3000 SL — массовый «pan lavash» в сетях</h3>
+    <div class="meta">
+      <div class="item"><div class="l">NIF</div><div class="v">B76550458</div></div>
+      <div class="item"><div class="l">Локация</div><div class="v">Tenerife, Канары</div></div>
+      <div class="item"><div class="l">Размер</div><div class="v">€0,75-1,5 млн оборот, 1-10 сотр.</div></div>
+    </div>
+    <p><strong>Продукт:</strong> Pan Lavash 200 г на полках <a href="https://www.mercadona.es">Mercadona</a>, <a href="https://www.carrefour.es">Carrefour</a>, <a href="https://www.eroski.es">Eroski</a>, <a href="https://www.elcorteingles.es">El Corte Inglés</a>, <a href="https://www.alcampo.es">Alcampo</a>, <a href="https://www.froiz.com">Froiz</a>. Цена €1,60-2,00 / 200 г = €8-10/кг розница.</p>
+    <p><strong>Позиционирование:</strong> Generic «pan lavash», ambient, без этно-истории.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Сильные стороны</h4>
+        <ul>
+          <li>Распространение во всех крупных сетях Испании</li>
+          <li>Узнаваемость в категории «pan lavash»</li>
+          <li>Долгий срок хранения (ambient)</li>
+          <li>Низкая цена для категории</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Где они нам неудобны как соседи</h4>
+        <ul>
+          <li>Импорт с Канар — длинная логистика, нет KM0</li>
+          <li>Малый завод (1-10 сотр.) — не масштабируется быстро</li>
+          <li>Generic positioning — нет artisan истории</li>
+          <li>Без halal-сертификации</li>
+          <li>Ambient формат — не свежий артизан</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px;"><strong>Наше пересечение в год 1:</strong> только в <strong>русских и локальных магазинах Льорета</strong>, где покупатель видит и Don Pan, и нас на полке. Мы не пытаемся вытеснить Don Pan из Mercadona — туда мы не идём. Сообщение покупателю: «локальный артизан Льорета, свежий, день в день» vs «ambient с Канар». Категория одна, формат и история разные.</p>
+  </div>
+
+  <div class="competitor">
+    <h3>2. Libanofoods / Baraka — лидер арабской ниши Каталонии</h3>
+    <div class="meta">
+      <div class="item"><div class="l">Локация</div><div class="v">Sant Just Desvern (BCN)</div></div>
+      <div class="item"><div class="l">Размер</div><div class="v">3000+ клиентов HoReCa</div></div>
+      <div class="item"><div class="l">Сайт</div><div class="v"><a href="https://libanofoods.com">libanofoods.com</a></div></div>
+    </div>
+    <p><strong>Продукт:</strong> Пита 510 г × 6 шт ambient/vacío, ливанский хлеб, durum для кебаб-канала.</p>
+    <p><strong>Позиционирование:</strong> «Auténtico libanés», классическая пита для арабских ресторанов и кебабных.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Сильные стороны</h4>
+        <ul>
+          <li>Лидер сектора Ближнего Востока — 3000+ клиентов</li>
+          <li>Сильная узнаваемость в кебабных Каталонии</li>
+          <li>Налажена логистика по Каталонии</li>
+          <li>Производственная мощность 24/7</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Где они нам неудобны как соседи</h4>
+        <ul>
+          <li>Это пита, не армянский тонкий лаваш — разные продукты</li>
+          <li>Vacío 6-pack формат — не свежий день в день</li>
+          <li>Арабский канал, но не русско-/украиноязычный</li>
+          <li>Generic «libanés» — нет premium artisan истории</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px;"><strong>Наше пересечение в год 1:</strong> в <strong>кебабных Льорета и ближнего радиуса</strong>. Мы не идём в их 3000+ клиентов по всей Каталонии. Тезис для кебабной: «тонкий армянский лаваш для wraps и durum, свежий, ежедневно, локально» — это <strong>другой SKU</strong>, не замена их пите. Можем стоять рядом, не вместо.</p>
+  </div>
+
+  <div class="competitor">
+    <h3>3. Monolith Alimentación España SLU — импорт «Pan de Armenia» в русские магазины</h3>
+    <div class="meta">
+      <div class="item"><div class="l">NIF</div><div class="v">B54318977</div></div>
+      <div class="item"><div class="l">Локация</div><div class="v">La Nucia (Alicante) + Norte SLU в Llorenç del Penedès (Tarragona)</div></div>
+      <div class="item"><div class="l">Размер</div><div class="v">11 сотрудников на Norte SLU, импортёр</div></div>
+    </div>
+    <p><strong>Продукт:</strong> Импортируют Pan de Armenia Lavash 340 г — продают в русско-славянские магазины Испании. €1,96/упаковка = €5,76/кг.</p>
+    <p><strong>Позиционирование:</strong> «Pan de Armenia» — этнический импорт, generic russian-store предложение.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Сильные стороны</h4>
+        <ul>
+          <li>200+ русско-славянских магазинов Испании</li>
+          <li>Склад в Llorenç del Penedès (~100 км от Льорета)</li>
+          <li>Бренд «Pan de Armenia» узнаваем в диаспоре</li>
+          <li>Стабильная логистика</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Где они нам неудобны как соседи</h4>
+        <ul>
+          <li>Замороженный лаваш — теряет качество vs свежий</li>
+          <li>Импорт из-за рубежа — KM0 истории нет</li>
+          <li>Generic packaging — без artisan истории</li>
+          <li>Без бренд-капитала местного производителя</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px;"><strong>Наше пересечение в год 1:</strong> <strong>самое прямое</strong> — русские магазины Льорета и Жироны. Сообщение: «местный свежий артизан, не импорт». Цена сопоставима (€5,50 опт). Тут мы не воюем за всю Каталонию, а спокойно делим полку в 10-15 магазинах Льорета/Жироны. <strong>Альтернатива:</strong> через 6-12 мес попробовать диалог с Monolith Norte SLU (+34 977 677 635) как local supply для каталанского рынка — white-label или co-brand.</p>
+  </div>
+
+  <div class="competitor">
+    <h3>4. Europastry — индустриальный гигант, другой market</h3>
+    <div class="meta">
+      <div class="item"><div class="l">Локация</div><div class="v">Sant Cugat del Vallès (Каталония)</div></div>
+      <div class="item"><div class="l">Размер</div><div class="v">€1,506 млрд оборот 2024</div></div>
+      <div class="item"><div class="l">Сайт</div><div class="v"><a href="https://europastry.com">europastry.com</a></div></div>
+    </div>
+    <p><strong>Продукт:</strong> Промышленная выпечка для retail, foodservice, HoReCa. В каталоге Pita (#15542) + flatbreads + pizza bases. Лаваш как отдельный продукт не запущен.</p>
+    <p><strong>Позиционирование:</strong> Замороженный B2B для крупных сетей. Доминанта в категории frozen bakery.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Сильные стороны</h4>
+        <ul>
+          <li>Гигантская мощность производства</li>
+          <li>Сеть прямых поставок в крупный ритейл</li>
+          <li>HoReCa-аккаунты по всей Испании</li>
+          <li>Frozen технология — масштабирование</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Где они нам неудобны как соседи</h4>
+        <ul>
+          <li>Не артизан — industrial pan plano</li>
+          <li>Нет armenian / fresh positioning</li>
+          <li>Generic SKU, не для нишевого покупателя</li>
+          <li>B2B-фокус, не локальный розничный канал</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px;"><strong>Наше пересечение в год 1:</strong> <span class="tag tag-dim">Нулевое</span>. Это <strong>другой market</strong>. Europastry поставляет в Carrefour центральными контрактами, минимальные партии — тонны/день. Мы поставляем 5-10 кг в кебабную через дорогу. Они не могут работать рентабельно на нашем масштабе, мы не можем зайти на их объёмы. Категория одна, рынки разные. Если через 2-3 года Europastry запустит лаваш-линию — это будет конкуренция в их канале (сетевой ритейл), куда мы и так не идём в год 1.</p>
+  </div>
+
+  <div class="competitor">
+    <h3>5. Bellsolà (Monbake / CVC Capital) — потенциальный партнёр, не конкурент</h3>
+    <div class="meta">
+      <div class="item"><div class="l">Локация</div><div class="v">Aiguaviva (Жирона) — 33 км от Льорета</div></div>
+      <div class="item"><div class="l">Размер</div><div class="v">Часть Monbake (€1 млрд), CVC Capital с марта 2024</div></div>
+      <div class="item"><div class="l">Сайт</div><div class="v"><a href="https://www.antigacasabellsola.com">antigacasabellsola.com</a></div></div>
+    </div>
+    <p><strong>Продукт:</strong> Premium frozen хлеб, ciabatta, focaccia. <strong>Pan plano / lavash в каталоге нет.</strong></p>
+    <p><strong>Позиционирование:</strong> Premium frozen для HoReCa и retail.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Сильные стороны</h4>
+        <ul>
+          <li>Местная каталонская фабрика рядом с Льоретом</li>
+          <li>CVC Capital — большие ресурсы</li>
+          <li>Налажена дистрибуция</li>
+          <li>Premium-positioning</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Где они нам неудобны как соседи</h4>
+        <ul>
+          <li>Pan plano / lavash в каталоге нет</li>
+          <li>Industrial, не artisan</li>
+          <li>Premium цена выше нашей зоны</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px;"><strong>Наше пересечение в год 1:</strong> <span class="tag tag-dim">Нулевое</span>. Это тоже другой market — B2B premium frozen на €100M+ обороте. <strong>Долгосрочная стратегия:</strong> через 12-24 месяца возможен разговор о co-manufacturing — они производят пиццу/фокаччу, мы могли бы быть локальным артизан-партнёром на pan plano. Но это сценарий, не план года 1.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Карта позиционирования</div>
+  <h2>Где мы на 2D-карте</h2>
+  <div class="card">
+    <p style="font-size:15px;color:var(--ink-soft);">2 оси: <strong>artisan vs industrial</strong> (ось Y) × <strong>mass-market vs premium</strong> (ось X)</p>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Игрок</th><th>Artisan (Y)</th><th>Premium (X)</th><th>Сегмент</th></tr></thead>
+        <tbody>
+          <tr><td><strong>El Lavash (мы)</strong></td><td>Artisan 5/5</td><td>Mid 3/5</td><td>Артизан-локал, ниша свежего day-of-bake</td></tr>
+          <tr><td>Don Pan 3000</td><td>Industrial 1/5</td><td>Mass 1/5</td><td>Industrial mass-market</td></tr>
+          <tr><td>Monolith Pan de Armenia</td><td>Industrial 2/5</td><td>Mid 3/5</td><td>Industrial mid-market (импорт)</td></tr>
+          <tr><td><a href="https://libanofoods.com" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Libanofoods</a></td><td>Mid-industrial 3/5</td><td>Mid 3/5</td><td>Industrial mid-market</td></tr>
+          <tr><td>Bridor / La Boulangère</td><td>Industrial 2/5</td><td>Premium 5/5</td><td>Industrial premium (импорт)</td></tr>
+          <tr><td><a href="https://europastry.com" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Europastry</a></td><td>Industrial 1/5</td><td>Mid 2/5</td><td>Industrial commodity</td></tr>
+          <tr><td>Bellsolà / Monbake</td><td>Industrial 2/5</td><td>Premium 4/5</td><td>Industrial premium</td></tr>
+          <tr><td>Mestemacher (импорт)</td><td>Artisan 4/5</td><td>Premium 5/5</td><td>Artisan premium import</td></tr>
+          <tr><td>Hacendado Pita</td><td>Industrial 1/5</td><td>Mass 1/5</td><td>Industrial commodity</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="callout callout-good">
+    <h3>Главный вывод позиционирования</h3>
+    <p style="margin:0;">В клетке <strong>«Artisan + Local + день в день»</strong> мы <strong>одни</strong> в нашем радиусе 30 км. Гиганты (Europastry, Bellsolà, Liven) — на другой оси (industrial, B2B-объёмы). Mass-market (Don Pan, Hacendado) — на другой стороне цены и формата. Mestemacher держит artisan-premium, но как импорт из Германии, не в нашем продукте и не в нашем канале. <strong>Это не «лидерство в нише Каталонии»</strong> — это просто наш реалистичный угол на локальном рынке Льорета.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Differentiation strategy</div>
+  <h2>5 столпов отстройки</h2>
+  <div class="grid-2">
+    <div class="callout">
+      <h3>1. Локальный артизан из Льорет-де-Мар</h3>
+      <p>Никто из крупных не производит лаваш в Льорет-де-Мар. KM0 для Селвы и Жиронес. Уникальное географическое позиционирование в радиусе 30 км.</p>
+    </div>
+    <div class="callout">
+      <h3>2. Свежий день в день</h3>
+      <p>Никто из конкурентов не делает свежий армянский лаваш с доставкой день в день. Все либо frozen (Don Pan, Monolith), либо vacío (Libanofoods), либо industrial pita (Europastry). Это формат, который индустриальным гигантам экономически нерационален.</p>
+    </div>
+    <div class="callout">
+      <h3>3. Без фростки, без долгого хранения</h3>
+      <p>Наш продукт — свежий, без -18°C логистики. Это и наше ограничение (узкий радиус), и наша отстройка. Для покупателя в Льорете «свежий с местной пекарни» побеждает «replicas из морозилки» в нишевом сегменте.</p>
+    </div>
+    <div class="callout">
+      <h3>4. Two-нарративный бренд</h3>
+      <p>Параллельно работаем 2 нарратива: «свой» для русско-/украиноязычной диаспоры Льорета + (опционально, после халяль-сертификата) «магрибский халяльный flatbread» для марокканских карникерий.</p>
+    </div>
+    <div class="callout">
+      <h3>5. Цена в реалистичной зоне</h3>
+      <p>Опт €5,50 ± €0,50/кг. Розница €7-9/кг. Через Glovo/Uber €8-10/кг с учётом комиссии. Это не дёшево как Don Pan и не премиум как Mestemacher — это рабочая зона для локального артизана.</p>
+    </div>
+    <div class="callout">
+      <h3>6. Опциональный халяль</h3>
+      <p>Решение в первые 3 мес. С Halal Instituto Halal сертификатом открывается марокканский канал в Льорете. €3500-8000 первый год + €1500-3000/год последующие аудиты. Без сертификата канал закрыт.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">SWOT для El Lavash</div>
+  <h2>Итоговая оценка позиции</h2>
+  <div class="grid-2">
+    <div class="callout callout-good">
+      <h3>Strengths</h3>
+      <ul>
+        <li>Локация Льорет-де-Мар (туристический + KM0 для Селвы и Жиронес)</li>
+        <li>Свежий day-of-bake формат, нерациональный для гигантов</li>
+        <li>База контактов — 527 верифицированных точек</li>
+        <li>Уже есть устные договорённости в Льорете</li>
+        <li>IVA 4 % (с октября 2024) — +6 п.п. маржи</li>
+        <li>Низкий старт-кост — Элен одна, без штата</li>
+      </ul>
+    </div>
+    <div class="callout callout-warn">
+      <h3>Weaknesses</h3>
+      <ul>
+        <li>Команда — одна Элен. Помощник на полставки во 2-м полугодии — сценарий, не факт</li>
+        <li>Нет опыта B2B продаж по Испании</li>
+        <li>Нет halal-сертификата на старте (€3500-8000, 1-3 мес)</li>
+        <li>Нет IFS Food — закрыт сетевой ритейл (но мы туда и не идём в год 1)</li>
+        <li>Малая стартовая мощность (5-10 кг/день в первый месяц)</li>
+        <li>Армянская диаспора Каталонии всего ~4300 — нельзя на ней одной строить план</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <h3>Opportunities</h3>
+      <ul>
+        <li>Frozen bakery CAGR ~6 % базовый — категория растёт, мы её фрэш-крыло</li>
+        <li>Flatbread CAGR 7,3 % — top growth</li>
+        <li>Туристический поток Жироны 8,5М/год в сезон</li>
+        <li>Кебаб-канал Каталонии 152 точки (#1 Испании)</li>
+        <li>Марокканская диаспора Каталонии 253k — пока без локального халяль-лаваша</li>
+        <li>IVA 4 % сдвиг 2024 — структурный плюс маржи</li>
+        <li>Бренд «локальный артизан Льорета» свободен</li>
+      </ul>
+    </div>
+    <div class="callout callout-warn">
+      <h3>Threats</h3>
+      <ul>
+        <li>Don Pan 3000 уже занял большинство retail-сетей (мы туда не идём, но психологический фактор у покупателей)</li>
+        <li>Libanofoods доминирует кебаб-канал в Каталонии (мы заходим только в Льорет)</li>
+        <li>Monolith — прямой сосед в русских магазинах Льорета</li>
+        <li>Mass-market цена Don Pan (€8-10/кг розница) психологически давит на нашу зону €7-9/кг</li>
+        <li>Если в первой неделе мощность окажется ниже 5 кг/день — план под вопросом</li>
+        <li>Сезонность Коста-Бравы: ноябрь-март — провал туристического спроса</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Competitive Analysis v9 · 29.05.2026. Source of truth: <code>SOURCE_OF_TRUTH_v1.md</code>. Версия 9 убрала ложный тезис «отвоевать долю у Don Pan», уточнила позиционирование vs индустриальных гигантов (Europastry, Bellsolà — другой market), SWOT приведён к реальной команде (одна Элен). Конкурентная карта обновлять каждые 6 месяцев — M&A в секторе хлеба идёт активно.</p>
+</footer>
+
+</div>
+</body>
+</html>

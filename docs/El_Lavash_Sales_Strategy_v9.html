@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Стратегия продаж v9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  ol li{padding:6px 0}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:700px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  .funnel{display:flex;flex-direction:column;gap:8px;margin:24px 0}
+  .funnel-stage{background:var(--bg-card);border:1px solid var(--line);padding:18px 24px;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
+  .funnel-stage .name{font-weight:700;color:var(--brand)}
+  .funnel-stage .pct{font-family:'Fraunces',serif;color:var(--brand);font-size:24px}
+  .quarter{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:14px 0;border-left:4px solid var(--brand)}
+  .quarter h3{margin-top:0;color:var(--brand)}
+  .script{background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:18px;font-family:Manrope;font-size:14px;line-height:1.55;margin:12px 0}
+  .script strong{color:var(--brand)}
+  .not-goal{background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:18px 22px;margin:14px 0}
+  .not-goal h4{margin:0 0 10px;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+    .funnel-stage{padding:14px 16px;flex-direction:column;align-items:flex-start;gap:6px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="El Lavash">
+  <div>
+    <div class="eyebrow">Стратегия продаж · версия 9 · 29.05.2026</div>
+    <h1>Стратегия продаж<br><em>реальный масштаб, 12 месяцев, Элен одна</em></h1>
+    <div class="sub">Реалистичный план для одиночного производства в Льорет-де-Мар. Старт 5-10 кг/день, цель к месяцу 12 — 18-25 кг/день. Фокус: Льорет и ближний радиус Коста-Брава. Цель года 1: 15-30 активных точек = €20-30k выручки.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v6.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Business_Model_v5.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Marketing_Plan_v5.html">Маркетинг-план</a>
+  <a class="pill" href="El_Lavash_Competitive_Analysis_v5.html">Конкуренты</a>
+  <a class="pill" href="El_Lavash_Starter_10_v1.html">TOP-10 на завтра</a>
+</nav>
+
+<section>
+  <div class="section-eyebrow">Цели первого года — реальный масштаб</div>
+  <h2>Куда стремимся</h2>
+  <div class="grid-4">
+    <div class="stat"><div class="stat-num">€20-30k</div><div class="stat-label">Выручка год 1 (реалистично, Элен одна)</div></div>
+    <div class="stat"><div class="stat-num">15-30</div><div class="stat-label">Активных точек к месяцу 12</div></div>
+    <div class="stat"><div class="stat-num">500-800 кг</div><div class="stat-label">Объём в месяц к 12-му месяцу</div></div>
+    <div class="stat"><div class="stat-num">12-20 кг/день</div><div class="stat-label">Break-even (вилка) при fix-cost €1,3-1,7k/мес</div></div>
+  </div>
+  <div class="callout">
+    <h3>Базовая шкала, на которую опирается план</h3>
+    <ul>
+      <li><strong>Месяц 1-3:</strong> 5-10 кг/день, 100-220 кг/мес, 1-3 активных точки, €500-1 200 выручки/мес</li>
+      <li><strong>Месяц 6:</strong> 12-18 кг/день, 250-400 кг/мес, 5-10 точек, €1 400-2 200 выручки/мес</li>
+      <li><strong>Месяц 12:</strong> 18-25 кг/день, 400-550 кг/мес, 15-30 точек, €2 200-3 000 выручки/мес</li>
+      <li><strong>Команда:</strong> Элен одна. Помощник на полставки — сценарий года 2, не факт</li>
+      <li><strong>Каналы года 1:</strong> Льорет + ближний радиус 30 км (Бланес, Тосса, Калелья). Без сетевого ритейла, без HoReCa-дистрибьюторов, без аэропорта</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Что НЕ цель года 1</div>
+  <h2>Каналы, которые мы сознательно НЕ берём</h2>
+  <p style="color:var(--ink-soft);max-width:780px">Чтобы план года 1 был выполним одной Элен, мы явно исключаем каналы, требующие команды, тонных объёмов, IFS/BRC, длинных циклов согласования и крупного оборотного капитала. Эти каналы — горизонт года 2-3+, при условии устойчивых продаж в локальном радиусе.</p>
+
+  <div class="grid-2">
+    <div class="not-goal">
+      <h4>[X] Сетевой ритейл</h4>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft)">Bonpreu/Esclat, Caprabo, Veritas, Sorli, Condis, Mercadona, Carrefour, Lidl, Aldi, El Corte Inglés. Требуют IFS Food, EAN, ficha técnica, аудит производства, цикл 12-24 мес, объёмы тонн/нед. <strong>Bonpreu KM0</strong> — только информационный контакт через portal proveedores в Q3-Q4 (разведка, не цель закрыть в год 1).</p>
+    </div>
+    <div class="not-goal">
+      <h4>[X] HoReCa-дистрибьюторы</h4>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft)">Bidfood Iberia / Guzmán, Friman, GM Cash, Transgourmet, Mercabarna C&C. Требуют объёмы 200-500 кг/нед под одного клиента, IFS, длинный цикл. Рассмотрение — год 2+ после 6 мес стабильных продаж и подтверждённой мощности.</p>
+    </div>
+    <div class="not-goal">
+      <h4>[X] Институциональный канал</h4>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft)">Школы, больницы, тюрьмы, военные, университеты, госзакупки. Тендерные циклы 24+ мес, требуют сертификации, объёмы, банковские гарантии. Не для одиночного стартапа.</p>
+    </div>
+    <div class="not-goal">
+      <h4>[X] Круизы, ship chandlers, аэропорт</h4>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft)">Круизные суда (нужен IFS Logistics), аэропорт Жироны (Areas — тендеры 24+ мес), экспорт DE/UK/FR/IT. Шансы в году 1 — около нуля. Удалено из плана.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sales funnel — реалистичная воронка</div>
+  <h2>Воронка по типу клиента</h2>
+
+  <div class="callout">
+    <h3>Льорет розница — русские магазины + халяль-карникерии</h3>
+    <p style="margin:8px 0 0;color:var(--ink-soft);font-size:14px">Целевая база: ~20-30 точек в Льорете (3 русских магазина, до 8 халяль-карникерий, локальные мини-маркеты). Темп — 5-8 контактов в неделю реально для одной Элен параллельно с производством.</p>
+  </div>
+  <div class="funnel">
+    <div class="funnel-stage"><span class="name">Идентификация целей (из базы)</span><span class="pct">~25 точек</span></div>
+    <div class="funnel-stage"><span class="name">Подготовка пакета (sample 200 г, листовка А5, цена)</span><span class="pct">25</span></div>
+    <div class="funnel-stage"><span class="name">Личный визит / WhatsApp</span><span class="pct">~20</span></div>
+    <div class="funnel-stage"><span class="name">Дегустация на месте</span><span class="pct">~12</span></div>
+    <div class="funnel-stage"><span class="name">Согласование цены и графика</span><span class="pct">~8</span></div>
+    <div class="funnel-stage"><span class="name">Первый заказ (трайл 2-5 кг)</span><span class="pct">~6</span></div>
+    <div class="funnel-stage"><span class="name">Регулярный клиент (2-10 кг/нед)</span><span class="pct">~4-6</span></div>
+  </div>
+
+  <div class="callout">
+    <h3>Льорет HoReCa — кебабные, шавермные, локальные рестораны</h3>
+    <p style="margin:8px 0 0;color:var(--ink-soft);font-size:14px">Целевая база: до 15-20 точек в Льорете. Стартуем с ТОП-5 кебабных, добавляем по 1-2 в месяц. Объём с одной точки: 3-15 кг/нед.</p>
+  </div>
+  <div class="funnel">
+    <div class="funnel-stage"><span class="name">Идентификация (кебабные + шавермные)</span><span class="pct">~18 точек</span></div>
+    <div class="funnel-stage"><span class="name">Визит до 14:00 (час перед открытием)</span><span class="pct">~15</span></div>
+    <div class="funnel-stage"><span class="name">Дегустация под durum / шаверму</span><span class="pct">~10</span></div>
+    <div class="funnel-stage"><span class="name">Первый пробный заказ</span><span class="pct">~6</span></div>
+    <div class="funnel-stage"><span class="name">Регулярный клиент</span><span class="pct">~4-7</span></div>
+  </div>
+
+  <div class="callout">
+    <h3>Бланес / Тосса / Калелья — ближний радиус 30 км</h3>
+    <p style="margin:8px 0 0;color:var(--ink-soft);font-size:14px">После закрепления в Льорете (месяц 4+) — расширение в ближайшие города. До 20 целей суммарно: халяль-магазины Бланеса, кебабные Тоссы, мини-маркеты Калельи. Темп — 1-2 визита/нед.</p>
+  </div>
+  <div class="funnel">
+    <div class="funnel-stage"><span class="name">Идентификация целей по 3 городам</span><span class="pct">~20 точек</span></div>
+    <div class="funnel-stage"><span class="name">Визит + образец (1 раз в неделю — выезд)</span><span class="pct">~15</span></div>
+    <div class="funnel-stage"><span class="name">Первый заказ</span><span class="pct">~6</span></div>
+    <div class="funnel-stage"><span class="name">Регулярный клиент</span><span class="pct">~3-5</span></div>
+  </div>
+
+  <div class="callout">
+    <h3>Прямой канал B2C — Glovo / Uber Eats / Just Eat / WhatsApp</h3>
+    <p style="margin:8px 0 0;color:var(--ink-soft);font-size:14px">После запуска производства (месяц 2-3). Pickup-меню, мини-формат заказа. Стартуем с WhatsApp (бесплатно, 0 комиссии), Glovo / Uber Eats — на 4-6 месяц при готовности тратить комиссию 30%.</p>
+  </div>
+  <div class="funnel">
+    <div class="funnel-stage"><span class="name">WhatsApp Business + Google Business Profile (мес 2)</span><span class="pct">+€100-300 / нед</span></div>
+    <div class="funnel-stage"><span class="name">Glovo / Uber Eats подключение (мес 4-6)</span><span class="pct">+€200-500 / нед</span></div>
+    <div class="funnel-stage"><span class="name">Just Eat (мес 6+, если линия pickup-меню готова)</span><span class="pct">+€100-300 / нед</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">12-month план — реалистичные KPI</div>
+  <h2>По кварталам</h2>
+
+  <div class="quarter">
+    <h3>Q1 — Setup и первый Льорет (мес 1-3)</h3>
+    <ul>
+      <li>RSIPAC оформить (€64,25) + RGSEAA (общеиспанская дистрибуция, €100-300)</li>
+      <li>HACCP-план — written</li>
+      <li>Решение по халяль: запуск процесса сертификации в Instituto Halal (€3 500-8 000 первый год) или отложить — принимает Элен</li>
+      <li>Логотип + ficha técnica + первая партия упаковки (300-500 шт)</li>
+      <li><strong>ТОП-10 точек на завтра</strong> (см. отдельный документ El_Lavash_Starter_10_v1.html) — личные визиты в первые 2 недели</li>
+      <li>WhatsApp Business + лендинг ellavash.es</li>
+      <li>Google Business Profile (бесплатно) + Instagram</li>
+      <li>Первая фотосессия производства (1 раз, €200-500)</li>
+    </ul>
+    <p><strong>KPI Q1:</strong> 2-4 первые клиента (рознично-русские, 1-2 кебабные), 100-220 кг/мес, €500-1 200 выручки/мес. Производство: 5-10 кг/день. <strong>Воронка: 10-15 личных контактов/мес</strong> (не 100).</p>
+  </div>
+
+  <div class="quarter">
+    <h3>Q2 — Расширение Льорета + ближний радиус (мес 4-6)</h3>
+    <ul>
+      <li>Закрытие халяль-сертификата (если запустили в Q1) → открытие 4-6 халяль-карникерий Льорета</li>
+      <li>Добавление 3-5 кебабных Льорета (стабильный объём 3-8 кг/нед каждая)</li>
+      <li>Бланес + Тосса: 5-8 разведочных визитов, 2-3 первых заказа</li>
+      <li>Подключение Glovo / Uber Eats (B2C) — pickup-меню</li>
+      <li>1 точка в Калелье или Жироне (тёплая рекомендация)</li>
+      <li>Решение по аренде/расширению места — если объём упёрся в потолок</li>
+    </ul>
+    <p><strong>KPI Q2:</strong> 5-10 активных точек, 250-400 кг/мес, €1 400-2 200 выручки/мес. Производство: 12-18 кг/день. <strong>Воронка: 10-20 контактов/мес</strong>.</p>
+  </div>
+
+  <div class="quarter">
+    <h3>Q3 — Углубление и оптимизация (мес 7-9)</h3>
+    <ul>
+      <li>Стабилизация регулярных заказов с существующих точек — фокус на retention</li>
+      <li>Добавление 3-5 новых точек в ближнем радиусе (Бланес, Тосса, Калелья, Пинеда)</li>
+      <li>Жирона: 1-2 разведочные точки (тёплые рекомендации, не холодная)</li>
+      <li>Информационный контакт Bonpreu KM0 — формальная заявка через <a href="https://www.bonpreuesclat.cat" style="color:var(--brand)">portal proveedores Bonpreu/Esclat</a> + LinkedIn buyer Neus Roca (разведка, не цель закрыть в году 1)</li>
+      <li>Сбор обратной связи с регулярных клиентов — корректировка SKU/упаковки</li>
+      <li>Оценка: нужен ли почасовой помощник в Q4 (1-2 раза/нед на упаковку)</li>
+    </ul>
+    <p><strong>KPI Q3:</strong> 10-18 активных точек, 350-500 кг/мес, €1 900-2 750 выручки/мес. Производство: 15-22 кг/день.</p>
+  </div>
+
+  <div class="quarter">
+    <h3>Q4 — Решение о масштабе (мес 10-12)</h3>
+    <ul>
+      <li>Стабилизация на достигнутом уровне 18-25 кг/день</li>
+      <li>Добавление 2-5 новых точек в ближнем радиусе (15-30 в сумме)</li>
+      <li>Решение Элен: <strong>«остаться boutique-одиночкой 18-25 кг/день»</strong> или <strong>«взять помощника на полставки + двинуть до 30-40 кг/день»</strong></li>
+      <li>Информационный контакт с 1 локальным HoReCa-агентом (НЕ Bidfood/Friman — это год 2+). Просто разведка цикла</li>
+      <li>Подведение финансового итога: выручка, маржа, фикс-косты — сверка с моделью</li>
+      <li>План года 2 на основании реальных данных за 12 месяцев</li>
+    </ul>
+    <p><strong>KPI Q4:</strong> 15-30 активных точек, 400-550 кг/мес, €2 200-3 000 выручки/мес. Производство: 18-25 кг/день. <strong>Год 1 итого: €20-30k выручки.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">ТОП-10 на завтра</div>
+  <h2>С чего начинаем физически</h2>
+  <div class="callout callout-good">
+    <h3>Стартовый список — 10 точек в радиусе 5 минут пешком от Льорет-де-Мар</h3>
+    <p style="color:var(--ink-soft);margin-bottom:14px">Полный список с адресами, телефонами, скриптами и порядком действий — в отдельном документе. Это та точка, с которой Элен реально начинает обзвон/обход на первой неделе. Никаких «30 точек за 4 недели». Реальный темп — <strong>3-5 контактов в неделю</strong> при параллельной выпечке.</p>
+    <p><a href="El_Lavash_Starter_10_v1.html" class="pill primary">Открыть TOP-10 на завтра</a></p>
+  </div>
+
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>#</th><th>Цель</th><th>Категория</th><th>Действие</th><th>Срок</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Nash Supermarket Льорет</td><td>Розница русский магазин</td><td>Личный визит, образец 200 г</td><td>Нед 1</td></tr>
+        <tr><td>2</td><td>Privet Льорет</td><td>Розница русский магазин</td><td>Личный визит, образец</td><td>Нед 1</td></tr>
+        <tr><td>3</td><td>Nadezhda Льорет</td><td>Розница русский магазин</td><td>Личный визит, образец</td><td>Нед 1</td></tr>
+        <tr><td>4-5</td><td>2 ближайшие халяль-карникерии Льорета (Fátima, El Molí)</td><td>Розница халяль</td><td>Личный визит, образец (после халяль-сертификата или без — для пробы)</td><td>Нед 2</td></tr>
+        <tr><td>6-7</td><td>2 кебабных в центре Льорета (Beach Doner, Carme Doner)</td><td>HoReCa готовый</td><td>Визит до 14:00, образец под durum, не 30-50 кг/день — стартуем с 3-5 кг/нед</td><td>Нед 2</td></tr>
+        <tr><td>8</td><td>Yerevan Pastisseria (Carrer Narcís Fors 10)</td><td>Розница армянский</td><td>Тёплый контакт, +34 649 184 697</td><td>Нед 1</td></tr>
+        <tr><td>9</td><td>Mercat Municipal Lloret</td><td>Розница / рынок</td><td>Звонок comerc@lloret.cat, +34 972 361 821</td><td>Нед 2</td></tr>
+        <tr><td>10</td><td>1 локальный ресторан Льорета (тёплая рекомендация)</td><td>HoReCa локальный</td><td>Визит с пробником</td><td>Нед 3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--ink-soft);font-size:13px;margin-top:12px">Все остальные точки (Бланес, Тосса, Калелья, Жирона, Барселона) — на месяц 4-6+. Никаких аэропортов, дистрибьюторов и сетевых ритейлеров в первый месяц.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Скрипты</div>
+  <h2>Шаблоны холодного контакта</h2>
+
+  <h3>WhatsApp для русского магазина в Льорете</h3>
+  <div class="script">
+    <strong>Здравствуйте! Меня зовут Элен, я открыла производство армянского лаваша прямо в Льорет-де-Мар (бренд «El Lavash»).</strong><br><br>
+    Лаваш свежий, испечён утром того же дня. Не замороженный.<br><br>
+    Хочу подъехать к вам с образцом на этой неделе — попробуете, без обязательств. Когда удобно?<br><br>
+    Цена опт от €5,50/кг. Маленькая партия (2-5 кг) для пробы — без проблем. RSIPAC оформлен.<br><br>
+    Спасибо! Элен, +34 XXX XXX XXX
+  </div>
+
+  <h3>Очный разговор в кебабной (до 14:00, перед открытием)</h3>
+  <div class="script">
+    <strong>«Hola, soy Элен — hago lavash artesanal aquí en Lloret. Le traigo una muestra para que la pruebe con su durum.»</strong><br><br>
+    [Дать образец 1 штуки]<br><br>
+    «Хлеб свежий — испёкла сегодня утром. Не замороженный. Если понравится, могу привозить 3-5 кг 2 раза в неделю. €5,50/кг.»<br><br>
+    [Узнать: кто текущий поставщик, сколько берут в неделю, какие проблемы с текущим]<br><br>
+    «Если подходит — могу начать с пробной партии на эту неделю. Без обязательств.»
+  </div>
+
+  <h3>WhatsApp / Email для халяль-карникерии</h3>
+  <div class="script">
+    <strong>Asalamu aleikum / Hola,</strong><br><br>
+    Soy Элен, productora artesanal de pan lavash en Lloret de Mar (marca «El Lavash»).<br><br>
+    [Если есть халяль-сертификат:] Tenemos certificación Halal del Instituto Halal de Junta Islámica.<br>
+    [Если нет:] Estoy en proceso de obtener la certificación Halal. Si le interesa el producto, podemos empezar con pedidos pequeños mientras tanto.<br><br>
+    Pan fresco diario, no congelado. Precio mayorista desde €5,50/kg. Pedido mínimo 2 kg.<br><br>
+    ¿Cuándo le viene bien que pase con una muestra?<br><br>
+    Элен — ellavash.es | +34 XXX XXX XXX
+  </div>
+
+  <h3>Информационный контакт Bonpreu KM0 (Q3-Q4, не цель закрыть)</h3>
+  <div class="script">
+    <strong>Asunto:</strong> Productor artesano de lavash en Lloret — KM0 Comarques Gironines<br><br>
+    <strong>Hola,</strong><br><br>
+    Me llamo Элен, soy fundadora de <strong>El Lavash</strong>, productora artesanal de pan plano tipo lavash en Lloret de Mar (Comarca de la Selva).<br><br>
+    Estoy en mi primer año de producción y querría conocer el proceso para ser proveedor KM0 de <a href="https://www.bonpreuesclat.cat" style="color:var(--brand)">Bonpreu/Esclat</a> en Comarques Gironines a medio plazo (12-18 meses).<br><br>
+    Volúmenes actuales: 400-600 kg/mes, certificación RSIPAC + RGSEAA. Sin IFS Food de momento.<br><br>
+    ¿Podría compartir el portal o requisitos para iniciar el dossier?<br><br>
+    Gracias, Элен — ellavash.es
+  </div>
+  <p style="color:var(--ink-soft);font-size:13px;margin-top:8px"><strong>Важно:</strong> это разведочный контакт. Не ожидаем листинга в году 1. Цель — узнать процесс и сроки, чтобы подготовиться к подаче через 12-18 мес.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">KPI dashboard — что меряем</div>
+  <h2>Метрики каждой недели и каждого месяца</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Активность (нед)</h3>
+      <ul>
+        <li>Личных визитов: цель 3-5/нед</li>
+        <li>WhatsApp / звонков: 5-10/нед</li>
+        <li>Дегустаций проведено: 2-4/нед</li>
+        <li>Образцов отдано: 5-10/нед</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Воронка</h3>
+      <ul>
+        <li>Конверсия визит → дегустация: ~60%</li>
+        <li>Дегустация → первый заказ: ~50%</li>
+        <li>Первый заказ → регулярный: ~60-70%</li>
+        <li>Средний цикл: 7-14 дней (розница), 14-30 (HoReCa)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Выручка</h3>
+      <ul>
+        <li>Активных клиентов в месяце</li>
+        <li>Средний чек / клиент / неделя (цель €30-80)</li>
+        <li>Объём в кг (план vs факт)</li>
+        <li>Выручка в € (опт + B2C)</li>
+        <li>Gross margin €/кг (цель €3,50-4,20)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>По каналам</h3>
+      <ul>
+        <li>Доля русской розницы Льорета</li>
+        <li>Доля халяль-канала</li>
+        <li>Доля кебабных Льорета</li>
+        <li>Доля ближнего радиуса (Бланес/Тосса)</li>
+        <li>Доля B2C (WhatsApp/Glovo/Uber)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Эффективность</h3>
+      <ul>
+        <li>CAC на канал (€ затрат / новый клиент)</li>
+        <li>Средняя длительность регулярного клиента</li>
+        <li>Churn регулярных клиентов</li>
+        <li>Repeat rate (% возвратных)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Операции</h3>
+      <ul>
+        <li>Производство в кг (план vs факт)</li>
+        <li>Утилизация мощности % (кг/день vs потолок)</li>
+        <li>Потери / брак % (цель ≤5%)</li>
+        <li>Своевременность доставки %</li>
+        <li>Часов в производстве в день (мониторинг overload)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Риски и допущения</div>
+  <h2>Что может пойти не так</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="color:var(--accent)">Производственный потолок раньше</h3>
+      <p style="color:var(--ink-soft);font-size:14px">Если реальная мощность ниже 5-7 кг/день в первый месяц — пересмотреть скорость подключения точек. Не брать больше клиентов, чем можем стабильно обеспечивать.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent)">Низкая конверсия русской розницы</h3>
+      <p style="color:var(--ink-soft);font-size:14px">Если из 3 русских магазинов берут только 1 — план Q1 уплывает. Запасной план — фокус на кебабные (5 точек) и B2C через WhatsApp.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent)">Халяль-сертификат дольше / дороже</h3>
+      <p style="color:var(--ink-soft);font-size:14px">Если процесс растягивается на 4-6 мес или цена выше €8 000 — отложить на год 2. Без халяль-сертификата теряем 4-6 халяль-карникерий, но кебабные часто берут и без сертификата.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent)">Перегрузка одной Элен</h3>
+      <p style="color:var(--ink-soft);font-size:14px">8-10 часов производства + 4-5 часов продаж + 2-3 часа логистики = 14-18 часов/день. Это разрушительно. Если в Q2 нагрузка превышает 12 ч/день — взять помощника на 2 дня/нед раньше плана.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Sales Strategy v9 · 29.05.2026. Реалистичный масштаб для одиночного производства. Цифры опираются на source-of-truth (производство 5-25 кг/день, выручка €20-30k год 1, фокус Льорет + ближний радиус). Цифры скорректировать после первого месяца реальных продаж.</p>
+</footer>
+
+</div>
+</body>
+</html>
