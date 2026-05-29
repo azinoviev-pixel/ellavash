@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Бизнес-модель v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:700px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .canvas{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:10px;margin:24px 0}
+  .canvas .block{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:16px;font-size:14px}
+  .canvas .block h4{margin:0 0 8px;color:var(--brand);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;font-weight:700}
+  .canvas .block p,.canvas .block ul{margin:0;font-size:13px}
+  .canvas .block ul li{padding:4px 0 4px 16px;border:none;font-size:12px}
+  .canvas .partners{grid-row:1/3}
+  .canvas .activities{grid-row:1/2}
+  .canvas .resources{grid-row:2/3}
+  .canvas .value{grid-row:1/3}
+  .canvas .relationships{grid-row:1/2}
+  .canvas .channels{grid-row:2/3}
+  .canvas .customers{grid-row:1/3}
+  .canvas .costs{grid-column:1/3;grid-row:3/4}
+  .canvas .revenue{grid-column:3/6;grid-row:3/4}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .canvas{grid-template-columns:1fr;grid-template-rows:auto;gap:8px}
+    .canvas .block,.canvas .partners,.canvas .activities,.canvas .resources,.canvas .value,.canvas .relationships,.canvas .channels,.canvas .customers,.canvas .costs,.canvas .revenue{grid-row:auto;grid-column:auto}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="El Lavash">
+  <div>
+    <div class="eyebrow">Бизнес-модель · версия 4 · 28.05.2026</div>
+    <h1>Бизнес-модель<br><em>Canvas, unit economics, сценарии</em></h1>
+    <div class="sub">Структура бизнеса El Lavash на основе verified рыночных данных. 3 сценария производственной мощности с unit economics. Прогноз break-even.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v5.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v4.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Marketing_Plan_v4.html">Маркетинг-план</a>
+  <a class="pill" href="El_Lavash_Competitive_Analysis_v4.html">Конкуренты</a>
+</nav>
+
+<section>
+  <div class="section-eyebrow">Business Model Canvas</div>
+  <h2>Все 9 блоков на одной странице</h2>
+  <div class="canvas">
+
+    <div class="block partners">
+      <h4>Key Partners</h4>
+      <ul>
+        <li>Transgourmet / GM Cash Lloret (HORECA logistics)</li>
+        <li>Bidfood Iberia / Guzmán (Mercabarna)</li>
+        <li>Cesta Selecta (русско-восточная B2B)</li>
+        <li>Balkanica Distral (IFS + национальный охват)</li>
+        <li>Bellsolà (возможный co-manufacturing)</li>
+        <li>Halal Institute (сертификация)</li>
+        <li>Поставщики муки Каталонии</li>
+        <li>Local SMM-щица + проф. фотограф</li>
+      </ul>
+    </div>
+
+    <div class="block activities">
+      <h4>Key Activities</h4>
+      <ul>
+        <li>Производство лаваша</li>
+        <li>Качество и сертификации</li>
+        <li>B2B-продажи и аккаунт-менеджмент</li>
+        <li>Логистика поставок</li>
+        <li>Контент и SMM (бренд)</li>
+        <li>Расширение SKU (пельмени, готовая еда)</li>
+      </ul>
+    </div>
+
+    <div class="block resources">
+      <h4>Key Resources</h4>
+      <ul>
+        <li>Производство в Льорет-де-Мар</li>
+        <li>Оборудование</li>
+        <li>2 работника из Украины (полуфабрикаты)</li>
+        <li>Бренд El Lavash + логотип</li>
+        <li>Местные знакомства Элен (Льорет)</li>
+        <li>База 481 верифицированных контактов</li>
+        <li>Бар-код, autonomo, RSIPAC (планируется)</li>
+      </ul>
+    </div>
+
+    <div class="block value">
+      <h4>Value Proposition</h4>
+      <ul>
+        <li><strong>Свежий армянский лаваш, made in Lloret</strong></li>
+        <li>Артезанальный vs импортированный замороженный</li>
+        <li>KM0 для каталонских ритейл-сетей</li>
+        <li>Локальная логистика — 1-2 дня от печи до полки</li>
+        <li>2 narrative: русско-славянский premium + халяль flatbread</li>
+        <li>Подходит как замена pita / pan plano / pan árabe</li>
+        <li>Свободная ниша «armenian-style artisan» в Испании</li>
+      </ul>
+    </div>
+
+    <div class="block relationships">
+      <h4>Customer Relationships</h4>
+      <ul>
+        <li>B2B аккаунт-менеджмент (Элен лично)</li>
+        <li>WhatsApp Business для рутинных заказов</li>
+        <li>Личные визиты с образцами (Льорет/Жирона)</li>
+        <li>Email + LinkedIn для крупных целей (Bonpreu, дистрибьюторы)</li>
+      </ul>
+    </div>
+
+    <div class="block channels">
+      <h4>Channels</h4>
+      <ul>
+        <li>Прямые B2B продажи (магазины, рестораны, отели)</li>
+        <li>HORECA-дистрибьюторы (Bidfood, Cesta, Transgourmet)</li>
+        <li>Glovo / Uber Eats (для B2C доставки)</li>
+        <li>Mercat Lloret (парадная точка)</li>
+        <li>Сетевой ритейл (Bonpreu KM0 → Valvi → Sorli)</li>
+        <li>Instagram + WhatsApp (B2C прямые заказы)</li>
+      </ul>
+    </div>
+
+    <div class="block customers">
+      <h4>Customer Segments</h4>
+      <ul>
+        <li><strong>B2B Опт:</strong> HORECA-дистрибьюторы Каталонии</li>
+        <li><strong>B2B Розница:</strong> русские/халяль магазины Льорета и BCN</li>
+        <li><strong>B2B Готовый:</strong> кебабные, ливанские/армянские/грузинские рестораны, отели 4-5★ Коста-Бравы</li>
+        <li><strong>B2B Институциональный:</strong> кейтеринги, аэропорт Жироны</li>
+        <li><strong>B2C:</strong> русско-/украиноязычная диаспора Льорета, ethnic foodies</li>
+      </ul>
+    </div>
+
+    <div class="block costs">
+      <h4>Cost Structure</h4>
+      <ul>
+        <li>Сырьё: мука, дрожжи, соль (~30-35% выручки)</li>
+        <li>Зарплаты 2-4 человека (~25-30%)</li>
+        <li>Коммунальные + амортизация помещения (~5-8%)</li>
+        <li>Упаковка (~5-7%)</li>
+        <li>Логистика (~8-12%)</li>
+        <li>Маркетинг, SMM, фото (~3-5%)</li>
+        <li>Сертификации, лицензии, разовые: €2-5k стартовые</li>
+      </ul>
+    </div>
+
+    <div class="block revenue">
+      <h4>Revenue Streams</h4>
+      <ul>
+        <li><strong>Опт:</strong> €3.50-5.00/кг отпускная (B2B HORECA-distributors)</li>
+        <li><strong>B2B retail:</strong> €5.00-7.00/кг (магазины напрямую)</li>
+        <li><strong>HORECA конечный:</strong> €5.50-8.00/кг (кебабные, отели)</li>
+        <li><strong>B2C через Glovo/прямые:</strong> €8-12/кг розница</li>
+        <li><strong>Premium retail (Bonpreu KM0):</strong> €6-9/кг отпускная</li>
+        <li>Маржа после IVA 4% (BOE-A-2025-3950): 40-55%</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Сегменты клиентов</div>
+  <h2>Четыре типа покупателя</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Сегмент</th><th>Объём заказа</th><th>Цена/кг</th><th>Цикл закупки</th><th>Marginна</th><th>Где найти</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Опт-дистрибьютор</strong></td><td>100-1000 кг/неделя</td><td>€3.50-5.00</td><td>Контракт, регулярно</td><td>30-40%</td><td>Bidfood, Cesta, Transgourmet</td></tr>
+        <tr><td><strong>Розница магазин</strong></td><td>5-50 кг/неделя</td><td>€5.00-7.00</td><td>Регулярно, 1-2 раза/нед</td><td>40-50%</td><td>40 русских магазинов, 8 халяль Льорета</td></tr>
+        <tr><td><strong>HORECA готовый</strong></td><td>10-100 кг/неделя</td><td>€5.50-8.00</td><td>Регулярно</td><td>45-55%</td><td>47 кебабных Льорета, 58 отелей</td></tr>
+        <tr><td><strong>Институциональный</strong></td><td>200-2000 кг/неделя</td><td>€3.50-5.50</td><td>Тендер 1-3 года</td><td>25-35%</td><td>Аэропорт Жироны, Casal Lloret, кейтеры</td></tr>
+        <tr><td><strong>B2C прямой</strong></td><td>0.5-3 кг/заказ</td><td>€8-12</td><td>Импульс</td><td>55-65%</td><td>Glovo, WhatsApp, Mercat Lloret</td></tr>
+        <tr><td><strong>Сетевой ритейл KM0</strong></td><td>500-5000 кг/неделя</td><td>€6-9 (отпускная)</td><td>Контракт 12+ мес</td><td>20-30% (сеть берёт 35-45%)</td><td>Bonpreu, Valvi, Sorli</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Производственные сценарии</div>
+  <h2>Три варианта мощности</h2>
+  <div class="grid-3">
+
+    <div class="callout callout-good">
+      <h3>Сценарий A · Boutique</h3>
+      <div class="stat-num" style="font-size:32px;">80-150 кг/день</div>
+      <p><strong>CAPEX:</strong> €15-30k (печь + базовое оборудование)</p>
+      <p><strong>Команда:</strong> 2-3 человека (Элен + 1-2 пекаря)</p>
+      <p><strong>Месячный объём:</strong> 2.5-4.5 т</p>
+      <p><strong>Месячная выручка:</strong> €12-25k (при miks розница/HORECA)</p>
+      <p><strong>Окупаемость:</strong> 10-14 мес</p>
+      <p><strong>Подходит для:</strong> Каналы 1-4 (HORECA, розница, кебабные, отели Льорет)</p>
+      <p style="margin-bottom:0;"><span class="tag tag-cool">Рекомендуется на старте</span></p>
+    </div>
+
+    <div class="callout">
+      <h3>Сценарий B · Mid-scale</h3>
+      <div class="stat-num" style="font-size:32px;">300-500 кг/день</div>
+      <p><strong>CAPEX:</strong> €60-120k</p>
+      <p><strong>Команда:</strong> 5-7 человек</p>
+      <p><strong>Месячный объём:</strong> 9-15 т</p>
+      <p><strong>Месячная выручка:</strong> €45-80k</p>
+      <p><strong>Окупаемость:</strong> 14-20 мес</p>
+      <p><strong>Подходит для:</strong> A + опт-дистрибьюторы + аэропорт + кейтеринги</p>
+      <p style="margin-bottom:0;"><span class="tag tag-warm">Апгрейд только при подписанном LOI от Bonpreu или GM Cash</span></p>
+    </div>
+
+    <div class="callout callout-warn">
+      <h3>Сценарий C · Industrial</h3>
+      <div class="stat-num" style="font-size:32px;">1500-2000 кг/день</div>
+      <p><strong>CAPEX:</strong> €250-450k + IFS Food (€20-30k)</p>
+      <p><strong>Команда:</strong> 15-20 человек</p>
+      <p><strong>Месячный объём:</strong> 45-60 т</p>
+      <p><strong>Месячная выручка:</strong> €170-280k</p>
+      <p><strong>Срок до самоокупаемости:</strong> 24-36 мес</p>
+      <p><strong>Подходит для:</strong> A + B + Lidl/Aldi private label + крупные сетевые</p>
+      <p style="margin-bottom:0;"><span class="tag tag-hot">НЕ стартовать так — убыток €150-250k при низкой загрузке</span></p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Unit Economics — пример</div>
+  <h2>Сколько остаётся с 1 кг лаваша</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Статья</th><th>Опт (€/кг)</th><th>Розница (€/кг)</th><th>HORECA конечный (€/кг)</th><th>Premium retail (€/кг)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Отпускная цена</strong></td><td>4.00</td><td>6.00</td><td>7.00</td><td>7.50</td></tr>
+        <tr><td>IVA 4% включён</td><td>3.85</td><td>5.77</td><td>6.73</td><td>7.21</td></tr>
+        <tr><td>Сырьё (мука, дрожжи, соль ~30%)</td><td>-1.15</td><td>-1.73</td><td>-2.02</td><td>-2.16</td></tr>
+        <tr><td>Упаковка</td><td>-0.20</td><td>-0.35</td><td>-0.10</td><td>-0.45</td></tr>
+        <tr><td>Зарплата (~25%)</td><td>-0.96</td><td>-1.44</td><td>-1.68</td><td>-1.80</td></tr>
+        <tr><td>Комм. + амортизация (~5%)</td><td>-0.20</td><td>-0.30</td><td>-0.34</td><td>-0.36</td></tr>
+        <tr><td>Логистика</td><td>-0.30</td><td>-0.15</td><td>-0.50</td><td>-0.40</td></tr>
+        <tr><td>Маркетинг (~3%)</td><td>-0.12</td><td>-0.17</td><td>-0.20</td><td>-0.22</td></tr>
+        <tr><td><strong>Маржа €/кг</strong></td><td><strong>0.74</strong></td><td><strong>1.35</strong></td><td><strong>1.56</strong></td><td><strong>1.46</strong></td></tr>
+        <tr><td><strong>Маржа %</strong></td><td><strong>19%</strong></td><td><strong>23%</strong></td><td><strong>23%</strong></td><td><strong>20%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-soft);">Цифры предварительные — реальные зависят от точной мощности, аренды, поставщика муки. Логистика для опта выше из-за развоза по нескольким точкам.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Break-even расчёт</div>
+  <h2>Когда выходим в плюс</h2>
+  <div class="card">
+    <h3>Сценарий A (Boutique 80-150 кг/день)</h3>
+    <ul>
+      <li>Фиксированные расходы в месяц (ЗП, коммунальные, услуги): <strong>~€3 200-5 000</strong> (помещение собственное)</li>
+      <li>Средняя маржа на кг (mix розница+HORECA+опт): <strong>~€1.30/кг</strong> (выше из-за отсутствия аренды)</li>
+      <li>Точка безубыточности: <strong>~2 500-3 850 кг/месяц</strong> = 85-130 кг/день (помещение собственное снижает порог)</li>
+      <li>Реалистичный срок до этого объёма (по реалистичной оценке): <strong>10-14 месяцев</strong></li>
+    </ul>
+  </div>
+  <div class="callout callout-good">
+    <h3>Главный вывод по экономике</h3>
+    <p style="margin:0;">Запуск в формате <strong>boutique-производства 80-150 кг/день</strong> с реалистичной voronkой 43-79 точек продаж = €120-150k годовой выручки в первый год. Окупаемость 10-14 месяцев. Не строить промышленную мощность сразу — это путь в убыток €150-250k при низкой загрузке.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Value Propositions для каждого сегмента</div>
+  <h2>Что говорить кому</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Для HORECA дистрибьюторов</h3>
+      <p><strong>Hook:</strong> «Locally produced flatbread, IVA 4%, frozen-friendly, cadena de frío совместим. Альтернатива Don Pan 3000 для каталонского рынка — короче логистика, выше маржа.»</p>
+      <p><strong>Доказательства:</strong> RGSEAA, HACCP, EAN, образцы, ficha técnica.</p>
+    </div>
+    <div class="card">
+      <h3>Для русских магазинов Льорета</h3>
+      <p><strong>Hook:</strong> «Свежий армянский лаваш, испечён в 5 км от вас. Привозим завтра. Не замороженный как Pan de Armenia от Monolith.»</p>
+      <p><strong>Доказательства:</strong> личный визит с образцами, фото производства.</p>
+    </div>
+    <div class="card">
+      <h3>Для кебабных Льорета</h3>
+      <p><strong>Hook:</strong> «Halal-certified, локальная доставка, тонкий лаваш под durum, цена ниже Fabricapan с учётом логистики.»</p>
+      <p><strong>Доказательства:</strong> Halal сертификат, прайс/кг, образцы.</p>
+    </div>
+    <div class="card">
+      <h3>Для отелей 4-5★ Коста-Бравы</h3>
+      <p><strong>Hook:</strong> «Mediterranean flatbread для буфета. Авторская подача, healthy positioning, КМ0 история для buena prensa.»</p>
+      <p><strong>Доказательства:</strong> образцы для F&B Director, степ-карта подачи, фото.</p>
+    </div>
+    <div class="card">
+      <h3>Для Bonpreu KM0</h3>
+      <p><strong>Hook:</strong> «Каталонский артезанал из Льорет-де-Мар. Уникальная категория `pan plano artesano` в supermarket-секции. Поддерживаем нарратив KM0 +12% YoY.»</p>
+      <p><strong>Доказательства:</strong> ficha técnica, EAN, IFS Food (опционально), интервью с Élen.</p>
+    </div>
+    <div class="card">
+      <h3>Для аэропорта Жироны (Areas)</h3>
+      <p><strong>Hook:</strong> «Local supplier для grab-and-go. Лаваш-роллы вписываются в концепцию COMO. Доставка ежедневно из Льорета.»</p>
+      <p><strong>Доказательства:</strong> RGSEAA, HACCP, готовые роллы-конфигурации.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Жёсткие ограничения модели</div>
+  <h2>Чего НЕ делать в первый год</h2>
+  <div class="callout callout-warn">
+    <ul>
+      <li><strong>Не строить промышленную мощность 1500+ кг/день.</strong> анализ рисков подтвердил — убыток €150-250k при низкой загрузке.</li>
+      <li><strong>Не подаваться в Mercadona / Lidl / Aldi.</strong> Закрытые тендеры, IFS Food обязательно, минимум 5+ т/неделя, цикл 12-24 мес.</li>
+      <li><strong>Не пытаться выиграть Don Pan 3000 на цене в mass-market retail.</strong> Это путь в минус. Целиться в премиум-нишу и KM0.</li>
+      <li><strong>Не идти в круизные суда.</strong> IFS Food + supplier audit + USD 2-5M insurance + централизованный procurement круизных компаний. Срок 12-18 мес.</li>
+      <li><strong>Не запускать сразу пельмени и готовую еду.</strong> Первые 6-12 месяцев ТОЛЬКО лаваш. Иначе распыление.</li>
+      <li><strong>Не игнорировать halal.</strong> Без сертификации закрыто ~45% базы (марокканцы 241k + кебаб канал).</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Business Model v2 · 28.05.2026. Цифры на основе детального анализа рынка + оценка рисков. Реальные unit-economics уточнить после первого месяца производства. Версия v2 будет когда подтвердятся фактические затраты на муку/аренду/ЗП.</p>
+</footer>
+
+</div>
+</body>
+</html>

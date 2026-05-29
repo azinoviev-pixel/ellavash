@@ -64,7 +64,7 @@
 
 - **Клиентка:** Элен (Helen) — `@mar.elien` в Instagram
 - **Производство:** Льорет-де-Мар, Каталония, Испания
-- **Бренд:** Эль Лаваш (L-Lavash)
+- **Бренд:** El Lavash (латиницей, с пробелом — НЕ «Эль Лаваш», НЕ «EL.LAVASH»)
 - **Сайт:** **ellavash.es** (НЕ l-lavash.es, НЕ ellavash.dscff.es)
 - **Репо:** `azinoviev-pixel/ellavash` (GitHub Pages, ветка `main`)
 - **Docs:** размещаются в `ellavash.es/docs/`

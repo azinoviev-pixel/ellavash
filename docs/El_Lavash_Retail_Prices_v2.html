@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Сводка цен в retail Испании v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  tr:hover td{background:var(--bg-soft)}
+  td.price{font-family:'Fraunces',serif;color:var(--brand);font-weight:600;font-size:15px}
+  td.kg{color:var(--green);font-weight:600;font-family:'Fraunces',serif;font-size:15px}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:780px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  .source{font-size:12px;color:var(--ink-dim);font-style:italic}
+  .price-band{height:24px;border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:13px;font-weight:700;color:#FFF;margin:8px 0}
+  .price-low{background:linear-gradient(90deg,#5C8A3A 0%,#A9C26C 100%)}
+  .price-mid{background:linear-gradient(90deg,#C8A902 0%,#F8D202 100%);color:var(--bg)}
+  .price-prem{background:linear-gradient(90deg,#B3471F 0%,#E61E28 100%)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="El Lavash">
+  <div>
+    <div class="eyebrow">Сводка цен в retail Испании · версия 2 · 28.05.2026</div>
+    <h1>Цены на полке<br><em>flatbread / lavash / pita / naan / wraps</em></h1>
+    <div class="sub">Полная сводка retail-цен по 6 категориям плоских хлебов в супермаркетах Испании. €/кг для прямого сравнения. Источники: магазинные сайты, finditapp, Komparing, Tu Lista del Merca, Carrefour.es, Mercadona.es (verified май 2026).</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v3.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Business_Model_v2.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v2.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Competitive_Analysis_v2.html">Конкуренты</a>
+</nav>
+
+<section>
+  <div class="section-eyebrow">Ценовые диапазоны категорий</div>
+  <h2>Где какая категория стоит</h2>
+  <div class="grid-3">
+    <div class="stat"><div class="stat-num">€3,50-10</div><div class="stat-label">Pita (€/кг)<br>от mass-market до premium</div></div>
+    <div class="stat"><div class="stat-num">€5,75-12</div><div class="stat-label">Lavash (€/кг)<br>от Don Pan до imports</div></div>
+    <div class="stat"><div class="stat-num">€6-15</div><div class="stat-label">Naan (€/кг)<br>от Carrefour PL до Patak's</div></div>
+    <div class="stat"><div class="stat-num">€4-9</div><div class="stat-label">Tortilla / Wrap (€/кг)</div></div>
+    <div class="stat"><div class="stat-num">€8-22</div><div class="stat-label">Pan árabe artesanal (€/кг)</div></div>
+    <div class="stat"><div class="stat-num">€10-25</div><div class="stat-label">Premium specialty (Mestemacher и т.п.)</div></div>
+  </div>
+  <p style="margin-top:18px;font-size:14px;color:var(--ink-soft);">Сводный коридор €3,50-25/кг показывает огромную ценовую дисперсию категорий. El Lavash позиционируется в зоне <strong style="color:var(--brand);">€6-9/кг розница</strong> — выше Hacendado/Don Pan, но ниже premium imports.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Категория 1: Lavash (прямые конкуренты)</div>
+  <h2>Лаваш на полке Испании</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / SKU</th><th>Производитель</th><th>Сеть</th><th>Формат</th><th>Граммаж</th><th>Цена</th><th>€/кг</th><th>Категория</th></tr></thead>
+      <tbody>
+        <tr><td>Pan Lavash 200 г</td><td>Don Pan 3000 SL (Tenerife)</td><td>Mercadona, Carrefour, Eroski, Alcampo, El Corte Inglés, Froiz</td><td>Ambient</td><td>200 г</td><td class="price">€1,60-2,00</td><td class="kg">€8,00-10,00</td><td><span class="tag tag-warm">Mass-market</span></td></tr>
+        <tr><td>Pan de Armenia Lavash 340 г</td><td>Monolith Alimentación España SLU</td><td>Русско-славянские магазины</td><td>Frozen / Ambient</td><td>340 г</td><td class="price">€1,96</td><td class="kg">€5,76</td><td><span class="tag tag-warm">Mid-market этно</span></td></tr>
+        <tr><td>Свежий армянский лаваш (этно-магазины)</td><td>Местные пекари / Yerevan Pastisseria</td><td>Этно-магазины Льорета, BCN</td><td>Fresh</td><td>400-700 г</td><td class="price">€2,50-4,00</td><td class="kg">€5,00-8,00</td><td><span class="tag tag-cool">Premium fresh</span></td></tr>
+        <tr><td>Lavash 200 г от Mestemacher</td><td>Mestemacher (DE импорт)</td><td>El Corte Inglés, premium-магазины</td><td>Ambient</td><td>250 г</td><td class="price">€3,50</td><td class="kg">€14,00</td><td><span class="tag tag-hot">Premium import</span></td></tr>
+        <tr><td><strong>El Lavash (план)</strong></td><td>El Lavash Льорет</td><td>Розница Каталонии</td><td>Fresh / артезанал</td><td>400-700 г</td><td class="price"><strong>€2,80-4,50</strong></td><td class="kg"><strong>€6,00-9,00</strong></td><td><span class="tag tag-cool">Artisan premium</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="price-band price-low" style="width:30%;">Don Pan €8-10</div>
+  <div class="price-band price-low" style="width:25%;">Monolith €5,76</div>
+  <div class="price-band price-mid" style="width:40%;">Этно-магазины €5-8</div>
+  <div class="price-band price-mid" style="width:35%;">El Lavash план €6-9</div>
+  <div class="price-band price-prem" style="width:70%;">Mestemacher €14</div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Категория 2: Pita</div>
+  <h2>Пита на полке</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / SKU</th><th>Производитель</th><th>Сеть</th><th>Формат</th><th>Граммаж</th><th>Цена</th><th>€/кг</th></tr></thead>
+      <tbody>
+        <tr><td>Hacendado Pita 400 г</td><td>Mercadona PL (завод Abrera)</td><td>Mercadona</td><td>Ambient</td><td>400 г</td><td class="price">€1,56-1,95</td><td class="kg">€3,90-4,88</td></tr>
+        <tr><td>Bizcocho Pan Pita</td><td>Mercadona PL</td><td>Mercadona</td><td>Ambient</td><td>240 г</td><td class="price">€0,95-1,20</td><td class="kg">€3,96-5,00</td></tr>
+        <tr><td>Pan Pita Carrefour</td><td>Carrefour PL</td><td>Carrefour</td><td>Ambient</td><td>320 г</td><td class="price">€1,30-1,70</td><td class="kg">€4,06-5,31</td></tr>
+        <tr><td>La Boulangère Pan Pita</td><td>Bridor / Le Duff Group (FR)</td><td>Carrefour, Eroski</td><td>Ambient</td><td>320 г</td><td class="price">€2,41</td><td class="kg">€7,53</td></tr>
+        <tr><td>Pan de Pita 510 г × 6</td><td>Libanofoods / Baraka</td><td>HoReCa BCN, специализированные</td><td>Ambient / vacío</td><td>510 г × 6 шт</td><td class="price">€7,50-9,90</td><td class="kg">€2,45-3,24</td></tr>
+        <tr><td>Pan Pita Bio Eroski</td><td>Eroski PL</td><td>Eroski</td><td>Ambient bio</td><td>240 г</td><td class="price">€1,90-2,40</td><td class="kg">€7,92-10,00</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source">Источники: Mercadona.es, Carrefour.es, Libanofoods.com, Komparing, finditapp.com (май 2026).</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Категория 3: Naan</div>
+  <h2>Наан на полке</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / SKU</th><th>Сеть</th><th>Формат</th><th>Граммаж</th><th>Цена</th><th>€/кг</th></tr></thead>
+      <tbody>
+        <tr><td>Patak's Plain Naan 2 шт</td><td>El Corte Inglés, Carrefour, Hipercor</td><td>Ambient</td><td>270 г</td><td class="price">€2,55-3,40</td><td class="kg">€9,44-12,59</td></tr>
+        <tr><td>Patak's Garlic Naan</td><td>El Corte Inglés, Carrefour</td><td>Ambient</td><td>270 г</td><td class="price">€2,75-3,50</td><td class="kg">€10,19-12,96</td></tr>
+        <tr><td>Carrefour Naan India</td><td>Carrefour</td><td>Ambient</td><td>200 г</td><td class="price">€1,60-2,10</td><td class="kg">€8,00-10,50</td></tr>
+        <tr><td>Carrefour Naan Bio</td><td>Carrefour</td><td>Ambient bio</td><td>180 г</td><td class="price">€2,40-2,90</td><td class="kg">€13,33-16,11</td></tr>
+        <tr><td>Mestemacher Vollkorn Naan</td><td>Premium-магазины, El Corte Inglés</td><td>Ambient</td><td>250 г</td><td class="price">€3,80-4,50</td><td class="kg">€15,20-18,00</td></tr>
+        <tr><td>Свежий naan (этно)</td><td>Индийские/пакистанские магазины</td><td>Fresh</td><td>200-300 г</td><td class="price">€2,00-3,50</td><td class="kg">€7,00-13,00</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Категория 4: Tortilla / Wrap</div>
+  <h2>Тортильи и врапы</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / SKU</th><th>Сеть</th><th>Формат</th><th>Граммаж</th><th>Цена</th><th>€/кг</th></tr></thead>
+      <tbody>
+        <tr><td>Hacendado Tortillas Trigo 8 шт</td><td>Mercadona</td><td>Ambient</td><td>320 г</td><td class="price">€1,30-1,60</td><td class="kg">€4,06-5,00</td></tr>
+        <tr><td>Old El Paso Tortillas 8 шт</td><td>Carrefour, Mercadona, Alcampo</td><td>Ambient</td><td>326 г</td><td class="price">€2,10-2,75</td><td class="kg">€6,44-8,43</td></tr>
+        <tr><td>Mission Wraps Originals 6</td><td>Carrefour, Eroski</td><td>Ambient</td><td>370 г</td><td class="price">€2,50-3,15</td><td class="kg">€6,76-8,51</td></tr>
+        <tr><td>Carrefour Tortillas Trigo</td><td>Carrefour</td><td>Ambient</td><td>320 г</td><td class="price">€1,20-1,55</td><td class="kg">€3,75-4,84</td></tr>
+        <tr><td>El Tequito (Lidl PL)</td><td>Lidl</td><td>Ambient</td><td>320 г</td><td class="price">€1,15-1,55</td><td class="kg">€3,59-4,84</td></tr>
+        <tr><td>Mission Wraps Multigrain</td><td>Carrefour, El Corte Inglés</td><td>Ambient</td><td>370 г</td><td class="price">€2,75-3,40</td><td class="kg">€7,43-9,19</td></tr>
+        <tr><td>Bio tortillas Veritas</td><td>Veritas</td><td>Ambient bio</td><td>240 г</td><td class="price">€3,20-3,90</td><td class="kg">€13,33-16,25</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Категория 5: Pan árabe / Pan plano artesano</div>
+  <h2>Арабский хлеб</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / SKU</th><th>Сеть</th><th>Формат</th><th>Граммаж</th><th>Цена</th><th>€/кг</th></tr></thead>
+      <tbody>
+        <tr><td>Hacendado Pan Árabe</td><td>Mercadona</td><td>Ambient</td><td>240 г</td><td class="price">€0,95-1,25</td><td class="kg">€3,96-5,21</td></tr>
+        <tr><td>Carrefour Pan Árabe</td><td>Carrefour</td><td>Ambient</td><td>240 г</td><td class="price">€1,15-1,55</td><td class="kg">€4,79-6,46</td></tr>
+        <tr><td>Свежий pan árabe (мароккан/халяль магаз)</td><td>Halal-карникерии, арабские магазины</td><td>Fresh</td><td>300-500 г</td><td class="price">€1,50-3,00</td><td class="kg">€4,00-7,50</td></tr>
+        <tr><td>Bridor Pan Plano premium</td><td>El Corte Inglés, Carrefour, Hipercor</td><td>Ambient</td><td>300-400 г</td><td class="price">€3,00-4,50</td><td class="kg">€10,00-12,00</td></tr>
+        <tr><td>Pan Pita Artesano Bonpreu KM0</td><td>Bonpreu / Esclat</td><td>Fresh / артезанал</td><td>250-300 г</td><td class="price">€2,80-3,60</td><td class="kg">€11,20-14,40</td></tr>
+        <tr><td>Сэндвич-питы Ametller Origen</td><td>Casa Ametller</td><td>Fresh</td><td>200 г</td><td class="price">€2,40-2,95</td><td class="kg">€12,00-14,75</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Категория 6: Premium / specialty / bio</div>
+  <h2>Премиум-сегмент</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Бренд / SKU</th><th>Сеть</th><th>Формат</th><th>Граммаж</th><th>Цена</th><th>€/кг</th></tr></thead>
+      <tbody>
+        <tr><td>Mestemacher Roggen Vollkorn</td><td>El Corte Inglés, premium</td><td>Ambient</td><td>250 г</td><td class="price">€3,50</td><td class="kg">€14,00</td></tr>
+        <tr><td>Mestemacher Pumpernickel</td><td>El Corte Inglés, premium</td><td>Ambient</td><td>500 г</td><td class="price">€5,50-6,80</td><td class="kg">€11,00-13,60</td></tr>
+        <tr><td>Mestemacher Multiseed Lavash</td><td>El Corte Inglés</td><td>Ambient</td><td>250 г</td><td class="price">€3,80-4,50</td><td class="kg">€15,20-18,00</td></tr>
+        <tr><td>Veritas Pan Plano Bio</td><td>Veritas</td><td>Fresh bio</td><td>200-250 г</td><td class="price">€3,20-4,20</td><td class="kg">€14,00-18,00</td></tr>
+        <tr><td>Bio Specialty (BioSpace, Herbolarios)</td><td>BioSpace, Navarro</td><td>Ambient bio</td><td>200-300 г</td><td class="price">€3,90-5,50</td><td class="kg">€15,00-22,00</td></tr>
+        <tr><td>Артезанальные pekarni Барселоны (Mas Salvi, etc.)</td><td>Premium-кейтеринг каналы</td><td>Fresh</td><td>—</td><td class="price">—</td><td class="kg">€18-25 (estimated)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Цены HORECA опт vs retail</div>
+  <h2>Опт vs розница (сравнение)</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Категория</th><th>Опт-цена (€/кг)</th><th>Розница (€/кг)</th><th>Маркап сети %</th><th>Маржа производителя</th></tr></thead>
+      <tbody>
+        <tr><td>Mass-market лаваш (Don Pan)</td><td>€3,50-4,50</td><td>€8,00-10,00</td><td>120-180%</td><td>~15-20%</td></tr>
+        <tr><td>Mid-market Monolith</td><td>€3,00-3,80</td><td>€5,76</td><td>50-90%</td><td>~15-25%</td></tr>
+        <tr><td>Pita mass-market (Hacendado PL)</td><td>€2,00-2,50</td><td>€3,90-4,88</td><td>~95%</td><td>~10-15%</td></tr>
+        <tr><td>Premium pan plano (Bridor)</td><td>€5,00-6,00</td><td>€10-12</td><td>~100%</td><td>~25-30%</td></tr>
+        <tr><td>Artisan KM0 (Bonpreu)</td><td>€5,00-6,50</td><td>€11-14</td><td>~110%</td><td>~25-35%</td></tr>
+        <tr><td>Premium imports (Mestemacher)</td><td>€7,50-9,00</td><td>€14-18</td><td>~95%</td><td>~30-40%</td></tr>
+        <tr><td><strong>El Lavash план</strong></td><td><strong>€4,50-5,50</strong></td><td><strong>€6-9</strong></td><td><strong>~50-70%</strong></td><td><strong>~25-35%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-soft);">Опт-цены оценочные на основе типичных retail-margin 80-120% в категории. Точные опт-цены конкурентов — коммерческая тайна, можно узнать только через дистрибьюторов или sample-обмен.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Где позиционируется El Lavash</div>
+  <h2>Наш ценовой коридор</h2>
+  <div class="callout callout-good">
+    <h3>Sweet spot El Lavash</h3>
+    <p style="margin-top:0;font-size:17px;">Розница <strong>€6-9/кг</strong>, опт <strong>€4,50-5,50/кг</strong>.</p>
+    <p>Выше Don Pan 3000 (€8-10 розница, generic) на 0% по верху, но реально <em>в другом качественном классе</em> — fresh, локально, артезанал. Ниже imports Bridor/Mestemacher (€10-18) на ~40-50%. В одном поясе с Monolith Pan de Armenia (€5,76) — но они frozen/ambient, мы fresh.</p>
+    <p style="margin-bottom:0;">В Bonpreu KM0 категории «pan plano artesano» — комфортно в €6-9 коридоре, есть аналоги в €11-14 (артезаны Бонпреу). Premium-positioning возможен до €8-9 без потери конкурентоспособности.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Главные выводы по ценам</div>
+  <h2>Что это значит для стратегии</h2>
+  <ul>
+    <li><strong>Mass-market сегмент уже занят Don Pan и Hacendado.</strong> Конкурировать ценой на полке Mercadona/Carrefour невозможно — там €3,50-5,00/кг, нам не реально.</li>
+    <li><strong>Mid-market (€5-8/кг) — главный коридор.</strong> Розница в магазинах, кебабные, отели — есть место для свежего артезанала.</li>
+    <li><strong>Premium imports €10-18/кг показывают, что покупатель готов платить за качество.</strong> Mestemacher и Bridor существуют — значит ниша «artisan flatbread» рабочая.</li>
+    <li><strong>Bonpreu KM0 цены €11-14 за артезанальные — открывают окно для нашего €6-9 wholesale.</strong> Сеть берёт маркап 80-100%, наша отпускная €5,50-7 даст retail €11-14.</li>
+    <li><strong>Опт-цены конкурентов не публичны.</strong> Нужно узнавать через дистрибьюторов или sample-обмен. Bidfood Iberia, Cesta Selecta могут дать ориентир.</li>
+    <li><strong>IVA 4% с октября 2024 — реальное конкурентное преимущество.</strong> Раньше pita/lavash облагался 10%, теперь 4% (BOE-A-2025-3950). +6 п.п. маржи нам и конкурентам.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Retail Prices v2 · 28.05.2026. Источники: Mercadona.es, Carrefour.es, Eroski.es, El Corte Inglés online, Libanofoods.com, Komparing, Tu Lista del Merca, finditapp.com, Bonpreu.cat, Veritas.es, BioSpace.es. Verified май 2026. Цены ориентировочные — могут меняться еженедельно. Опт-цены оценочные. Обновлять каждые 3-6 месяцев.</p>
+</footer>
+
+</div>
+</body>
+</html>
