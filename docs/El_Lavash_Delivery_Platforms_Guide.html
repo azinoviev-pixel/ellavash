@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Гайд по Glovo / Uber Eats / Just Eat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Гайд по Glovo / Uber Eats / Just Eat</h1>
+<div class="sub">Документы, фото, меню, комиссии, сроки активации, скрипты регистрации.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>El Lavash — гайд по delivery-платформам Испании (2026)</h1>
+<p>Документ для подачи производства лаваша «Эль Лаваш» (Lloret de Mar, Catalunya) на основные платформы доставки еды Испании.</p>
+<p>Источник данных: официальные сайты партнёрских порталов платформ (sell.glovoapp.com, merchants.ubereats.com, just-eat.es/partner, bolt.eu/food/merchant), плюс публикации Loomis Pay, Deliverect, Qamarero, Commandeici за 2025–2026 годы. URL в каждом разделе ниже.</p>
+<p>Все денежные суммы — без НДС (IVA), если не указано обратное. Все комиссии — % от суммы заказа без НДС.</p>
+<blockquote>
+<p>[!] Везде, где написано «не удалось точно подтвердить» — значит конкретное число платформа не публикует и оно зависит от индивидуального договора. Это нужно уточнять у партнёр-менеджера на старте переговоров.</p>
+</blockquote>
+<hr />
+<h2>РЕЗЮМЕ — куда подавать Эль Лавашу</h2>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Подавать?</th>
+<th>Тип регистрации</th>
+<th>Приоритет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glovo</td>
+<td>[v] ДА — главная цель</td>
+<td>Tienda / Markets («panadería», прод. категория) + опция «Restaurante» если будут готовые лавашные</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Uber Eats</td>
+<td>[v] ДА</td>
+<td>Restaurant (или Grocery, если фокус на сырой лаваш в магазин)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Just Eat</td>
+<td>[v] ДА, но осторожно с активацией €299</td>
+<td>Restaurante / Tienda</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Bolt Food</td>
+<td>[!] СОМНИТЕЛЬНО — в Lloret de Mar не подтверждено, активна в Мадриде/Барселоне/Малаге</td>
+<td>(пропустить или проверить через app в Lloret)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Yango Eats</td>
+<td>[X] не работает в Испании в 2026</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>1. GLOVO — главная цель (доминирует Costa Brava)</h2>
+<h3>Тип бизнеса</h3>
+<p>Для Эль Лаваша оптимально <strong>двойная стратегия</strong>:<br />
+1. <strong>Glovo Tienda / Markets</strong> (категория «Panadería» — есть в Мадриде и Барселоне в каталоге Glovo) — для продажи свежего лаваша и пиде упаковками.<br />
+2. <strong>Restaurante</strong> — если будут готовые позиции (шаурма-роллы, лаваш-сэндвичи).</p>
+<p>Можно начать только с категории «Panadería», добавить «Comida preparada» позже.</p>
+<p>Cloud kitchen / dark store: Glovo поддерживает «virtual restaurants» и dark stores в крупных городах, но для маленького производителя в Lloret это overhead — не рекомендую на старте.</p>
+<h3>Документы — чек-лист</h3>
+<ul>
+<li>[v] [обязательно] <strong>NIF / CIF</strong> компании или <strong>NIE + alta autónomo</strong> владельца (Элен)</li>
+<li>[v] [обязательно] <strong>Alta en el IAE</strong> (Impuesto de Actividades Económicas) — код для производства/торговли едой</li>
+<li>[v] [обязательно] <strong>Alta en RETA</strong> (Régimen Especial de Trabajadores Autónomos) — если работает как autónomo</li>
+<li>[v] [обязательно] <strong>Licencia de actividad</strong> муниципалитета Lloret de Mar (ayuntamiento)</li>
+<li>[v] [обязательно] <strong>Registro Sanitario</strong> — для производителя пищевой продукции в Каталонии это <strong>RSIPAC</strong> (Registre Sanitari d'Indústries i Productes Alimentaris de Catalunya); если поставка за пределы Каталонии — нужен федеральный <strong>RGSEAA</strong> (Registro General Sanitario de Empresas Alimentarias y Alimentos)</li>
+<li>[v] [обязательно] <strong>HACCP / APPCC</strong> — план анализа рисков (часто требуют письменное подтверждение наличия)</li>
+<li>[v] [обязательно] <strong>IBAN</strong> на компанию/autónomo + подтверждающий документ (выписка из банка)</li>
+<li>[v] [обязательно] <strong>Carnet de Manipulador de Alimentos</strong> на всех сотрудников, контактирующих с едой</li>
+<li>[i] [опционально] <strong>Seguro de Responsabilidad Civil</strong> — Glovo не требует напрямую, но партнёр-менеджер может попросить</li>
+<li>[i] [опционально] Сертификат HALAL / органик / БИО, если есть — повышает доверие</li>
+</ul>
+<h3>Фото — требования</h3>
+<ul>
+<li>Форматы: <strong>JPEG, JPG, PNG, WEBP, TIFF</strong></li>
+<li>Качество: чёткие, резкие, хорошо освещённые, без пикселизации</li>
+<li>Фон: чистый, в идеале монохромный (нейтральный, не отвлекающий)</li>
+<li>Запрещено: текст, водяные знаки, логотипы поверх, руки/части тела в кадре, кропнутый продукт</li>
+<li>Композиция: продукт в центре, <strong>полностью видимый, без обрезки краёв</strong></li>
+<li>Для сэндвичей/роллов/пиде: показать <strong>разрез с начинкой</strong></li>
+<li>Фото каждого блюда + 1 cover-фото фасада/витрины</li>
+</ul>
+<h3>Меню</h3>
+<ul>
+<li>Загрузка через <strong>Glovo Partners Dashboard</strong> (partners.glovoapp.com) — ручной ввод или <strong>поддержка POS-интеграции</strong> (Sinqro, Last.app, Deliverect и др.)</li>
+<li>Минимум позиций: Glovo не публикует жёстко, но рекомендуется <strong>≥10 позиций</strong> для категории; для «Panadería» — все SKU лаваша/пиде с весом и составом</li>
+<li>Обязательно: цена, описание, <strong>аллергены</strong> (по регламенту EU 1169/2011), вес/объём</li>
+<li>Формат: онлайн-редактор; CSV-импорт доступен только через POS-партнёров</li>
+</ul>
+<h3>Комиссии в 2026 (Glovo Spain, по их же странице sell.glovoapp.com/es/es/services/pricing/)</h3>
+<ul>
+<li><strong>Доставка курьером Glovo: 30%</strong> (стандартная ставка)</li>
+<li><strong>Pickup (самовывоз клиентом): 15%</strong></li>
+<li>Self-delivery (своя доставка): по индивидуальному договору, ниже маркетплейс-ставки</li>
+<li>Дополнительно из вторичных источников (Qamarero, Commandeici): фиксированная <strong>cuota semanal до 50–100 €/неделю</strong> (зависит от региона/договора — Lloret de Mar, скорее всего, ближе к 50 €)</li>
+<li>Реальный диапазон по рынку: 25–35%, новые партнёры обычно начинают с 25–30%, после набора объёма можно дотолкаться до 18–22%</li>
+</ul>
+<h3>Установочный fee</h3>
+<ul>
+<li>Стандартного публичного fee нет (Glovo даёт <strong>+50 € новым партнёрам</strong>, акция со страницы pricing)</li>
+<li>Может быть депозит за устройство (часто 0 €, если используется свой планшет/телефон)</li>
+</ul>
+<h3>Срок активации</h3>
+<ul>
+<li>Ответ по заявке: <strong>до 5 рабочих дней</strong></li>
+<li>Активация (от подачи до приёма заказов): <strong>до 15 дней</strong> при положительном решении</li>
+<li>Реалистично с подготовкой меню/фото: <strong>3–4 недели</strong></li>
+</ul>
+<h3>Срок выплат</h3>
+<ul>
+<li>Цикл: <strong>еженедельный или раз в 2 недели</strong> (зависит от договора)</li>
+<li>Glovo автоматически вычитает комиссию + 2.9% + €0.25 на каждую транзакцию (payment processing)</li>
+</ul>
+<h3>URL подачи</h3>
+<ul>
+<li>Главная партнёрская: <strong>https://sell.glovoapp.com/es/es/</strong></li>
+<li>Страница цен / форма авто-регистрации: <strong>https://sell.glovoapp.com/es/es/services/pricing/</strong></li>
+<li>Личный кабинет после регистрации: <strong>https://partners.glovoapp.com/</strong></li>
+</ul>
+<h3>Контакты</h3>
+<ul>
+<li>Email партнёров Испания: <strong>partner.es@glovoapp.com</strong></li>
+<li>Телефон Glovoapp Spain Platform SL: <strong>+34 93 003 80 60</strong> (Барселона, ближе к Lloret чем мадридский офис)</li>
+<li>NIF Glovoapp Spain Platform SL: B67282871</li>
+</ul>
+<h3>Подводные камни / частые причины отказа</h3>
+<ul>
+<li>[X] <strong>Нет RSIPAC</strong> для каталонского производителя — на этом отклоняют чаще всего</li>
+<li>[X] Фото с водяными знаками / логотипами / стоковые → автоматическое отклонение</li>
+<li>[X] Меню без аллергенов → задержка модерации</li>
+<li>[X] Заявка под физлицом без alta autónomo → отказ</li>
+<li>[X] Адрес производства не совпадает с фасадом на фото → проверяющий едет на место</li>
+</ul>
+<h3>Tips для одобрения с первого раза</h3>
+<ul>
+<li>[v] Заранее подготовить <strong>PDF-пакет</strong>: NIF + RSIPAC + лицензия аюнтамьенто + IBAN — отдельным архивом</li>
+<li>[v] Сделать <strong>5–8 фото лаваша/пиде</strong> на белом фоне в одном стиле (минималистичная фуд-фотосессия — 1 день)</li>
+<li>[v] Меню сразу с <strong>аллергенами</strong> (глютен — указать обязательно)</li>
+<li>[v] Использовать существующее присутствие в Instagram <strong>@mar.elien</strong> как «социальное доказательство» в переписке с партнёр-менеджером — добавить ссылку при подаче</li>
+<li>[v] Запросить <strong>категорию «Panadería» + «Comida internacional»</strong> одновременно</li>
+<li>[v] На старте — <strong>только Pickup (15%)</strong>, делать пуш в Instagram «забирай у нас прямо из печи», а через 2–4 недели подключить delivery (30%)</li>
+</ul>
+<hr />
+<h2>2. UBER EATS</h2>
+<h3>Тип бизнеса</h3>
+<ul>
+<li><strong>Restaurant</strong> — оптимально для готовых лавашных позиций</li>
+<li><strong>Grocery</strong> — если фокус на сырой продукт упаковками</li>
+<li>Эль Лавашу: подавать как <strong>Restaurant</strong> + ассортимент с упор на ready-to-eat (роллы, лаваш-сэндвичи, пиде), параллельно можно добавить «свежий лаваш упаковка 5 шт» как товар.</li>
+</ul>
+<h3>Документы — чек-лист</h3>
+<ul>
+<li>[v] [обязательно] <strong>NIF / CIF</strong> + business name (юридическое название)</li>
+<li>[v] [обязательно] <strong>NIE</strong> владельца (Элен) или <strong>DNI</strong> представителя</li>
+<li>[v] [обязательно] <strong>Alta en IAE</strong> (epígrafe соответствующий: производство хлеба / готовая еда)</li>
+<li>[v] [обязательно] <strong>Licencia de actividad</strong> аюнтамьенто Lloret de Mar</li>
+<li>[v] [обязательно] <strong>Registro Sanitario</strong> — RSIPAC (Каталония) или RGSEAA</li>
+<li>[v] [обязательно] <strong>Información tax (modelo 036/037)</strong> — alta en Hacienda</li>
+<li>[v] [обязательно] <strong>IBAN</strong> с подтверждением holder</li>
+<li>[v] [обязательно] <strong>Menú actualizado</strong> — цены + аллергены</li>
+<li>[v] [обязательно] <strong>Permisos / licencias</strong> food safety</li>
+<li>[i] [опционально] Carnet de Manipulador</li>
+<li>[i] [опционально] Сертификат HACCP</li>
+</ul>
+<h3>Фото — требования (универсальные, US-portal в Spain применяются те же)</h3>
+<ul>
+<li>Cover image: <strong>2880×2304 px</strong>, соотношение <strong>5:4</strong>, JPEG</li>
+<li>Menu item photos: ширина <strong>550–10000 px</strong>, высота <strong>440–10000 px</strong>, рекомендуется <strong>минимум 1200×800 px</strong>, соотношение <strong>5:4 до 6:4</strong></li>
+<li>Одно блюдо в кадре, по центру, без коллажей</li>
+<li>Без stock-фото (отклоняется автоматически)</li>
+<li>Cover-фото должно показывать <strong>3–5 разных блюд</strong> (вариация ассортимента)</li>
+<li>Landscape ориентация</li>
+</ul>
+<h3>Меню</h3>
+<ul>
+<li>Загрузка через <strong>Uber Eats Manager</strong> (merchants.ubereats.com/manager/) — личный кабинет после одобрения</li>
+<li>Минимум: точное число Uber не публикует, <strong>рекомендуется ≥8–10 позиций</strong> для нормальной выдачи в поиске</li>
+<li>Обязательно: название, описание, цена, аллергены, фото (хотя бы топ-5 позиций)</li>
+<li>Поддержка POS-интеграций (Deliverect, Sinqro, Otter и др.)</li>
+</ul>
+<h3>Комиссии в 2026 (Uber Eats Spain, по странице merchants.ubereats.com/es/en/pricing/)</h3>
+<ul>
+<li><strong>Uber Delivery (доставка курьером Uber): 30%</strong></li>
+<li><strong>Self-Delivery (своя доставка): 15%</strong></li>
+<li><strong>Pickup (самовывоз): 15%</strong></li>
+<li>Программа <strong>Uber Eats Premium</strong>: 15–20% для топ-партнёров с объёмом <strong>&gt;500 заказов/месяц</strong></li>
+<li>Без активационного fee, без фиксированной месячной квоты (подтверждается официальной страницей и Loomis Pay)</li>
+</ul>
+<h3>Uber Direct (бонус-опция)</h3>
+<ul>
+<li>Стоимость <strong>от 5.20 € за доставку</strong></li>
+<li>Использовать как «доставка с собственного сайта» (например, ellavash.es), не выставляя меню в маркетплейс Uber Eats</li>
+<li>Хорошо для B2B-доставки в отели (если Эль Лаваш будет возить ресторанам)</li>
+</ul>
+<h3>Установочный fee</h3>
+<ul>
+<li><strong>Нет активационного fee</strong> в Испании на 2026 (подтверждено: «no hay cuotas de activación iniciales ni cuotas mensuales fijas»)</li>
+<li>Может быть subscription fee на оборудование (планшет + Uber Eats software) — у Uber это опционально, в Испании в большинстве случаев работает «свой телефон/планшет»</li>
+</ul>
+<h3>Срок активации</h3>
+<ul>
+<li>Подача → ответ + запрос документов: <strong>1–5 рабочих дней</strong></li>
+<li>От подачи полного пакета до live: <strong>обычно 7–14 дней</strong></li>
+<li>Реалистично: <strong>2–3 недели</strong></li>
+</ul>
+<h3>Срок выплат</h3>
+<ul>
+<li><strong>Еженедельные выплаты</strong> на IBAN партнёра (стандарт по Uber Eats EU)</li>
+<li>Деньги приходят за прошлую неделю в начале следующей</li>
+</ul>
+<h3>URL подачи</h3>
+<ul>
+<li>Главная: <strong>https://merchants.ubereats.com/es/en/</strong></li>
+<li>Signup: <strong>https://merchants.ubereats.com/es/en/s/signup/</strong></li>
+<li>Личный кабинет: <strong>https://merchants.ubereats.com/manager/</strong></li>
+</ul>
+<h3>Контакты</h3>
+<ul>
+<li>Email Uber для ресторанов Испания: <strong>restaurants@uber.com</strong> (общеевропейский)</li>
+<li>Help Center: <strong>help.uber.com/merchants-and-restaurants</strong></li>
+<li>Sales-команда конкретно по Каталонии — через форму signup, после подачи назначается local Account Manager</li>
+</ul>
+<h3>Подводные камни</h3>
+<ul>
+<li>[X] Несовпадение названия в <strong>NIF</strong> и <strong>business name на вывеске</strong> → ручная верификация, задержка</li>
+<li>[X] Фото в портретной ориентации → отклонение</li>
+<li>[X] Меню без аллергенов → задержка</li>
+<li>[X] Адрес производства не индексируется Google Maps → доставка не активируется</li>
+<li>[X] Конфликт с уже существующим листингом (если кто-то уже зарегистрировал «Эль Лаваш» как клиент) — потребуется письмо-протест</li>
+</ul>
+<h3>Tips для одобрения с первого раза</h3>
+<ul>
+<li>[v] Сделать <strong>видимую вывеску</strong> на фасаде до подачи (даже временную)</li>
+<li>[v] Зарегистрировать <strong>точный адрес в Google Business</strong> с фото фасада</li>
+<li>[v] Подать сразу с <strong>полным меню и фото</strong> — Uber быстрее одобряет partners, у которых store ready to launch</li>
+<li>[v] Указать <strong>2 типа сервиса</strong>: Delivery + Pickup (увеличивает виральность)</li>
+<li>[v] Включить Uber Direct как опцию для B2B-каналов (отели, кейтеринг)</li>
+</ul>
+<hr />
+<h2>3. JUST EAT (just-eat.es)</h2>
+<h3>Тип бизнеса</h3>
+<ul>
+<li><strong>Restaurante</strong> или <strong>Tienda</strong></li>
+<li>Just Eat исторически больше «restaurant marketplace», но поддерживает и магазины. Для Эль Лаваш — <strong>Restaurante</strong> с обещанием готовых лавашных позиций (роллов, пиде), параллельно «продажа свежего лаваша на вынос».</li>
+</ul>
+<h3>Документы — чек-лист (по странице just-eat.es/partner/registrate)</h3>
+<ul>
+<li>[v] [обязательно] <strong>DNI / NIE</strong> владельца (валидный)</li>
+<li>[v] [обязательно] <strong>NIF</strong> компании, если юрлицо</li>
+<li>[v] [обязательно] <strong>IBAN</strong> + подтверждение</li>
+<li>[v] [обязательно] <strong>Carta o catálogo de productos</strong> (меню) — можно фото с телефона, но <strong>хорошего качества и читаемое</strong></li>
+<li>[v] [обязательно] <strong>Ticket o factura</strong> с адресом ресторана (подтверждение адреса)</li>
+<li>[v] [обязательно] <strong>Foto de la fachada</strong> заведения</li>
+<li>[v] [обязательно] <strong>Imagen del logotipo</strong></li>
+<li>[v] [обязательно] <strong>Datos operativos</strong>: телефон, операционный email, часы работы, дни закрытия, радиус доставки, специализация</li>
+<li>[i] [опционально] <strong>Licencia de actividad + Registro Sanitario</strong> (Just Eat не указывает напрямую, но проверяющий обычно запрашивает)</li>
+<li>[i] [опционально] <strong>Título de propiedad / contrato de alquiler</strong> — подтверждение прав на помещение</li>
+</ul>
+<h3>Фото — требования</h3>
+<ul>
+<li>Форматы: <strong>JPEG или PNG</strong>, размер ≤ 25 MB</li>
+<li>Рекомендуемый размер: <strong>1388×1108</strong> (или 1200×800 для single item с соотношением 3:2)</li>
+<li>Для bundle: <strong>1920×1080</strong>, соотношение 16:9</li>
+<li><strong>Landscape orientation</strong></li>
+<li>Только <strong>одно блюдо</strong> в кадре, по центру</li>
+<li>Запрещено: коллажи, излишний фотошоп, стоковые изображения</li>
+<li>Нужны <strong>права на использование</strong> изображений</li>
+<li>Названия файлов = названия блюд</li>
+</ul>
+<h3>Меню</h3>
+<ul>
+<li>Загрузка через <strong>Orderpad</strong> (присылаемое устройство) + личный кабинет</li>
+<li>Минимум позиций: Just Eat не публикует, обычно <strong>≥10–15</strong></li>
+<li>Аллергены обязательны</li>
+</ul>
+<h3>Комиссии в 2026</h3>
+<ul>
+<li><strong>Стандартная: 15% + 0.30 € за заказ</strong> (если доставка своя/самовывоз) — подтверждено напрямую на сайте just-eat.es/partner/registrate в FAQ</li>
+<li>Многие сторонние источники называют <strong>до 36% при доставке силами Just Eat</strong> (peripheral / negotiable)</li>
+<li>Для нового ресторана <strong>базовая ставка ~15% + 0.30 €</strong> на самовывозе/своей доставке — самая выгодная опция в Испании</li>
+</ul>
+<h3>Установочный fee — ВАЖНО</h3>
+<ul>
+<li><strong>299 € единовременно — alta</strong> (плата за подключение)</li>
+<li><strong>+ 100 € депозит за устройство (Orderpad)</strong> — возвращается при отписке</li>
+<li>Итого на старте: <strong>~399 €</strong></li>
+<li>Это <strong>самый высокий barrier-to-entry</strong> среди 3 платформ. Без активационного fee — только Glovo и Uber Eats.</li>
+</ul>
+<h3>Срок активации</h3>
+<ul>
+<li>Just Eat не публикует точно, типично <strong>2–3 недели</strong> от подачи до старта (нужно дождаться приезда Orderpad по почте)</li>
+</ul>
+<h3>Срок выплат</h3>
+<ul>
+<li><strong>Каждые 15 дней</strong> (с 1 по 15 и с 15 по 30 числа)</li>
+<li>Выплаты приходят <strong>в течение 7 дней</strong> после конца периода: <strong>1–8 числа</strong> и <strong>15–22 числа</strong></li>
+</ul>
+<h3>URL подачи</h3>
+<ul>
+<li>Главная партнёрская: <strong>https://www.just-eat.es/partner/registrate/</strong></li>
+<li>Контакты: <strong>contratos@just-eat.es</strong></li>
+</ul>
+<h3>Подводные камни</h3>
+<ul>
+<li>[X] <strong>399 € upfront</strong> — деньги уходят сразу, до первой продажи</li>
+<li>[X] Если планируется доставка силами Just Eat — фактическая комиссия может быть <strong>до 36%</strong>, обсуждать сразу</li>
+<li>[X] Orderpad — физическое устройство, нужно место в точке продажи; теряется/ломается — депозит не возвращают</li>
+<li>[X] Just Eat теряет долю рынка в Испании vs Glovo / Uber Eats в 2025–2026, особенно за пределами Мадрида/Барселоны</li>
+<li>[X] В Lloret de Mar активность Just Eat ниже, чем Glovo — провернуть выручку сложнее</li>
+</ul>
+<h3>Tips для одобрения с первого раза</h3>
+<ul>
+<li>[v] <strong>Сначала самовывоз</strong> (15% + 0.30 €) — минимизирует риски, окупит 299 € быстрее</li>
+<li>[v] Запросить у партнёра письменно ставку <strong>15% (не 36%)</strong> до подписания</li>
+<li>[v] <strong>Negotiate alta fee</strong> — известны кейсы скидки до 50% для новых брендов в туристических зонах</li>
+<li>[v] <strong>Не платить 299 €</strong> до подтверждения, что в Lloret de Mar есть курьерская сеть Just Eat (через звонок в contratos@just-eat.es) — иначе альта без сеть = только pickup, оно того не стоит</li>
+</ul>
+<hr />
+<h2>4. BOLT FOOD</h2>
+<h3>Статус в Испании 2026</h3>
+<ul>
+<li>Bolt Food активна в <strong>Мадриде, Барселоне, Малаге, Севилье</strong> (топ-города, подтверждено по Wikipedia, Grokipedia и блогам)</li>
+<li>В <strong>Lloret de Mar присутствие НЕ подтверждено</strong> на 2026</li>
+<li>Главная Bolt-страница cities (bolt.eu/en/cities/) показывает города, но <code>bolt-food</code> отдельный сервис, и не все Bolt-города имеют Bolt Food</li>
+</ul>
+<p><strong>Рекомендация:</strong> не подавать заявку до тех пор, пока Элен не проверит лично:<br />
+1. Скачать <strong>Bolt Food app</strong>, ввести адрес производства в Lloret<br />
+2. Если выдача ресторанов есть → значит зона покрытия активна → подавать<br />
+3. Если «нет ресторанов в вашей зоне» → пропустить Bolt Food, не тратить время</p>
+<h3>Если Bolt Food всё-таки активен в Lloret</h3>
+<ul>
+<li>Документы: business registration + valid bank account + dedicated premises for preparing orders</li>
+<li>Steps: (1) sign partnership agreement, (2) submit menus + photos, (3) verify info, (4) go live</li>
+<li>Комиссии: Bolt Food <strong>не публикует</strong> публично, по слухам <strong>20–25%</strong> для рынка EU, обычно ниже Glovo</li>
+<li>Установочный fee: <strong>нет</strong></li>
+<li>Срок активации: типично <strong>1–2 недели</strong></li>
+<li>URL: <strong>https://bolt.eu/en/food/merchant/</strong></li>
+</ul>
+<h3>Контакты</h3>
+<ul>
+<li>Через форму на bolt.eu/en/food/merchant/ — назначается local manager</li>
+<li>Прямого email для Spain не публикуется</li>
+</ul>
+<h3>Подводные камни</h3>
+<ul>
+<li>[X] В Bolt Food в Испании курьерская сеть тоньше, чем у Glovo — заказов меньше</li>
+<li>[X] Bolt в Испании работает по «ley rider» — у курьеров статус сотрудников, что повышает стоимость и косвенно может тормозить экспансию в малые города</li>
+</ul>
+<hr />
+<h2>5. YANGO EATS — статус в Испании 2026</h2>
+<p>[X] <strong>Не работает в Испании на 2026 год.</strong></p>
+<p>Yango (бывшая Yandex.Taxi за пределами РФ) активна в 30+ странах Африки, Ближнего Востока, Латинской Америки, Южной Азии. Food delivery (Yango Eats / Yango Deli) запущена в 2023 в Кот-д'Ивуаре и Замбии, расширена в Израиль, Узбекистан, Казахстан. <strong>Испания в списке отсутствует</strong>, планов на запуск в Каталонии не озвучивалось.</p>
+<p>Перепроверять имеет смысл раз в 6 месяцев — мониторить пресс-релизы yango.com/en_int/news.</p>
+<hr />
+<h2>СВОДНАЯ ТАБЛИЦА: ОДИН ПАКЕТ — ВСЕ 3 ПЛАТФОРМЫ</h2>
+<p>Этот чек-лист — что Элен должна подготовить <strong>один раз</strong>, чтобы подать одновременно на Glovo + Uber Eats + Just Eat (Bolt — пропуск).</p>
+<h3>Юридический пакет (подготовить как PDF-архив <code>EL_LAVASH_LEGAL_PACK.zip</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Документ</th>
+<th>Glovo</th>
+<th>Uber Eats</th>
+<th>Just Eat</th>
+<th>Где получить</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NIE Элен</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>уже есть</td>
+</tr>
+<tr>
+<td>NIF / CIF компании (если юрлицо)</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>уже есть</td>
+</tr>
+<tr>
+<td>Alta en IAE (epígrafe пищепрома)</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>—</td>
+<td>Hacienda, modelo 036/037</td>
+</tr>
+<tr>
+<td>Alta en RETA (если autónomo)</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>—</td>
+<td>Seguridad Social</td>
+</tr>
+<tr>
+<td>Licencia de actividad Lloret de Mar</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>[v] (косвенно)</td>
+<td>Ayuntamiento de Lloret</td>
+</tr>
+<tr>
+<td>RSIPAC (Cataluña)</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>Generalitat de Catalunya / ACSA</td>
+</tr>
+<tr>
+<td>RGSEAA (если есть продажа вне Каталонии)</td>
+<td>опц</td>
+<td>опц</td>
+<td>—</td>
+<td>AESAN</td>
+</tr>
+<tr>
+<td>HACCP / APPCC план</td>
+<td>[v]</td>
+<td>опц</td>
+<td>опц</td>
+<td>внутренний документ</td>
+</tr>
+<tr>
+<td>Carnet de Manipulador сотрудников</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>опц</td>
+<td>онлайн-курс (~30 €/чел)</td>
+</tr>
+<tr>
+<td>IBAN + подтверждение</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>банк</td>
+</tr>
+<tr>
+<td>Ticket/factura с адресом</td>
+<td>—</td>
+<td>—</td>
+<td>[v]</td>
+<td>любая входящая утилитка</td>
+</tr>
+<tr>
+<td>Foto fachada + logo</td>
+<td>—</td>
+<td>[v]</td>
+<td>[v]</td>
+<td>сделать</td>
+</tr>
+</tbody>
+</table>
+<h3>Контент-пакет (подготовить как папку <code>EL_LAVASH_CONTENT_PACK/</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Актив</th>
+<th>Спецификации</th>
+<th>Использовать на</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Логотип</strong></td>
+<td>PNG, прозрачный фон, мин. 500×500 px</td>
+<td>все 3</td>
+</tr>
+<tr>
+<td><strong>Cover-фото 1</strong> (вертикальный для меню)</td>
+<td>JPG, 1200×800 px, 5:4</td>
+<td>Uber Eats, Glovo</td>
+</tr>
+<tr>
+<td><strong>Cover-фото 2</strong> (landscape, 3–5 блюд)</td>
+<td>JPG, 2880×2304 px, 5:4</td>
+<td>Uber Eats</td>
+</tr>
+<tr>
+<td><strong>Фото фасада</strong></td>
+<td>JPG, 1920×1080 px landscape</td>
+<td>Just Eat, Glovo</td>
+</tr>
+<tr>
+<td><strong>Фото блюд</strong> (минимум 8–10)</td>
+<td>JPG/PNG, 1200×800 px минимум, белый фон, одно блюдо в кадре, без водяных знаков</td>
+<td>все 3</td>
+</tr>
+<tr>
+<td><strong>Меню</strong></td>
+<td>Excel или ручной ввод: название / описание / цена / <strong>аллергены</strong> / вес</td>
+<td>все 3 (формат разный, контент идентичный)</td>
+</tr>
+</tbody>
+</table>
+<h3>Список меню (рекомендация для лаваша)</h3>
+<p>Минимум 10 позиций (можно меньше для Glovo Panadería, но больше = лучше выдача):<br />
+1. Лаваш классический 5 шт (упаковка)<br />
+2. Лаваш цельнозерновой 5 шт<br />
+3. Пиде с курицей (1 шт)<br />
+4. Пиде с сыром (1 шт)<br />
+5. Пиде с тыквой/овощами (1 шт)<br />
+6. Шаурма-ролл с курицей<br />
+7. Шаурма-ролл вегетарианская<br />
+8. Лаваш-сэндвич с фалафелем<br />
+9. Кутаб с зеленью<br />
+10. Чурек / лепёшка с кунжутом</p>
+<p>Для каждой позиции — <strong>обязательно аллергены</strong> (глютен, кунжут, молоко, яйца — по списку EU 1169/2011).</p>
+<h3>Операционные данные (общие для всех)</h3>
+<ul>
+<li>Адрес производства: Lloret de Mar (точный — добавить)</li>
+<li>Телефон контактный</li>
+<li>Email операционный</li>
+<li>Часы работы</li>
+<li>Дни закрытия (например, понедельник)</li>
+<li>Радиус доставки (10–15 км для self-delivery, или 0 если только Glovo/Uber курьеры)</li>
+<li>Категории / спецификация: «Panadería», «Comida internacional», «Comida saludable»</li>
+</ul>
+<h3>Порядок действий (стратегия 4 недель)</h3>
+<p><strong>Неделя 1 — пакет</strong><br />
+- Собрать юр-пакет<br />
+- Сделать фотосессию (1 день: 8–10 блюд + фасад + логотип)<br />
+- Написать меню с аллергенами</p>
+<p><strong>Неделя 2 — подача</strong><br />
+- День 1: подать заявку в <strong>Glovo</strong> (sell.glovoapp.com/es/es/) — на pickup-режим 15%<br />
+- День 2: подать заявку в <strong>Uber Eats</strong> (merchants.ubereats.com/es/en/s/signup/) — pickup + delivery<br />
+- День 3: <strong>только связаться</strong> с Just Eat по contratos@just-eat.es — уточнить активность курьерской сети в Lloret de Mar <strong>до оплаты 299 €</strong></p>
+<p><strong>Неделя 3 — переписка + апдейты</strong><br />
+- Отвечать на запросы партнёр-менеджеров<br />
+- Догружать недостающие документы</p>
+<p><strong>Неделя 4 — live</strong><br />
+- Glovo: первые заказы через pickup (15%)<br />
+- Uber Eats: первые заказы через pickup + delivery<br />
+- Just Eat: решение по 299 €</p>
+<hr />
+<h2>ИТОГОВЫЙ ОТЧЁТ (200 слов)</h2>
+<p><strong>Самая дружелюбная к малому бизнесу — Uber Eats.</strong> Прозрачные публичные ставки (30% delivery / 15% pickup / 15% self-delivery), без активационного fee, без фиксированной месячной квоты, недельные выплаты, понятный signup на merchants.ubereats.com. Программа Uber Eats Premium даёт скидку до 15–20% при объёме &gt;500 заказов/месяц.</p>
+<p><strong>Glovo — обязательная позиция, но требовательнее.</strong> Доминирует на Costa Brava, но требует тщательного оформления (RSIPAC, фото без артефактов, аллергены). Комиссия 30% (delivery) / 15% (pickup) плюс возможный фиксированный fee 50 €/неделя — это плата за доступ к самой большой клиентской базе региона. Окно одобрения 5 рабочих дней, активация до 15 дней.</p>
+<p><strong>Just Eat — самое сложное вхождение</strong> из-за 299 € alta + 100 € депозит и до 36% комиссии. В Lloret de Mar Just Eat слабее Glovo, риск переплаты за низкий поток. <strong>Bolt Food</strong> в Lloret не подтверждена — проверять через app. <strong>Yango Eats</strong> в Испании нет.</p>
+<p><strong>Реалистичный срок от «начали готовить пакет» до первой продажи: 4–5 недель</strong>, если документы (RSIPAC + IAE) уже есть. Если RSIPAC надо получать с нуля — добавить <strong>+6–10 недель</strong> на оформление в Generalitat de Catalunya.</p>
+<hr />
+<h2>ИСТОЧНИКИ</h2>
+<ul>
+<li>Glovo Spain — официальные цены и условия: https://sell.glovoapp.com/es/es/services/pricing/</li>
+<li>Glovo Partners Dashboard: https://partners.glovoapp.com/</li>
+<li>Uber Eats Spain — pricing: https://merchants.ubereats.com/es/en/pricing/</li>
+<li>Uber Eats Spain — signup: https://merchants.ubereats.com/es/en/s/signup/</li>
+<li>Just Eat Spain — partner registration: https://www.just-eat.es/partner/registrate/</li>
+<li>Bolt Food — merchant page: https://bolt.eu/en/food/merchant/</li>
+<li>Bolt cities: https://bolt.eu/en/cities/</li>
+<li>Yango Group news: https://yango.com/en_int/news</li>
+<li>Loomis Pay — гайд Uber Eats Spain 2025: https://www.loomispay.com/es-es/blog/2025/09/alta-restaurante-uber-eats</li>
+<li>Loomis Pay — гайд Just Eat 2025: https://es.loomispay.com/blog/2025/11/alta-just-eat-restaurante</li>
+<li>Loomis Pay — гайд Glovo 2025: https://es.loomispay.com/blog/2025/04/dar-de-alta-en-glovo</li>
+<li>Qamarero — комиссии delivery 2025: https://qamarero.com/blog/comisiones-delivery-cuanto-cobran-realmente-las-plataformas/</li>
+<li>Qamarero — комиссии Glovo: https://qamarero.com/blog/cuanto-cobra-glovo-a-los-restaurantes-en-espana-guia/</li>
+<li>Commandeici — комиссии Glovo 2026: https://commandeici.com/es/blogs/guia-restaurante/comision-glovo-tarifas-condiciones-restaurantes</li>
+<li>Deliverect — Glovo 101: https://www.deliverect.com/en/blog/online-food-delivery/glovo-101-the-essential-guide-for-restaurants</li>
+<li>Deliverect — Uber Eats 101: https://www.deliverect.com/en/blog/online-food-delivery/uber-eats-101-the-essential-guide-for-restaurants</li>
+<li>MenuPhotoAI — Just Eat photo guide 2026: https://www.menuphotoai.com/guides/just-eat-photography</li>
+<li>MenuPhotoAI — Uber Eats photo specs 2026: https://www.menuphotoai.com/guides/uber-eats-photography</li>
+<li>Bouzon Digital — Glovo alternatives Spain 2026: https://www.bouzondigital.com/en/glovo-alternatives/</li>
+<li>Glovo FAQ: https://glovoapp.com/docs/en/faq/</li>
+<li>Uber Eats merchant T&amp;C Spain: https://www.uber.com/legal/en/document/?country=spain&amp;lang=es-es&amp;name=uber-eats-merchant-terms-and-conditions</li>
+</ul>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>

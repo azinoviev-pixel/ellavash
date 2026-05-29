@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Food brokers Испании</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Food brokers Испании</h1>
+<div class="sub">Агентства по продвижению пищевых продуктов в HoReCa и retail сегмента Испании.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>El Lavash — Испанские food brokers, sales agencies и representantes комерсиалес</h1>
+<p>Версия: v1 | Дата: 2026-05-29 | Регион: Каталония / Испания</p>
+<hr />
+<h2>ВВЕДЕНИЕ. Что такое food broker и зачем он нужен El Lavash</h2>
+<p><strong>Food broker / agente comercial alimentario / representante de marca</strong> — это профессионал или агентство, которое физически и юридически продаёт продукт производителя на канал (HORECA, retail, дистрибьюторов), не покупая товар на свой баланс. Работает по комиссии (обычно 3–8 % от чистой выручки), фиксу или гибридной схеме. В Испании регулируется <strong>Ley 12/1992 de Contrato de Agencia</strong> (см. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1992-12347">BOE</a>) — агент по этому закону имеет право на компенсацию при разрыве контракта (indemnización por clientela).</p>
+<p><strong>Зачем это El Lavash:</strong></p>
+<ol>
+<li>Малое производство в Льорет-де-Мар не может содержать sales-команду на 4 провинции Каталонии + остальную Испанию.</li>
+<li>У food broker уже есть <strong>открытые двери</strong> в Bonpreu, Caprabo, Carrefour, Makro, Transgourmet, Bidfood — он экономит нам 6–12 месяцев холодных контактов.</li>
+<li>Сети-ритейлеры (Mercadona, Bonpreu, Carrefour) предпочитают работать через homologados-представителей, а не с микро-производителями напрямую.</li>
+</ol>
+<p><strong>Чего food broker НЕ сделает:</strong></p>
+<ul>
+<li>Не разработает ваш бренд и упаковку</li>
+<li>Не пройдёт за вас сертификацию IFS / BRC / Halal</li>
+<li>Не сделает финансовую модель и расчёт оптовых цен</li>
+<li>Не построит ваш сайт и e-commerce</li>
+<li>Чаще не возьмёт стартап без реальных продаж и юр. лица в Испании</li>
+</ul>
+<p><strong>Структура документа.</strong> Ниже 10 категорий компаний, всего ≈ 30 организаций. По каждой — категория, адрес, телефон, email, сайт, описание услуг, реалистичность для El Lavash (1 = реально стартовать, 5 = слишком крупная для нас).</p>
+<hr />
+<h2>1. Agencias de representación comercial alimentaria — испанские sales agencies (HORECA + retail)</h2>
+<p>Это специализированные агентства, представляющие фабрики во всех каналах: HORECA, мажористы, супермаркеты.</p>
+<h3>1.1 Coloma Grup Alimentació, S.L.</h3>
+<ul>
+<li><strong>Категория:</strong> Представительская агенция, мульти-категория, фокус на Каталонии и национальный рынок</li>
+<li><strong>HQ:</strong> Rambla de Catalunya, 56, 4-я планта, пуэрта 2, 08007 Barcelona (<a href="https://www.iberinform.es/empresa/554331/coloma-grup-alimentacio">источник: Iberinform</a>)</li>
+<li><strong>Телефон:</strong> +34 932 18 15 00</li>
+<li><strong>Email:</strong> через форму на <a href="https://www.colomagrupalimentacio.com/es/">colomagrupalimentacio.com</a></li>
+<li><strong>Сайт:</strong> <a href="https://www.colomagrupalimentacio.com/es/">colomagrupalimentacio.com</a></li>
+<li><strong>Что делают:</strong> интегральная представительская услуга — презентация продуктов в сетях, переговоры по условиям, промо-политика, контроль результата. Каналы: супермаркеты, гипермаркеты, Cash &amp; Carry, HORECA-дистрибьюторы.</li>
+<li><strong>Кому помогают:</strong> фабрикантам разных размеров, в основном Каталония + национальное покрытие.</li>
+<li><strong>Кого знают:</strong> работают с «principales cadenas y distribuidores del sector» по их собственному заявлению. На сайте указаны представляемые марки — посмотреть прицельно.</li>
+<li><strong>Стоимость:</strong> не публикуется, типично для агенций такого формата — комиссия 3–6 % + ретейнер за активацию категории.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — серьёзный игрок с историей с 1950 года, но возьмут только при наличии готового продукта, IFS/BRC или эквивалент, и юр. лица.</li>
+</ul>
+<h3>1.2 SFR Representaciones (Sergio Fernández Romero)</h3>
+<ul>
+<li><strong>Категория:</strong> Independent agente comercial alimentación, физлицо-автоном</li>
+<li><strong>Зона работы:</strong> <strong>Aragón, Cataluña y Navarra</strong> — ровно наш регион</li>
+<li><strong>Телефон / email:</strong> через форму на <a href="https://www.sfrfood.es">sfrfood.es</a></li>
+<li><strong>Сайт:</strong> <a href="https://www.sfrfood.es">sfrfood.es</a></li>
+<li><strong>Что делают:</strong> представительство по комиссии, прямые визиты к HORECA-дистрибьюторам, ежедневная работа с cartera. Внешний sales team по cobrar comisión.</li>
+<li><strong>Кому помогают:</strong> марки с «потенциалом роста», не работающие с конечным клиентом, соблюдающие зоны.</li>
+<li><strong>Кого знают:</strong> дистрибьюторы HORECA Каталонии (по его словам).</li>
+<li><strong>Стоимость:</strong> комиссия (% не публикуется, типично 5–8 % для autónomo).</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>1</strong> — формат подходит идеально: индивидуал, наша территория, нет требований гигантского оборота.</li>
+</ul>
+<h3>1.3 Intermediaciones Santa Fé</h3>
+<ul>
+<li><strong>Категория:</strong> Intermediario comercial alimentos y bebidas, национал + интернационал</li>
+<li><strong>Сайт:</strong> <a href="https://intermediacionessantafe.com/intermediario-comercial-alimentos-bebidas/">intermediacionessantafe.com</a></li>
+<li><strong>Что делают:</strong> соединяют фабрикантов с дистрибьюторами, специализированными магазинами, супермаркетами, HORECA. Прямо в их описании: «представляем продукт как наш, неважно — большой бренк или маленький продюсер с амбициями».</li>
+<li><strong>Кому помогают:</strong> mark emergentes, маленькие продюсеры, иностранные компании — есть прямой канал для нас.</li>
+<li><strong>Стоимость:</strong> не публикуется, по запросу.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — по позиционированию открыты к PYME, нужно списаться и узнать комиссию.</li>
+</ul>
+<h3>1.4 LR Partners (Luis Roca &amp; Partners SL)</h3>
+<ul>
+<li><strong>Категория:</strong> Importador-distribuidor + representación для канала HORECA / restauración</li>
+<li><strong>HQ:</strong> Calle Sant Marius, 13 - BJ, Barcelona (<a href="https://www.informa.es/directorio-empresas/Empresa_LUIS-ROCA-PARTNERS.html">Informa</a>)</li>
+<li><strong>Сайт:</strong> <a href="https://www.lrpartners.net">lrpartners.net</a></li>
+<li><strong>Email:</strong> info@lrpartners.es</li>
+<li><strong>Что делают:</strong> представляют итальянские и французские бренды панадерии (Luigi's Bakery), pizza dough, frozen bakery — прямой профиль нашего сектора. Также действуют как импортёр-дистрибьютор, упрощая administrativos.</li>
+<li><strong>Кому помогают:</strong> иностранные и национальные бренды frozen bakery / panadería congelada / HORECA.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — почти прямой профиль (frozen bakery, panadería для HORECA). Сильный кандидат, если они готовы добавить лаваш в свой каталог.</li>
+</ul>
+<h3>1.5 Vamos a Comer (Anna López Fons) — через COACG Girona</h3>
+<ul>
+<li><strong>Категория:</strong> Представительская агенция, специализация итальянские продукты, но активно ищет агентов по Каталонии</li>
+<li><strong>HQ:</strong> C/ Nou, 8 principal 1ra, 17003 Girona (<a href="https://coacg.cat/ofertes-treball/representante-de-alimentacion">COACG</a>)</li>
+<li><strong>Телефон:</strong> +34 972 20 20 40 / móvil +34 669 12 38 96</li>
+<li><strong>Email:</strong> alopez@coacg.cat</li>
+<li><strong>Сайт:</strong> <a href="https://www.vamosacomer.eu">vamosacomer.eu</a></li>
+<li><strong>Что делают:</strong> 3000+ референций alimentación и bebidas (fresco, congelado, seco), двунедельный каталог с promociones. Контракт меркантильный, фикс 500 €/мес + 5 % комиссия.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>3</strong> — они ищут агентов под СВОЙ каталог, не представляют чужие бренды. Полезны как контакт в COACG, не как наш broker.</li>
+</ul>
+<hr />
+<h2>2. Food brokers Spain — типа Acosta / Advantage, но для Испании</h2>
+<p>В Испании нет прямого аналога Acosta или Advantage Solutions (США). Ближайшее — это outsourcing-агентства и individual agentes. Несколько компаний называют себя «food broker»:</p>
+<h3>2.1 Consulting Comex (Food Broker)</h3>
+<ul>
+<li><strong>Категория:</strong> Food broker экспорт / импорт, сырьё и готовые продукты</li>
+<li><strong>Email:</strong> info@consultingcomex.com</li>
+<li><strong>Телефон:</strong> +34 678 147 343</li>
+<li><strong>Сайт:</strong> <a href="https://www.consultingcomex.com">consultingcomex.com</a></li>
+<li><strong>Что делают:</strong> outsourcing-общество с корнями в агропищевом секторе. Соединяют производителей сырья с промышленностью, специалистов по marca blanca с GDO. Сами называют себя «Food Broker en Barcelona, Madrid, Sevilla, Valencia...» — но домом базы является Madrid.</li>
+<li><strong>Кому помогают:</strong> producers raw materials + industria alimentación. Не наш профиль (лаваш — готовый продукт).</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>4</strong> — у них упор на сырьё (cítricos, frutos secos, legumbres). Готовый panadería congelada не их основной поток.</li>
+</ul>
+<h3>2.2 ICT Export Easy</h3>
+<ul>
+<li><strong>Категория:</strong> Broker alimentación, специализация frutos secos (almendra, nuez, pistacho)</li>
+<li><strong>Сайт:</strong> <a href="https://www.ictexporta.com/broker-de-alimentacion/">ictexporta.com/broker-de-alimentacion</a></li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>5</strong> — узкая специализация на сухофруктах, не наш профиль.</li>
+</ul>
+<hr />
+<h2>3. HORECA representatives / agencias B2B Foodservice — кто продвигает PYME-продукты в Bidfood, Makro, Transgourmet</h2>
+<h3>3.1 Dibusal — Agencia HORECA / Foodservice B2B</h3>
+<ul>
+<li><strong>Категория:</strong> Консалтинг и активация канала HORECA, не дистрибьютор и не агент</li>
+<li><strong>HQ:</strong> Barcelona (точный адрес уточняется на сайте)</li>
+<li><strong>Сайт:</strong> <a href="https://dibusal.com">dibusal.com</a></li>
+<li><strong>Что делают:</strong> &gt; 20 лет работы в HORECA-канале Испании. Услуги: go-to-market strategy для производителей, Task Force HORECA для активации PDV, Key Account Management в больших cuentas (Bidfood, Makro, Transgourmet), валидация с шефами, отбор и обучение sales-команд, gastromarketing для emerging brands.</li>
+<li><strong>Кому помогают:</strong> fabricantes, distribuidores, operadores foodservice — открыты к PYME, начинающим в HORECA.</li>
+<li><strong>Кого знают:</strong> имеют прямые контакты в крупных foodservice-дистрибьюторах Испании (Bidfood, Makro, Transgourmet, Pascual Profesional, GM Cash).</li>
+<li><strong>Стоимость:</strong> не публикуется, типично для консалтинга — проектная (5–25 k€) или ретейнер (3–8 k€/мес).</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — лучшая стратегическая консультация для HORECA-входа, но дорого для нашего стартового бюджета. Стоит написать как первый шаг.</li>
+</ul>
+<h3>3.2 Coloma Grup Alimentació (см. секция 1.1)</h3>
+<p>Дублирует, так как покрывает и HORECA.</p>
+<hr />
+<h2>4. Brand promoters / Trade marketing / Merchandising для retail-сетей Bonpreu, Caprabo, Carrefour</h2>
+<p>Эти компании — outsourcing-агентства, специализирующиеся на trade marketing, gestión punto de venta (GPV), promotores, merchandising.</p>
+<h3>4.1 Winche Redes Comerciales</h3>
+<ul>
+<li><strong>Категория:</strong> Outsourcing comercial + gestión punto de venta + специализация Gran Consumo</li>
+<li><strong>Сайт:</strong> <a href="https://www.winche.com">winche.com</a> (упоминается в <a href="https://www.foodretail.es/retailers/Winche-Vicky-Foods-certifica-posicionamiento_0_1790520935.html">FoodRetail</a>)</li>
+<li><strong>Что делают:</strong> 22 года в Gran Consumo, в 2023 слились с французским Sarawak — теперь покрывают España, Portugal, Francia, Bélgica, Países Bajos. Управляют присутствием продукта в PDV для брендов типа Vicky Foods / Dulcesol.</li>
+<li><strong>Кому помогают:</strong> в основном мультинационалы и крупные испанские бренды (≥ 24 M€ оборота клиентов).</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>5</strong> — слишком крупный для нашего стартового масштаба, их минимальный объём проекта явно выше нашего годового бюджета.</li>
+</ul>
+<h3>4.2 Salesland</h3>
+<ul>
+<li><strong>Категория:</strong> Fuerza de ventas presencial, field marketing, активации в PDV</li>
+<li><strong>HQ:</strong> Madrid (с присутствием в Barcelona)</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>5</strong> — большой игрок, работает с национальными брендами, не с микро-PYME.</li>
+</ul>
+<h3>4.3 Eurovendex (Grupo Adecco)</h3>
+<ul>
+<li><strong>Категория:</strong> Outsourcing comercial + field marketing</li>
+<li><strong>Сайт:</strong> часть Adecco Group</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>5</strong> — корпоративный масштаб, не для нас.</li>
+</ul>
+<h3>4.4 grupoSky</h3>
+<ul>
+<li><strong>Категория:</strong> Agencia global marketing promocional + outsourcing, специализация cosmetics + Gran Consumo</li>
+<li><strong>HQ Barcelona:</strong> C/ Gran Via de les Corts Catalanes, 583, 08011 Barcelona</li>
+<li><strong>Телефон Barcelona:</strong> +34 932 524 737</li>
+<li><strong>HQ Madrid:</strong> C/ Gran Vía, 16, 2º, centro-izda., 28013 Madrid</li>
+<li><strong>Телефон Madrid:</strong> +34 913 269 696</li>
+<li><strong>Сайт:</strong> <a href="https://gruposky.es">gruposky.es</a></li>
+<li><strong>Что делают:</strong> outsourcing comercial Sell-In (introducción y posicionamiento) + Sell-Out (multiplicar ventas en PDV). Покрывают: Madrid, Barcelona, Bilbao, Sevilla, Tenerife, Gran Canaria, Lisboa, Oporto, Andorra, Turín, Miami. Гомологированы во всех сетях дистрибуции.</li>
+<li><strong>Кому помогают:</strong> в основном бренды среднего/крупного размера, но из-за широкой сети могут взять локальный проект.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>4</strong> — большие, но имеют доступ во все сети. Для нас — only после стадии масштабирования.</li>
+</ul>
+<h3>4.5 Prosales Field Marketing</h3>
+<ul>
+<li><strong>Категория:</strong> Outsourcing comercial интегральный</li>
+<li><strong>HQ Barcelona:</strong> Avinguda Diagonal, 523, Edifici Atalaya, Planta 21</li>
+<li><strong>HQ Madrid:</strong> C/ Alfonso Gómez, 42C, 28037 Madrid</li>
+<li><strong>Делегации:</strong> Alicante, Las Palmas, Málaga, Palma, Sevilla, Tarragona, Tenerife, Valencia</li>
+<li><strong>Сайт:</strong> <a href="https://prosalesfieldmarketing.com/outsourcing-comercial/">prosalesfieldmarketing.com</a></li>
+<li><strong>Что делают:</strong> экстернализация sales-команды по секторам, gestión PDV.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>4</strong></li>
+</ul>
+<h3>4.6 Externalia</h3>
+<ul>
+<li><strong>Категория:</strong> Outsourcing comercial интегральный + merchandising</li>
+<li><strong>Сайт:</strong> <a href="https://externalia.es">externalia.es</a></li>
+<li><strong>Что делают:</strong> Red Comercial (vendedores, merchans, promotores, telefónica), консалтинг, implantación planogramas, visual merchandising.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>4</strong></li>
+</ul>
+<h3>4.7 Randstad Outsourcing — comercial / trade marketing</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://www.randstad.es/empresas/outsourcing/comercial-marketing/">randstad.es/empresas/outsourcing/comercial-marketing/</a></li>
+<li><strong>Что делают:</strong> GPV, кампании trade marketing, fuerzas de venta, экзекуция promo-стратегий, анализ рынка.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>5</strong> — Randstad масштаб большой, для нас не релевантно.</li>
+</ul>
+<h3>4.8 Eurofirms Outsourcing Comercial</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://www.eurofirms.com/es/es/outsourcing/">eurofirms.com/es/es/outsourcing/</a></li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>5</strong></li>
+</ul>
+<hr />
+<h2>5. Vendor onboarding consultants — помогают пройти homologación в крупных сетях</h2>
+<p>Это специфическая категория — компании, которые помогают пройти процедуру homologación de proveedores в крупных ритейлерах (Carrefour использует <strong>Syndigo</strong> для onboarding-а поставщиков по продуктовым данным).</p>
+<h3>5.1 Syndigo (платформа для Carrefour)</h3>
+<ul>
+<li><strong>Категория:</strong> Платформа onboarding поставщиков для Carrefour</li>
+<li><strong>Сайт:</strong> <a href="https://www.syndigo.com">syndigo.com</a></li>
+<li><strong>Что делают:</strong> обязательная платформа для submission product data поставщиков Carrefour в Europe. Не консалтинг — техническая платформа.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> не консалтинг, это будущий <strong>обязательный</strong> шаг.</li>
+</ul>
+<h3>5.2 ACTUALIA Grupo (Consultoría seguridad alimentaria + halal)</h3>
+<ul>
+<li><strong>Категория:</strong> Consultora seguridad alimentaria, helps con homologación, IFS/BRC implementation + Halal</li>
+<li><strong>Сайт:</strong> <a href="https://actualiagrupo.com/consultoria/seguridad-alimentaria/halal">actualiagrupo.com</a></li>
+<li><strong>Покрытие:</strong> Барселона, Жирона, Льейда, Таррагона + остальная Испания</li>
+<li><strong>Что делают:</strong> Implantación IFS, BRC, Halal. Доводят клиентов до получения сертификации.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — нужный сервис для прохождения homologación в Carrefour / Bonpreu / Mercadona, прямой путь к получению IFS / BRC / Halal.</li>
+</ul>
+<h3>5.3 Avanti Lean (Q+ модуль homologación)</h3>
+<ul>
+<li><strong>Категория:</strong> ПО + консалтинг по homologación de proveedores</li>
+<li><strong>Сайт:</strong> <a href="https://www.avanti-lean.com">avanti-lean.com</a></li>
+<li><strong>Что делают:</strong> инструменты для evaluación, certificación, alarmas, гестor incidencias для PYME.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>4</strong> — нужно скорее самим сетям, не поставщикам.</li>
+</ul>
+<hr />
+<h2>6. Halal market specialists — кто помогает PYME-производителям зайти в халяль-канал</h2>
+<p>В Льорет-де-Мар марокканское и сенегальское население — большой потенциал в халяль-сегменте.</p>
+<h3>6.1 Instituto Halal — Junta Islámica (Córdoba)</h3>
+<ul>
+<li><strong>HQ:</strong> C/ Claudio Marcelo nº 17, Planta Primera, 14002 Córdoba</li>
+<li><strong>Телефон:</strong> +34 902 431 937 / +34 957 634 071</li>
+<li><strong>Email:</strong> info@institutohalal.com</li>
+<li><strong>Сайт:</strong> <a href="https://www.institutohalal.com">institutohalal.com</a></li>
+<li><strong>Что делают:</strong> <strong>главный</strong> сертификатор Halal в Испании, &gt; 25 лет, &gt; 500 клиентов (Repsol, Nestlé, Hotel Alanda). Сертификация for канал España + Latinoamérica + страны OIC. Trazabilidad farm-to-fork.</li>
+<li><strong>Кому помогают:</strong> все размеры. Открыты к PYME.</li>
+<li><strong>Стоимость:</strong> аудит + сертификация, типично 1500–5000 €/год для маленького производителя (зависит от количества SKU).</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>1</strong> — главный, признанный, обязательный для серьёзного халяль-канала.</li>
+</ul>
+<h3>6.2 Halal Consulting (Málaga)</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://www.halalconsulting.es">halalconsulting.es</a></li>
+<li><strong>Телефон:</strong> +34 951 770 923</li>
+<li><strong>Email:</strong> info@halalconsulting.es</li>
+<li><strong>Что делают:</strong> 100 % испанская сертификатор. <strong>Único agente oficial reconocido por Emiratos Árabes Unidos y Qatar para emitir certificados Halal en España.</strong> Сертификация vigencia 3 года, ежегодный аудит.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — особенно ценно если планируем экспорт в страны Залива.</li>
+</ul>
+<h3>6.3 HQC España (Halal Quality Control Europe)</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://www.hqceurope.com/hqc-espana">hqceurope.com/hqc-espana</a></li>
+<li><strong>Email:</strong> info@hqceurope.com</li>
+<li><strong>Телефон:</strong> +34 919 049 760 / +34 626 164 724</li>
+<li><strong>Что делают:</strong> европейская халяль-сертификатор (France, España, Belgique, Nederland, Italia, Deutschland, Portugal, Polska, Danmark, Österreich). Сильна в экспорте в Indonesia, нужен HQC сертификат там.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — особенно для экспорта в SE Asia.</li>
+</ul>
+<h3>6.4 Halal Safety Certification (Murcia)</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://halalsafety.com">halalsafety.com</a></li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>3</strong></li>
+</ul>
+<h3>6.5 Halal Food Quality</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://www.halalfoodquality.com/nosotros-certificadora-halal/">halalfoodquality.com</a></li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>3</strong></li>
+</ul>
+<h3>6.6 eHalal.io Barcelona</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://es.ehalal.io/halal-certification-in-barcelona/">es.ehalal.io/halal-certification-in-barcelona/</a></li>
+<li><strong>Что делают:</strong> консалтинг по сертификации Halal в Барселоне, помощь импорт/экспорт.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>3</strong></li>
+</ul>
+<hr />
+<h2>7. Export promoters / госагентства (БЕСПЛАТНЫЕ или дотируемые)</h2>
+<p>Эти каналы <strong>бесплатные</strong> или существенно дотируемые. Обязательны к использованию до коммерческих brokers.</p>
+<h3>7.1 ICEX España Exportación e Inversiones</h3>
+<ul>
+<li><strong>HQ:</strong> Paseo de la Castellana, 14, 28046 Madrid</li>
+<li><strong>Телефон:</strong> +34 913 497 100</li>
+<li><strong>Email:</strong> informacion@icex.es</li>
+<li><strong>Сайт:</strong> <a href="https://www.icex.es">icex.es</a></li>
+<li><strong>Что делают:</strong> госагентство при Ministerio de Economía. Сеть <strong>196 стран</strong>, ≈ 100 oficinas comerciales за рубежом. Услуги: участие в ferias, misiones comerciales, агендас компрадоров, информация о рынках, ICEX Next program (до 24 000 € субвенции на PYME для экспорта).</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>1</strong> — ОБЯЗАТЕЛЬНО первый шаг для экспорта. Бесплатные базовые услуги + субвенция ICEX Next.</li>
+<li><strong>ICEX Next требования:</strong> PYME / startup, продукт со своей маркой, оборот &gt; 300 000 € предыдущий год, корпсайт на иностранном языке.</li>
+</ul>
+<h3>7.2 ACCIÓ — Catalonia Trade &amp; Investment (Generalitat de Catalunya)</h3>
+<ul>
+<li><strong>HQ:</strong> Paseo de Gracia, 129, 08008 Barcelona</li>
+<li><strong>Телефон:</strong> +34 93 476 72 06</li>
+<li><strong>Email:</strong> info.accio@gencat.cat / ajuts.accio@accio.cat</li>
+<li><strong>Сайт:</strong> <a href="https://www.accio.gencat.cat/es/inici/index.html">accio.gencat.cat</a></li>
+<li><strong>Что делают:</strong> 40 oficinas exteriores, покрытие &gt; 100 рынков. Программы для каталонских PYME:</li>
+<li><strong>Cupons d'internacionalització: Estratègia d'exportació</strong> — до 8 000 € субвенции при условиях</li>
+<li><strong>Cupons per a Començar a Exportar</strong> — до 10 500 € субвенции</li>
+<li><strong>Oficina técnica de barreras a la internacionalización</strong> — бесплатные консультации по таможне, тарифам, барьерам</li>
+<li><strong>Catalonia Trade Portal</strong> — БД 100 000+ импортёров мира</li>
+<li><strong>Требования:</strong> PYME с операционной базой в Каталонии, минимум 250 000 € оборот предыдущего года, web на иностранном языке, &lt; 25 % экспорта в общем обороте.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>1</strong> — ОБЯЗАТЕЛЬНО для нас, мы Каталония, мы PYME. БЕСПЛАТНО.</li>
+</ul>
+<h3>7.3 FIAB — Federación Española de Industrias de la Alimentación y Bebidas</h3>
+<ul>
+<li><strong>CIF:</strong> G-28577922</li>
+<li><strong>Email:</strong> v.puente@fiab.es (Verónica Puente — responsable Internacionalización)</li>
+<li><strong>Сайт:</strong> <a href="https://fiab.es">fiab.es</a></li>
+<li><strong>Что делают:</strong> объединяет 44 ассоциации сектора (&gt;3 000 предприятий). Конвенио с MAPA + ICEX на участие в 13 феериях международных (Fine Food Australia, ISM Middle East, PLMA Chicago, Food Ingredients Europe и др.). Subvenciones и actividades de promoción.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — нужен для масштабирования экспорта, но требует членства в одной из 44 ассоциаций сектора (для frozen bakery — это CEOPAN или ASEMAC).</li>
+</ul>
+<hr />
+<h2>8. Sales outsourcing — компании, берущие на себя sales team как сервис для PYME</h2>
+<p>Помимо больших Winche / Salesland / grupoSky / Eurovendex (см. секция 4), есть средние/малые:</p>
+<h3>8.1 Externalia</h3>
+<p>(см. секция 4.6) — реалистично только при стадии масштабирования.</p>
+<h3>8.2 Heading2Market</h3>
+<ul>
+<li><strong>Категория:</strong> Ventas, marketing y customer experience outsourcing</li>
+<li><strong>Сайт:</strong> упоминается в <a href="https://www.apd.es/outsourcing-comercial-beneficios-ejemplos/">APD-обзоре</a></li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>4</strong></li>
+</ul>
+<h3>8.3 Konecta, Atento, Concentrix</h3>
+<ul>
+<li>Все три — мега-операторы customer experience и outsourcing comercial. <strong>5/5 — НЕ для нас.</strong></li>
+</ul>
+<hr />
+<h2>9. Independent commercial agents (Ley 12/1992 — Contrato de Agencia)</h2>
+<p>Это форма работы — индивидуальный agente comercial autónomo. Найти таких можно через колегиальные каталоги.</p>
+<h3>9.1 Через Colegios de Agentes Comerciales — Каталония</h3>
+<p>Это официальный путь поиска проверенных агентов. Все агенты в Испании должны быть <strong>colegiados</strong> (закон обязывает).</p>
+<p><strong>Consell de Col·legis d'Agents Comercials de Catalunya:</strong><br />
+- <strong>Адрес:</strong> Casp, 130, 08013 Barcelona<br />
+- <strong>Телефон:</strong> +34 932 31 94 12<br />
+- <strong>Email:</strong> consell.catala@colegioac.es<br />
+- <strong>Presidenta:</strong> Pilar Pàmpols Ferre</p>
+<p><strong>Colegio de Barcelona:</strong><br />
+- <strong>Адрес:</strong> Casp, 130, 08013 Barcelona<br />
+- <strong>Телефон:</strong> +34 932 31 94 12<br />
+- <strong>Email:</strong> barcelona@colegioac.es<br />
+- <strong>Сайт:</strong> <a href="http://www.coacb.com">coacb.com</a><br />
+- <strong>Presidente:</strong> Enrique Enrech Artal</p>
+<p><strong>Colegio de Girona (наш ближайший):</strong><br />
+- <strong>Адрес:</strong> C/ Nou, 8, Pral. 1ª, 17001 Girona<br />
+- <strong>Телефон:</strong> +34 972 20 20 40<br />
+- <strong>Email:</strong> girona@colegioac.es / girona@coacg.cat<br />
+- <strong>Сайт:</strong> <a href="http://www.coacg.cat/">coacg.cat</a><br />
+- <strong>Presidente:</strong> Josep Burgas Cifuentes<br />
+- <strong>Bolsa de trabajo для marcas, которым нужны агенты:</strong> <a href="https://coacg.cat/ofertes-treball/">coacg.cat/ofertes-treball</a></p>
+<p><strong>Colegio de Tarragona:</strong><br />
+- <strong>Адрес:</strong> Ramón y Cajal, 39, 1º 1ª, 43001 Tarragona<br />
+- <strong>Телефон:</strong> +34 977 24 08 21<br />
+- <strong>Email:</strong> tarragona@colegioac.es</p>
+<p><strong>Colegio de Lleida:</strong><br />
+- <strong>Адрес:</strong> Xavier Puig Andreu, 46 Baixos, 25005 Lleida<br />
+- <strong>Телефон:</strong> +34 973 24 94 16<br />
+- <strong>Email:</strong> lleida@colegioac.es</p>
+<p><strong>Реалистично для El Lavash 1–5:</strong> <strong>1</strong> — самый прямой и проверенный путь. <strong>Бесплатно</strong> для marcas разместить оферту на сайте COACG / COACB.</p>
+<h3>9.2 Searcha.net — каталог agentes comerciales</h3>
+<ul>
+<li><strong>Сайт:</strong> <a href="https://www.searcha.net">searcha.net</a></li>
+<li><strong>Что делают:</strong> биржа профилей agentes comerciales по сектору, провинции, каналам.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong></li>
+</ul>
+<hr />
+<h2>10. CGAC — Consejo General + другие национальные ассоциации</h2>
+<h3>10.1 CGAC — Consejo General de Colegios de Agentes Comerciales de España</h3>
+<ul>
+<li><strong>HQ:</strong> Goya, 55, 1º izquierda, Madrid</li>
+<li><strong>Телефон:</strong> +34 914 363 670</li>
+<li><strong>Сайт:</strong> <a href="https://www.cgac.es">cgac.es</a></li>
+<li><strong>Что делают:</strong> 67 колегиев, &gt; 50 000 colegiados по всей Испании. Верховный орган представительства профессии.</li>
+<li><strong>Реалистично для El Lavash 1–5:</strong> <strong>2</strong> — оффициальный путь через них или через провинциальные колегии.</li>
+</ul>
+<h3>10.2 ASEDAS, ANGED, ACES — ассоциации сетей дистрибуции</h3>
+<p>Эти — НЕ агенты, а ассоциации сетей. Но контакт с ними даёт overview сетей-покупателей:<br />
+- <strong>ASEDAS</strong> (<a href="https://www.asedas.org">asedas.org</a>) — Mercadona, Dia, Consum, Lidl, Aldi, Bonpreu и др.<br />
+- <strong>ANGED</strong> (<a href="https://anged.es">anged.es</a>) — Carrefour, El Corte Inglés, Eroski, Alcampo<br />
+- <strong>ACES</strong> (<a href="https://www.asociacionaces.es">asociacionaces.es</a>) — большие распределительные сети.</p>
+<hr />
+<h2>СВОДНЫЙ ТОП-10 РЕКОМЕНДОВАННЫХ ДЛЯ EL LAVASH</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Компания</th>
+<th>Категория</th>
+<th>Стоимость стартовая</th>
+<th>Реалистичность</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>ACCIÓ — Catalonia Trade &amp; Investment</strong></td>
+<td>Госагентство Каталонии</td>
+<td>БЕСПЛАТНО + субвенции до 10 500 €</td>
+<td>1</td>
+<td>Наш регион, наш масштаб, бесплатная консультация по экспорту</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>ICEX España</strong></td>
+<td>Госагентство национальное</td>
+<td>БЕСПЛАТНО + ICEX Next до 24 000 €</td>
+<td>1</td>
+<td>Обязательный первый шаг при экспорте</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Colegio de Agentes Comerciales de Girona (COACG)</strong></td>
+<td>Колегия агентов</td>
+<td>БЕСПЛАТНО разместить оферту</td>
+<td>1</td>
+<td>Прямой доступ к местным проверенным агентам по комиссии</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Instituto Halal — Junta Islámica</strong></td>
+<td>Сертификатор Halal</td>
+<td>1 500–5 000 €/год</td>
+<td>1</td>
+<td>Для входа в халяль-канал Льорет/Бланес/Барселона</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>SFR Representaciones</strong> (Sergio Fernández Romero)</td>
+<td>Индивидуал-агент Aragón+Cataluña+Navarra</td>
+<td>Комиссия 5–8 %</td>
+<td>1</td>
+<td>Готов работать с PYME, наша географическая зона</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Dibusal</strong></td>
+<td>Консалтинг HORECA B2B Barcelona</td>
+<td>Проект 5–25 k€ или ретейнер 3–8 k€/мес</td>
+<td>2</td>
+<td>Прямой профиль и контакты в Bidfood / Makro / Transgourmet</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>ACTUALIA Grupo</strong></td>
+<td>Консалтинг IFS/BRC/Halal</td>
+<td>Проект 3–10 k€</td>
+<td>2</td>
+<td>Нужен для прохождения homologación в Carrefour/Bonpreu</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Coloma Grup Alimentació</strong></td>
+<td>Представительская агенция Barcelona</td>
+<td>Комиссия 3–6 % + ретейнер</td>
+<td>2</td>
+<td>Старейший игрок (с 1950), история, контакты в сетях</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>LR Partners</strong></td>
+<td>Importador-distribuidor + представительство Barcelona</td>
+<td>По запросу</td>
+<td>2</td>
+<td>Прямой профиль frozen bakery / panadería HORECA</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Halal Consulting (Málaga)</strong></td>
+<td>Сертификатор Halal</td>
+<td>1 500–4 000 €/год</td>
+<td>2</td>
+<td>Единственный для UAE и Qatar — если планируем экспорт в Залив</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>RISKS И ОГРАНИЧЕНИЯ — что эти компании НЕ сделают</h2>
+<h3>Что НЕ сделает food broker / агент:</h3>
+<ol>
+<li><strong>Не пройдёт за нас сертификацию IFS / BRC / Halal.</strong> Это самостоятельная задача, ACTUALIA или Instituto Halal — отдельно.</li>
+<li><strong>Не разработает наш бренд, упаковку, ficha técnica.</strong> Это работа фабрики и дизайн-команды.</li>
+<li><strong>Не построит финансовую модель и не утвердит оптовые цены.</strong> Это работа собственника / financiero.</li>
+<li><strong>Не возьмёт нас без минимального оборота / IFS / juridicidad.</strong> Большинство брокеров требует:</li>
+<li>юр. лицо в Испании (SL минимум)</li>
+<li>стабильное производство (минимум 10 000 unidades/мес для retail, 5 000 для HORECA)</li>
+<li>сертификация IFS / BRC / Halal (для крупных сетей)</li>
+<li>ficha técnica с штрих-кодом EAN-13</li>
+<li>маркировка в соответствии Reglamento UE 1169/2011</li>
+<li><strong>Не помогут с logistics / cold chain.</strong> Frozen lavash требует холодную цепь, broker этим не занимается.</li>
+</ol>
+<h3>Стоимостной диапазон (рыночные ориентиры, без письменных подтверждений):</h3>
+<table>
+<thead>
+<tr>
+<th>Тип услуги</th>
+<th>Типичная стоимость</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Комиссия independent agente (Ley 12/1992)</td>
+<td><strong>3–8 %</strong> от net sales</td>
+</tr>
+<tr>
+<td>Ретейнер + комиссия (агентство)</td>
+<td><strong>2 000–5 000 €/мес</strong> ретейнер + <strong>2–5 %</strong> комиссия</td>
+</tr>
+<tr>
+<td>Trade marketing agency проект</td>
+<td><strong>5 000–25 000 €</strong> разовый проект</td>
+</tr>
+<tr>
+<td>Outsourcing field marketing (Winche/grupoSky уровень)</td>
+<td><strong>50 000+ €/год</strong> минимум</td>
+</tr>
+<tr>
+<td>Сертификация IFS / BRC</td>
+<td><strong>3 000–8 000 €</strong> разово + ежегодный аудит <strong>1 500–3 000 €</strong></td>
+</tr>
+<tr>
+<td>Сертификация Halal Instituto</td>
+<td><strong>1 500–5 000 €/год</strong> для маленького производителя</td>
+</tr>
+<tr>
+<td>ICEX Next субвенция</td>
+<td><strong>до 24 000 €</strong> покрытия (компания платит 40 %)</td>
+</tr>
+<tr>
+<td>ACCIÓ Cupón Estrategia de Exportación</td>
+<td><strong>до 8 000 €</strong> субвенция (100 % покрытия)</td>
+</tr>
+<tr>
+<td>ACCIÓ Cupón Começar a Exportar</td>
+<td><strong>до 10 500 €</strong> субвенция (100 % покрытия)</td>
+</tr>
+</tbody>
+</table>
+<h3>Бесплатные ресурсы (приоритет 1):</h3>
+<ul>
+<li><strong>ACCIÓ</strong> — консультация + субвенция (мы Каталония, мы PYME)</li>
+<li><strong>ICEX</strong> — консультация + ICEX Next (PYME с маркой)</li>
+<li><strong>Colegios de Agentes Comerciales (COACG Girona, COACB Barcelona)</strong> — размещение оферты для агентов БЕСПЛАТНО</li>
+<li><strong>FIAB</strong> — через ассоциацию сектора (CEOPAN / ASEMAC для замороженной выпечки)</li>
+<li><strong>Catalonia Trade Portal</strong> — БД 100 000+ импортёров мира БЕСПЛАТНО</li>
+</ul>
+<h3>Что выгоднее сделать самим:</h3>
+<ol>
+<li>Размещение оферты в COACG Girona — ноль € — приходят agentes автономы, отсев и выбор за нами.</li>
+<li>Регистрация в ICEX Next (если потянем 300 k€ оборот) — субвенция &gt; комиссии брокера в первый год.</li>
+<li>Прохождение IFS / BRC через ACTUALIA до того, как звонить в Carrefour / Bonpreu.</li>
+<li>Сертификация Halal через Instituto Halal до того, как звонить халяль-магазинам Льорет/Барселоны.</li>
+</ol>
+<hr />
+<h2>ИСТОЧНИКИ И ССЫЛКИ ПО КОМПАНИЯМ</h2>
+<ul>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-1992-12347">Ley 12/1992 Contrato de Agencia (BOE)</a></li>
+<li><a href="https://www.cgac.es">CGAC — Consejo General Agentes Comerciales</a></li>
+<li><a href="http://www.coacb.com">COACB Barcelona</a></li>
+<li><a href="http://www.coacg.cat/">COACG Girona</a></li>
+<li><a href="https://www.colomagrupalimentacio.com/es/">Coloma Grup Alimentació</a></li>
+<li><a href="https://www.sfrfood.es">SFR Representaciones</a></li>
+<li><a href="https://intermediacionessantafe.com">Intermediaciones Santa Fé</a></li>
+<li><a href="https://www.lrpartners.net">LR Partners</a></li>
+<li><a href="https://dibusal.com">Dibusal</a></li>
+<li><a href="https://www.winche.com">Winche</a></li>
+<li><a href="https://gruposky.es">grupoSky</a></li>
+<li><a href="https://prosalesfieldmarketing.com">Prosales Field Marketing</a></li>
+<li><a href="https://externalia.es">Externalia</a></li>
+<li><a href="https://www.randstad.es/empresas/outsourcing/comercial-marketing/">Randstad Outsourcing</a></li>
+<li><a href="https://www.eurofirms.com/es/es/outsourcing/">Eurofirms Outsourcing</a></li>
+<li><a href="https://www.consultingcomex.com">Consulting Comex (Food Broker)</a></li>
+<li><a href="https://www.ictexporta.com/broker-de-alimentacion/">ICT Export Easy</a></li>
+<li><a href="https://www.institutohalal.com">Instituto Halal</a></li>
+<li><a href="https://www.halalconsulting.es">Halal Consulting</a></li>
+<li><a href="https://www.hqceurope.com/hqc-espana">HQC España</a></li>
+<li><a href="https://halalsafety.com">Halal Safety Certification</a></li>
+<li><a href="https://actualiagrupo.com/consultoria/seguridad-alimentaria/halal">ACTUALIA Grupo Halal</a></li>
+<li><a href="https://www.icex.es">ICEX</a></li>
+<li><a href="https://icexnext.es">ICEX Next</a></li>
+<li><a href="https://www.accio.gencat.cat">ACCIÓ — Catalonia Trade &amp; Investment</a></li>
+<li><a href="https://fiab.es">FIAB</a></li>
+</ul>
+<hr />
+<p>Версия v1, документ создан как research-снимок состояния рынка food brokers Испании для El Lavash. При обновлении создавать v2 без редактирования v1.</p>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>

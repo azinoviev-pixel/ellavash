@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Инструменты и сервисы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Инструменты и сервисы</h1>
+<div class="sub">Каталог 80+ инструментов и сервисов для проекта: CRM, продажи, маркетинг, дизайн, SEO. С ценами 2026.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>El Lavash — стек AI-инструментов, коннекторов и API</h1>
+<p><strong>Версия:</strong> v1<br />
+<strong>Дата:</strong> 29 мая 2026<br />
+<strong>Автор:</strong> Антон (для Элен / <code>@mar.elien</code>)<br />
+<strong>Покрытие:</strong> 16 категорий, 80+ инструментов с ценами, API, оценкой релевантности для проекта.</p>
+<hr />
+<h2>Введение</h2>
+<p>Документ — карта инструментов, которые могут ускорить El Lavash от поиска первых клиентов в Льорет-де-Мар до выхода в сетевую дистрибуцию по Каталонии и Испании, а далее — Европа.</p>
+<p>Принципы отбора:</p>
+<ol>
+<li><strong>Только реально существующие</strong> на май 2026 сервисы с актуальными ценами.</li>
+<li><strong>GDPR-совместимость</strong> — приоритет европейским решениям, где это важно.</li>
+<li><strong>Минимальный стек на старте</strong> — критично, чтобы Элен не утонула в 30 подписках; роадмап ниже разводит инструменты по фазам M1-3 / M3-6 / M6-12.</li>
+<li><strong>API / MCP</strong> — отмечено, какие можно подключить в  напрямую (через коннекторы) или интегрировать через n8n / Zapier.</li>
+</ol>
+<p>Каждый инструмент описан в формате:</p>
+<ul>
+<li>Категория • описание (1-2 предложения) • Free tier • Paid цена • API/MCP • Покрытие Испании • Фаза проекта • Альтернативы • Риски.</li>
+</ul>
+<hr />
+<h2>1. CRM / Sales pipeline</h2>
+<p>CRM нужна с первого месяца — иначе контакты в Льорет/Бланесе будут забываться, а WhatsApp-переписки теряться. На старте — бесплатный/дешёвый тариф; масштабирование — после первых 10 повторных клиентов.</p>
+<h3>1.1 HubSpot CRM — <a href="https://www.hubspot.com">hubspot.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Industry-standard CRM с самым щедрым бесплатным тарифом — до 1 млн контактов, сделки, email-tracking, базовая автоматизация.</li>
+<li><strong>Free tier:</strong> Да, очень щедрый (Smart CRM Free, до 5 пользователей).</li>
+<li><strong>Paid:</strong> Starter Sales Hub — $9/seat/мес (annual) или $15/seat/мес (monthly); Professional — от $90/seat/мес.</li>
+<li><strong>API/MCP:</strong> Полный REST API. <strong>Есть официальный -коннектор</strong> через каталог .</li>
+<li><strong>Покрытие Испании:</strong> Полное (испанский интерфейс, EU data residency опционально).</li>
+<li><strong>Фаза:</strong> M1 (бесплатный тариф — записывать все контакты с первого дня).</li>
+<li><strong>Альтернативы:</strong> Folk, Attio, Pipedrive.</li>
+<li><strong>Риски:</strong> При росте быстро дороже Folk/Attio; «бесплатный» → платный переход через 1-2 года почти неизбежен.</li>
+</ul>
+<h3>1.2 Folk — <a href="https://folk.app">folk.app</a></h3>
+<ul>
+<li><strong>Описание:</strong> Современная «лёгкая» CRM с акцентом на личные отношения, WhatsApp/email-интеграцией, групповые рассылки до 100 контактов.</li>
+<li><strong>Free tier:</strong> Да, 100 контактов, 1 пользователь.</li>
+<li><strong>Paid:</strong> Standard — $24/seat/мес (контакты, пайплайн, email campaigns); Premium — $48/seat/мес (sequences, API, dashboards).</li>
+<li><strong>API/MCP:</strong> Есть API на Premium.</li>
+<li><strong>Покрытие Испании:</strong> Полное, есть испанская локализация.</li>
+<li><strong>Фаза:</strong> M1-M3 — лучший выбор для Элен на старте (WhatsApp-интеграция критична).</li>
+<li><strong>Альтернативы:</strong> Attio, Pipedrive.</li>
+<li><strong>Риски:</strong> Меньшая глубина отчётности vs HubSpot/Pipedrive; ограничения по автоматизации.</li>
+</ul>
+<h3>1.3 Pipedrive — <a href="https://www.pipedrive.com">pipedrive.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Визуальный sales pipeline, ориентирован на outbound-команды.</li>
+<li><strong>Free tier:</strong> Нет (только 14-дневный trial).</li>
+<li><strong>Paid:</strong> Essential — $14/seat/мес (annual); Advanced — $29; Professional — $59; Power — $79; Enterprise — $129.</li>
+<li><strong>API/MCP:</strong> Полный REST API, многочисленные интеграции.</li>
+<li><strong>Покрытие Испании:</strong> Полное, испанская локализация.</li>
+<li><strong>Фаза:</strong> M3+ когда нужен серьёзный pipeline (когда лидов &gt; 50).</li>
+<li><strong>Альтернативы:</strong> Close, HubSpot.</li>
+<li><strong>Риски:</strong> Отсутствие free tier; нужны add-ons для email-tracking (+$32/мес).</li>
+</ul>
+<h3>1.4 Attio — <a href="https://attio.com">attio.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Modern data-driven CRM, дизайн уровня Notion, авто-обогащение контактов.</li>
+<li><strong>Free tier:</strong> До 3 пользователей, 50 000 записей, 200 emails/мес.</li>
+<li><strong>Paid:</strong> Plus — $29/seat/мес; Pro — $59/seat/мес.</li>
+<li><strong>API/MCP:</strong> GraphQL/REST API; есть community-MCP сервер.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ — когда нужна гибкая модель данных (HORECA + retail + дистрибьюторы с разными свойствами).</li>
+<li><strong>Альтернативы:</strong> Folk, HubSpot.</li>
+<li><strong>Риски:</strong> Кривая обучения круче чем у Folk; меньше готовых шаблонов для food-индустрии.</li>
+</ul>
+<h3>1.5 Close — <a href="https://www.close.com">close.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Outbound-CRM со встроенным дайлером, SMS, email sequences. Лучший выбор для команд, которые много звонят.</li>
+<li><strong>Free tier:</strong> 14-дневный trial.</li>
+<li><strong>Paid:</strong> Startup — $59/seat/мес; Professional — $109; Enterprise — $149.</li>
+<li><strong>API/MCP:</strong> Полный REST API.</li>
+<li><strong>Покрытие Испании:</strong> Да; испанские номера через интегрированный VoIP.</li>
+<li><strong>Фаза:</strong> M3-M6 если будет outbound-команда из 2-3 человек.</li>
+<li><strong>Альтернативы:</strong> Pipedrive + Aircall (дешевле, но больше склеек).</li>
+<li><strong>Риски:</strong> Дороговато для одиночки; кол-центр — overkill пока нет SDR.</li>
+</ul>
+<h3>1.6 Salesflare — <a href="https://salesflare.com">salesflare.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> B2B CRM с автоматическим заполнением данных из почты, календаря, LinkedIn.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Growth — €29/seat/мес; Pro — €49; Enterprise — €99.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ если нужна автоматизация без ручного ввода.</li>
+<li><strong>Альтернативы:</strong> Folk, Pipedrive.</li>
+<li><strong>Риски:</strong> Меньшая узнаваемость; меньше интеграций с food-нишевыми системами.</li>
+</ul>
+<h3>1.7 Salesforce Essentials → Starter Suite — <a href="https://www.salesforce.com">salesforce.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Enterprise-уровня CRM. Для El Lavash на текущем этапе — overkill.</li>
+<li><strong>Free tier:</strong> 30-дневный trial.</li>
+<li><strong>Paid:</strong> Starter Suite — $25/seat/мес; Pro — $100; Enterprise — $175.</li>
+<li><strong>API/MCP:</strong> Полный API.</li>
+<li><strong>Покрытие Испании:</strong> Полное (испанские партнёры-интеграторы).</li>
+<li><strong>Фаза:</strong> M12+ (если будет 5+ менеджеров и национальная дистрибуция).</li>
+<li><strong>Альтернативы:</strong> HubSpot Professional, Pipedrive Power.</li>
+<li><strong>Риски:</strong> Высокая стоимость владения; внедрение требует консультанта.</li>
+</ul>
+<p><strong>Рекомендация для El Lavash:</strong> старт на <strong>Folk Free</strong> → переход на <strong>HubSpot Starter</strong> или <strong>Pipedrive Essential</strong> при росте сделок &gt; 30/мес.</p>
+<hr />
+<h2>2. Lead generation / Enrichment</h2>
+<p>Поиск контактов закупщиков HORECA, ресторанов, сетей, дистрибьюторов. Главный вопрос — покрытие испанского рынка и легальность (GDPR).</p>
+<h3>2.1 Apollo.io — <a href="https://www.apollo.io">apollo.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> 275M+ контактов, email sequences, dialer, CRM в одном. US-first, но покрытие EU подросло.</li>
+<li><strong>Free tier:</strong> 60 email-credits/мес, 5 mobile credits/мес.</li>
+<li><strong>Paid:</strong> Basic — $49/seat/мес; Professional — $79; Organization — $119 (annual).</li>
+<li><strong>API/MCP:</strong> Полный API. <strong>Есть Apollo MCP сервер</strong> (загружается через ToolSearch / интегрируется через ).</li>
+<li><strong>Покрытие Испании:</strong> Среднее (US-первый, EU-данные подросли в 2025-26, но фильтры по локальным сегментам слабее).</li>
+<li><strong>Фаза:</strong> M2-M3 — старт outbound по HORECA.</li>
+<li><strong>Альтернативы:</strong> Cognism (EU-сильнее), Clay (гибче).</li>
+<li><strong>Риски:</strong> Качество EU-номеров средне; реальная стоимость 2-3x от витрины из-за credit-gates.</li>
+</ul>
+<h3>2.2 Cognism — <a href="https://www.cognism.com">cognism.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> EMEA-сильнейшая база. Phone-verified mobile, GDPR-compliant, лучшая для Европы.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Custom; бенчмарки — $15-30k/год для малых команд (Grow / Elevate).</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Лучшее на рынке (250%+ больше контактов во Франции/Германии vs Apollo; Испания — также сильно).</li>
+<li><strong>Фаза:</strong> M6-M12 (когда бюджет позволит) — для серьёзного национального outbound.</li>
+<li><strong>Альтернативы:</strong> Apollo (дешевле), Lusha.</li>
+<li><strong>Риски:</strong> Цена; нет free trial — нужно говорить с sales.</li>
+</ul>
+<h3>2.3 Clay — <a href="https://www.clay.com">clay.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> «Сборщик» — комбинирует 100+ источников данных, добавляет AI-обогащение, эксклюзивно для технических команд.</li>
+<li><strong>Free tier:</strong> 100 credits/мес.</li>
+<li><strong>Paid:</strong> Starter — $149/мес; Explorer — $349; Pro — $800; Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> Полный API. Поддерживает webhook-интеграцию с .</li>
+<li><strong>Покрытие Испании:</strong> Среднее (Clay сам по себе данные не хранит — берёт из waterfall источников типа Cognism/Apollo/RocketReach).</li>
+<li><strong>Фаза:</strong> M6+ (overkill для одиночного производителя; имеет смысл если будет growth-команда).</li>
+<li><strong>Альтернативы:</strong> Apollo + Hunter (вручную), Instantly.</li>
+<li><strong>Риски:</strong> Сложная кривая обучения; реальная стоимость зависит от waterfall источников.</li>
+</ul>
+<h3>2.4 Lusha — <a href="https://www.lusha.com">lusha.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Email + phone finder через LinkedIn-extension. 1 credit = email, 5 credits = mobile.</li>
+<li><strong>Free tier:</strong> 5 credits/мес.</li>
+<li><strong>Paid:</strong> Pro — $49/seat/мес; Premium — $79; Scale — custom.</li>
+<li><strong>API/MCP:</strong> REST API на Premium+.</li>
+<li><strong>Покрытие Испании:</strong> Среднее; лучше для контактов малых-средних компаний.</li>
+<li><strong>Фаза:</strong> M2-M3 — точечно для поиска контактов конкретных компаний.</li>
+<li><strong>Альтернативы:</strong> Apollo, Cognism, ContactOut.</li>
+<li><strong>Риски:</strong> GDPR — Lusha был в спорах с EU-регуляторами в 2021-22; в 2026 ситуация улучшилась, но осторожность нужна.</li>
+</ul>
+<h3>2.5 ZoomInfo — <a href="https://www.zoominfo.com">zoominfo.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Enterprise-стандарт для US/Canada. Лучшая глубина для крупных компаний.</li>
+<li><strong>Free tier:</strong> Trial.</li>
+<li><strong>Paid:</strong> От $14 995/год для базового плана; реально $30-100k+.</li>
+<li><strong>API/MCP:</strong> Полный API.</li>
+<li><strong>Покрытие Испании:</strong> Среднее (US-сильнее, чем EU).</li>
+<li><strong>Фаза:</strong> Не релевантно для El Lavash в M1-M12.</li>
+<li><strong>Альтернативы:</strong> Cognism, Apollo.</li>
+<li><strong>Риски:</strong> Цена; длинные контракты.</li>
+</ul>
+<h3>2.6 SignalHire — <a href="https://signalhire.com">signalhire.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Email + phone finder. Бюджетная альтернатива Lusha.</li>
+<li><strong>Free tier:</strong> 5 credits.</li>
+<li><strong>Paid:</strong> Lead Generation — $49/мес (350 credits); Business — $99/мес (1 050 credits).</li>
+<li><strong>API/MCP:</strong> REST API на Business+.</li>
+<li><strong>Покрытие Испании:</strong> Слабее Cognism; были compliance-жалобы в EU.</li>
+<li><strong>Фаза:</strong> M2-M3 как бюджетный вариант.</li>
+<li><strong>Альтернативы:</strong> Hunter, Apollo Free.</li>
+<li><strong>Риски:</strong> Compliance-вопросы; точность данных средняя.</li>
+</ul>
+<h3>2.7 Hunter.io — <a href="https://hunter.io">hunter.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Email finder + verifier. Простой, надёжный, ~91% точность.</li>
+<li><strong>Free tier:</strong> 25 searches + 50 verifications/мес.</li>
+<li><strong>Paid:</strong> Starter — $49/мес (500 searches); Growth — $149; Scale — $299; Business — $499.</li>
+<li><strong>API/MCP:</strong> REST API на всех платных.</li>
+<li><strong>Покрытие Испании:</strong> Хорошее (любые доменные шаблоны).</li>
+<li><strong>Фаза:</strong> M1-M2 — основной email-finder для cold outreach.</li>
+<li><strong>Альтернативы:</strong> Snov.io, Anymailfinder.</li>
+<li><strong>Риски:</strong> Только emails, не phone; для phone — отдельный сервис.</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>Hunter.io Free</strong> + <strong>Apollo Free</strong> + ручной LinkedIn до M3. Далее — <strong>Cognism</strong> если будет бюджет, или <strong>Apollo Basic</strong>.</p>
+<hr />
+<h2>3. Email finders / verifiers</h2>
+<h3>3.1 Hunter.io — см. 2.7.</h3>
+<h3>3.2 Snov.io — <a href="https://snov.io">snov.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Email finder + verifier + sender в одном. CRM-функции базовые.</li>
+<li><strong>Free tier:</strong> 50 credits/мес.</li>
+<li><strong>Paid:</strong> Starter — $39/мес (1 000 credits); Pro 5k — $99; Pro 20k — $189; Pro 50k — $369.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное; точность ~81% (ниже Hunter).</li>
+<li><strong>Фаза:</strong> M2-M3 — если нужен «всё в одном».</li>
+<li><strong>Альтернативы:</strong> Hunter, Anymailfinder.</li>
+<li><strong>Риски:</strong> Данные иногда устаревшие (4+ лет); неоднозначные отзывы.</li>
+</ul>
+<h3>3.3 Anymailfinder — <a href="https://anymailfinder.com">anymailfinder.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Email finder с моделью «платишь только за верифицированные».</li>
+<li><strong>Free tier:</strong> 90 search-credits в trial.</li>
+<li><strong>Paid:</strong> Starter — $49/мес (1 000 verified emails); Pro — $149 (5 000); Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Среднее; точность в тестах — ~77.5%.</li>
+<li><strong>Фаза:</strong> M2-M3 как альтернатива Hunter.</li>
+<li><strong>Альтернативы:</strong> Hunter, Snov.io.</li>
+<li><strong>Риски:</strong> Менее популярен → меньше интеграций.</li>
+</ul>
+<h3>3.4 Voila Norbert — <a href="https://www.voilanorbert.com">voilanorbert.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Bulk email finder. Простой интерфейс.</li>
+<li><strong>Free tier:</strong> 50 leads в trial.</li>
+<li><strong>Paid:</strong> Valet — $49/мес (1 000 credits); Butler — $99; Advisor — $249; Counselor — $499.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Среднее.</li>
+<li><strong>Фаза:</strong> Альтернатива Hunter.</li>
+<li><strong>Альтернативы:</strong> Hunter, Snov.io.</li>
+<li><strong>Риски:</strong> Меньше функций vs Hunter за похожую цену.</li>
+</ul>
+<h3>3.5 FindThatLead — <a href="https://findthatlead.com">findthatlead.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Испанский (Барселона!) email finder. Удобный для EU-рынка.</li>
+<li><strong>Free tier:</strong> Да, 50 credits.</li>
+<li><strong>Paid:</strong> Growth — $49/мес (5 000 credits); Startup — $99; Suite — $399.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Лучшее среди finders (родная команда + EU-фокус).</li>
+<li><strong>Фаза:</strong> M1-M3 — хороший выбор для Испании.</li>
+<li><strong>Альтернативы:</strong> Hunter, Snov.</li>
+<li><strong>Риски:</strong> Меньше международной известности; UI на 50% испанский.</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>Hunter Free</strong> для точечного поиска + <strong>FindThatLead</strong> как «локальный» вариант. Avoid дорогих bulk-тарифов до подтверждения retention.</p>
+<hr />
+<h2>4. Email sequence / Outreach</h2>
+<p>Cold email — основной канал в B2B HORECA/retail. Главное — deliverability (письма доходят в inbox, не в спам) и multichannel.</p>
+<h3>4.1 Instantly.ai — <a href="https://instantly.ai">instantly.ai</a></h3>
+<ul>
+<li><strong>Описание:</strong> Cold email с акцентом на unlimited mailboxes, warm-up, B2B lead database 450M+.</li>
+<li><strong>Free tier:</strong> 14-дневный trial.</li>
+<li><strong>Paid:</strong> Growth — $37/мес; Hypergrowth — $97/мес; Light Speed — $358.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное; B2B-база содержит EU-контакты.</li>
+<li><strong>Фаза:</strong> M2-M3 — лучшее value-for-money на старте outbound.</li>
+<li><strong>Альтернативы:</strong> Smartlead, Lemlist.</li>
+<li><strong>Риски:</strong> Deliverability зависит от вашей warming-стратегии; если ошибиться — домен в спаме.</li>
+</ul>
+<h3>4.2 Smartlead — <a href="https://smartlead.ai">smartlead.ai</a></h3>
+<ul>
+<li><strong>Описание:</strong> API-first cold email с unlimited warm-up; стандарт для агентств.</li>
+<li><strong>Free tier:</strong> 14-дневный trial.</li>
+<li><strong>Paid:</strong> Basic — $39/мес; Pro — $94/мес; Custom — $174+.</li>
+<li><strong>API/MCP:</strong> Полный REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ — когда нужна масштабная outbound-машина (&gt;500 emails/день).</li>
+<li><strong>Альтернативы:</strong> Instantly.</li>
+<li><strong>Риски:</strong> Нет встроенной B2B-базы — нужны внешние источники (Apollo/Cognism).</li>
+</ul>
+<h3>4.3 Lemlist — <a href="https://www.lemlist.com">lemlist.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Multichannel (email + LinkedIn) с персонализированными видео и картинками.</li>
+<li><strong>Free tier:</strong> 14-дневный trial.</li>
+<li><strong>Paid:</strong> Email Pro — $79/seat/мес; Multichannel Expert — $109/seat/мес.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное; европейская команда (Париж).</li>
+<li><strong>Фаза:</strong> M3+ для премиальных аккаунтов (топ-50 целей).</li>
+<li><strong>Альтернативы:</strong> Reply.io, La Growth Machine.</li>
+<li><strong>Риски:</strong> Дорого на seat-базе при масштабировании.</li>
+</ul>
+<h3>4.4 Reply.io — <a href="https://reply.io">reply.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Multichannel (email, LinkedIn, calls, SMS, WhatsApp).</li>
+<li><strong>Free tier:</strong> 14-дневный trial.</li>
+<li><strong>Paid:</strong> Email Volume от $59/мес; Multichannel от $99/seat/мес; Agency от $166.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ если нужно multichannel.</li>
+<li><strong>Альтернативы:</strong> Lemlist, La Growth Machine.</li>
+<li><strong>Риски:</strong> Цена; кривая обучения.</li>
+</ul>
+<h3>4.5 La Growth Machine — <a href="https://lagrowthmachine.com">lagrowthmachine.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Французский multichannel: LinkedIn + Email + Twitter + voice. Сильный для EU.</li>
+<li><strong>Free tier:</strong> 14-дневный trial.</li>
+<li><strong>Paid:</strong> Basic — €60/seat/мес; Pro — €100; Ultimate — €150.</li>
+<li><strong>API/MCP:</strong> REST API + Zapier/Make.</li>
+<li><strong>Покрытие Испании:</strong> Полное; EU-команда.</li>
+<li><strong>Фаза:</strong> M3+.</li>
+<li><strong>Альтернативы:</strong> Lemlist, Reply.io.</li>
+<li><strong>Риски:</strong> LinkedIn-автоматизация — серая зона, риск bans.</li>
+</ul>
+<h3>4.6 Mailshake — <a href="https://mailshake.com">mailshake.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Простой US cold email tool.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Starter — $29/seat/мес; Email Outreach — $59; Sales Engagement — $99.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> OK, но US-фокус.</li>
+<li><strong>Фаза:</strong> Альтернатива Instantly.</li>
+<li><strong>Альтернативы:</strong> Instantly, Smartlead.</li>
+<li><strong>Риски:</strong> Меньше deliverability-фокуса vs Instantly.</li>
+</ul>
+<p><strong>Рекомендация:</strong> Старт — <strong>Instantly Growth ($37)</strong> + <strong>Hunter Free</strong> на email-finder; LinkedIn — вручную или <strong>Lemlist</strong> для топ-50 аккаунтов.</p>
+<hr />
+<h2>5. WhatsApp Business automation</h2>
+<p>В Испании WhatsApp — главный B2B-канал для HORECA. Закупщик ресторана быстрее ответит на WhatsApp, чем на email. <strong>Юридически:</strong> B2B-холодная рассылка по WhatsApp = высокий риск (LSSI-CE требует consent). Использовать строго после первого контакта (телефон / визит / email-opt-in).</p>
+<h3>5.1 WhatsApp Business API (Meta direct) — <a href="https://business.whatsapp.com">business.whatsapp.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Прямой доступ к Meta. Требует BSP (Business Solution Provider) или собственной интеграции.</li>
+<li><strong>Free tier:</strong> Утилитарные сообщения в 24-часовом окне = бесплатно.</li>
+<li><strong>Paid:</strong> ~$0.05-0.09 за маркетинговое template-сообщение в Испании; utility — дешевле.</li>
+<li><strong>API/MCP:</strong> Cloud API напрямую от Meta — есть.</li>
+<li><strong>Покрытие Испании:</strong> Native.</li>
+<li><strong>Фаза:</strong> M3-M6 после первых заказов от ресторанов.</li>
+<li><strong>Альтернативы:</strong> через BSP — Wati, Twilio, 360dialog.</li>
+<li><strong>Риски:</strong> Утратить green tick / quality rating при холодных рассылках без opt-in.</li>
+</ul>
+<h3>5.2 Wati — <a href="https://www.wati.io">wati.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Самый популярный no-code BSP. Shared inbox, broadcast, no-code flows.</li>
+<li><strong>Free tier:</strong> Trial 7 дней.</li>
+<li><strong>Paid:</strong> Growth — $49/мес; Pro — $99/мес; Business — $299/мес. + ~20% markup поверх Meta-цен.</li>
+<li><strong>API/MCP:</strong> REST API; webhook-интеграции.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3-M6.</li>
+<li><strong>Альтернативы:</strong> 360dialog (дешевле, без markup), Respond.io.</li>
+<li><strong>Риски:</strong> Markup делает scaling дорогим; expect реальный счёт +30-50% к sticker price.</li>
+</ul>
+<h3>5.3 Twilio (WhatsApp via Programmable Messaging) — <a href="https://www.twilio.com/en-us/messaging/channels/whatsapp">twilio.com/whatsapp</a></h3>
+<ul>
+<li><strong>Описание:</strong> Программный BSP для разработчиков.</li>
+<li><strong>Free tier:</strong> Trial-credits.</li>
+<li><strong>Paid:</strong> $0.005 за сообщение + Meta-rate.</li>
+<li><strong>API/MCP:</strong> Полный API; стандарт индустрии.</li>
+<li><strong>Покрытие Испании:</strong> Полное, но данные на US-серверах (GDPR-риск).</li>
+<li><strong>Фаза:</strong> M6+ если будет своя система.</li>
+<li><strong>Альтернативы:</strong> 360dialog (EU-host).</li>
+<li><strong>Риски:</strong> GDPR (US data residency); нужен разработчик.</li>
+</ul>
+<h3>5.4 360dialog — <a href="https://www.360dialog.com">360dialog.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Berlin-based BSP. EU-data residency, без markup на Meta-сообщения.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> €49/мес платформа + Meta rate (без markup).</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное, EU-friendly.</li>
+<li><strong>Фаза:</strong> M3-M6 — <strong>лучший выбор для GDPR-чувствительной Испании</strong>.</li>
+<li><strong>Альтернативы:</strong> Wati, Respond.io.</li>
+<li><strong>Риски:</strong> UI беднее, чем у Wati; больше нужен developer.</li>
+</ul>
+<h3>5.5 Respond.io — <a href="https://respond.io">respond.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Omnichannel (WhatsApp + Instagram + email + telegram) для customer support.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Starter — $79/мес; Growth — $159; Advanced — $399.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M6+ если станет мультиканальный inbox.</li>
+<li><strong>Альтернативы:</strong> Wati, Chatwoot (open-source).</li>
+<li><strong>Риски:</strong> Цена.</li>
+</ul>
+<h3>5.6 Chatwoot — <a href="https://www.chatwoot.com">chatwoot.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Open-source customer support inbox. Self-hosted = бесплатно.</li>
+<li><strong>Free tier:</strong> Self-hosted бесплатно; Cloud — Hacker ($0 trial).</li>
+<li><strong>Paid:</strong> Startups — $19/инструмент/мес; Business — $39.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M6+ как альтернатива Wati если нужен open-source.</li>
+<li><strong>Альтернативы:</strong> Wati, Respond.io.</li>
+<li><strong>Риски:</strong> Self-hosted = нужен админ.</li>
+</ul>
+<p><strong>Рекомендация:</strong> На старте — <strong>WhatsApp Business app</strong> (бесплатный, ручной). С M3 — <strong>360dialog</strong> или <strong>Wati Growth</strong>.</p>
+<hr />
+<h2>6. Cold call / Voice (с critical-анализом AI voice agents)</h2>
+<p>См. отдельный раздел в конце документа: <strong>«Critical-анализ AI cold calling»</strong>. Здесь — VoIP-телефония и AI-voice-агенты.</p>
+<h3>6.1 Aircall — <a href="https://aircall.io">aircall.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Облачный VoIP для команд. Испанские номера, интеграция с CRM.</li>
+<li><strong>Free tier:</strong> Trial.</li>
+<li><strong>Paid:</strong> Essentials — $30/seat/мес (annual); Professional — $50; AI add-on $10-15.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное (испанские номера).</li>
+<li><strong>Фаза:</strong> M3+ если будет SDR.</li>
+<li><strong>Альтернативы:</strong> JustCall, Dialpad.</li>
+<li><strong>Риски:</strong> Min 3 seats; международные звонки оплачиваются отдельно.</li>
+</ul>
+<h3>6.2 JustCall — <a href="https://justcall.io">justcall.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> VoIP + AI transcription, sentiment, SMS, WhatsApp.</li>
+<li><strong>Free tier:</strong> Trial.</li>
+<li><strong>Paid:</strong> Team — $39/seat/мес; Pro — $69; Pro Plus — $109.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное (номера в 70+ странах).</li>
+<li><strong>Фаза:</strong> M3+.</li>
+<li><strong>Альтернативы:</strong> Aircall, Dialpad.</li>
+<li><strong>Риски:</strong> Цена при росте seats.</li>
+</ul>
+<h3>6.3 RingCentral — <a href="https://www.ringcentral.com">ringcentral.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Enterprise VoIP + UCaaS.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Core — от $20/seat/мес.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M12+ или never (overkill для одного производителя).</li>
+<li><strong>Альтернативы:</strong> Aircall, Dialpad.</li>
+<li><strong>Риски:</strong> Enterprise-фокус.</li>
+</ul>
+<h3>6.4 Dialpad — <a href="https://www.dialpad.com">dialpad.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> VoIP + AI transcription, sentiment включены в базу.</li>
+<li><strong>Free tier:</strong> Trial.</li>
+<li><strong>Paid:</strong> Standard — ~$15/seat/мес.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M6+.</li>
+<li><strong>Альтернативы:</strong> Aircall, JustCall.</li>
+<li><strong>Риски:</strong> Меньше интеграций vs Aircall.</li>
+</ul>
+<h3>6.5 AI Voice agents — Synthflow / Vapi / Bland AI / Retell AI / Air AI</h3>
+<p><strong>Сводно:</strong><br />
+- <strong>Synthflow</strong> — Berlin, EU data residency, SOC 2 / GDPR / HIPAA. От ~$20/мес стартовый.<br />
+- <strong>Vapi</strong> — US, разработчик-ориентированный, ~$0.05-0.10/мин.<br />
+- <strong>Bland AI</strong> — US, оптимизирован под high-volume outbound, US data hosting.<br />
+- <strong>Retell AI</strong> — US, лидер по compliance (SOC 2 Type II / HIPAA / GDPR).<br />
+- <strong>Air AI</strong> — US, enterprise-focus.</p>
+<p><strong>Для El Lavash:</strong> см. раздел Critical-анализ внизу — <strong>отдельные рекомендации</strong>.</p>
+<hr />
+<h2>7. SEO tools</h2>
+<h3>7.1 Ahrefs — <a href="https://ahrefs.com">ahrefs.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Industry-standard SEO с лучшим backlink-индексом. <strong>Уже подключен у Элен через  MCP</strong> — тратить аккуратно.</li>
+<li><strong>Free tier:</strong> Webmaster Tools (для своих сайтов) бесплатно.</li>
+<li><strong>Paid:</strong> Lite — $129/мес; Standard — $249; Advanced — $449; Enterprise — $999.</li>
+<li><strong>API/MCP:</strong> <strong>Официальный  MCP — есть</strong> (подключен).</li>
+<li><strong>Покрытие Испании:</strong> Полное; крупнейший keyword-индекс.</li>
+<li><strong>Фаза:</strong> M1+ (уже подключен).</li>
+<li><strong>Альтернативы:</strong> SEMrush, Moz.</li>
+<li><strong>Риски:</strong> Дорого; credits расходуются быстро при глубоком research.</li>
+</ul>
+<h3>7.2 SEMrush — <a href="https://www.semrush.com">semrush.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> All-in-one SEO + PPC + content + social.</li>
+<li><strong>Free tier:</strong> 10 запросов/день.</li>
+<li><strong>Paid:</strong> Pro — $139.95/мес; Guru — $249.95; Business — $499.95.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> Альтернатива Ahrefs.</li>
+<li><strong>Альтернативы:</strong> Ahrefs, Moz.</li>
+<li><strong>Риски:</strong> Не подключать оба сразу (дубль расходов).</li>
+</ul>
+<h3>7.3 Moz Pro — <a href="https://moz.com">moz.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Domain Authority — авторская метрика; rank tracking.</li>
+<li><strong>Free tier:</strong> Free Moz tools (limited).</li>
+<li><strong>Paid:</strong> Starter — $49/мес; Standard — $99; Medium — $179; Large — $299.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Среднее (US-сильнее).</li>
+<li><strong>Фаза:</strong> Альтернатива.</li>
+<li><strong>Альтернативы:</strong> Ahrefs, SEMrush.</li>
+<li><strong>Риски:</strong> Меньшая глубина индекса.</li>
+</ul>
+<h3>7.4 Ubersuggest — <a href="https://neilpatel.com/ubersuggest">neilpatel.com/ubersuggest</a></h3>
+<ul>
+<li><strong>Описание:</strong> Бюджетный keyword tool от Нила Патела. Lifetime-пожизненная подписка.</li>
+<li><strong>Free tier:</strong> 3 запроса/день.</li>
+<li><strong>Paid:</strong> Individual — $29/мес; Business — $49; Enterprise — $99. Lifetime — от $290.</li>
+<li><strong>API/MCP:</strong> API limited.</li>
+<li><strong>Покрытие Испании:</strong> Среднее.</li>
+<li><strong>Фаза:</strong> M1 как сверка/добор данных.</li>
+<li><strong>Альтернативы:</strong> Ahrefs, SEMrush.</li>
+<li><strong>Риски:</strong> Меньшая глубина данных.</li>
+</ul>
+<h3>7.5 Surfer SEO — <a href="https://surferseo.com">surferseo.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> On-page optimization. NLP-анализ топ-страниц SERP, content briefs.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Essential — $89/мес (ongoing) или $49 annual; Advanced — $179; Max — $299.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное (включая каталонский и испанский).</li>
+<li><strong>Фаза:</strong> M3-M6 при наращивании контента блога.</li>
+<li><strong>Альтернативы:</strong> Frase, Clearscope, NeuronWriter.</li>
+<li><strong>Риски:</strong> Дорого; нужен большой объём контента, чтобы окупить.</li>
+</ul>
+<h3>7.6 Frase — <a href="https://www.frase.io">frase.io</a></h3>
+<ul>
+<li><strong>Описание:</strong> Content briefs + AI writing. Дешевле Surfer.</li>
+<li><strong>Free tier:</strong> 5-дневный trial.</li>
+<li><strong>Paid:</strong> Solo — $15/мес (annual); Basic — $39; Team — $115; Pro — $400.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3-M6.</li>
+<li><strong>Альтернативы:</strong> Surfer, NeuronWriter.</li>
+<li><strong>Риски:</strong> AI-writing не заменяет редактора.</li>
+</ul>
+<h3>7.7 MarketMuse — <a href="https://www.marketmuse.com">marketmuse.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Enterprise content strategy. Personalized Difficulty score.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Standard — $149/мес; Team — $399; Premium — custom (~$1000+/мес).</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M12+ (overkill сейчас).</li>
+<li><strong>Альтернативы:</strong> Surfer, Frase.</li>
+<li><strong>Риски:</strong> Цена.</li>
+</ul>
+<h3>7.8 NeuronWriter — <a href="https://neuronwriter.com">neuronwriter.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Бюджетный NLP content optimizer.</li>
+<li><strong>Free tier:</strong> Trial.</li>
+<li><strong>Paid:</strong> Bronze — $23/мес; Silver — $45; Gold — $69.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3 как дешёвый Surfer.</li>
+<li><strong>Альтернативы:</strong> Frase, Surfer.</li>
+<li><strong>Риски:</strong> Меньше известности.</li>
+</ul>
+<h3>7.9 AnswerThePublic — <a href="https://answerthepublic.com">answerthepublic.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Визуализация «people also ask» запросов. Идеально для новые поисковые блоки Google / FAQ.</li>
+<li><strong>Free tier:</strong> Да, ограниченно.</li>
+<li><strong>Paid:</strong> Individual — $9/мес; Pro — $99; Expert — $199.</li>
+<li><strong>API/MCP:</strong> Нет.</li>
+<li><strong>Покрытие Испании:</strong> Полное (все языки).</li>
+<li><strong>Фаза:</strong> M1-M3 для генерации контент-идей.</li>
+<li><strong>Альтернативы:</strong> AlsoAsked.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>7.10 AlsoAsked — <a href="https://alsoasked.com">alsoasked.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> People Also Asked questions tree.</li>
+<li><strong>Free tier:</strong> 3 запроса/день.</li>
+<li><strong>Paid:</strong> Lite — $15/мес; Pro — $29; Bulk — $69.</li>
+<li><strong>API/MCP:</strong> API на Pro+.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1-M3.</li>
+<li><strong>Альтернативы:</strong> AnswerThePublic.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>7.11 Google Search Console — <a href="https://search.google.com/search-console">search.google.com/search-console</a></h3>
+<ul>
+<li><strong>Описание:</strong> Официальный Google инструмент для отслеживания позиций, индексации, performance.</li>
+<li><strong>Free tier:</strong> <strong>Полностью бесплатный.</strong></li>
+<li><strong>API/MCP:</strong> Google API; Search Console API.</li>
+<li><strong>Покрытие Испании:</strong> Native.</li>
+<li><strong>Фаза:</strong> M1 — подключить ellavash.es сразу.</li>
+<li><strong>Альтернативы:</strong> Нет (must-have).</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>Ahrefs (уже есть)</strong> + <strong>GSC (бесплатно)</strong> + <strong>AnswerThePublic Individual ($9)</strong> на старте.</p>
+<hr />
+<h2>8. Translation / Localization</h2>
+<p>Испания требует ES (испанский), CA (каталонский — Каталония). EN для будущей экспансии.</p>
+<h3>8.1 DeepL Pro — <a href="https://www.deepl.com/pro">deepl.com/pro</a></h3>
+<ul>
+<li><strong>Описание:</strong> Лучший качеством AI-переводчик. Превосходит Google Translate в русском, испанском, каталонском.</li>
+<li><strong>Free tier:</strong> Да, до 500 000 символов/мес через DeepL Free.</li>
+<li><strong>Paid:</strong> Starter — €8.99/мес; Advanced — €28.99; Ultimate — €57.99 (annual).</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> ES + CA (каталонский добавлен в 2024).</li>
+<li><strong>Фаза:</strong> M1.</li>
+<li><strong>Альтернативы:</strong> Google Translate API, Microsoft Translator.</li>
+<li><strong>Риски:</strong> Машинный перевод требует редактуры носителем.</li>
+</ul>
+<h3>8.2 Lokalise — <a href="https://lokalise.com">lokalise.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Translation management system (TMS) для команд.</li>
+<li><strong>Free tier:</strong> Free плана нет, есть trial.</li>
+<li><strong>Paid:</strong> Start — от $120/мес; Essential — $230; Pro — $825.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное (все языки).</li>
+<li><strong>Фаза:</strong> M12+ overkill.</li>
+<li><strong>Альтернативы:</strong> Crowdin, Phrase.</li>
+<li><strong>Риски:</strong> Цена.</li>
+</ul>
+<h3>8.3 Crowdin — <a href="https://crowdin.com">crowdin.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> TMS с интеграцией DeepL/Google.</li>
+<li><strong>Free tier:</strong> Open-source проекты бесплатно.</li>
+<li><strong>Paid:</strong> Pro — $50/мес; Team — $100; Business — $500+.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M12+.</li>
+<li><strong>Альтернативы:</strong> Lokalise.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>8.4 Phrase — <a href="https://phrase.com">phrase.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Enterprise TMS.</li>
+<li><strong>Paid:</strong> Lite — $27/мес; Pro — $135; Business — custom.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Фаза:</strong> M12+.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>DeepL Free</strong> для черновиков; <strong>испанский/каталонский ревью у носителя</strong> (Льорет — двуязычный город, найти консультанта на 50€/час).</p>
+<hr />
+<h2>9. Web / Landing builders</h2>
+<h3>9.1 Framer — <a href="https://www.framer.com">framer.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Современный no-code builder с AI-генерацией дизайна. Лучший speed score.</li>
+<li><strong>Free tier:</strong> Да, free hobby.</li>
+<li><strong>Paid:</strong> Mini — $5/мес; Basic — $15; Pro — $25; Startup — $75; Scale — $300.</li>
+<li><strong>API/MCP:</strong> Headless CMS API.</li>
+<li><strong>Покрытие Испании:</strong> Полное; автоматический перевод через AI.</li>
+<li><strong>Фаза:</strong> M3+ если будет делаться лендинг под линейку продуктов.</li>
+<li><strong>Альтернативы:</strong> Webflow, Carrd.</li>
+<li><strong>Риски:</strong> Локализация — через third-party (Weglot).</li>
+</ul>
+<h3>9.2 Webflow — <a href="https://webflow.com">webflow.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Дизайнерский no-code с CMS и native localization.</li>
+<li><strong>Free tier:</strong> Да, ограниченный workspace.</li>
+<li><strong>Paid:</strong> Basic — $14/мес; CMS — $23; Business — $39; Enterprise — custom. + Localize add-on от $9/мес.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное; native multi-locale.</li>
+<li><strong>Фаза:</strong> M6+ если нужен серьёзный сайт.</li>
+<li><strong>Альтернативы:</strong> Framer.</li>
+<li><strong>Риски:</strong> Кривая обучения круче.</li>
+</ul>
+<h3>9.3 Carrd — <a href="https://carrd.co">carrd.co</a></h3>
+<ul>
+<li><strong>Описание:</strong> Самый простой landing builder. До $19/год за Pro.</li>
+<li><strong>Free tier:</strong> Да.</li>
+<li><strong>Paid:</strong> Pro Lite — $9/год; Pro Standard — $19; Pro Plus — $49.</li>
+<li><strong>API/MCP:</strong> Минимальный.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1 для quick landing.</li>
+<li><strong>Альтернативы:</strong> —</li>
+<li><strong>Риски:</strong> Без CMS — не масштабируется.</li>
+</ul>
+<h3>9.4 GitHub Pages — <a href="https://pages.github.com">pages.github.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> <strong>Уже используется</strong> для ellavash.es.</li>
+<li><strong>Free tier:</strong> Бесплатно.</li>
+<li><strong>Фаза:</strong> M1+ (текущая инфра).</li>
+<li><strong>Риски:</strong> Статический сайт; для динамики нужно сервер.</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>GitHub Pages</strong> для docs (уже есть) + <strong>Framer Basic ($15)</strong> для будущего product-сайта.</p>
+<hr />
+<h2>10. Design / Creative AI</h2>
+<h3>10.1 Midjourney — <a href="https://midjourney.com">midjourney.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Лучшая художественная стилистика. Через Discord или web UI.</li>
+<li><strong>Free tier:</strong> Нет.</li>
+<li><strong>Paid:</strong> Basic — $10/мес; Standard — $30; Pro — $60; Mega — $120.</li>
+<li><strong>API/MCP:</strong> Нет официального API.</li>
+<li><strong>Покрытие Испании:</strong> Языкозависимое (английский промпт).</li>
+<li><strong>Фаза:</strong> M1-M3 для генерации настроенческих визуалов Instagram, hero-баннеров.</li>
+<li><strong>Альтернативы:</strong> Recraft, Adobe Firefly.</li>
+<li><strong>Риски:</strong> Нет коммерческой гарантии в Basic; нужен Standard+ для бизнеса.</li>
+</ul>
+<h3>10.2 Adobe Firefly — <a href="https://www.adobe.com/products/firefly.html">firefly.adobe.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> AI-генератор от Adobe. <strong>Тренирован только на лицензированном контенте</strong> — безопасно для коммерции.</li>
+<li><strong>Free tier:</strong> Ограниченные credits.</li>
+<li><strong>Paid:</strong> Standard — $9.99/мес (2 000 credits); Pro — $29.99; через Creative Cloud — 500-1000 credits.</li>
+<li><strong>API/MCP:</strong> <strong>Adobe MCP — есть</strong> (Firefly + Photoshop + Illustrator). Подключение в  через коннектор.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1-M3 — основной инструмент для упаковки и контента.</li>
+<li><strong>Альтернативы:</strong> Midjourney, Recraft.</li>
+<li><strong>Риски:</strong> Художественная стилистика слабее Midjourney.</li>
+</ul>
+<h3>10.3 Recraft — <a href="https://www.recraft.ai">recraft.ai</a></h3>
+<ul>
+<li><strong>Описание:</strong> AI с фокусом на дизайн, brand kits, <strong>SVG-экспорт</strong>. Идеален для упаковки.</li>
+<li><strong>Free tier:</strong> 30 credits/день.</li>
+<li><strong>Paid:</strong> Basic — $10/мес annual (1 000 credits); Advanced — $33; Pro — $48; Business — $416.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1-M3 — <strong>лучший выбор для упаковки и логотипов</strong>.</li>
+<li><strong>Альтернативы:</strong> Firefly, Midjourney.</li>
+<li><strong>Риски:</strong> Стилистика немного «AI-шная»; нужно итерироваться.</li>
+</ul>
+<h3>10.4 Canva Pro — <a href="https://www.canva.com">canva.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Drag-and-drop дизайн + AI Magic Studio. Огромная библиотека шаблонов.</li>
+<li><strong>Free tier:</strong> Да, щедрый.</li>
+<li><strong>Paid:</strong> Pro — €11.99/мес; Teams — €13/seat/мес.</li>
+<li><strong>API/MCP:</strong> <strong>Есть -коннектор</strong> (Affinity by Canva).</li>
+<li><strong>Покрытие Испании:</strong> Полное (испанский UI и шаблоны).</li>
+<li><strong>Фаза:</strong> M1 — для Instagram, презентаций, листовок.</li>
+<li><strong>Альтернативы:</strong> Adobe Express.</li>
+<li><strong>Риски:</strong> Шаблонность — нужно адаптировать под брендбук.</li>
+</ul>
+<h3>10.5  Image (GPT-4o native image) — <a href="https://chatgpt.com">chatgpt.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Native image gen в  Plus. Хорошо для быстрых mockup.</li>
+<li><strong>Free tier:</strong> Limited.</li>
+<li><strong>Paid:</strong> Plus — $20/мес.</li>
+<li><strong>API/MCP:</strong> OpenAI API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1.</li>
+<li><strong>Альтернативы:</strong> Midjourney.</li>
+<li><strong>Риски:</strong> Стилистика variable.</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>Recraft Basic ($10)</strong> для упаковки + <strong>Canva Pro (€11.99)</strong> для соцсетей + <strong>Midjourney Basic ($10)</strong> для арт-визуалов.</p>
+<hr />
+<h2>11. Image conversion / Vector (логотип → SVG)</h2>
+<h3>11.1 Vectorizer.AI — <a href="https://vectorizer.ai">vectorizer.ai</a></h3>
+<ul>
+<li><strong>Описание:</strong> Лучшее AI-vectorization на 2026. Чистый SVG, плавные кривые.</li>
+<li><strong>Free tier:</strong> Preview unlimited; экспорт — pay-per-use.</li>
+<li><strong>Paid:</strong> Pay-per-image — $0.99; Pro — $9.99/мес; Team — $29/мес.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Не зависит от языка.</li>
+<li><strong>Фаза:</strong> M1 — для перерисовки логотипа El Lavash в SVG.</li>
+<li><strong>Альтернативы:</strong> Adobe Illustrator AI Vectorization, Vector Magic.</li>
+<li><strong>Риски:</strong> Сложные растровые лого могут потребовать ручной чистки.</li>
+</ul>
+<h3>11.2 Vector Magic — <a href="https://vectormagic.com">vectormagic.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Pre-AI tracer, $295 desktop.</li>
+<li><strong>Free tier:</strong> Online preview.</li>
+<li><strong>Paid:</strong> Desktop — $295 one-time; Online — $7.95/мес или $295/год.</li>
+<li><strong>API/MCP:</strong> Нет.</li>
+<li><strong>Фаза:</strong> —</li>
+<li><strong>Альтернативы:</strong> Vectorizer.AI.</li>
+<li><strong>Риски:</strong> Дорого, устаревшая модель.</li>
+</ul>
+<h3>11.3 Adobe Illustrator + AI Vectorization — <a href="https://www.adobe.com/products/illustrator/vectorize-image.html">adobe.com/illustrator</a></h3>
+<ul>
+<li><strong>Описание:</strong> В 2026 добавлен AI Vectorization preset.</li>
+<li><strong>Free tier:</strong> Trial.</li>
+<li><strong>Paid:</strong> Standalone — $20/мес; Creative Cloud All Apps — $60/мес.</li>
+<li><strong>API/MCP:</strong> <strong>Adobe Illustrator MCP</strong> через  (есть).</li>
+<li><strong>Покрытие Испании:</strong> —</li>
+<li><strong>Фаза:</strong> M1 если есть подписка.</li>
+<li><strong>Альтернативы:</strong> Vectorizer.AI.</li>
+<li><strong>Риски:</strong> Цена.</li>
+</ul>
+<h3>11.4 VectorGurus — <a href="https://vectorgurus.com">vectorgurus.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Бесплатный AI-vectorizer.</li>
+<li><strong>Free tier:</strong> Полностью бесплатно.</li>
+<li><strong>Paid:</strong> —</li>
+<li><strong>Фаза:</strong> M1 как первая попытка.</li>
+<li><strong>Риски:</strong> Качество ниже Vectorizer.AI.</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>Vectorizer.AI pay-per-use ($0.99/lo go)</strong> на разовую перерисовку лого El Lavash.</p>
+<hr />
+<h2>12. Packaging / Print (упаковка лаваша)</h2>
+<h3>12.1 Emsur (Mondi Group) — <a href="https://www.emsur.com">emsur.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Испанский гигант flexible packaging для food. Rotogravure + flexo.</li>
+<li><strong>Цена:</strong> B2B custom, MOQ обычно высокий.</li>
+<li><strong>Фаза:</strong> M6+ когда нужна серьёзная упаковка.</li>
+<li><strong>Альтернативы:</strong> Local Catalan printers.</li>
+<li><strong>Риски:</strong> Высокий MOQ; не для микропартий.</li>
+</ul>
+<h3>12.2 noissue — <a href="https://noissue.co">noissue.co</a></h3>
+<ul>
+<li><strong>Описание:</strong> Eco-friendly custom packaging с низким MOQ; шипменты в EU.</li>
+<li><strong>Free tier:</strong> —</li>
+<li><strong>Paid:</strong> Custom; от $250 за пробную партию (100-500 единиц).</li>
+<li><strong>Фаза:</strong> M3 для пробной партии bread bags / stickers.</li>
+<li><strong>Альтернативы:</strong> StickerMule, local.</li>
+<li><strong>Риски:</strong> Дорогая доставка в Испанию; lead time 3-4 недели.</li>
+</ul>
+<h3>12.3 StickerMule — <a href="https://www.stickermule.com">stickermule.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Кастом стикеры, упаковка, free shipping worldwide, 4 дня.</li>
+<li><strong>Free tier:</strong> Samples бесплатно.</li>
+<li><strong>Paid:</strong> Stickers от $9 за 10 штук; кастом-упаковка от $150.</li>
+<li><strong>Фаза:</strong> M1-M3 — для стикеров и пробной упаковки.</li>
+<li><strong>Альтернативы:</strong> noissue, local.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>12.4 OnlinePrinters / Printful (EU) — <a href="https://www.onlineprinters.com">onlineprinters.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Немецкий цифровой принтер с доставкой в EU; печать на бумажных пакетах и наклейках.</li>
+<li><strong>Paid:</strong> От €30 за 100 наклеек.</li>
+<li><strong>Фаза:</strong> M1-M3.</li>
+<li><strong>Альтернативы:</strong> Local Catalan printers.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>12.5 Local Catalan printers</h3>
+<ul>
+<li><strong>Описание:</strong> Печать в Барселоне/Жироне; искать через Páginas Amarillas, Bonpreu/Esclat-листы поставщиков.</li>
+<li><strong>Фаза:</strong> M3+ для больших партий (когда MOQ оправдан).</li>
+<li><strong>Риски:</strong> Качество переменное; требует тендерства.</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>StickerMule</strong> для первых стикеров (M1) → <strong>noissue</strong> для пробной упаковки 500 шт (M3) → <strong>локальный printer</strong> или <strong>Emsur</strong> при выходе на 5000+ единиц (M6+).</p>
+<hr />
+<h2>13. Project management</h2>
+<h3>13.1 Notion — <a href="https://www.notion.so">notion.so</a></h3>
+<ul>
+<li><strong>Описание:</strong> Универсальная база знаний + DB + проекты + wiki.</li>
+<li><strong>Free tier:</strong> Personal — unlimited pages; team-функции лимитированы.</li>
+<li><strong>Paid:</strong> Plus — $12/seat/мес; Business — $18; Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> Полный API. <strong>Официальный -коннектор есть.</strong></li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1 — для всех документов проекта.</li>
+<li><strong>Альтернативы:</strong> ClickUp, Coda.</li>
+<li><strong>Риски:</strong> Без структуры превращается в свалку.</li>
+</ul>
+<h3>13.2 ClickUp — <a href="https://clickup.com">clickup.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> All-in-one задачник + docs + чат.</li>
+<li><strong>Free tier:</strong> Unlimited users, базовые функции.</li>
+<li><strong>Paid:</strong> Unlimited — $7/seat/мес (annual); Business — $12.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ если будет команда.</li>
+<li><strong>Альтернативы:</strong> Notion, Linear.</li>
+<li><strong>Риски:</strong> Можно «утонуть» в фичах.</li>
+</ul>
+<h3>13.3 Linear — <a href="https://linear.app">linear.app</a></h3>
+<ul>
+<li><strong>Описание:</strong> Issue tracker для инженерных команд. Для food-производителя — overkill.</li>
+<li><strong>Free tier:</strong> Да.</li>
+<li><strong>Paid:</strong> Basic — $8/seat/мес; Business — $14; Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> <strong>-коннектор есть.</strong></li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> Не релевантно.</li>
+<li><strong>Альтернативы:</strong> —</li>
+<li><strong>Риски:</strong> Не под food.</li>
+</ul>
+<h3>13.4 Monday.com — <a href="https://monday.com">monday.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Visual project management. Колоночные доски.</li>
+<li><strong>Free tier:</strong> 2 seats.</li>
+<li><strong>Paid:</strong> Basic — €9/seat/мес; Standard — €12; Pro — €19; Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> REST API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ как альтернатива Notion.</li>
+<li><strong>Альтернативы:</strong> ClickUp.</li>
+<li><strong>Риски:</strong> Цена.</li>
+</ul>
+<h3>13.5 Asana — <a href="https://asana.com">asana.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Task management.</li>
+<li><strong>Free tier:</strong> До 10 users.</li>
+<li><strong>Paid:</strong> Starter — $10.99/seat/мес; Advanced — $24.99.</li>
+<li><strong>API/MCP:</strong> <strong>-коннектор есть.</strong></li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M3+ альтернатива ClickUp.</li>
+<li><strong>Альтернативы:</strong> Linear, ClickUp.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<p><strong>Рекомендация:</strong> <strong>Notion Free</strong> для документов + <strong>Notion Plus ($12)</strong> когда наберётся 5+ страниц проекта.</p>
+<hr />
+<h2>14. AI / Knowledge / Content generation</h2>
+<h3>14.1  (Pro / Max / API) — <a href="https://claude.com">claude.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> AI-ассистент . Лучший для длинных документов, анализа, аккуратной работы.</li>
+<li><strong>Free tier:</strong> Да, ограниченно.</li>
+<li><strong>Paid:</strong> Pro — $20/мес; Max — $100; Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> современные системы анализа + MCP экосистема (Notion, GitHub, Ahrefs, Apollo, Slack, GDrive, Stripe, Shopify, Klaviyo и др.).</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1+ (основной AI инструмент проекта — уже используется).</li>
+<li><strong>Альтернативы:</strong> , .</li>
+<li><strong>Риски:</strong> API-расходы при автоматизации.</li>
+</ul>
+<h3>14.2  Plus / Enterprise — <a href="https://chatgpt.com">chatgpt.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> OpenAI flagship. Лучший для multimodal, кода, voice.</li>
+<li><strong>Free tier:</strong> Да, GPT-5 mini limited.</li>
+<li><strong>Paid:</strong> Plus — $20/мес; Pro — $200; Team — $25/seat; Enterprise — custom.</li>
+<li><strong>API/MCP:</strong> OpenAI API + GPT-actions.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1+ опционально.</li>
+<li><strong>Альтернативы:</strong> , .</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>14.3  Pro — <a href="https://www.perplexity.ai">perplexity.ai</a></h3>
+<ul>
+<li><strong>Описание:</strong> AI-research engine с цитатами. Лучший для поиска свежих данных.</li>
+<li><strong>Free tier:</strong> Да.</li>
+<li><strong>Paid:</strong> Pro — $20/мес; Max — $200; Enterprise — $40/seat.</li>
+<li><strong>API/MCP:</strong> Sonar API; **есть -доступ к ** (через web search + perplexity-MCP).</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M1+ для market-research и SEO.</li>
+<li><strong>Альтернативы:</strong> ,  + web.</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<h3>14.4  Pro / Google AI — <a href="https://gemini.google.com">gemini.google.com</a></h3>
+<ul>
+<li><strong>Описание:</strong> Google AI с long-context (1M tokens).</li>
+<li><strong>Free tier:</strong> Да.</li>
+<li><strong>Paid:</strong> AI Pro — €21.99/мес; Ultra — €274.99.</li>
+<li><strong>API/MCP:</strong> Google API.</li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> Опционально.</li>
+<li><strong>Альтернативы:</strong> , .</li>
+<li><strong>Риски:</strong> —</li>
+</ul>
+<p><strong>Рекомендация:</strong> ** Pro ($20)<strong> — основной + ** Pro ($20)</strong> для research = $40/мес core AI стек.</p>
+<hr />
+<h2>15.  /  connectors (актуальный список)</h2>
+<p>В мае 2026 в <a href="https://claude.com/connectors">официальной директории </a> — <strong>414+ коннекторов</strong>. Релевантные для El Lavash:</p>
+<table>
+<thead>
+<tr>
+<th>Коннектор</th>
+<th>Категория</th>
+<th>Зачем для El Lavash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ahrefs</strong></td>
+<td>SEO</td>
+<td>Уже подключен — keyword/backlink research</td>
+</tr>
+<tr>
+<td><strong>Apollo</strong></td>
+<td>Sales / Leads</td>
+<td>Поиск контактов HORECA, sequences</td>
+</tr>
+<tr>
+<td><strong>Klaviyo</strong></td>
+<td>Email/SMS marketing</td>
+<td>Розничные рассылки покупателям ellavash.es</td>
+</tr>
+<tr>
+<td><strong>HubSpot</strong></td>
+<td>CRM</td>
+<td>Если перейдём на HubSpot</td>
+</tr>
+<tr>
+<td><strong>Notion</strong></td>
+<td>Docs</td>
+<td>База знаний проекта</td>
+</tr>
+<tr>
+<td><strong>Asana</strong></td>
+<td>PM</td>
+<td>Задачи</td>
+</tr>
+<tr>
+<td><strong>Linear</strong></td>
+<td>Issue tracker</td>
+<td>Технические задачи сайта</td>
+</tr>
+<tr>
+<td><strong>Slack</strong></td>
+<td>Internal comms</td>
+<td>Если будет команда</td>
+</tr>
+<tr>
+<td><strong>Gmail / Google Workspace</strong></td>
+<td>Email</td>
+<td>Cold outreach drafts</td>
+</tr>
+<tr>
+<td><strong>Google Drive</strong></td>
+<td>Files</td>
+<td>Доступ к документам</td>
+</tr>
+<tr>
+<td><strong>Google Calendar</strong></td>
+<td>Calendar</td>
+<td>Встречи с дистрибьюторами</td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Code</td>
+<td>ellavash.es репозиторий</td>
+</tr>
+<tr>
+<td><strong>Shopify</strong></td>
+<td>E-com</td>
+<td>Если откроем магазин</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>Payments</td>
+<td>Если откроем магазин</td>
+</tr>
+<tr>
+<td><strong>Adobe Creative Cloud</strong></td>
+<td>Design</td>
+<td>Firefly + Illustrator для упаковки</td>
+</tr>
+<tr>
+<td><strong>Canva (Affinity)</strong></td>
+<td>Design</td>
+<td>Соцсети</td>
+</tr>
+<tr>
+<td><strong>Figma</strong></td>
+<td>Design</td>
+<td>Прототипирование</td>
+</tr>
+<tr>
+<td><strong>Firecrawl</strong></td>
+<td>Web scraping</td>
+<td>Парсинг конкурентов / сайтов закупщиков</td>
+</tr>
+<tr>
+<td>****</td>
+<td>Research</td>
+<td>Market intel</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>DB</td>
+<td>Если будет приложение</td>
+</tr>
+<tr>
+<td><strong>Common Room</strong></td>
+<td>Community</td>
+<td>Будущее community для b2c</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Текущий стек уже подключённых:</strong> Ahrefs MCP, Apollo MCP, Klaviyo MCP, Notion MCP, Adobe MCP, Firecrawl, , n8n, Shopify MCP, GitHub, Calendar, Gmail и др.</p>
+<p>Полный реестр: <a href="https://claude.com/docs/connectors/directory">claude.com/docs/connectors/directory</a>.</p>
+<hr />
+<h2>16. Прочие критичные коннекторы для проекта</h2>
+<h3>16.1 Google Search Console — см. 7.11.</h3>
+<h3>16.2 Google Analytics 4 — <a href="https://analytics.google.com">analytics.google.com</a></h3>
+<ul>
+<li><strong>Free.</strong> Обязательно подключить ellavash.es.</li>
+</ul>
+<h3>16.3 Google Business Profile — <a href="https://www.google.com/business">business.google.com</a></h3>
+<ul>
+<li><strong>Free.</strong> Регистрация El Lavash как локального бизнеса в Льорет.</li>
+</ul>
+<h3>16.4 Stripe — <a href="https://stripe.com">stripe.com</a></h3>
+<ul>
+<li><strong>Free регистрация</strong>, fee 1.4% + €0.25 per EU card transaction.</li>
+<li><strong>API/MCP:</strong> Полный API; <strong>-коннектор есть.</strong></li>
+<li><strong>Фаза:</strong> M6+ при открытии e-commerce / B2B-payments.</li>
+</ul>
+<h3>16.5 Shopify / WooCommerce — <a href="https://www.shopify.com">shopify.com</a></h3>
+<ul>
+<li><strong>Paid:</strong> Shopify Basic — €36/мес; Grow — €92; Advanced — €384.</li>
+<li><strong>WooCommerce</strong> — бесплатный на WordPress, but хостинг отдельно.</li>
+<li><strong>API/MCP:</strong> <strong>Shopify MCP есть.</strong></li>
+<li><strong>Фаза:</strong> M6+ для прямых продаж.</li>
+</ul>
+<h3>16.6 Klaviyo — <a href="https://www.klaviyo.com">klaviyo.com</a></h3>
+<ul>
+<li><strong>Free tier:</strong> До 250 контактов / 500 emails/мес.</li>
+<li><strong>Paid:</strong> От $20/мес (501-1500 контактов) до $1700/мес (150k+).</li>
+<li><strong>API/MCP:</strong> <strong>Klaviyo MCP есть.</strong></li>
+<li><strong>Покрытие Испании:</strong> Полное.</li>
+<li><strong>Фаза:</strong> M6+ когда будет email-список покупателей.</li>
+</ul>
+<h3>16.7 n8n — <a href="https://n8n.io">n8n.io</a></h3>
+<ul>
+<li><strong>Free tier:</strong> Self-hosted бесплатно; Cloud — Starter $24/мес.</li>
+<li><strong>API/MCP:</strong> <strong>n8n MCP есть.</strong></li>
+<li><strong>Фаза:</strong> M3+ для автоматизаций (CRM → email → WhatsApp).</li>
+<li><strong>Альтернативы:</strong> Zapier, Make.</li>
+</ul>
+<h3>16.8 Zapier — <a href="https://zapier.com">zapier.com</a></h3>
+<ul>
+<li><strong>Free tier:</strong> 100 tasks/мес.</li>
+<li><strong>Paid:</strong> Starter — $19.99/мес; Professional — $49.</li>
+<li><strong>Фаза:</strong> M3+ если нет своего n8n.</li>
+<li><strong>Альтернативы:</strong> n8n, Make.</li>
+</ul>
+<h3>16.9 Firecrawl — <a href="https://www.firecrawl.dev">firecrawl.dev</a></h3>
+<ul>
+<li><strong>Описание:</strong> Web scraping API.</li>
+<li><strong>Free tier:</strong> Hobby — бесплатно (500 credits).</li>
+<li><strong>Paid:</strong> Standard — $19/мес; Growth — $99.</li>
+<li><strong>API/MCP:</strong> <strong>Firecrawl MCP есть</strong> (уже доступен).</li>
+<li><strong>Фаза:</strong> M1+ — парсинг конкурентов и сайтов закупщиков.</li>
+</ul>
+<hr />
+<h2>CRITICAL-АНАЛИЗ — AI Cold Calling агенты для El Lavash</h2>
+<p><strong>Короткий вердикт: НЕ ИСПОЛЬЗОВАТЬ AI voice agents для cold-обзвона HORECA в Испании на стадии M1-M12.</strong></p>
+<h3>Аргументы против</h3>
+<ol>
+<li><strong>Юридическая среда</strong></li>
+<li>Под Law 34/2002 (LSSI-CE), GDPR и LOPDGDD: маркетинговый звонок физлицу (включая ИП, sole proprietors) требует <strong>prior opt-in</strong> или явное <strong>legitimate interest</strong>, плюс обязательная сверка с <a href="https://www.listarobinson.es/">Robinson List</a>.</li>
+<li>Нарушение: штраф AEPD — до 20 млн евро или 4% оборота. На практике для малого бизнеса — €600-30 000 за первое нарушение, но репутационный риск выше.</li>
+<li>
+<p><strong>AI voice инструмент при cold-обзвоне резко увеличивает риск:</strong> одно жалоба от ресторатора → AEPD-проверка → штраф + блокировка номера.</p>
+</li>
+<li>
+<p><strong>Этическая среда (food / HORECA / B2B)</strong></p>
+</li>
+<li>Закупщик ресторана в Льорет — это часто <strong>владелец-семейник</strong>. Получив звонок от робота, который представляется поставщиком лаваша, реакция почти гарантированно негативная.</li>
+<li>
+<p>Бренд El Lavash позиционируется как <strong>артезанальный, ручной, локальный</strong>. AI-обзвон от такого бренда — <strong>прямое противоречие brand voice</strong>.</p>
+</li>
+<li>
+<p><strong>Cost-benefit</strong></p>
+</li>
+<li>Стартовая цена Synthflow / Vapi — $20-50/мес + $0.05-0.15/мин = реально $200-500/мес.</li>
+<li>Реальная конверсия cold AI calls в food B2B — оценочно 0.5-2% записи на демо. На 1000 звонков = 5-20 «интересованных».</li>
+<li>
+<p><strong>Альтернатива:</strong> 50 личных WhatsApp-сообщений Элен из Льорета напрямую владельцам — конверсия 10-20% (вживую).</p>
+</li>
+<li>
+<p><strong>GDPR data residency</strong></p>
+</li>
+<li>Bland AI, Vapi, Retell — <strong>US data hosting</strong> по умолчанию. Запись разговора и транскрипт уходят в US — нужен DPA, SCC, transfer impact assessment. Сложно для микробизнеса.</li>
+<li>
+<p>Synthflow — EU-host (Berlin), но всё равно требует opt-in для холодных звонков.</p>
+</li>
+<li>
+<p><strong>Качество диалога</strong></p>
+</li>
+<li>В 2026 AI voice agents проходят первые 30 секунд хорошо, но падают на конкретике: «какой состав?», «есть ли халяль-сертификация?», «можем ли мы получить логистику в субботу?». Для food-B2B это критично.</li>
+</ol>
+<h3>Когда AI voice agents окей</h3>
+<ul>
+<li><strong>Inbound</strong> (клиент звонит на ellavash.es-номер) — Synthflow или Retell ответят 24/7, запишут лида в CRM. <strong>OK даже сейчас.</strong></li>
+<li><strong>Reminder-звонки</strong> existing customers («ваш еженедельный заказ подтвердить?») — после opt-in. <strong>OK с M6.</strong></li>
+<li><strong>Follow-up</strong> после встречи на ярмарке Salón Gourmets — если visitor оставил визитку с opt-in. <strong>OK с M6.</strong></li>
+</ul>
+<h3>Рекомендация по cold-каналам в Испании для El Lavash</h3>
+<table>
+<thead>
+<tr>
+<th>Канал</th>
+<th>Стартовая стратегия</th>
+<th>Conversion</th>
+<th>Риск</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Личный визит</strong> в ресторан Льорет с образцом</td>
+<td>M1-M3 — лучше всего</td>
+<td>20-40%</td>
+<td>Низкий</td>
+</tr>
+<tr>
+<td><strong>WhatsApp от Элен</strong> после первого визита</td>
+<td>M1-M3</td>
+<td>30-50%</td>
+<td>Низкий (есть business card)</td>
+</tr>
+<tr>
+<td><strong>Cold email</strong> через Hunter + Instantly</td>
+<td>M3-M6</td>
+<td>2-5%</td>
+<td>Средний (нужен opt-in workflow)</td>
+</tr>
+<tr>
+<td><strong>LinkedIn</strong> outreach к закупщикам сетей</td>
+<td>M3-M6</td>
+<td>3-8%</td>
+<td>Средний</td>
+</tr>
+<tr>
+<td><strong>Cold-обзвон вручную</strong> Элен сама</td>
+<td>M3-M6, точечно</td>
+<td>5-15%</td>
+<td>Низкий (она представляет себя)</td>
+</tr>
+<tr>
+<td><strong>Robot-обзвон</strong> (AI voice agents)</td>
+<td>НЕ ДЕЛАТЬ до M12+</td>
+<td>&lt; 1%</td>
+<td><strong>Высокий</strong> (юридика + бренд)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>РЕКОМЕНДОВАННЫЙ СТЕК для El Lavash (Минимальный + Расширенный)</h2>
+<h3>M1-M3 (Setup, первые 3 месяца) — Минимальный стек ~€60/мес</h3>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Цена/мес</th>
+<th>Зачем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Folk Free</strong> (или Notion + Sheets)</td>
+<td>€0</td>
+<td>CRM на 100 контактов HORECA Льорет</td>
+</tr>
+<tr>
+<td><strong>Hunter.io Free</strong></td>
+<td>€0</td>
+<td>Email finder, 25 поисков/мес</td>
+</tr>
+<tr>
+<td><strong>Apollo Free</strong></td>
+<td>€0</td>
+<td>60 email credits/мес</td>
+</tr>
+<tr>
+<td>** Pro**</td>
+<td>$20 (~€18)</td>
+<td>Основной AI: контент, переписка, анализ</td>
+</tr>
+<tr>
+<td>** Pro**</td>
+<td>$20 (~€18)</td>
+<td>Research конкурентов и рынка</td>
+</tr>
+<tr>
+<td><strong>DeepL Free</strong></td>
+<td>€0</td>
+<td>Переводы ES / CA</td>
+</tr>
+<tr>
+<td><strong>Canva Pro</strong></td>
+<td>€11.99</td>
+<td>Соцсети, презентации</td>
+</tr>
+<tr>
+<td><strong>Recraft Basic (annual)</strong></td>
+<td>$10 (~€9)</td>
+<td>Упаковка, иконки SVG</td>
+</tr>
+<tr>
+<td><strong>Vectorizer.AI</strong> (pay-per-use)</td>
+<td>~€5 разово</td>
+<td>Логотип El Lavash → SVG</td>
+</tr>
+<tr>
+<td><strong>AnswerThePublic Individual</strong></td>
+<td>$9 (~€8)</td>
+<td>Контент-идеи для SEO</td>
+</tr>
+<tr>
+<td><strong>Ahrefs MCP</strong> (уже подключен)</td>
+<td>—</td>
+<td>SEO research</td>
+</tr>
+<tr>
+<td><strong>GitHub Pages</strong></td>
+<td>€0</td>
+<td>Хостинг ellavash.es</td>
+</tr>
+<tr>
+<td><strong>Google Search Console + GA4 + GBP</strong></td>
+<td>€0</td>
+<td>Аналитика и локальное присутствие</td>
+</tr>
+<tr>
+<td><strong>WhatsApp Business app</strong></td>
+<td>€0</td>
+<td>Ручной B2B-канал</td>
+</tr>
+<tr>
+<td><strong>ИТОГО</strong></td>
+<td><strong>~€65/мес</strong></td>
+<td>+ одноразово €5 на лого</td>
+</tr>
+</tbody>
+</table>
+<h3>M3-M6 (Growth, рост HORECA + первые сети) — Расширенный стек ~€200/мес</h3>
+<p>Добавить к M1-M3:</p>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Цена/мес</th>
+<th>Зачем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hunter Starter</strong></td>
+<td>$49 (~€45)</td>
+<td>500 поисков email</td>
+</tr>
+<tr>
+<td><strong>Apollo Basic</strong></td>
+<td>$49 (~€45)</td>
+<td>600 email credits, sequences</td>
+</tr>
+<tr>
+<td><strong>Instantly Growth</strong></td>
+<td>$37 (~€34)</td>
+<td>Cold email outreach</td>
+</tr>
+<tr>
+<td><strong>360dialog WhatsApp</strong></td>
+<td>€49 + per-msg</td>
+<td>GDPR-friendly WhatsApp API</td>
+</tr>
+<tr>
+<td><strong>Frase Solo</strong> или <strong>Surfer Essential annual</strong></td>
+<td>$15-49 (~€14-45)</td>
+<td>SEO content optimization</td>
+</tr>
+<tr>
+<td><strong>n8n Cloud Starter</strong></td>
+<td>$24 (~€22)</td>
+<td>Автоматизации CRM/email/WhatsApp</td>
+</tr>
+<tr>
+<td><strong>Framer Basic</strong></td>
+<td>$15 (~€14)</td>
+<td>Продуктовый лендинг (когда появятся SKU)</td>
+</tr>
+<tr>
+<td><strong>HubSpot Starter</strong> (если перерастаем Folk)</td>
+<td>$9 (~€8)</td>
+<td>CRM при росте</td>
+</tr>
+<tr>
+<td><strong>Klaviyo Free</strong></td>
+<td>€0</td>
+<td>Email/SMS до 250 контактов</td>
+</tr>
+<tr>
+<td><strong>Midjourney Basic</strong> (опционально)</td>
+<td>$10 (~€9)</td>
+<td>Hero-визуалы</td>
+</tr>
+<tr>
+<td><strong>ИТОГО</strong></td>
+<td><strong>~€200/мес</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>M6-M12 (Scale, выход в национальную дистрибуцию)</h3>
+<p>Добавить к M3-M6:</p>
+<table>
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Цена/мес</th>
+<th>Зачем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cognism Grow</strong> (если бюджет)</td>
+<td>€1 250/мес ($15k/год)</td>
+<td>EU-данные premium</td>
+</tr>
+<tr>
+<td><strong>Shopify Basic</strong></td>
+<td>€36</td>
+<td>D2C-канал</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>(только % с транзакций)</td>
+<td>Платежи</td>
+</tr>
+<tr>
+<td><strong>Klaviyo paid</strong></td>
+<td>$20-150</td>
+<td>Email/SMS marketing для D2C</td>
+</tr>
+<tr>
+<td><strong>Linear Free</strong></td>
+<td>€0</td>
+<td>Задачи для команды</td>
+</tr>
+<tr>
+<td><strong>Asana Starter</strong></td>
+<td>$11/seat</td>
+<td>Команда (3-5 чел)</td>
+</tr>
+<tr>
+<td><strong>Lemlist Multichannel</strong></td>
+<td>$109/seat</td>
+<td>Топ-50 аккаунтов outreach</td>
+</tr>
+<tr>
+<td><strong>Reply.io Multichannel</strong></td>
+<td>$99/seat</td>
+<td>Альтернатива Lemlist</td>
+</tr>
+<tr>
+<td><strong>Aircall Essentials</strong></td>
+<td>$30/seat × 3 = $90</td>
+<td>Команда телефонии</td>
+</tr>
+<tr>
+<td><strong>Webflow CMS</strong></td>
+<td>$23</td>
+<td>Полноценный продуктовый сайт</td>
+</tr>
+<tr>
+<td><strong>ИТОГО</strong></td>
+<td><strong>~€800-2 500/мес</strong></td>
+<td>Зависит от Cognism</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Roadmap внедрения (что когда)</h2>
+<p><strong>M0 (сейчас):</strong><br />
+-  Pro,  Pro, Ahrefs MCP, GitHub Pages — уже работают.</p>
+<p><strong>M1 (июнь 2026):</strong><br />
+- Folk Free / Notion для CRM.<br />
+- Hunter Free + Apollo Free для leads.<br />
+- Canva Pro + Recraft Basic для дизайна.<br />
+- Vectorizer.AI: лого → SVG.<br />
+- WhatsApp Business app (ручной).<br />
+- GSC + GA4 + Google Business Profile.</p>
+<p><strong>M2-M3 (июль-август 2026):</strong><br />
+- StickerMule samples для первой партии.<br />
+- noissue / OnlinePrinters для тестовых bread bags.<br />
+- AnswerThePublic + Frase для контент-стратегии.<br />
+- Personal outreach Элен по Льорет (визиты + WhatsApp).</p>
+<p><strong>M3-M6 (сентябрь-декабрь 2026):</strong><br />
+- Hunter Starter + Apollo Basic + Instantly Growth — outbound в HORECA Барселона/Жирона.<br />
+- 360dialog WhatsApp API после первых 20 retained-клиентов.<br />
+- n8n Cloud для автоматизации Folk ↔ Instantly ↔ WhatsApp.<br />
+- HubSpot Starter если CRM перерастает Folk.<br />
+- Framer Basic — продуктовый лендинг.</p>
+<p><strong>M6-M12 (2027):</strong><br />
+- Shopify Basic + Stripe + Klaviyo paid — D2C.<br />
+- Lemlist Multichannel — outreach в сети (Bonpreu/Esclat, Caprabo).<br />
+- Aircall + 2-3 SDR seats если будет sales-команда.<br />
+- (Опционально) Cognism Grow для премиум-данных.</p>
+<p><strong>Чего НЕ внедрять до M12+:</strong><br />
+- AI voice cold-calling agents (Bland/Vapi/Synthflow для cold — нет).<br />
+- Salesforce, ZoomInfo, MarketMuse — overkill.<br />
+- Cognism — только если бюджет реально позволит.</p>
+<hr />
+<h2>Сводка (300 слов)</h2>
+<p><strong>5-7 критичных инструментов прямо сейчас:</strong></p>
+<ol>
+<li><strong>Folk Free</strong> или <strong>Notion DB</strong> — CRM с дня 1, иначе контакты Льорет потеряются. Folk предпочтительнее за счёт WhatsApp-интеграции и низкого порога входа; Notion проще, если нужна гибкая база с заметками. Главное — единое место для всех контактов закупщиков, заметок о визитах и статусов сделок.</li>
+<li><strong>Hunter.io Free + Apollo Free</strong> — для поиска email-адресов закупщиков ресторанов и сетей. Бесплатных квот хватит для первых 100-200 целевых контактов; перейти на Hunter Starter ($49) после M3 когда выйдете за бесплатный лимит.</li>
+<li>** Pro ($20) +  Pro ($20)** — основной AI-стек.  для длинных документов, переписки, анализа базы.  для research конкурентов и регуляторики. Это уже работает в проекте — не менять.</li>
+<li><strong>Canva Pro (€12) + Recraft Basic ($10)</strong> — для соцсетей и упаковки. Canva — типовые шаблоны Instagram; Recraft — генерация уникальной графики для упаковки лаваша с экспортом в SVG.</li>
+<li><strong>Vectorizer.AI (~€5 разово)</strong> — перерисовать существующий растровый логотип El Lavash в чистый SVG, который пойдёт на упаковку, сайт и презентации.</li>
+<li><strong>Ahrefs MCP (уже есть)</strong> — для SEO research испанских ключей и мониторинга l-lavash.es / ellavash.es. Не подключать SEMrush одновременно — дубль расходов.</li>
+<li><strong>WhatsApp Business app (бесплатно) + Google Business Profile (бесплатно) + Google Search Console / GA4 (бесплатно)</strong> — must-have инфраструктура локального присутствия.</li>
+</ol>
+<p><strong>Совокупный стартовый бюджет:</strong> ~€65-70/мес + €5-10 одноразово.</p>
+<p><strong>Что добавить в M3-M6:</strong> Instantly Growth ($37) + 360dialog WhatsApp + Hunter Starter + n8n Cloud — для outbound-машины и автоматизаций. Общий бюджет — ~€200/мес.</p>
+<p><strong>Что в свободном доступе и обязательно:</strong> GitHub Pages, Google Search Console, Google Analytics 4, Google Business Profile, DeepL Free, Apollo Free, Hunter Free, Folk Free, WhatsApp Business app, AnswerThePublic free, Firecrawl Hobby,  Free (ограниченно). Эти 12 бесплатных сервисов покрывают 70% базовых задач M1-M3 без единого евро.</p>
+<p><strong>Что не внедрять в M1-M12:</strong> AI voice cold-calling agents (юридика + бренд), Salesforce, ZoomInfo, MarketMuse, Lokalise / Phrase enterprise TMS, Webflow Business — overkill для текущей стадии. Главное правило — каждый платный инструмент должен окупиться за 30 дней; если нет — отписаться.</p>
+<hr />
+<h2>Источники</h2>
+<ul>
+<li><a href="https://automaiva.com/folk-vs-hubspot-vs-pipedrive-vs-attio-crm/">HubSpot CRM Pricing 2026 — comparison</a></li>
+<li><a href="https://prospeo.io/s/folk-pricing-reviews-pros-and-cons">Folk Pricing Review</a></li>
+<li><a href="https://prospeo.io/s/attio-pricing-reviews-pros-and-cons">Attio Pricing</a></li>
+<li><a href="https://coldiq.com/blog/pipedrive-vs-hubspot">Pipedrive vs HubSpot 2026</a></li>
+<li><a href="https://marketbetter.ai/blog/close-crm-pricing-2026/">Close CRM Pricing 2026</a></li>
+<li><a href="https://softabase.com/software/crm/salesflare">Salesflare Review 2026</a></li>
+<li><a href="https://puzzleinbox.com/blog/apollo-vs-zoominfo-vs-cognism-vs-lusha-2026/">Apollo.io vs Cognism vs Lusha 2026</a></li>
+<li><a href="https://salesmotion.io/blog/apollo-pricing">Apollo Pricing Breakdown</a></li>
+<li><a href="https://syncgtm.com/blog/cognism-review">Cognism Review 2026</a></li>
+<li><a href="https://www.cognism.com/blog/apollo-competitors">Best Apollo Alternatives 2026</a></li>
+<li><a href="https://www.cleanlist.ai/blog/2026-05-23-cognism-vs-apollo">Cognism vs Apollo Europe Coverage</a></li>
+<li><a href="https://litemail.ai/blog/cold-email-tool-pricing-comparison-2026">Cold Email Tool Comparison 2026</a></li>
+<li><a href="https://www.devcommx.com/blogs/instantly-vs-smartlead-vs-lemlist-2026">Instantly vs Smartlead vs Lemlist 2026</a></li>
+<li><a href="https://puzzleinbox.com/blog/lemlist-pricing-guide/">Lemlist Pricing 2026</a></li>
+<li><a href="https://snov.io/blog/hunter-io-review/">Hunter.io Review 2026</a></li>
+<li><a href="https://prospeo.io/s/snov-io-email-finder">Snov.io Review 2026</a></li>
+<li><a href="https://www.voilanorbert.com">Voila Norbert Pricing</a></li>
+<li><a href="https://www.knowlee.ai/blog/best-email-finder-tools-2026">Best Email Finders 2026</a></li>
+<li><a href="https://respond.io/blog/whatsapp-business-api-pricing">WhatsApp Business API Pricing 2026</a></li>
+<li><a href="https://www.wati.io/pricing/">Wati Pricing</a></li>
+<li><a href="https://www.twilio.com/en-us/messaging/channels/whatsapp">Twilio WhatsApp API</a></li>
+<li><a href="https://www.ycloud.com/blog/wati-pricing">Wati Pricing Analysis</a></li>
+<li><a href="https://greetnow.com/blog/aircall-pricing">Aircall Pricing 2026</a></li>
+<li><a href="https://justcall.io/blog/aircall-pricing.html">JustCall Pricing</a></li>
+<li><a href="https://www.withallo.com/blog/best-international-voip-providers">Best International VoIP 2026</a></li>
+<li><a href="https://ainora.lt/blog/bland-ai-alternatives-europe-gdpr-2026">Bland AI Alternatives Europe GDPR 2026</a></li>
+<li><a href="https://f3fundit.com/ai-voice-agents-solopreneurs-bland-retell-vapi-synthflow-2026/">AI Voice Agents Comparison 2026</a></li>
+<li><a href="https://www.nurix.ai/blogs/best-ai-voice-agents-enterprise-2026">Best AI Voice Agents Enterprise 2026</a></li>
+<li><a href="https://talk-q.com/outbound-call-regulations-in-spain">Spain Outbound Call Regulations</a></li>
+<li><a href="https://anroprivacy.es/stop-spam-marketing-spain-robinson-list/">Robinson List Spain</a></li>
+<li><a href="https://www.dealfront.com/blog/essential-guide-to-cold-calling-and-emailing/">Cold Calling &amp; Emailing Laws Europe 2026</a></li>
+<li><a href="https://www.hoganlovells.com/en/publications/new-rules-for-phone-marketing-in-spain">Spain Phone Marketing Rules</a></li>
+<li><a href="https://signalplug.com/blog/email-laws-spain">Email Laws Spain 2026</a></li>
+<li><a href="https://www.lawants.com/en/e-commerce-law-spain/">Spain E-commerce LSSI Law</a></li>
+<li><a href="https://seopoplink.com/affordable-semrush-vs-ahrefs-vs-moz-vs-ubersuggest/">SEMrush vs Ahrefs vs Moz vs Ubersuggest 2026</a></li>
+<li><a href="https://backlinko.com/semrush-pricing">Semrush Pricing</a></li>
+<li><a href="https://www.growthmarketingpro.com/clearscope-vs-frase-vs-marketmuse-vs-surfer-seo/">Surfer vs Frase vs MarketMuse Clearscope</a></li>
+<li><a href="https://www.frase.io/blog/8-best-surfer-seo-alternatives-in-2026-ranked-and-reviewed">Surfer SEO Alternatives 2026</a></li>
+<li><a href="https://www.forasoft.com/blog/article/ai-translation-companies">DeepL Crowdin Translation Comparison 2026</a></li>
+<li><a href="https://www.taskade.com/blog/ai-translation-tools">AI Translation Tools Best 2026</a></li>
+<li><a href="https://www.framer.com/compare/framer-vs-webflow">Framer vs Webflow 2026</a></li>
+<li><a href="https://www.nocode.mba/articles/framer-pricing">Framer Pricing 2026</a></li>
+<li><a href="https://geeksforgrowth.com/blog/webflow-vs-framer-vs-carrd-whats-best-for-startup-sites/">Webflow vs Framer vs Carrd Startup Sites</a></li>
+<li><a href="https://www.browse-ai.tools/blog/midjourney-vs-adobe-firefly-vs-recraft-best-ai-image-generators-for-2026">Midjourney vs Firefly vs Recraft 2026</a></li>
+<li><a href="https://aimlapi.com/blog/the-best-ai-image-generators">Best AI Image Generators 2026</a></li>
+<li><a href="https://aichief.com/ai-image-tools/vectorizer-ai/">Vectorizer.AI Review 2026</a></li>
+<li><a href="https://vectorizer.ai/pricing">Vectorizer.AI Pricing</a></li>
+<li><a href="https://ensun.io/search/food-packaging/spain">Custom Bread Packaging Spain</a></li>
+<li><a href="https://noissue.co/">noissue Custom Packaging</a></li>
+<li><a href="https://www.stickermule.com/custom-packaging">StickerMule Custom Packaging</a></li>
+<li><a href="https://aipmtools.org/comparisons/clickup-vs-monday-com-vs-notion-projects">Notion vs ClickUp vs Monday vs Linear 2026</a></li>
+<li><a href="https://hamsterstack.com/compare/linear-vs-notion/">Linear vs Notion 2026</a></li>
+<li><a href="https://comparetiers.com/blog/clickup-vs-notion-pricing">ClickUp vs Notion 2026</a></li>
+<li><a href="https://claude.com/connectors"> Connectors Directory</a></li>
+<li><a href="https://claude.com/docs/connectors/directory"> MCP Connectors Directory Docs</a></li>
+<li><a href="https://github.com/rdmgator12/awesome-claude-connectors">Awesome  Connectors GitHub</a></li>
+<li><a href="https://meetingnotes.com/blog/best-claude-connectors">Best  Connectors 2026</a></li>
+<li><a href="https://www.buildfastwithai.com/blogs/claude-connectors-creative-tools-2026"> Connectors Creative Tools 2026</a></li>
+<li><a href="https://felloai.com/perplexity-pricing/"> Pricing 2026</a></li>
+<li><a href="https://findskill.ai/blog/ai-pricing-comparison-2026/">AI Pricing  vs  vs  vs  2026</a></li>
+<li><a href="https://stripe.com/resources/more/ecommerce-in-spain">Stripe Ecommerce Spain Guide</a></li>
+<li><a href="https://gempages.net/blogs/shopify/shopify-plan-pricing-by-country">Shopify Pricing 2026</a></li>
+</ul>
+<hr />
+<p><strong>Конец документа v1.</strong></p>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>

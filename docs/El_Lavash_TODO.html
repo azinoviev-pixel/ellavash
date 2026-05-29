@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Список задач проекта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Список задач проекта</h1>
+<div class="sub">Все этапы с чекбоксами. Что сделано, что в работе.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>El Lavash — Master TODO список (28.05.2026)</h1>
+<blockquote>
+<p>Полный план мероприятий на текущий раунд. Каждый пункт — checkbox, выполняется последовательно, верифицируется в конце.<br />
+Версия 1. При изменении создаётся v2.</p>
+</blockquote>
+<hr />
+<h2>РАЗДЕЛ A: Distribution DB v4 — улучшения</h2>
+<ul>
+<li>[ ] <strong>A1.</strong> Реверс приоритетов: 1 = ТОП-приоритет (самые важные), 5 = низший. Перевернуть везде где приоритет=5 → 1, 4 → 2, 3 → 3, 2 → 4, 1 → 5</li>
+<li>[ ] <strong>A2.</strong> Активные кликабельные ссылки в XLSX:</li>
+<li>Колонка Телефон → <code>tel:+34...</code> гиперссылка</li>
+<li>Колонка Email → <code>mailto:...</code> гиперссылка</li>
+<li>Колонка Сайт → <code>https://...</code> гиперссылка</li>
+<li><strong>Новая колонка</strong> Google_Maps → <code>https://www.google.com/maps/search/?api=1&amp;query=URLencoded(адрес+город)</code></li>
+<li>[ ] <strong>A3.</strong> Сводки по категориям: обновить листы 24-25 с новой логикой приоритетов</li>
+<li>[ ] <strong>A4.</strong> Все 26 основных страниц по категориям сохранить, но обновить</li>
+<li>[ ] <strong>A5.</strong> Условное форматирование: 1 (топ) = зелёный, 5 (последний) = красный (обратное цветовое кодирование)</li>
+</ul>
+<h2>РАЗДЕЛ B: ТОП-50 маршрутная страница</h2>
+<ul>
+<li>[ ] <strong>B1.</strong> Логика ранжирования: scoring formula</li>
+<li>Близость к Льорет-де-Мар (15 баллов max)</li>
+<li>Верификация (Доверие 5 = 10 баллов)</li>
+<li>Тип покупки (Розница магаз Льорет = 10, опт HORECA = 8, отель = 7, кебаб = 6)</li>
+<li>Сложность входа (известный/halal требуется/закрытый канал)</li>
+<li>[ ] <strong>B2.</strong> Применить formula, отсортировать, взять ТОП-50</li>
+<li>[ ] <strong>B3.</strong> Колонки маршрута:</li>
+<li>Ранг 1-50</li>
+<li>Название</li>
+<li>Адрес + Google Maps ссылка (clickable)</li>
+<li>Город</li>
+<li>Тип контакта (визит/звонок/email/LinkedIn)</li>
+<li>Куда ехать / писать</li>
+<li>Что взять с собой (образец, ficha, etc.)</li>
+<li>Скрипт первых 30 секунд</li>
+<li>Status (не начато / в работе / контакт состоялся / отказ / партнёрство)</li>
+<li>[ ] <strong>B4.</strong> Группировка по гео-радиусам (Льорет / Коста-Брава / Жирона / Барселона)</li>
+</ul>
+<h2>РАЗДЕЛ C: Spanish Food Brokers — отдельная страница</h2>
+<ul>
+<li>[ ] <strong>C1.</strong> Launch агент: research food brokers, sales agencies, agentes comerciales alimentarios Испания/Каталония</li>
+<li>[ ] <strong>C2.</strong> Категории искать:</li>
+<li>Agencias de representación comercial alimentaria</li>
+<li>Food brokers Spain (англоязычный термин тоже)</li>
+<li>HORECA representatives / sales reps</li>
+<li>Brand promoters для retail-сетей</li>
+<li>Distribution facilitators</li>
+<li>Vendor onboarding consultants для Bonpreu/Carrefour/Mercadona</li>
+<li>Halal certifiers + промоутеры halal-канала</li>
+<li>Export promoters (ICEX network)</li>
+<li>[ ] <strong>C3.</strong> По каждой найти: название, контакт, специализация, кому помогает, цена услуг (если есть), сайт</li>
+<li>[ ] <strong>C4.</strong> Ранжировать 1-5 по реалистичности для El Lavash</li>
+<li>[ ] <strong>C5.</strong> Добавить как лист «27_Food Brokers и promoters» в Distribution DB v4</li>
+</ul>
+<h2>РАЗДЕЛ D: AI Tools / Коннекторы для проекта — отдельная страница</h2>
+<ul>
+<li>[ ] <strong>D1.</strong> Launch агент: research AI tools + connectors применимые к проекту</li>
+<li>[ ] <strong>D2.</strong> Категории:</li>
+<li><strong>CRM / Sales:</strong> HubSpot, Pipedrive, Folk, Attio, Salesforce Essentials</li>
+<li><strong>Lead enrichment:</strong> Apollo, Lusha, ZoomInfo, Clay, SignalHire</li>
+<li><strong>Email finders:</strong> Hunter, FindThatEmail, Snov</li>
+<li><strong>Sequence/Outreach:</strong> Lemlist, Mailshake, Outreach, Reply</li>
+<li><strong>WhatsApp automation:</strong> Wati, Twilio, WhatsApp Business API</li>
+<li><strong>Cold call platforms:</strong> Aircall, JustCall, RingCentral</li>
+<li><strong>AI voice agents:</strong> Synthflow, Vapi, Bland AI, Air AI, Retell — для автообзвона (с critical-анализом этики/легальности)</li>
+<li><strong>SEO tools:</strong> Ahrefs (уже подключен), SEMrush, Surfer SEO, Frase</li>
+<li><strong>новые поисковые блоки Google / GEO optimization:</strong> AlsoAsked, AnswerThePublic, Marketmuse</li>
+<li><strong>Translation/Localization:</strong> DeepL, Lokalise, Phrase</li>
+<li><strong>Web/Landing builders:</strong> Framer, Webflow, Carrd, Wix (для multi-language)</li>
+<li><strong>Design AI:</strong> Midjourney, Adobe Firefly, Canva Magic Studio</li>
+<li><strong>Project management:</strong> Notion, ClickUp, Linear, Monday</li>
+<li><strong>Document AI:</strong> современные системы анализа API,  Enterprise,  Pro</li>
+<li><strong>Image-to-SVG / Vector:</strong> Vectornator, vectorizer.ai (для логотипа Helen)</li>
+<li><strong>Print-on-demand упаковка:</strong> Packfleet, noissue, Sticker Mule</li>
+<li>[ ] <strong>D3.</strong> Какие из них уже подключены через коннекторы  (Apollo, Klaviyo, и т.д.)</li>
+<li>[ ] <strong>D4.</strong> Цена / free tier / API доступность</li>
+<li>[ ] <strong>D5.</strong> Рекомендации для каждого этапа проекта</li>
+<li>[ ] <strong>D6.</strong> Добавить как лист «28_AI Tools и Коннекторы» в Distribution DB v4</li>
+</ul>
+<h2>РАЗДЕЛ E: SEO Ahrefs Research</h2>
+<h3>E1. Испания (главный рынок)</h3>
+<ul>
+<li>[ ] <strong>E1.1.</strong> Через Ahrefs коннектор: keywords_explorer_overview, matching_terms, related_terms</li>
+<li>[ ] <strong>E1.2.</strong> Кластеры запросов:</li>
+<li>"lavash" — главный</li>
+<li>"pan plano armenio"</li>
+<li>"pan árabe lavash"</li>
+<li>"comprar lavash online"</li>
+<li>"lavash receta"</li>
+<li>"lavash supermercado"</li>
+<li>"donde comprar lavash"</li>
+<li>"lavash congelado"</li>
+<li>"lavash fresco"</li>
+<li>[ ] <strong>E1.3.</strong> Search volumes, KD, CPC по каждому</li>
+<li>[ ] <strong>E1.4.</strong> TOP-100 запросов с low/medium KD для нашего targeting</li>
+<li>[ ] <strong>E1.5.</strong> Конкуренты SEO: кто ранжируется по lavash в Spain Google</li>
+</ul>
+<h3>E2. Главные европейские рынки</h3>
+<ul>
+<li>[ ] <strong>E2.1.</strong> UK: "lavash bread uk", "armenian bread", "buy lavash london"</li>
+<li>[ ] <strong>E2.2.</strong> Germany: "lavash kaufen", "fladenbrot armenisch", "lavash deutschland"</li>
+<li>[ ] <strong>E2.3.</strong> France: "pain lavash", "pain plat armenien", "lavash acheter"</li>
+<li>[ ] <strong>E2.4.</strong> Italy: "pane lavash", "pane piatto armeno"</li>
+<li>[ ] <strong>E2.5.</strong> По каждой стране: volume / KD / top-10 SERP</li>
+</ul>
+<h3>E3. Контент-стратегия</h3>
+<ul>
+<li>[ ] <strong>E3.1.</strong> На основе E1-E2 — какие страницы создавать</li>
+<li>[ ] <strong>E3.2.</strong> Какие language sites (ES обязательно, потом CA, EN опционально)</li>
+<li>[ ] <strong>E3.3.</strong> Blog content plan: "что такое лаваш", "рецепты", "история"</li>
+</ul>
+<h3>E4. Documentation</h3>
+<ul>
+<li>[ ] <strong>E4.1.</strong> Добавить как лист «29_SEO Keywords Spain» + «30_SEO Keywords EU» в Distribution DB v4</li>
+<li>[ ] <strong>E4.2.</strong> Отдельный MD файл <code>El_Lavash_SEO_Plan_v1.md</code> с полным планом</li>
+</ul>
+<h2>РАЗДЕЛ F: Cold Calling — критический анализ</h2>
+<ul>
+<li>[ ] <strong>F1.</strong> Launch агент: review AI cold-calling solutions</li>
+<li>[ ] <strong>F2.</strong> Анализ:</li>
+<li>Легальность в Испании (GDPR, RGPD requerimientos)</li>
+<li>Этика — клиенты понимают что это бот?</li>
+<li>Стоимость на 1 успешный контакт</li>
+<li>Альтернативы (WhatsApp Business, email sequences)</li>
+<li>Для какого канала имеет смысл (small retail Льорет — нет, нужно лично; HORECA дистрибьюторы — может быть)</li>
+<li>[ ] <strong>F3.</strong> Рекомендация: использовать / не использовать / ограниченно</li>
+<li>[ ] <strong>F4.</strong> Добавить раздел в «28_AI Tools»</li>
+</ul>
+<h2>РАЗДЕЛ G: Финальная верификация</h2>
+<ul>
+<li>[ ] <strong>G1.</strong> Запустить 5+ агентов проверки:</li>
+<li>Distribution DB v4 — все 600+ строк, валидность URL/тел/email</li>
+<li>Business Plan v1 — формулы корректны, источники открываются</li>
+<li>ТОП-50 маршрут — все Google Maps ссылки ведут на реальные места</li>
+<li>Food Brokers — компании реально существуют</li>
+<li>AI Tools — описания корректны, ссылки активны</li>
+<li>[ ] <strong>G2.</strong> Отчёты в <code>batches/FINAL_VERIFICATION_*.md</code></li>
+<li>[ ] <strong>G3.</strong> Применить критичные правки</li>
+<li>[ ] <strong>G4.</strong> Готово к показу, НЕ ДЕПЛОИТЬ (по указанию)</li>
+</ul>
+<hr />
+<h2>ПРИНЦИПЫ РАБОТЫ в этом раунде</h2>
+<ol>
+<li><strong>Не спешить.</strong> Каждый пункт делаем тщательно.</li>
+<li><strong>Не жалеть токены</strong> на качество (по указанию).</li>
+<li><strong>Не деплоить</strong> пока не закончим — будут ещё изменения.</li>
+<li><strong>Verify в конце</strong> — обязательно агенты на галлюцинации.</li>
+<li><strong>Google Maps ссылки</strong> — только если несложно (формула с URL encode).</li>
+<li><strong>AI tools/connectors</strong> — это инвестиция в будущее проекта, не только текущая необходимость.</li>
+<li><strong>Ahrefs</strong> — использовать аккуратно, конкретные запросы, не тратить токены на ненужное.</li>
+</ol>
+<hr />
+<h2>ВЫХОДНЫЕ АРТЕФАКТЫ этого раунда</h2>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Описание</th>
+<th>Состояние</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>El_Lavash_Distribution_DB_v4.xlsx</code></td>
+<td>30+ страниц с маршрутом, food brokers, AI tools, SEO</td>
+<td>новый</td>
+</tr>
+<tr>
+<td><code>El_Lavash_SEO_Plan_v1.md</code></td>
+<td>Полный SEO-план Spain + EU</td>
+<td>новый</td>
+</tr>
+<tr>
+<td><code>El_Lavash_AI_Tools_Stack_v1.md</code></td>
+<td>Каталог инструментов и рекомендации</td>
+<td>новый</td>
+</tr>
+<tr>
+<td><code>El_Lavash_Food_Brokers_Spain_v1.md</code></td>
+<td>Список агентов/брокеров с reasoning</td>
+<td>новый</td>
+</tr>
+<tr>
+<td><code>El_Lavash_TOP50_Routes_v1.md</code></td>
+<td>Маршрутный план с reasoning</td>
+<td>новый</td>
+</tr>
+<tr>
+<td><code>El_Lavash_MASTER_TODO_v1.md</code></td>
+<td>Этот документ — план</td>
+<td>создан</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Версия 1. При изменениях — v2. Этот файл не редактируется.</em></p>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>

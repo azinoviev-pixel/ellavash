@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Полный разбор служб доставки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Полный разбор служб доставки</h1>
+<div class="sub">36 платформ Испании: национальные, региональные, локальные, нишевые.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>Куда регистрировать El Lavash — полный обзор служб доставки в Испании</h1>
+<blockquote>
+<p>Артезанальный лаваш, производство в Льорет-де-Мар (Каталония).<br />
+Дата исследования: май 2026.<br />
+Все цены/комиссии указаны на момент сбора данных. Где уверенности нет — пометка <code>[оценка]</code> или <code>[требует подтверждения]</code>.</p>
+</blockquote>
+<hr />
+<h2>TL;DR — куда регистрироваться немедленно (топ-5)</h2>
+<ol>
+<li><strong><a href="https://business.whatsapp.com/">WhatsApp Business</a></strong> — нулевая стоимость, каталог + чек-аут. Неделя 1.</li>
+<li><strong><a href="https://sell.glovoapp.com/es/es/services/self-delivery/">Glovo Self-Delivery</a></strong> — комиссия до 15% против 30%, контроль логистики. Неделя 2.</li>
+<li><strong><a href="https://merchants.ubereats.com/es/en/services/uber-direct/">Uber Direct</a></strong> — €5,20 за доставку, без подписки и без комиссии. White-label для собственного сайта. Неделя 2-3.</li>
+<li><strong><a href="https://merchants.ubereats.com/es/en/s/signup/">Uber Eats</a></strong> — pickup-режим как стартовый, минимизирует комиссию. Неделя 2.</li>
+<li><strong><a href="https://restaurantes.just-eat.es/">Just Eat España</a></strong> — крупнейшая активная сеть в Льорете (101 точка по их данным), НО <code>[требует подтверждения]</code> высокая alta-плата. Неделя 3 после переговоров.</li>
+</ol>
+<p><strong>Чего избегать на старте:</strong> Just Eat активационная плата (<a href="https://commandeici.com/en/blogs/online-ordering/just-eat-commission-fees-contracts-alternatives">€699 по разным источникам</a>, упоминают также €299 + €100 депозит) — пытаться выторговать снижение или waiver, иначе подождать с этой платформой до подтверждённого объёма.</p>
+<p><strong>Локальное преимущество для Льорета:</strong> Uber Eats и Glovo уже подтверждённо работают в Льорете (по их собственным city-страницам). Just Eat показывает 101 точку. Bolt Food — нет официальных данных по Льорету <code>[требует подтверждения]</code>.</p>
+<hr />
+<h2>1. Большие национальные платформы B2C</h2>
+<h3>1.1. Glovo</h3>
+<ul>
+<li><strong>Тип:</strong> национальная (Испания + 25 стран).</li>
+<li><strong>Где работает:</strong> вся Испания, включая <a href="https://glovoapp.com/en/es/lloret-de-mar/categories/comida_1">Льорет-де-Мар</a>.</li>
+<li><strong>URL регистрации:</strong> <a href="https://sell.glovoapp.com/es/es/">sell.glovoapp.com</a> / <a href="https://partners.glovoapp.com/">partners.glovoapp.com</a>.</li>
+<li><strong>Комиссия:</strong></li>
+<li>Стандарт (доставка Glovo): 25-35% от заказа (<a href="https://blog.menuviel.com/glovo-fees-and-commissions-for-restaurants/">Menuviel 2026</a>, <a href="https://commandeici.com/en/blogs/online-ordering/glovo-restaurant-commission-rates-comparison">Commande Ici</a>).</li>
+<li><strong>Self-Delivery (своими руками):</strong> до 15% (<a href="https://sell.glovoapp.com/es/es/services/self-delivery/">Glovo Self-Delivery</a>, <a href="https://qamarero.com/blog/cuanto-cobra-glovo-a-los-restaurantes-en-espana-guia/">qamarero.com 2026</a>).</li>
+<li>Pickup (клиент сам забирает): обычно 10-15% <code>[оценка]</code>.</li>
+<li>Динамические комиссии: 15-35% в зависимости от спроса.</li>
+<li><strong>Активационная плата:</strong> официально «нет подписки и hidden fees», но в некоторых рынках может быть активационная плата (<a href="https://sell.glovoapp.com/es/es/">Glovo FAQ</a>).</li>
+<li><strong>Дополнительно:</strong> НДС на комиссию, упаковка за счёт ресторана, нет доступа к контактам клиентов, спонсорские позиции — оплата отдельно.</li>
+<li><strong>Подходит ли El Lavash:</strong></li>
+<li>Готовая еда / лаваш-ролл — ДА (Comida).</li>
+<li>Магазинная продажа (упаковка в пакетах) — ДА (Glovo Markets / Tiendas).</li>
+<li>Замороженная продукция фабрики — ограниченно.</li>
+<li><strong>Реалистичность:</strong> <strong>1</strong> (обязательно).</li>
+<li><strong>Pros:</strong> мгновенная видимость в Льорете, два режима (Comida + Tienda), Self-Delivery даёт контроль.</li>
+<li><strong>Cons:</strong> комиссия съедает маржу, нельзя растить retention напрямую, штраф ЕК €329 млн за картельный сговор с Delivery Hero (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1356">EC, 2025</a>) — репутационные риски.</li>
+</ul>
+<h3>1.2. Uber Eats</h3>
+<ul>
+<li><strong>Тип:</strong> национальная (глобальная).</li>
+<li><strong>Где работает:</strong> вся Испания, <a href="https://www.ubereats.com/es/city/lloret-de-mar-es-ct">Льорет-де-Мар подтверждён</a>.</li>
+<li><strong>URL регистрации:</strong> <a href="https://merchants.ubereats.com/es/en/s/signup/">merchants.ubereats.com/es/en/s/signup/</a>.</li>
+<li><strong>Комиссия (Spain estimates на основе глобальной структуры):</strong></li>
+<li>Delivery by Uber: 30% (premium) <code>[требует подтверждения для ES 2026]</code>.</li>
+<li>Pickup: 6-10%.</li>
+<li>Self-Delivery: ~15% <code>[оценка]</code>.</li>
+<li><strong>Активационная плата:</strong> нет (включает планшет, ПО, photoshoot в подписке).</li>
+<li><strong>Минимальные требования:</strong> меню с фото (можно Uber-photoshoot), банковские реквизиты, NIF/CIF, лицензия пищевого производства, страховка ответственности.</li>
+<li><strong>Срок активации:</strong> 5-10 рабочих дней <code>[оценка]</code>.</li>
+<li><strong>Цикл выплат:</strong> еженедельно.</li>
+<li><strong>Контакт:</strong> <a href="mailto:restaurants@uber.com">restaurants@uber.com</a>.</li>
+<li><strong>Подходит ли El Lavash:</strong> ДА (готовая еда + retail items).</li>
+<li><strong>Реалистичность:</strong> <strong>1</strong> (обязательно).</li>
+<li><strong>Pros:</strong> Uber Direct отдельным продуктом для собственного сайта (см. §7), хороший трафик летом в Льорете (туристы).</li>
+<li><strong>Cons:</strong> в pickup-only режиме видимость ниже; премиум-комиссия высокая.</li>
+</ul>
+<h3>1.3. Just Eat España (Just Eat Takeaway)</h3>
+<ul>
+<li><strong>Тип:</strong> национальная (часть Just Eat Takeaway).</li>
+<li><strong>Где работает:</strong> вся Испания. <a href="https://www.just-eat.es/a-domicilio/lloret-de-mar">По собственным данным 101 точка в Льорете</a>.</li>
+<li><strong>URL регистрации:</strong> <a href="https://restaurantes.just-eat.es/">restaurantes.just-eat.es</a> / <a href="https://www.just-eat.es/partner/registrate/">just-eat.es/partner/registrate/</a>.</li>
+<li><strong>Комиссия:</strong> 14-30% в зависимости от региона и контракта. Premium-контракт +8 п.п. (<a href="https://commandeici.com/en/blogs/online-ordering/just-eat-commission-fees-contracts-alternatives">Commande Ici</a>).</li>
+<li>Плюс сервисный сбор ~€0,50 за заказ.</li>
+<li><strong>Активационная плата:</strong> <a href="https://commandeici.com/en/blogs/online-ordering/just-eat-commission-fees-contracts-alternatives">€699 alta согласно нескольким источникам</a> (включает планшет, обучение). Упоминания €299 alta + €100 депозит — <code>[требует подтверждения для 2026]</code>.</li>
+<li><strong>Self-Delivery:</strong> доступен, своя courier-сеть Just Eat в крупных городах; в Льорете <code>[требует подтверждения]</code>.</li>
+<li><strong>Минимальные требования:</strong> меню, лицензия, NIF, банк, фото, юридическое название.</li>
+<li><strong>Срок активации:</strong> 2-4 недели.</li>
+<li><strong>Цикл выплат:</strong> еженедельно.</li>
+<li><strong>Подходит ли El Lavash:</strong> ДА для готовой еды; для retail (замороженный лаваш в упаковке) — ограниченно.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (важно, но не первым шагом — высокая alta).</li>
+<li><strong>Pros:</strong> широкая сеть в Льорете уже работает; пилот WhatsApp-ordering в Испании Q2 2026 (<a href="https://www.revistaaral.com/texto-diario/mostrar/5889817/just-eat-takeaway-primera-plataforma-europa-habilitar-pedidos-comida-retail-traves-whatsapp">Revista Aral</a>) — потенциально интересно.</li>
+<li><strong>Cons:</strong> активационная плата, контракт жёстче, риск Premium-tier upselling.</li>
+</ul>
+<h3>1.4. Bolt Food</h3>
+<ul>
+<li><strong>Тип:</strong> национальная (Bolt Group, Эстония).</li>
+<li><strong>Где работает:</strong> Испания (Мадрид, Барселона, ряд городов). <a href="https://bolt.eu/en/food/merchant/">Льорет — нет точных данных</a> <code>[требует подтверждения]</code>.</li>
+<li><strong>URL регистрации:</strong> <a href="https://bolt.eu/en/food/merchant/">bolt.eu/en/food/merchant/</a> / <a href="https://foodpartner.bolt.eu/">foodpartner.bolt.eu</a>.</li>
+<li><strong>Комиссия:</strong> 15-30% в зависимости от контракта (<a href="https://blog.menuviel.com/bolt-food-fees-and-commissions-for-restaurants/">Menuviel</a>).</li>
+<li><strong>Активационная плата:</strong> нет (по умолчанию).</li>
+<li><strong>Подходит ли El Lavash:</strong> ДА в Барселоне (для будущей экспансии), для Льорета — проверить покрытие.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (на потом — после подтверждения покрытия в Льорете).</li>
+<li><strong>Pros:</strong> ниже комиссия, чем Glovo по нижней границе.</li>
+<li><strong>Cons:</strong> покрытие Льорета сомнительное; меньше трафик.</li>
+</ul>
+<h3>1.5. Deliveroo — ушла из Испании</h3>
+<ul>
+<li><strong>Статус:</strong> <a href="https://www.catalannews.com/business/item/deliveroo-to-cease-operations-in-spain-at-the-end-of-november">ушла из Испании 29 ноября 2021</a> после принятия Riders Law.</li>
+<li><strong>2026:</strong> не работает в Испании. <strong>Не регистрировать.</strong></li>
+</ul>
+<h3>1.6. Yango Eats — в Испании нет</h3>
+<ul>
+<li><strong>Статус:</strong> Yango Group работает в 30+ странах, но Yango Deli/Eats в Испании не запущен по состоянию на 2026 (<a href="https://yango.com/">Yango Group</a>). <code>[требует подтверждения]</code>.</li>
+<li><strong>Реалистичность:</strong> <strong>5</strong> (не подходит для текущего рынка Льорета).</li>
+</ul>
+<h3>1.7. La Nevera Roja — поглощена Just Eat</h3>
+<ul>
+<li><strong>Статус:</strong> поглощена Just Eat в 2015, бренд исчез 1 октября 2016 (<a href="https://www.alimarket.es/restauracion/noticia/222790/just-eat-spain-absorbe-la-actividad-de-la-nevera-roja">Alimarket</a>).</li>
+<li><strong>Реалистичность:</strong> <strong>5</strong> (не существует).</li>
+</ul>
+<hr />
+<h2>2. Региональные / средние B2C</h2>
+<h3>2.1. Resto-In</h3>
+<ul>
+<li><strong>Тип:</strong> региональная (Барселона + Мадрид).</li>
+<li><strong>URL:</strong> <a href="https://www.resto-in.es/">resto-in.es</a>.</li>
+<li><strong>Сегмент:</strong> премиум-доставка (sushi, итальянская, китайская).</li>
+<li><strong>Подходит ли:</strong> ограниченно — фокус не на лаваш-продукции. Возможно для лаваш-роллов как fusion-позиция.</li>
+<li><strong>Реалистичность:</strong> <strong>4</strong> (нишевая платформа, низкий приоритет).</li>
+</ul>
+<h3>2.2. The Fork (бывш. ElTenedor)</h3>
+<ul>
+<li><strong>Тип:</strong> reservation, НЕ delivery.</li>
+<li><strong>URL:</strong> <a href="https://www.thefork.es/">thefork.es</a>.</li>
+<li><strong>Комиссия:</strong> 0,95% от резервации + €0,50 за гостя (январь 2025).</li>
+<li><strong>Подходит ли:</strong> только если будет диньинг при производстве/магазин. Для дистрибуции лаваша — НЕТ.</li>
+<li><strong>Реалистичность:</strong> <strong>5</strong> (другой продукт).</li>
+</ul>
+<h3>2.3. Klikin</h3>
+<ul>
+<li><strong>Статус:</strong> приобретён <a href="https://www.thenewbarcelonapost.com/last-app-compra-a-repsol-la-aplicacion-de-reservas-de-restaurantes-klikin/">Last.app в 2022</a>. Бренд интегрирован.</li>
+<li><strong>URL:</strong> <a href="https://klikin.com/us">klikin.com</a> / <a href="https://www.last.app/">last.app</a>.</li>
+<li><strong>Тип:</strong> TPV/ordering SaaS для ресторана, не маркетплейс.</li>
+<li><strong>Подходит ли:</strong> только если потребуется собственный TPV.</li>
+<li><strong>Реалистичность:</strong> <strong>4</strong>.</li>
+</ul>
+<h3>2.4. Last.app</h3>
+<ul>
+<li><strong>Тип:</strong> SaaS для ресторанов — TPV, online-orders, виртуальный магазин на собственном сайте.</li>
+<li><strong>URL:</strong> <a href="https://www.last.app/">last.app</a>.</li>
+<li><strong>Подходит ли:</strong> ДА (для собственного канала продаж через WhatsApp/сайт). Альтернатива WhatsApp Catalog.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (после старта продаж).</li>
+</ul>
+<h3>2.5. MyMenú / PizzaPortal</h3>
+<ul>
+<li><strong>Статус 2026:</strong> <code>[требует подтверждения]</code>. MyMenú фигурирует в архивных списках; PizzaPortal — польская сеть, в Испании не активна.</li>
+<li><strong>Реалистичность:</strong> <strong>5</strong>.</li>
+</ul>
+<hr />
+<h2>3. Локальные / гиперлокальные (Льорет, Жирона, Costa Brava)</h2>
+<h3>3.1. EnLloret / Club Villamar Delivery Services</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.clubvillamar.es/content/lloret-de-mar/es/perdir-comida-lloret-de-mar/">clubvillamar.es — список 10 лучших служб доставки в Льорете</a>.</li>
+<li><strong>Тип:</strong> агрегатор-каталог от туристического оператора.</li>
+<li><strong>Подходит ли:</strong> ДА для попадания в туристические гайды. Контактировать напрямую.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (lifelocale touristic visibility).</li>
+</ul>
+<h3>3.2. Restaurantes.info (Жирона/Льорет)</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.restaurantes.info/Girona/a-domicilio/Lloret-de-Mar.htm">restaurantes.info/Girona/a-domicilio/Lloret-de-Mar.htm</a>.</li>
+<li><strong>Тип:</strong> каталог-агрегатор местных служб.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (бесплатное listings, низкий приоритет).</li>
+</ul>
+<h3>3.3. Telegram / WhatsApp группы Льорета</h3>
+<ul>
+<li><strong>Тип:</strong> русско/украиноязычные/арабские локальные коммьюнити (Telegram-каналы, WhatsApp-сообщества).</li>
+<li><strong>Подходит ли:</strong> ДА (Element 1 brand для русскоязычной аудитории).</li>
+<li><strong>Реалистичность:</strong> <strong>1-2</strong> (бесплатный канал).</li>
+<li><strong>Действие:</strong> найти 5-10 локальных Telegram-каналов Льорета/Бланеса/Тоссы/Жироны и закинуть пост.</li>
+</ul>
+<h3>3.4. Costa Brava local delivery / Жирона</h3>
+<ul>
+<li><strong>Статус:</strong> Bolt Food/Glovo/Just Eat покрывают Жирону. Уникальной локальной службы доставки еды класса Льорет-only <code>[не подтверждено существование]</code>.</li>
+</ul>
+<hr />
+<h2>4. Niche / специализированные</h2>
+<h3>4.1. Halal-only delivery</h3>
+<ul>
+<li><strong>Платформы:</strong> <a href="https://alandalusdistribuidores.com/20-halal">Al Ándalus Distribuidores</a> (B2B, не делает retail-доставку конечникам).</li>
+<li><strong>Подходит ли:</strong> ДА для B2B дистрибуции halal-сертифицированной продукции (если получите сертификацию).</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (нужна Halal-сертификация — отдельный проект).</li>
+</ul>
+<h3>4.2. Этнический food delivery (русский/армянский/арабский)</h3>
+<ul>
+<li><strong>Платформы:</strong></li>
+<li><a href="https://skazka.es/">SKAZKA.es</a> — русские продукты, доставка по всей Испании.</li>
+<li><a href="https://mundofoods.com/">Mundo Foods</a> — русские/восточные продукты, <a href="https://mundofoods.com/845-pan-libanes">есть категория «pan libanés»</a>.</li>
+<li><a href="https://www.teremok.es/es/">Teremok.es</a> — русская сеть, Барселона.</li>
+<li><a href="https://www.euruschuk.com.es/">EU RUSCHUK</a> — Болгария/Россия/Украина, Мадрид.</li>
+<li><a href="https://libanofoods.com/">Libanofoods</a> — производитель/импортёр Middle Eastern foods, B2B.</li>
+<li><strong>Подходит ли:</strong> ДА (B2B оптовая поставка лаваша как ингредиента в этнический ритейл).</li>
+<li><strong>Реалистичность:</strong> <strong>1-2</strong> (целевая аудитория).</li>
+<li><strong>Действие:</strong> связаться с каждым из этих ретейлеров напрямую как поставщик.</li>
+</ul>
+<h3>4.3. Veggie / Healthy / Premium artisan</h3>
+<ul>
+<li><strong>Платформы:</strong> локальные artisan-маркетплейсы в Каталонии: <a href="https://www.botiguesdecatalunya.cat/">Botigues de Catalunya</a>, Slow Food Catalunya (<a href="https://slowfoodcatalunya.cat/?lang=en">slowfoodcatalunya.cat</a>).</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (premium positioning, артезанальность подходит).</li>
+</ul>
+<h3>4.4. KM0 / Local farms сети</h3>
+<ul>
+<li><strong>Платформы:</strong> Bonpreu/Esclat программа местных производителей, Caprabo «pequeño productor» программа (<a href="https://www.qcom.es/alimentacion/reportajes/caprabo--escaparate-para-el-pequeno-productor_26373_2_28739_0_1_in.html">Caprabo для маленьких производителей</a>).</li>
+<li><strong>Подходит ли:</strong> ДА (артезанальный + локальный = KM0 storytelling).</li>
+<li><strong>Реалистичность:</strong> <strong>1-2</strong> (это и есть розничная дистрибуция).</li>
+</ul>
+<hr />
+<h2>5. Frozen / freezer chain</h2>
+<h3>5.1. La Sirena</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.lasirena.es/">lasirena.es</a>.</li>
+<li><strong>Тип:</strong> retail chain замороженных продуктов, 250+ магазинов + online.</li>
+<li><strong>Условия доставки:</strong> бесплатная при заказе €49+ по всему полуострову.</li>
+<li><strong>Категория «Pan y masas congeladas»:</strong> <a href="https://www.lasirena.es/es/1075-pan-masas-y-hojaldres">есть</a>.</li>
+<li><strong>Подходит ли:</strong> ДА (как поставщик замороженного лаваша в их private label или branded).</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (B2B канал, долгий цикл).</li>
+<li><strong>Действие:</strong> связаться с buyer panaderia La Sirena.</li>
+</ul>
+<h3>5.2. Eurobakeries / artisan frozen bakery</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.eurobakeries.com/pan-y-bolleria-congelada-para-hosteleria-de-eurobakeries/">eurobakeries.com</a>.</li>
+<li><strong>Тип:</strong> B2B frozen bakery для HORECA.</li>
+<li><strong>Подходит ли:</strong> конкурент, но также возможный партнёр-дистрибьютор.</li>
+</ul>
+<hr />
+<h2>6. B2B доставки (закупки HORECA)</h2>
+<h3>6.1. Bidfood Iberia</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://bidfoodiberia.com/">bidfoodiberia.com</a> / online: <a href="https://www.mybidfood.es/public/">mybidfood.es</a>.</li>
+<li><strong>Тип:</strong> HORECA-дистрибьютор, 4000+ референций.</li>
+<li><strong>Подходит ли:</strong> ДА (как поставщик лаваша в их каталог для ресторанов).</li>
+<li><strong>Реалистичность:</strong> <strong>1-2</strong> (стратегический B2B-канал).</li>
+<li><strong>Действие:</strong> <a href="https://bidfoodiberia.com/proveedores/">forma de proveedor</a>.</li>
+</ul>
+<h3>6.2. Makro España</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.makro.es/distribucion-hosteleria">makro.es/distribucion-hosteleria</a>.</li>
+<li><strong>Тип:</strong> Cash &amp; Carry + HORECA distribution.</li>
+<li><strong>Подходит ли:</strong> ДА (стать listed supplier).</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong>.</li>
+</ul>
+<h3>6.3. Assolim</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://assolim.com/es/">assolim.com</a>.</li>
+<li><strong>Тип:</strong> каталонский HORECA-дистрибьютор, 7000+ клиентов (рестораны, отели, булочные).</li>
+<li><strong>Подходит ли:</strong> ДА — местный, фокус на Каталонии.</li>
+<li><strong>Реалистичность:</strong> <strong>1</strong> (приоритет №1 в B2B-листе).</li>
+</ul>
+<h3>6.4. BGrup Barcelona</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.bgrup.es/es/">bgrup.es</a>.</li>
+<li><strong>Тип:</strong> мажор Барселоны, 50+ лет на рынке.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong>.</li>
+</ul>
+<h3>6.5. Mercabarna Marketplace (Digital Logistics)</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.mercabarna.es/es/">mercabarna.es</a> + <a href="https://bcncl.es/">BCNCL digital marketplace</a>.</li>
+<li><strong>Тип:</strong> мажорский рынок Барселоны + цифровой логистический маркетплейс.</li>
+<li><strong>Подходит ли:</strong> для оптовой поставки и логистики.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (через посредника-mayorista).</li>
+</ul>
+<hr />
+<h2>7. Курьерские / last-mile сервисы для своих заказов</h2>
+<h3>7.1. Uber Direct</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://merchants.ubereats.com/es/en/services/uber-direct/">merchants.ubereats.com/es/en/services/uber-direct/</a>.</li>
+<li><strong>Тип:</strong> white-label last-mile под собственный сайт/WhatsApp.</li>
+<li><strong>Цена:</strong> <strong>минимум €5,20 за доставку</strong>, без подписки, без комиссии, без минимума (<a href="https://marketing4ecommerce.net/uber-direct-el-servicio-de-entrega-rapida-para-ecommerce-local-llega-a-espana/">Marketing4ecommerce</a>).</li>
+<li><strong>Реалистичность:</strong> <strong>1</strong> (must-have для своего сайта/WhatsApp).</li>
+<li><strong>Pros:</strong> свой бренд, низкая cost-per-delivery, легко интегрируется в Shopify/WooCommerce.</li>
+</ul>
+<h3>7.2. Glovo Express / Glovo Direct</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://sell.glovoapp.com/es/es/services/self-delivery/">sell.glovoapp.com/es/es/services/self-delivery/</a> для Self-Delivery; Glovo Local Express через тот же partner-портал.</li>
+<li><strong>Тип:</strong> Glovo courier как сервис для собственных продаж.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (альтернатива Uber Direct, проверить тарификацию для Льорета).</li>
+</ul>
+<h3>7.3. Stuart Delivery</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://stuart.com/">stuart.com</a> / <a href="https://info.stuart.com/delivery-for-restaurant">info.stuart.com/delivery-for-restaurant</a>.</li>
+<li><strong>Тип:</strong> B2B last-mile, работает в 150+ городах Испании/UK/FR/IT/PT/PL.</li>
+<li><strong>Подходит ли:</strong> ДА (особенно для B2B-доставок ресторанам в Жироне/Барселоне).</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (полезен для оптовых поставок).</li>
+</ul>
+<h3>7.4. Cabify Envíos / Cabify Logistics</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://cabify.com/es/pasajeros/envios">cabify.com/es/pasajeros/envios</a> + <a href="https://cabifylogistics.com/en/business">cabifylogistics.com</a>.</li>
+<li><strong>Тип:</strong> last-mile + storage (рефрижератор в Мадриде).</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (Льорет не покрыт same-day обычно).</li>
+</ul>
+<h3>7.5. SEUR Frío</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-frio/">seur.com/es/empresas/servicios-disponibles/seur-frio/</a>.</li>
+<li><strong>Тип:</strong> междугородняя cold-chain доставка (2-8°C), 24-часовая по Испании, AENOR/ISO 23412 сертификат.</li>
+<li><strong>Подходит ли:</strong> ДА для отправки замороженного/охлаждённого лаваша по Испании оптом/в розницу.</li>
+<li><strong>Реалистичность:</strong> <strong>1</strong> (must-have для cold-chain дистанций).</li>
+</ul>
+<h3>7.6. SEUR Food</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-food/">seur.com/es/empresas/servicios-disponibles/seur-food/</a>.</li>
+<li><strong>Тип:</strong> Comida, вино, гурме — упаковка-rated.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong>.</li>
+</ul>
+<h3>7.7. Correos Frío</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.correos.es/es/es/empresas/enviar/envios-nacionales/correos-frio">correos.es/es/es/empresas/enviar/envios-nacionales/correos-frio</a>.</li>
+<li><strong>Тип:</strong> альтернатива SEUR, обычно дешевле для малых объёмов.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong>.</li>
+</ul>
+<h3>7.8. MRW</h3>
+<ul>
+<li><strong>Тип:</strong> курьерская, есть рефрижераторные опции, дешевле SEUR для повседневных пересылок.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong>.</li>
+</ul>
+<hr />
+<h2>8. WhatsApp / Telegram бот-сервисы</h2>
+<h3>8.1. WhatsApp Business</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://business.whatsapp.com/">business.whatsapp.com</a>.</li>
+<li><strong>Цена:</strong> бесплатно (Catalog + Cart) + ~$0,005-0,02 за business-инициированное сообщение в API.</li>
+<li><strong>Подходит ли:</strong> <strong>YES, MUST-HAVE.</strong> 78% клиентов предпочитают WhatsApp вместо звонка (<a href="https://mesaking.com/blog/whatsapp-business-restaurantes-guia">Mesaking 2026</a>).</li>
+<li><strong>Реалистичность:</strong> <strong>1</strong> (неделя 1).</li>
+<li><strong>Стек:</strong> WhatsApp Business App (бесплатно) → каталог → checkout vía link → Uber Direct/Glovo Self для доставки.</li>
+</ul>
+<h3>8.2. Just Eat WhatsApp pilot</h3>
+<ul>
+<li><strong>Статус:</strong> <a href="https://www.revistaaral.com/texto-diario/mostrar/5889817/just-eat-takeaway-primera-plataforma-europa-habilitar-pedidos-comida-retail-traves-whatsapp">Just Eat запускает WhatsApp-ordering пилот в Испании Q2 2026</a>.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (отслеживать запуск, попасть в список).</li>
+</ul>
+<h3>8.3. Telegram-каналы Льорет/Жирона/Бланес</h3>
+<ul>
+<li>Локальные коммьюнити-каналы (русско/арабско/украиноязычные) — пост-промо бесплатно.</li>
+<li><strong>Реалистичность:</strong> <strong>1-2</strong>.</li>
+</ul>
+<hr />
+<h2>9. Marketplace для специализированных продуктов</h2>
+<h3>9.1. Mundo Foods</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://mundofoods.com/">mundofoods.com</a> — российские/восточные продукты, <a href="https://mundofoods.com/845-pan-libanes">pan libanés представлен</a>.</li>
+<li><strong>Подходит ли:</strong> ДА — стать поставщиком артезанального лаваша.</li>
+<li><strong>Реалистичность:</strong> <strong>1-2</strong>.</li>
+</ul>
+<h3>9.2. SKAZKA.es</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://skazka.es/">skazka.es</a>.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong>.</li>
+</ul>
+<h3>9.3. Teremok</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.teremok.es/es/">teremok.es</a> — Барселона, русский ассортимент.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong>.</li>
+</ul>
+<h3>9.4. Libanofoods</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://libanofoods.com/">libanofoods.com</a>.</li>
+<li><strong>Тип:</strong> производитель pan pita + импортёр Middle Eastern foods.</li>
+<li><strong>Реалистичность:</strong> <strong>2</strong> (потенциальный B2B-партнёр или конкурент).</li>
+</ul>
+<h3>9.5. Cedar's Bread</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://cedarsbread.es/">cedarsbread.es</a>.</li>
+<li><strong>Тип:</strong> артезанальный производитель ливанской пита-хлеба в Испании.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (конкурент, изучить как референс).</li>
+</ul>
+<h3>9.6. El Horno de Medio Oriente</h3>
+<ul>
+<li><strong>URL:</strong> <a href="https://www.elhornodemediooriente.com/">elhornodemediooriente.com</a>.</li>
+<li><strong>Реалистичность:</strong> <strong>3</strong> (конкурент-референс).</li>
+</ul>
+<hr />
+<h2>Сводная таблица — все платформы, по убыванию приоритета</h2>
+<table>
+<thead>
+<tr>
+<th>Платформа</th>
+<th>Тип</th>
+<th>Льорет</th>
+<th>Комиссия / цена</th>
+<th>Alta-плата</th>
+<th>Реал. (1=топ, 5=нет)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WhatsApp Business</td>
+<td>Самопродажи</td>
+<td>да</td>
+<td>0</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Glovo (Self-Delivery)</td>
+<td>Нац B2C</td>
+<td>да</td>
+<td>до 15%</td>
+<td>нет</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Uber Direct</td>
+<td>Last-mile (свой сайт)</td>
+<td>да</td>
+<td>€5,20/доставка</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Uber Eats (Pickup)</td>
+<td>Нац B2C</td>
+<td>да</td>
+<td>6-10%</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>SEUR Frío</td>
+<td>Cold-chain courier</td>
+<td>весь ES</td>
+<td>за вес/расстояние</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Assolim</td>
+<td>HORECA mayorista</td>
+<td>Каталония</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Bidfood Iberia</td>
+<td>HORECA mayorista</td>
+<td>весь ES</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Mundo Foods</td>
+<td>Этнический retail</td>
+<td>весь ES</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>1-2</strong></td>
+</tr>
+<tr>
+<td>Just Eat</td>
+<td>Нац B2C</td>
+<td>да (101 точка)</td>
+<td>14-30% + €0,50/заказ</td>
+<td>€299-699 <code>[уточнить]</code></td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Glovo (full delivery)</td>
+<td>Нац B2C</td>
+<td>да</td>
+<td>25-35%</td>
+<td>возможна <code>[оценка]</code></td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Uber Eats (full delivery)</td>
+<td>Нац B2C</td>
+<td>да</td>
+<td>до 30%</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>La Sirena (B2B retail)</td>
+<td>Frozen chain</td>
+<td>весь ES</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Caprabo (KM0)</td>
+<td>Retail Cataluña</td>
+<td>да</td>
+<td>retail margin</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Bonpreu/Esclat</td>
+<td>Retail Cataluña</td>
+<td>да</td>
+<td>retail margin</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>EnLloret/Club Villamar list</td>
+<td>Локальный гид</td>
+<td>да</td>
+<td>listing fee <code>[уточнить]</code></td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Telegram/WhatsApp коммьюнити Льорет</td>
+<td>Локальный</td>
+<td>да</td>
+<td>0</td>
+<td>0</td>
+<td><strong>1-2</strong></td>
+</tr>
+<tr>
+<td>Botigues de Catalunya</td>
+<td>Artisan marketplace</td>
+<td>Кат</td>
+<td>listing fee</td>
+<td>малая</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Stuart Delivery</td>
+<td>Last-mile</td>
+<td>весь ES</td>
+<td>за заказ</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Glovo Self-Delivery (Express)</td>
+<td>Last-mile</td>
+<td>да</td>
+<td>за доставку</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Makro España</td>
+<td>HORECA</td>
+<td>весь ES</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>BGrup</td>
+<td>HORECA Cataluña</td>
+<td>Кат</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Correos Frío</td>
+<td>Cold-chain courier</td>
+<td>весь ES</td>
+<td>за вес</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>SEUR Food</td>
+<td>Specialty courier</td>
+<td>весь ES</td>
+<td>за вес</td>
+<td>0</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Bolt Food</td>
+<td>Нац B2C</td>
+<td><code>[не подтв.]</code></td>
+<td>15-30%</td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Last.app</td>
+<td>TPV/online ordering SaaS</td>
+<td>весь ES</td>
+<td>SaaS plan</td>
+<td>малая</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Slow Food Catalunya</td>
+<td>Artisan marketplace</td>
+<td>Кат</td>
+<td>listing fee</td>
+<td>малая</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Mercabarna marketplace</td>
+<td>B2B</td>
+<td>Кат</td>
+<td>wholesale</td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Cabify Envíos</td>
+<td>Last-mile</td>
+<td>Мадрид/BCN</td>
+<td>за заказ</td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>MRW</td>
+<td>Courier</td>
+<td>весь ES</td>
+<td>за вес</td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Al Ándalus (halal)</td>
+<td>B2B</td>
+<td>весь ES</td>
+<td>wholesale</td>
+<td>требует Halal cert</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Resto-In</td>
+<td>Premium B2C</td>
+<td>BCN/Madrid</td>
+<td>15-25% <code>[оценка]</code></td>
+<td>требует уточнения</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td>Klikin / Last.app TPV</td>
+<td>SaaS</td>
+<td>весь ES</td>
+<td>SaaS</td>
+<td>малая</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td>The Fork</td>
+<td>Reservation, НЕ delivery</td>
+<td>весь ES</td>
+<td>—</td>
+<td>—</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>Deliveroo</td>
+<td>Ушла из ES</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>Yango Eats</td>
+<td>Не в ES</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>La Nevera Roja</td>
+<td>Поглощена</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>MyMenú / PizzaPortal</td>
+<td>Не активны в ES <code>[уточнить]</code></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>5</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Чек-лист регистрации (что готовить перед подачей)</h2>
+<h3>Документы юр.лица</h3>
+<ul>
+<li>[ ] <strong>NIF/CIF</strong> компании (или DNI/NIE автономо).</li>
+<li>[ ] Свидетельство о регистрации деятельности в Каталонии (Alta IAE).</li>
+<li>[ ] Лицензия санитарная (Registro Sanitario, <strong>RGSEAA</strong>) — критично для пищевого производства.</li>
+<li>[ ] Сертификат ОВД/безопасности рабочего места (PRL básico).</li>
+<li>[ ] Страховка гражданской ответственности продукта.</li>
+<li>[ ] Сертификат HACCP / план самоконтроля.</li>
+<li>[ ] (опционально) Halal/Kosher/Bio сертификации.</li>
+</ul>
+<h3>Банк и финансы</h3>
+<ul>
+<li>[ ] Банковский счёт компании (IBAN ES).</li>
+<li>[ ] SEPA-маандат для прямых платежей.</li>
+<li>[ ] Контактный email для invoicing.</li>
+</ul>
+<h3>Контент</h3>
+<ul>
+<li>[ ] Логотип El Lavash (PNG + SVG).</li>
+<li>[ ] Меню/каталог продукции (имя, описание, аллергены, вес, цена).</li>
+<li>[ ] Фото каждой позиции — минимум 1200×1200 px, белый/нейтральный фон, аппетитная подача (Element 1: на доске; Element 2: разрез/начинка).</li>
+<li>[ ] Фото производства / печки / процесса — для storytelling.</li>
+<li>[ ] Описание бренда 500 знаков (RU + ES + CA).</li>
+<li>[ ] Шорт-таглайн (15-30 знаков).</li>
+<li>[ ] Часы работы для каждого канала.</li>
+</ul>
+<h3>Логистика</h3>
+<ul>
+<li>[ ] Адрес производства/pickup point.</li>
+<li>[ ] Зона доставки (радиус из Льорет: Льорет/Бланес/Тосса/Калелья/Жирона = 30 км; cold-chain — вся Испания).</li>
+<li>[ ] Стандарт упаковки (термопакет + cardboard для горячих, vacuum + крафт для упакованных).</li>
+<li>[ ] Минимальный заказ для каждого канала.</li>
+</ul>
+<hr />
+<h2>План мероприятий по неделям</h2>
+<h3>Неделя 0 (текущая) — настройка инфраструктуры</h3>
+<ul>
+<li>[ ] Свет подключают: <strong>сейчас</strong>.</li>
+<li>[ ] Вторник: первый лаваш + фотосессия 30 кадров.</li>
+<li>[ ] Зарегистрировать Google Business Profile (адрес производства).</li>
+<li>[ ] Создать Instagram-бизнес-аккаунт и привязать к WhatsApp Business.</li>
+<li>[ ] Купить домен и подготовить landing-страницу на ellavash.es/order.</li>
+</ul>
+<h3>Неделя 1 — WhatsApp + Instagram + Google</h3>
+<ul>
+<li>[ ] <strong>WhatsApp Business</strong>: установить, настроить каталог, прайс, описание, часы. Импортировать каталог продуктов.</li>
+<li>[ ] <strong>Instagram Shopping</strong>: подключить каталог, разрешить tagging.</li>
+<li>[ ] <strong>Google Business Profile</strong>: фото, описание, услуги, контакт WhatsApp.</li>
+<li>[ ] <strong>Telegram-каналы Льорета</strong>: запостить промо в 5-10 каналах (русско/украиноязычные локальные группы).</li>
+</ul>
+<h3>Неделя 2 — национальные платформы (pickup-режим)</h3>
+<ul>
+<li>[ ] <strong>Glovo Self-Delivery</strong> (<a href="https://sell.glovoapp.com/es/es/services/self-delivery/">sell.glovoapp.com</a>): заявка, выложить меню, фото, активация.</li>
+<li>[ ] <strong>Uber Eats</strong> (<a href="https://merchants.ubereats.com/es/en/s/signup/">merchants.ubereats.com/es/en/s/signup/</a>): заявка в pickup-режиме, дождаться photoshoot.</li>
+<li>[ ] <strong>Uber Direct</strong> (<a href="https://merchants.ubereats.com/es/en/services/uber-direct/">интеграция</a>): подключить к WhatsApp/landing для доставки до 5 км.</li>
+</ul>
+<h3>Неделя 3 — Just Eat + локальные гиды</h3>
+<ul>
+<li>[ ] <strong>Just Eat</strong>: переговоры по alta-плате (target: бесплатная активация или waiver). Подача документов, контракт.</li>
+<li>[ ] <strong>Club Villamar / EnLloret</strong>: попасть в туристические гайды.</li>
+<li>[ ] <strong>Restaurantes.info Lloret</strong>: бесплатный listing.</li>
+<li>[ ] Связаться с <strong>Assolim</strong> (HORECA Каталонии) как поставщик.</li>
+</ul>
+<h3>Неделя 4 — этнический ритейл + cold-chain</h3>
+<ul>
+<li>[ ] <strong>Mundo Foods</strong> — заявка как поставщик артезанального лаваша.</li>
+<li>[ ] <strong>SKAZKA / Teremok / EU RUSCHUK</strong> — wholesale-предложение.</li>
+<li>[ ] <strong>Libanofoods</strong> — wholesale-переговоры (или конкурентный анализ).</li>
+<li>[ ] <strong>SEUR Frío</strong> — открыть business-account, договориться о тарифе на регулярные cold-chain поставки.</li>
+<li>[ ] <strong>Caprabo / Bonpreu</strong> — заявка через программу местных производителей KM0.</li>
+</ul>
+<h3>Неделя 5-8 — масштабирование</h3>
+<ul>
+<li>[ ] <strong>Bidfood Iberia</strong> — заявка <a href="https://bidfoodiberia.com/proveedores/">proveedores</a>.</li>
+<li>[ ] <strong>Makro España</strong> — попадание в каталог HORECA.</li>
+<li>[ ] <strong>La Sirena</strong> — заявка как поставщик замороженного лаваша.</li>
+<li>[ ] <strong>Bolt Food</strong> — пробная регистрация (если подтвердят покрытие Льорета).</li>
+<li>[ ] <strong>Botigues de Catalunya / Slow Food Catalunya</strong> — премиум-listings.</li>
+<li>[ ] <strong>Mercabarna</strong> — поиск mayorista-партнёра для входа в рынок.</li>
+</ul>
+<h3>Неделя 9-12 — оптимизация</h3>
+<ul>
+<li>[ ] Анализ оборота по каналам, отключение убыточных.</li>
+<li>[ ] Переговоры о понижении комиссий с топ-3 платформ.</li>
+<li>[ ] Sponsored listings там, где даёт ROI &gt; 2.</li>
+<li>[ ] Подача на Halal-сертификацию (если есть рынок).</li>
+</ul>
+<hr />
+<h2>Источники</h2>
+<ul>
+<li><a href="https://sell.glovoapp.com/es/es/">Glovo Spain — sell.glovoapp.com</a></li>
+<li><a href="https://sell.glovoapp.com/es/es/services/self-delivery/">Glovo Self-Delivery</a></li>
+<li><a href="https://glovoapp.com/en/es/lloret-de-mar/categories/comida_1">Glovo Llloret-de-mar caterogie</a></li>
+<li><a href="https://blog.menuviel.com/glovo-fees-and-commissions-for-restaurants/">Menuviel — Glovo Fees 2026</a></li>
+<li><a href="https://commandeici.com/en/blogs/online-ordering/glovo-restaurant-commission-rates-comparison">Commande Ici — Glovo rates</a></li>
+<li><a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1356">EC press release — Delivery Hero/Glovo cartel fine 2025</a></li>
+<li><a href="https://merchants.ubereats.com/es/en/s/signup/">Uber Eats merchants signup Spain</a></li>
+<li><a href="https://www.ubereats.com/es/city/lloret-de-mar-es-ct">Uber Eats Lloret de Mar</a></li>
+<li><a href="https://merchants.ubereats.com/es/en/services/uber-direct/">Uber Direct merchants page</a></li>
+<li><a href="https://marketing4ecommerce.net/uber-direct-el-servicio-de-entrega-rapida-para-ecommerce-local-llega-a-espana/">Marketing4ecommerce — Uber Direct España</a></li>
+<li><a href="https://www.just-eat.es/partner/registrate/">Just Eat partner registro</a></li>
+<li><a href="https://www.just-eat.es/a-domicilio/lloret-de-mar">Just Eat Lloret de Mar (101 точка)</a></li>
+<li><a href="https://commandeici.com/en/blogs/online-ordering/just-eat-commission-fees-contracts-alternatives">Commande Ici — Just Eat fees 2026</a></li>
+<li><a href="https://www.revistaaral.com/texto-diario/mostrar/5889817/just-eat-takeaway-primera-plataforma-europa-habilitar-pedidos-comida-retail-traves-whatsapp">Revista Aral — Just Eat WhatsApp Spain Q2 2026</a></li>
+<li><a href="https://bolt.eu/en/food/merchant/">Bolt Food merchant</a></li>
+<li><a href="https://foodpartner.bolt.eu/">Bolt Food Partner Portal</a></li>
+<li><a href="https://blog.menuviel.com/bolt-food-fees-and-commissions-for-restaurants/">Menuviel — Bolt Food fees 2026</a></li>
+<li><a href="https://www.catalannews.com/business/item/deliveroo-to-cease-operations-in-spain-at-the-end-of-november">Catalan News — Deliveroo exit Spain Nov 2021</a></li>
+<li><a href="https://www.alimarket.es/restauracion/noticia/222790/just-eat-spain-absorbe-la-actividad-de-la-nevera-roja">Alimarket — Just Eat absorbe Nevera Roja</a></li>
+<li><a href="https://www.thefork.es/">The Fork España</a></li>
+<li><a href="https://www.thenewbarcelonapost.com/last-app-compra-a-repsol-la-aplicacion-de-reservas-de-restaurantes-klikin/">Klikin acquired by Last.app</a></li>
+<li><a href="https://www.resto-in.es/">Resto-In España</a></li>
+<li><a href="https://www.clubvillamar.es/content/lloret-de-mar/es/perdir-comida-lloret-de-mar/">Club Villamar — список служб доставки в Льорете</a></li>
+<li><a href="https://www.restaurantes.info/Girona/a-domicilio/Lloret-de-Mar.htm">Restaurantes.info Lloret de Mar</a></li>
+<li><a href="https://www.lasirena.es/es/1075-pan-masas-y-hojaldres">La Sirena — Pan congelado</a></li>
+<li><a href="https://bidfoodiberia.com/">Bidfood Iberia</a></li>
+<li><a href="https://bidfoodiberia.com/proveedores/">Bidfood Proveedores</a></li>
+<li><a href="https://www.makro.es/distribucion-hosteleria">Makro Distribución hostelería</a></li>
+<li><a href="https://assolim.com/es/proveedores-mayoristas/">Assolim — proveedores mayoristas Cataluña</a></li>
+<li><a href="https://www.bgrup.es/es/">BGrup — mayoristas hostelería Barcelona</a></li>
+<li><a href="https://bcncl.es/nuevas-funcionalidades-del-marketplace-logistico-de-mercabarna/">Mercabarna marketplace logístico</a></li>
+<li><a href="https://stuart.com/">Stuart Delivery</a></li>
+<li><a href="https://cabify.com/es/pasajeros/envios">Cabify Envíos</a></li>
+<li><a href="https://cabifylogistics.com/en/business">Cabify Logistics business</a></li>
+<li><a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-frio/">SEUR Frío</a></li>
+<li><a href="https://www.seur.com/es/empresas/servicios-disponibles/seur-food/">SEUR Food</a></li>
+<li><a href="https://www.correos.es/es/es/empresas/enviar/envios-nacionales/correos-frio">Correos Frío</a></li>
+<li><a href="https://business.whatsapp.com/">WhatsApp Business</a></li>
+<li><a href="https://mesaking.com/blog/whatsapp-business-restaurantes-guia">Mesaking — WhatsApp Business restaurantes 2026</a></li>
+<li><a href="https://mundofoods.com/845-pan-libanes">Mundo Foods — pan libanés</a></li>
+<li><a href="https://skazka.es/">SKAZKA.es</a></li>
+<li><a href="https://www.teremok.es/es/">Teremok Barcelona</a></li>
+<li><a href="https://www.euruschuk.com.es/">EU RUSCHUK Madrid</a></li>
+<li><a href="https://libanofoods.com/">Libanofoods</a></li>
+<li><a href="https://cedarsbread.es/">Cedar's Bread</a></li>
+<li><a href="https://www.elhornodemediooriente.com/">El Horno de Medio Oriente</a></li>
+<li><a href="https://alandalusdistribuidores.com/20-halal">Al Ándalus Halal Distribuidores</a></li>
+<li><a href="https://slowfoodcatalunya.cat/?lang=en">Slow Food Catalunya</a></li>
+<li><a href="https://www.botiguesdecatalunya.cat/">Botigues de Catalunya</a></li>
+<li><a href="https://www.qcom.es/alimentacion/reportajes/caprabo--escaparate-para-el-pequeno-productor_26373_2_28739_0_1_in.html">Caprabo — pequeño productor</a></li>
+<li><a href="https://www.last.app/">Last.app</a></li>
+<li><a href="https://qamarero.com/blog/cuanto-cobra-glovo-a-los-restaurantes-en-espana-guia/">qamarero.com — Glovo cobra ES 2026</a></li>
+<li><a href="https://www.globenewswire.com/news-release/2026/04/17/3276218/0/en/Spain-Quick-Commerce-Report-2026-Market-to-Reach-4-37-Billion-by-2029-Glovo-Delivery-Hero-and-Uber-Eats-Lead-through-Supermarket-Alliances-and-Hybrid-Fulfillment-Models.html">GlobeNewswire — Spain Quick Commerce 2026 report</a></li>
+</ul>
+<p><strong>Документ:</strong> El_Lavash_Delivery_Services_Research_v1.md<br />
+<strong>Версия:</strong> 1 (май 2026)<br />
+<strong>Не редактировать. Для изменений — создать v2.</strong></p>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>

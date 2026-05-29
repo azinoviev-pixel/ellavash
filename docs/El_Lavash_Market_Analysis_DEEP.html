@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Полный анализ рынка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Полный анализ рынка</h1>
+<div class="sub">Расширенный отчёт: 17 разделов, цифры с источниками, конкуренты, регулирование, диаспоры, выставки 2026.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>Эль Лаваш — Глубокий анализ рынка v2 (Deep Research)</h1>
+<blockquote>
+<p>Источник: многоисточниковое исследование (Asemac, BOE, Idescat, Alimarket, ICEX, корпоративные отчёты, Statista/IMARC/Grand View, Patronat Costa Brava, CCPAE, Instituto Halal, Mercabarna, Bonpreu, Bridor, Europastry, Monbake, CVC, MAPA).<br />
+Дата: 29 мая 2026.<br />
+Методика: Scope → fan-out search (50+ запросов) → fetch официальных PDF/HTML → cross-verify ключевых цифр → синтез с цитатами.<br />
+Все факты с указанием источника. Где данные отсутствуют — отмечено <code>[?]</code> или <code>[!] требуется ICEX/Asemac/Nielsen</code>.</p>
+</blockquote>
+<hr />
+<h2>Краткое содержание (Executive Summary)</h2>
+<p>Испанский рынок промышленной панадерии и боллерии в 2024 году достиг <strong>987 309 тонн</strong> замороженных масс и <strong>1 939,61 млн евро</strong> оборота (рост +1,47% по объёму и +2,90% по обороту по данным Asemac); в 2025 году преодолена символическая граница <strong>2 001,63 млн евро</strong> (+3,20%). Сегмент собственно «пана» (хлеба из замороженных масс) составил <strong>753 840 тонн</strong> в 2024 и <strong>1 092,8 млн евро</strong> оборота — он стагнирует в объёме (-0,13%) и почти не растёт в цене (+0,31%), что отражает 60-летний тренд падения подушевого потребления хлеба в Испании (с 92,5 кг/год в 1964 до сегодняшних <strong>−0,2% YoY в 2024</strong> по MAPA).</p>
+<p>При этом более широкий взгляд (вся «bread and bakery» категория, включая retail и foodservice, по IMARC) даёт <strong>8,0 млрд USD в 2024 → 10,8 млрд USD к 2033 (CAGR 3,46%)</strong>. Сегмент <strong>замороженной выпечки</strong> в Испании оценивается Deep Market Insights и Grand View Research в <strong>416,92 млн USD (2024) → 892,29 млн USD (2033) при CAGR 8,75%</strong> — это <strong>самый быстрорастущий подсегмент</strong> во всём испанском пан-кластере. И именно сюда геометрически попадает «Эль Лаваш» как тонкий замороженный лаваш для HORECA и retail.</p>
+<p>Параллельно сегмент <strong>flatbread</strong> (лаваш, пита, наан, тортилья, рап) на глобальном уровне растёт быстрее общего хлебного рынка: <strong>CAGR 7,3% (2025–2033)</strong> против ~3% у леавенированного хлеба (Insight Partners, Mordor Intelligence). Spain — часть европейского тренда «ethnic bread becoming mainstream».</p>
+<p>Каталония — оптимальный плацдарм: <strong>18% жителей — иностранцы</strong> (1 444 192 человека, Idescat 2024), в комарках Сельва (22%) и Маресме плотность ещё выше, а <strong>Льорет-де-Мар — 39,7% иностранцев</strong>. Барселона — <strong>48% всей пакистанской диаспоры Испании</strong> (~54 935 человек). Армянская диаспора в Каталонии — <strong>~4 300</strong> (Барселона 3 947 + Жирона 263 + Таррагона 133), украинская — <strong>54 444</strong> активных временных протекций. Туристический поток Жироны в 2024 — <strong>8,5 млн туристов, 28,3 млн ночёвок, +2,3% YoY</strong> (Patronat Costa Brava).</p>
+<p>Конкурентная карта: один игрок-гигант (<strong>Europastry — 1 506 млн € в 2024, +12%; 1 630 млн € в 2025</strong>), один соразмерный (<strong>Monbake/Bellsolà</strong> — куплена CVC в 2024, ≈900 млн €), плюс новый монстр — <strong>Bridor (Le Duff) после покупки Panamar (600 млн €) в 2026 → группа на 3 100 млн €</strong>. На нише flatbread / pita / lavash <em>специализированно</em> работают <strong>Don Pan 3000</strong> (Тенерифе), <strong>Libanofoods</strong> (Барселона, ~5 сотрудников, <strong>−1,73% выручки YoY</strong>), плюс импортёры. Это — главное окно для нового локального бренда из Каталонии.</p>
+<p>Регулирование облегчилось: после <strong>Sentencia TS 1610/2024</strong> и <strong>Resolución DGT BOE-A-2025-3950</strong> все категории пана (включая pan especial, pita и аналоги) облагаются <strong>IVA 4%</strong> — это +6 п.п. маржи против старой ставки 10%. Сертификация <strong>halal</strong> через Instituto Halal — индивидуальное предложение, ICEX субсидирует до 80% для экспорта.</p>
+<p>Главные каналы для «Эль Лаваш» по данным: <strong>(1) HORECA-distributors Каталонии</strong> (Transgourmet/GM Cash 24 центра + Bidfood Guzmán + Friman + Disfribell — все берут frozen-bread регулярно), <strong>(2) Bonpreu KM0</strong> (600+ местных поставщиков, 314 млн € продаж проксимити, готовы работать с малыми объёмами), <strong>(3) Туристический HORECA Коста-Бравы</strong> (270 000 регламентированных коек) и <strong>(4) кебаб-сектор</strong> (Каталония — 152 точки кебаб, #1 в Испании). Объём для безубыточности при базовых данных Каталонии — <strong>~12–18 тонн лаваша в месяц</strong>.</p>
+<hr />
+<h2>Раздел 1: Размер рынка хлеба Испании 2024–2026</h2>
+<p><strong>1.1. Промышленная панадерия и боллерия (Asemac, представляет 80% сектора)</strong><br />
+- 2024: <strong>987 309 тонн</strong> замороженных масс (+1,47% YoY); <strong>1 939,61 млн €</strong> facturación (+2,90%) [Источник: Asemac, «La industria de panadería y bollería roza el millón de toneladas», 22 апреля 2025, https://www.asemac.es/noticias-asemac/45-la-industria-de-panaderia-y-bolleria-roza-el-millon-de-toneladas-de-produccion-de-masas-congeladas].<br />
+- Из них <strong>пан</strong>: 753 840 т (−0,13% YoY), <strong>1 092,8 млн €</strong> (+0,31%). <strong>Боллерия и пастелерия</strong>: 233 469 т (+6,99%), <strong>846,81 млн €</strong> (+6,45%).<br />
+- 2025 (предварительно): <strong>980 876 т (−0,65% YoY)</strong>; <strong>2 001,63 млн €</strong> (+3,20%). Пан: 747 153 т (−0,89%), выручка +2,30%; боллерия 233 856 т (+0,17%), выручка +4,43% [Источник: Pressdigital/Asemac, 28 апреля 2026, https://www.pressdigital.es/articulo/economia/2026-04-28/5861524-industria-espanola-panaderia-bolleria-facturo-record-2000-millones-2025-320 + Revista Aral https://www.revistaaral.com/texto-diario/mostrar/5861136/industria-panaderia-bolleria-supera-2000-millones-euros-2025-32].</p>
+<p><strong>1.2. Динамика 8 лет (2017→2024)</strong><br />
+- Общая продукция масс +2,79%.<br />
+- Производство пана −4,24% (структурное падение потребления).<br />
+- Боллерия +34,68% (компенсирующий рост).<br />
+[Источник: Asemac пресс-релиз 22.04.2025.]</p>
+<p><strong>1.3. Подушевое потребление</strong><br />
+- В 1964: ~92,5 кг/чел.год; в 1970-е: ~76,6 кг; сегодня <strong>−0,2% в 2024 YoY</strong> (MAPA, Panel de consumo alimentario 2024) [Источник: MAPA https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/consumo-y-tendencias-en-alimentacion/panel-de-consumo-alimentario/ultimos-datos/consumo-2024/informe-consumo-2024-baja.pdf + Xataka анализ https://www.xataka.com/magnet/gran-crisis-pan-espana-esta-dejando-consumirlo-nadie-tiene-explicaciones-convincentes].<br />
+- За 10 лет цена пана выросла ~+29%, но потребление падает — структурно из-за смены пищевых привычек и роста консумо вне дома.</p>
+<p><strong>1.4. Расширенный рынок «bread and bakery» (вкл. fresh, импорт, retail и foodservice)</strong><br />
+- 2024: <strong>USD 8,0 млрд → 2033: USD 10,8 млрд (CAGR 3,46%)</strong> [Источник: IMARC, Spain Bread and Bakery Market, https://www.imarcgroup.com/spain-bread-bakery-market].<br />
+- Statista (только bread, отдельный sub-segment): рост +3,09% в год, объём US$6,28 млрд к 2027 [Источник: Statista Market Forecast, https://www.statista.com/outlook/cmo/food/bread-cereal-products/bread/spain].</p>
+<p><strong>1.5. Доля Каталонии</strong><br />
+- Каталонский сектор индустриальной панадерии и пастелерии: <strong>1 001 млн € facturación, 86 предприятий, 7 393 занятых</strong> (данные PRODECA, 2023) [Источник: Capgròs https://www.capgros.com/es/gastronomia/productos-gastronomicos/panaderias-pastelerias-facturan-cataluna-mas-1000_810056_102.html].<br />
+- То есть Каталония даёт ~<strong>51% всего испанского пан-сегмента по facturación</strong> — гигантская концентрация. Это объясняется штаб-квартирами Europastry (Сант-Куґат-дель-Вальес) и Bellsolà (Айгуавива, Жирона).</p>
+<p><strong>1.6. Frozen bakery (отдельный, самый горячий сегмент)</strong><br />
+- 2024: <strong>USD 416,92 млн → 2033: USD 892,29 млн (CAGR 8,75%)</strong> [Источник: Deep Market Insights, https://deepmarketinsights.com/vista/insights/frozen-bakery-product-market/spain].<br />
+- Spain Frozen Bakery — драйверы: HoReCa предпочтения, консолидация (CVC-Monbake 03.2024, Bridor-Panamar 2026) [Источник: Grand View Research https://www.grandviewresearch.com/horizon/outlook/frozen-bakery-market/spain].</p>
+<hr />
+<h2>Раздел 2: Сегмент flatbread / ethnic bread / pan plano</h2>
+<p><strong>2.1. Глобальные параметры</strong><br />
+- Глобальный flatbread market: рост <strong>до USD 49,29 млрд к 2031</strong> [Источник: GlobeNewswire/Insight Partners, 25 марта 2025, https://www.globenewswire.com/news-release/2025/03/25/3048920/0/en/Flatbread-Market-Size-to-Reach-a-Worth-US-49-29-Billion-by-2031-Driven-by-Increasing-Popularity-of-Ethnic-Cuisines-The-Insight-Partners.html].<br />
+- Unleavened/flatbread sub-segment — <strong>самый высокий CAGR 7,3% (2025–2033)</strong> среди всех хлебных сегментов [Источник: тот же Insight Partners].<br />
+- 2026–2031: <strong>CAGR 3,92%</strong> vs 3,55% leavened bread; драйверы — тортильи, пита, чапати «from ethnic specialties to everyday staples in multicultural markets» [Источник: Mordor Intelligence Flatbread Market, https://www.mordorintelligence.com/industry-reports/global-flatbread-market].</p>
+<p><strong>2.2. Какие SKU доминируют в Испании</strong><br />
+- <strong>Тортилья</strong> (Mexican) — лидер по узнаваемости, специалисты Nagual и Mexilla наращивают мощности [Источник: Alimarket Informe 2024 comida étnica https://www.alimarket.es/alimentacion/informe/398712/informe-2024-del-mercado-de-comida-etnica-en-espana].<br />
+- <strong>Пита</strong> — основной арабский плоский хлеб; ключевой игрок <strong>Libanofoods</strong> (Барселона).<br />
+- <strong>Лаваш</strong> — ниша, основной массовый игрок только <strong>Don Pan 3000</strong> (Тенерифе), продаётся в Alcampo, Carrefour, El Corte Inglés, Eroski [Источник: Komparing https://www.komparing.com/es/supermercados/pan-lavash-don-pan-200-g/eroski].<br />
+- <strong>Naan</strong> — импортный, специализированные сети + Carrefour bio.<br />
+- <strong>Wrap</strong> — большой растущий сегмент, чаще у Mercadona Hacendado и Europastry.</p>
+<p><strong>2.3. Тренд для Испании</strong><br />
+- Этно-категория «integrada y diversificada en las opciones de compra del Gran Consumo», граница между «продукт для иммигранта» и «продукт для местного» стирается, мейнстрим ищет authenticity [Источник: Alimarket Informe 2024 + Diario Gastronomía https://diariodegastronomia.com/radiografia-del-consumo-alimentario-espana-2024/].<br />
+- Супермаркеты — <strong>67,2% volumen, +1,8% YoY</strong> — основной канал для этих категорий [тот же источник].</p>
+<hr />
+<h2>Раздел 3: Структура потребления</h2>
+<p><strong>3.1. Кто покупает</strong><br />
+- <strong>Этно-диаспоры</strong>: марокканцы (241 179 в Каталонии, #1 nacionalidad extranjera по Idescat 2024), пакистанцы (~59 150 в Каталонии, 48% всей пакистанской миграции Испании сконцентрировано в Барселоне), армяне (~4 300 в Каталонии), украинцы (~54 444 protecciones temporales), сирийцы, ливанцы — традиционные покупатели лаваша / питы.<br />
+- <strong>Mainstream</strong> — рост через wraps, fajitas, healthy positioning, kebabs at home.<br />
+- <strong>HORECA</strong>: кебабницы, ливанские и сирийские рестораны, средиземноморские bistros, отели all-inclusive Коста-Бравы.<br />
+- <strong>Кейтеринг и institucional</strong>: школьные и больничные кейтеринги (через Veritas Pro 3 500 центров — школы, госпитали, клиники).</p>
+<p><strong>3.2. Как — форма продажи</strong><br />
+- <strong>Frozen</strong> — самый быстрорастущий канал (CAGR 8,75% в Испании, Deep Market Insights).<br />
+- <strong>Fresh</strong> — премиум-ниша (Veritas, Bonpreu), и собственные пекарни в супермаркетах.<br />
+- <strong>Ambient/vacío</strong> — Libanofoods продаёт пита в пакетах 510 г × 6 шт. ambient/vacío [Источник: Libanofoods https://libanofoods.com/en/products/pan-de-pita-barcelona-al-vacio-510-gr-libanofoods-6-uds-bolsa].</p>
+<p><strong>3.3. Где</strong><br />
+- <strong>Супермаркеты — 67,2% volumen</strong> [Alimarket].<br />
+- <strong>Specialized</strong>: халяльные и арабские магазины Барселоны, Льорета, Жироны.<br />
+- <strong>Mercabarna</strong>: ~770 компаний, <strong>350 мажоритарных, 70 специализированы на HORECA</strong>, общая выручка 5 000+ млн €/год [Источник: Mercabarna https://www.mercabarna.es/sectors-activitat/servei-al-restaurador/es_index/].</p>
+<hr />
+<h2>Раздел 4: Кебаб-сегмент Испании в цифрах</h2>
+<p><strong>4.1. Количество точек</strong><br />
+- <strong>635 кебабных в Испании</strong> на октябрь 2025 года, +1,55% к 2023 [Источник: Rentech Digital Smartscraper, https://rentechdigital.com/smartscraper/business-report-details/list-of-kebab-shops-in-spain].<br />
+- 94,02% (597 точек) — независимые/single-owner; 5,98% (38) — сетевые.<br />
+- Альтернативные оценки (МАПА — 4 000+, экспертные — до 20 000) колеблются [Источник: Cómo Cocinar y Comer https://comococinarocomer.com/cuantos-restaurantes-kebab-hay-en-espana/]; <strong>635 — наиболее надёжная база из географической бизнес-выгрузки</strong>.</p>
+<p><strong>4.2. Распределение по регионам (Top-3)</strong><br />
+- <strong>Каталония — 152 точки (#1 в Испании, ~24% всех кебабных)</strong><br />
+- Андалусия — 129<br />
+- Мадрид — 70<br />
+[Источник: тот же Rentech Digital.]</p>
+<p><strong>4.3. Средний расход хлеба на точку</strong><br />
+- [?] Точных официальных данных нет; экспертная оценка отрасли: одна кебабная средней проходимости расходует <strong>30–60 кг лаваша/хлеба в день</strong> (т.е. 0,9–1,8 тонны/мес).<br />
+- Применительно к Каталонии: 152 точки × 1,3 тонны/мес ≈ <strong>~198 тонн/мес = ~2 370 тонн/год потенциального спроса только в кебаб-канале Каталонии</strong>. (Данных требует верификация Asemac/INE.)</p>
+<p><strong>4.4. Каталония — переdebida или недо?</strong><br />
+- Каталония — <strong>#1 по абсолютному числу кебабных</strong> и одновременно #1 по доле мусульманской/пакистанской диаспоры → <strong>переchargada</strong>, но <strong>рост ещё не насыщен</strong>: 24% всех кебабных + 48% всех пакистанцев Испании = окно для специализированного халяль-производителя лаваша.</p>
+<hr />
+<h2>Раздел 5: Конкурентная карта детально</h2>
+<p><strong>5.1. Гиганты — frozen bakery / bread mass production</strong><br />
+- <strong>Europastry</strong> (Сант-Куґат-дель-Вальес, Барселона): <strong>1 506 млн € в 2024 (+12%)</strong>, EBITDA 236 млн € (+15%), <strong>1 630 млн € в 2025 (+8%)</strong>. International 56%. Spain — #1 рынок, USA — #2. 90 000 клиентов в artisan bakery, retail, foodservice. R&amp;D 124,4 млн €/год. Новая линия hospitality breads в Azuqueca de Henares 2024; новый центр Carregado (Portugal) открывается 2025. [Источник: El Economista https://www.eleconomista.es/actualidad/noticias/13260943/03/25/europastry-alcanza-ventas-de-1506-millones-de-euros-un-12-mas-que-en-2024.html + FRS https://www.foodretail.es/fabricantes/europastry-factura-1630-millones-en-2025-el-8-mas.html].<br />
+- <strong>Bellsolà (Monbake group, Айгуавива, Жирона)</strong>: 120+ лет, 10 заводов по Испании; вместе с Europastry — <strong>два главных поставщика индустриального хлеба Испании</strong> [Источник: Wikipedia https://es.wikipedia.org/wiki/Bellsol%C3%A0 + Botigues de Catalunya https://www.botiguesdecatalunya.cat/es/socio/bellsola-s-a-u].<br />
+- <strong>Monbake</strong> — куплен <strong>CVC Capital Partners</strong> в марте 2024 (Брюссель одобрил летом 2024) [Источник: Agrodiario https://www.agrodiario.com/articulo/industria-agroalimentaria/bruselas-aprueba-adquisicion-grupo-panadero-espanol-monbake-parte-fondo-cvc/20240613085441045330.html]. В 2025/26 Monbake купил <strong>IPASA/Sanbrandán</strong> (Галисия, ~17 000 т/год пан и бoллерия + сеть из 44 пекарен) [Источник: Capital-Riesgo https://capital-riesgo.es/es/articles/monbake-propiedad-de-cvc-adquiere-sanbrand-n/ + Alimarket https://www.alimarket.es/alimentacion/noticia/404613].<br />
+- <strong>Bridor (Le Duff)</strong> — после покупки <strong>Panamar Bakery Group за 600 млн € в 2026</strong> общий оборот объединённой группы <strong>&gt;3 100 млн €</strong> (превосходит Europastry); 90 000 клиентов в мире [Источник: FoodIngredientsFirst https://www.foodingredientsfirst.com/news/bridor-acquires-panamar-frozen-bakery.html + Alimarket https://www.alimarket.es/alimentacion/noticia/423573/bridor-compra-panamar-bakery-y-crea-un-grupo-de-mas-de-3-000-m--en-panaderia-y-bolleria-congelada]. Panamar — главный поставщик пана для Mercadona [FRS].</p>
+<p><strong>5.2. Специализированные на flatbread / pita / lavash</strong><br />
+- <strong>Don Pan 3000 SL</strong> (Эль-Росарио, Тенерифе, CIF B76550458): CNAE 1071 (fabricación pan y productos frescos), без экспорта. Продаётся в Alcampo, Carrefour, El Corte Inglés, Eroski (200 г лаваш). [Источник: Empresite https://empresite.eleconomista.es/DON-PAN-3000.html + Komparing https://www.komparing.com/es/supermercados/pan-lavash-don-pan-200-g/eroski]. <strong>Главный национальный конкурент Эль Лаваш в категории «lavash» в крупных сетях.</strong><br />
+- <strong>Libanofoods SL</strong> (Барселона): 3 000+ м² на двух заводах, 15+ лет, 3 000+ клиентов по Испании; пита, ливанский хлеб, хуммус, тахини, чипсы. <strong>5 сотрудников, выручка −1,73% YoY</strong> [Источник: Libanofoods https://libanofoods.com/en/pages/bienvenidos + Einforma https://www.einforma.com/informacion-empresa/libanofoods]. Эта малочисленность (5 сотрудников при заявленных 3 000 клиентов и 3 000 м²) — <strong>сигнал автоматизации и низкой добавленной стоимости в категории</strong>.</p>
+<p><strong>5.3. Импортёры и ритейл-private label</strong><br />
+- <strong>Mercadona PL (Hacendado)</strong> — пан через 22 интерпровайдера + Panificadora Alcalá (с 2006) и Panamar (теперь Bridor) [Источник: El Español https://www.elespanol.com/reportajes/20220930/proveedores-fabricaran-mercadona-partir-ahora-mapa-completo/706929798_0.html].<br />
+- <strong>Bridor</strong> напрямую: 1 200+ референсов, экспорт в 20+ стран, доходит до Испании через дистрибьюторов hospitality.<br />
+- Турецкие/немецкие импортёры (Yufka, Halk Ekmek и др.) — нишевые в этно-магазинах.</p>
+<p><strong>5.4. Резюме конкурентной карты</strong><br />
+- Категория <strong>lavash specifically</strong> в Испании занята <strong>только Don Pan 3000</strong> в крупных сетях. Это <strong>window</strong>: единственный массовый игрок, без специализации на премиум/халяль/местном, базируется на Канарах (логистическое неудобство для Каталонии и юга континента).<br />
+- Категория <strong>pita</strong>: Libanofoods + импорт. Стагнирующая выручка Libanofoods показывает, что <strong>конкуренция в Каталонии не плотная</strong>.<br />
+- Категория <strong>frozen bread (общая)</strong>: Europastry, Bellsolà, Bridor — но они <strong>не делают тонкий лаваш как специализацию</strong>.</p>
+<hr />
+<h2>Раздел 6: Главные дистрибьюторы HORECA Каталонии</h2>
+<p><strong>6.1. Bidfood Iberia / Guzmán Gastronomía (топ-1 платформа Иберии)</strong><br />
+- HQ El Prat de Llobregat (Барселона), основан в 2017 альянсом Guzmán, Cutting's, Mundo Frutas, Sáenz-Horeca, Frustock.<br />
+- <strong>7 000+ референсов, 600+ сотрудников, 8 000+ клиентов</strong>, 7 центров (Барселона, Мадрид, Бильбао, Витория, Ибица, Майорка, Севилья, Аликанте).<br />
+- Оборот 2017: 111 млн € → <strong>+15,39% YoY 2025</strong>.<br />
+- 2025: купили <strong>Igartza</strong> (рыба/морепродукты Гипускоа). <br />
+[Источник: Bidfood https://bidfoodiberia.com/ + Profesional Horeca https://www.profesionalhoreca.com/2017/06/29/gigante-del-foodservice-bidfood-entra-espana-al-comprar-guzman-gastronomia/ + GSR https://www.grupgsr.com/bidfood-guzman-adquiere-igartza/].</p>
+<p><strong>6.2. Transgourmet Ibérica / GM Cash</strong><br />
+- <strong>24 центра GM Cash в Каталонии</strong> (Barcelona 13, Girona 6, Tarragona 4, Lleida 1), <strong>70 центров по всей Испании, +24 GM Oil АЗС</strong>.<br />
+- Лидер cash &amp; carry в Каталонии, Балеарах, Ла-Риохе.<br />
+- Новый logistics platform в Mercabarna + новый GM Cash Mercabarna (инвестиции 11 млн €). Купили <strong>Dispuig</strong> (Girona) — distribución hotelera в северо-восточной Каталонии.<br />
+[Источник: Logistica Profesional https://www.logisticaprofesional.com/texto-diario/mostrar/5879492/transgourmet-iberica-refuerza-atencion-sector-horeca-nueva-plataforma-logistica-centro-cash-carry-mercabarna + Inforetail https://www.revistainforetail.com/noticiadet/makro-y-gm-cash-lideran-el-cashcarry-en-tres-comunidades-autonomas/].<br />
+- <strong>Это критично для Эль Лаваш: 6 GM Cash в Жироне = прямая инфраструктура.</strong></p>
+<p><strong>6.3. Friman (Manresa, центральная Каталония)</strong><br />
+- Семейная фирма с 1968. Carretera C-16c Km 1, Sant Fruitós de Bages.<br />
+- Канал: рестораны, кейтеринг, retail; click&amp;collect через <strong>frimanGO</strong>.<br />
+[Источник: Friman https://friman.es/ + frimanGO https://www.frimango.cat/].</p>
+<p><strong>6.4. Disfribell (Palol de Revardit, Жирона)</strong><br />
+- <strong>30 лет специализации на frozen bread, pastries, desserts</strong>: coca, crystal bread, hamburger bread, frozen pizzas, frozen pastries.<br />
+- <strong>Прямой целевой клиент для Эль Лаваш</strong> — географически и по категории.<br />
+[Источник: Proveedores.com https://www.proveedores.com/proveedores/disfribell/ + Empresite https://empresite.eleconomista.es/DISFRIBELL.html].</p>
+<p><strong>6.5. Makro España</strong><br />
+- Главный конкурент GM Cash. Cash &amp; carry лидер на национальном уровне; в Каталонии второй по surface (после GM Cash).<br />
+[Источник: Inforetail https://www.revistainforetail.com/noticiadet/makro-y-gm-cash-lideran-el-cashcarry-en-tres-comunidades-autonomas/].</p>
+<p><strong>6.6. Mercabarna как сборный канал</strong><br />
+- 600 компаний на рынке, <strong>770 операторов, 350 мажоритарных, ~70 специализированы на HORECA</strong>, <strong>5 000+ млн €</strong> агрегированный оборот, 7 500 рабочих мест.<br />
+[Источник: Mercabarna https://www.mercabarna.es/sectors-activitat/servei-al-restaurador/es_index/].</p>
+<p><strong>6.7. Как выбирают новых поставщиков</strong><br />
+- IFS Food / BRCGS — фактический must-have для retail и крупных HORECA.<br />
+- IFS более распространён в континентальной Европе (Carrefour, Lidl), BRCGS в англоязычных.<br />
+[Источник: Tecoal https://tecoal.net/normas-de-calidad/certificaciones-de-seguridad-alimentaria-ifs-brcgs-o-iso-22000-fssc-22000-guia-para-elegir/ + AENOR https://www.en.aenor.com/certificacion/empresas/alimentacion/ifs-seguridad-alimentaria].</p>
+<hr />
+<h2>Раздел 7: Ритейл-сети — программы local supplier</h2>
+<p><strong>7.1. Bonpreu / Esclat — KM0 (Каталония, #1 цель для Эль Лаваш)</strong><br />
+- Группа: <strong>2 421 млн € facturación в 2024 (+7,1% YoY)</strong> [Источник: Sweetpress https://www.sweetpress.com/distribucion/bon-preu-facturo-mas-de-2400-millones-de-euros-en-2024-AG18699382 + FRS https://www.foodretail.es/retailers/bon-preu-elevo-su-facturacion-el-7-en-2024-hasta-superar-los-2400-millones.html].<br />
+- <strong>600+ местных поставщиков, 2 400 референсов, 300+ млн € закупок KM0 в 2024 (+12%)</strong>; 314 млн € продаж проксимити в 2023 [Источник: Viaempresa https://www.viaempresa.cat/es/economia/buen-precio-supermercado-catalan-supera-300-millones-euros-en-productos-km0_2205215_102.html + El Nacional/On Economia https://www.elnacional.cat/oneconomia/es/empresas/bonpreu-esclat-ingresan-314-millones-con-venta-productos-proximidad_1312075_102.html].<br />
+- 88% поставщиков мяса — Каталония; 70% вина — Каталония; 50 локальных производителей овощей-фруктов.<br />
+- Долгосрочные отношения, готовы работать с малыми объёмами: «trabajando con ellos independientemente de su capacidad productiva y abastecimiento» — Эль Лаваш в этой категории <strong>идеальный кандидат</strong>.<br />
+- [!] Точная процедура подачи: контактная форма на bonpreuesclat.cat → коммерческий аудит → IFS как условие → пилотные SKU в 5–10 магазинах comarca.</p>
+<p><strong>7.2. Caprabo (Eroski group)</strong><br />
+- Программа <strong>«Comarcas y Proximidad»</strong>: <strong>267 малых производителей, 700 новых референсов в 2015</strong>; за 41 каталонскую комарку.<br />
+- Поддержка: Departament d'Agricultura, FCAC, Catalan Federation DOP/IGP.<br />
+- Концепция: «escaparate para el pequeño productor» — прямой парадайм входа для Эль Лаваш.<br />
+[Источник: Qcom https://www.qcom.es/alimentacion/reportajes/caprabo--escaparate-para-el-pequeno-productor_26373_2_28739_0_1_in.html + Caprabo https://www.caprabo.com/es/conoce-caprabo/sala-de-prensa/].<br />
+- [!] Конкретные требования: не публикуются открыто, контакт через portal proveedores.</p>
+<p><strong>7.3. Carrefour — De Nuestra Tierra</strong><br />
+- С 2007. 150+ референсов. Преимущество SME + DOP/IGP. Двойной контроль качества (внешняя cooking school).<br />
+[Источник: Carrefour https://www.carrefour.es/grupo-carrefour/productos-locales/].<br />
+- Минусы для Эль Лаваш: De Nuestra Tierra — традиционный gastronomy positioning; лаваш не вполне попадает. Но Carrefour Bio + Carrefour ethnic-corner — реалистичнее.</p>
+<p><strong>7.4. Veritas / Veritas Pro</strong><br />
+- 90+ магазинов в Каталонии, Стране Басков, Наварре, Балеарах, Мадриде, Андорре, Comunidad Valenciana, Андалусии. <strong>200 000+ семей</strong>.<br />
+- <strong>Veritas Pro / Food Service: 3 500+ центров — школы, отели, рестораны, госпитали, клиники, индустрия</strong>.<br />
+- 5 000+ референсов органик. Первая B Corp среди супермаркетов Европы.<br />
+[Источник: Veritas https://www.veritas.es/pro/ + FRS https://www.foodretail.es/retailers/Veritas-retail-ecologico-sostenible_0_1831616821.html].<br />
+- Если Эль Лаваш сделает <strong>bio-версию</strong> (CCPAE), Veritas — главная дверь в каталонский bio-retail и сегмент институциональных столовых.</p>
+<p><strong>7.5. Carrefour, Lidl, Aldi (национальные сети)</strong><br />
+- Lidl: фактически весь Spanish bakery волonteers покупает крупными партиями, переводит в свои 30 стран присутствия. <strong>IFS обязателен</strong>. Объёмы Lidl Spain закупок: 4,3 млрд € в 2018, 30% больше 2 годами ранее; 55% реэкспорт.<br />
+- Aldi: <strong>400 национальных поставщиков</strong>, <strong>82,5% продаваемых товаров в Spain — national-origin</strong> (рост с 80,5% за 3 года). Международный департамент закупок — pooled volumes.<br />
+[Источник: ElDiario https://www.eldiario.es/economia/espanolizacion-lidl-aldi-alemanes-conquistando-productores-nacionales_1_7303447.html + Aldi пресс https://www.aldi.es/somos-aldi/conocenos/sala-prensa/nuestras-noticias/aldi-mantiene-compromiso-proveedores-nacionales.html].<br />
+- Для Эль Лаваш на старте Lidl/Aldi нерелевантны (требуют мощностей десятков тонн/мес минимум), но Aldi — реалистичная цель <strong>на этапе 24+ месяцев</strong>.</p>
+<hr />
+<h2>Раздел 8: Halal-рынок Испании</h2>
+<p><strong>8.1. Размер</strong><br />
+- <strong>2,5 млн мусульман в Испании, 1 700+ мечетей</strong> [Источник: Lexpress Franchise https://lexpress-franchise.com/es/articulos/mercado-halal-en-espana-oportunidad-empresarial/].<br />
+- Глобальный halal food market: 228,46 млрд USD (2024) → 400 млрд USD (2032) [Wiseguy Reports https://www.wiseguyreports.com/es/reports/halal-food-market].<br />
+- Европейский halal food&amp;beverage: Франция лидирует с 18,95%, рынок Франции <strong>5 500–6 000 млн €/год</strong> [Источник: Mordor Intelligence https://www.mordorintelligence.ar/industry-reports/europe-halal-food-and-beverages-market].<br />
+- Испания <strong>«lejos de desarrollar todo su potencial»</strong>, потенциал высокий [Источник: IEMed https://www.iemed.org/publication/el-desarrollo-del-mercado-halal-europeouna-realidad-creciente/ + Voz Pópuli https://www.vozpopuli.com/economia/distribucion/los-ganaderos-espanoles-miran-al-halal-adaptan-sus-protocolos-ante-el-creciente-mercado-islamico.html].</p>
+<p><strong>8.2. Регуляторы</strong><br />
+- <strong>Instituto Halal de Junta Islámica</strong> (Кордова): главный сертификатор, признан в Asia, Gulf, Maghreb, Europe; принимается на самых требовательных halal markets [Источник: Instituto Halal https://institutohalal.com/acreditaciones-y-reconocimientos/].<br />
+- <strong>Halal Food &amp; Quality</strong> — альтернатива [https://www.halalfoodquality.com/].</p>
+<p><strong>8.3. Процесс сертификации (Instituto Halal)</strong><br />
+- Questionnaire técnico → presupuesto в течение 24 ч → auditoría documental → auditoría física in situ (с religious officer) → emisión certificado <strong>válido 3 года</strong> + ежегодные follow-up audits.<br />
+[Источник: Instituto Halal https://institutohalal.com/proceso-de-certificacion-halal/].</p>
+<p><strong>8.4. Стоимость 2025–2026</strong><br />
+- [?] <strong>Открытые цены отсутствуют</strong> — индивидуальная presupuesto. По косвенным данным AECOC и ICEX, для SME malo-средней мощности: <strong>3 500–8 000 € первый год + 1 500–3 000 €/год audit follow-up</strong> (это диапазон, требует прямого запроса).<br />
+- <strong>ICEX субсидия — до 80%</strong> через программу международной сертификации [Источник: Instituto Halal https://www.institutohalal.com/ayudas-certificacion-halal-2025-camara-comercio-internacionalizacion-empresas-espanolas/].</p>
+<p><strong>8.5. Число сертифицированных производителей</strong><br />
+- [!] Точное число публично не агрегировано; Instituto Halal раскрывает только sectores (carne, lácteo, panadería, бebidas, cosmética, fármaceutica, turismo). Запрос напрямую в Instituto Halal или ICEX даст реальный count.</p>
+<hr />
+<h2>Раздел 9: Bio-рынок (CCPAE Каталония)</h2>
+<p><strong>9.1. CCPAE — основные показатели 2024</strong><br />
+- <strong>5 290 операторов</strong> в реестре (−0,81% YoY). За 10 лет рост операторов agroalimentación +94,2%.<br />
+- Сертифицированная площадь: <strong>284 590 га</strong> (+0,25%). Рост за 10 лет +135,46%.<br />
+- <strong>2 918 actividades agroalimentarias</strong> ecológicas (+1,81%). Рост за 10 лет +145,21%.<br />
+- 1 122 ganadería explotaciones (−1,15%).<br />
+[Источник: Bio Eco Actual https://www.bioecoactual.com/2025/07/27/produccion-ecologica-catalunya-creciendo-superficie-e-industria-2024/ + Viaempresa https://www.viaempresa.cat/es/economia/produccion-ecologica-catalana-resiste-dificultades-2024-vuelve-crecer_2218045_102.html + eComercio Agrario https://ecomercioagrario.com/la-superficie-ecologica-en-cataluna-crece-hasta-las-284-590-hectareas/].</p>
+<p><strong>9.2. Bio-хлеб конкретно</strong><br />
+- [!] CCPAE не публикует отдельной агрегатной цифры facturación по «bio bread»; в реестре можно найти конкретных bio-операторов панадерии через https://guia.ccpae.org. Forn Mistral (Barcelona) — <strong>первая сертифицированная bio-панадерия Каталонии</strong>, до сих пор работает [Источник: Forn Mistral https://www.bakering.es/en/forn-mistral].<br />
+- 88% каталонцев знают bio-продукты, <strong>47% покупают</strong> [Bio Eco Actual].</p>
+<p><strong>9.3. Каналы продаж bio</strong><br />
+- <strong>Veritas</strong> — лидер каталанский (см. Раздел 7.4).<br />
+- <strong>BioSpace, Herbolarios Navarro, Casa Ametller (Каталония)</strong> — специализированные.<br />
+- Bio-corner в Carrefour и Bonpreu.<br />
+- Бьюпонд (Bilbao), Naturasi — за пределами Каталонии.</p>
+<hr />
+<h2>Раздел 10: Регулирование детально</h2>
+<p><strong>10.1. RSIPAC (Registro Sanitario de Industrias y Productos Alimentarios de Cataluña)</strong><br />
+- Обязателен для любой пищевой деятельности в Каталонии (производство, transformación, elaboración, packaging, storage, distribución, transport, importación).<br />
+- Процедура: presentación технического отчёта, flow diagram, описание процессов → визит технического инспектора Departament de Salut → оценка документации и гигиены установок [Источник: tramits.gencat.cat https://tramits.gencat.cat/en/tramits/tramits-temes/Registre-sanitari-dindustries-i-productes-alimentaris-de-Catalunya-RSIPAC-00001 + ASPB https://www.aspb.cat/es/tramits/rsipac/].</p>
+<p><strong>10.2. RGSEAA (национальный)</strong><br />
+- Если экспорт за пределы Каталонии — нужен <strong>RGSEAA</strong> (национальный Registro General Sanitario de Empresas Alimentarias y Alimentos). RSIPAC выдаёт автоматическое соответствие на национальном уровне в большинстве случаев [Источник: AESAN https://www.aesan.gob.es/AECOSAN/docs/documentos/seguridad_alimentaria/registro/Guia_RGSEAA.pdf].</p>
+<p><strong>10.3. IFS Food vs BRCGS</strong><br />
+- <strong>IFS Food</strong> — стандарт 2003, требование большинства европейских ретейлеров (Carrefour, Lidl).<br />
+- <strong>BRCGS</strong> — UK/anglo рынки; обычно более дорогой по консалтингу и тренингам.<br />
+- Для каталонского retail и HORECA <strong>IFS — практический минимум</strong> для серьёзных заказчиков.<br />
+[Источник: Tecoal https://tecoal.net/normas-de-calidad/certificaciones-de-seguridad-alimentaria-ifs-brcgs-o-iso-22000-fssc-22000-guia-para-elegir/].</p>
+<p><strong>10.4. IVA: pan común vs pan especial — изменения 2025</strong><br />
+- <strong>До 15.10.2024</strong>: pan común → IVA 4% (superreducido); pan especial → 10% (reducido).<br />
+- <strong>STS 1610/2024 от 15.10.2024 + Resolución DGT BOE-A-2025-3950 от 24.02.2025</strong>: <strong>все категории пана (включая pan especial, pan integral, pan multicereal, pan pita, lavash подпадающие под «otros panes especiales» в Art. 6 RD 308/2019) — IVA 4%</strong>.<br />
+- Применение <strong>ex tunc</strong> (с момента вступления RD 308/2019 = 01.07.2019) с ограничениями по принципу законного доверия.<br />
+[Источник: BOE-A-2025-3950 https://www.boe.es/buscar/doc.php?id=BOE-A-2025-3950 + Cuatrecasas https://www.cuatrecasas.com/es/spain/fiscalidad/art/iva-pan-dgt-clarifica-tributacion + CEC https://www.cec.es/tipo-impositivo-del-iva-superreducido-del-4-a-todos-los-panes/].<br />
+- <strong>Прямое следствие для Эль Лаваш</strong>: лаваш как «pan pita» (Art. 6.9 RD 308/2019) теперь облагается IVA 4% — это +6 п.п. ценовой конкурентоспособности vs ситуации до октября 2024.</p>
+<p><strong>10.5. Reglamento UE 1169/2011 (FIC)</strong><br />
+- Обязательная декларация: valor energético, grasas, grasas saturadas, hidratos de carbono, azúcares, proteínas, sal (всё в одном поле зрения).<br />
+- Высота шрифта x-height ≥ 1,2 мм (≥0,9 мм для упаковок &lt;80 см²).<br />
+- Для non-pre-packaged (продаваемый «al corte» в булочной) — упрощённые правила, но allergens всегда должны быть доступны потребителю.<br />
+[Источник: EUR-Lex https://eur-lex.europa.eu/legal-content/ES/ALL/?uri=celex:32011R1169 + AESAN https://www.aesan.gob.es/AECOSAN/web/seguridad_alimentaria/subdetalle/futura_legislacion.htm + ACSA https://acsa.gencat.cat/es/seguretat_alimentaria/seguretat_alimentaria_per_temes/etiquetatge_dels_aliments/legislacio/index.html].</p>
+<p><strong>10.6. Упаковка для frozen vs fresh</strong><br />
+- Frozen: барьерный film (BOPP/PET/PE laminate), декларация «mantener congelado a −18 °C», instrucciones descongelación, дата производства + дата истечения; при индивидуальной упаковке — рекомендуется flow-pack или MAP.<br />
+- Fresh ambient/vacío: high-barrier vacuum pouches, vida útil до 30–60 дней; декларация «mantener entre 4–8 °C» или вакуум при комнатной (зависит от водной активности).</p>
+<hr />
+<h2>Раздел 11: Демография и диаспоры Каталонии 2025</h2>
+<p><strong>11.1. Общая иностранная популяция</strong><br />
+- На 1 января 2024: <strong>1 444 192 человек (18% жителей Каталонии)</strong> [Источник: Idescat https://www.idescat.cat/poblacioestrangera/?b=12&amp;lang=es + El Nacional https://www.elnacional.cat/es/sociedad/estas-son-comarcas-catalunya-donde-residen-mas-extranjeros-ya-son-18-poblacion_1371275_102.html].<br />
+- 2023 (для сравнения): 1,27 млн (16,3%) [El Nacional https://www.elnacional.cat/es/sociedad/poblacion-extranjera-residente-catalunya-llega-millones-poblacion_977031_102.html].</p>
+<p><strong>11.2. По нациям (топ для лаваш-целевой группы)</strong><br />
+- <strong>Марокканцы — 241 179</strong> (16,7% всех иностранцев, #1 nacionalidad), #1 в 30 из 42 каталанских комарок.<br />
+- <strong>Пакистанцы — ~59 150</strong> (Idescat); 48 572 в провинции Барселона = 48% всей пакистанской иммиграции Испании.<br />
+- <strong>Украинцы — ~54 444</strong> активных protecciones temporales (Cataluña, март 2024).<br />
+- <strong>Армяне — ~4 343</strong> (Barcelona 3 947 + Girona 263 + Tarragona 133).<br />
+- [!] Сирийцы, ливанцы, иранцы, грузины — точные данные на уровне Каталонии не агрегированы в открытых источниках; известно общее по Испании (сирийцы ~4 500–6 000, ливанцы ~3 000–4 000). Требует запроса Idescat.<br />
+[Источники: Idescat https://www.idescat.cat/poblacioestrangera/?b=12&amp;lang=es + Padrón.com.es https://padron.com.es/pakistan%C3%ADes-en-barcelona/ + The Objective https://theobjective.com/espana/2025-04-06/barcelona-mitad-pakistanies/ + Идескат info https://www.idescat.cat/pub/?id=ua&amp;lang=es + Wikipedia Armenian diaspora Spain https://es.wikipedia.org/wiki/Di%C3%A1spora_armenia_en_Espa%C3%B1a].</p>
+<p><strong>11.3. По комаркам</strong><br />
+- <strong>Сельва — 22% иностранцев</strong> [Maresme Actualitat https://www.maresmeactualitat.cat/maresme/el-peso-de-la-inmigracion-crece-en-la-selva-y-el-maresme-con-lloret-de-mar-a-la-cabeza/].<br />
+- <strong>Льорет-де-Мар — 39,7% иностранцев</strong> (трэнд 2022→2023→2024: 35,4% → 38,9% → 39,7%). #1 муниципалитет Каталонии по доле.<br />
+- <strong>Тосса-де-Мар — 25,7%</strong>, <strong>Арбусиес — 22,5%</strong>.<br />
+- В Сельве: <strong>9 588 марокканцев + 3 780 украинцев</strong> = две главные общины.<br />
+- Сегарра — <strong>29,5%</strong>, Альт Эмпорда — <strong>25,9%</strong>, Барселонес — <strong>23,9%</strong>.</p>
+<p><strong>11.4. Барселона по нациям</strong><br />
+- 176 национальностей; пакистанцы (~55 000) и магрибинцы концентрируются в El Raval, Sant Adrià, северные barrios; <strong>203 000 магрибинцев + пакистанцев в провинции Barcelona vs ~80 000 в Мадриде</strong> [El Español https://www.elespanol.com/espana/politica/20260215/legado-nacionalismo-catalan-magrebies-pakistanies-barcelona-frente-solo-madrid/].</p>
+<hr />
+<h2>Раздел 12: Туристический поток Коста-Бравы</h2>
+<p><strong>12.1. Объёмы 2024 (Patronat de Turisme Costa Brava Girona)</strong><br />
+- Жирона провинция: <strong>8 498 869 туристов</strong>, <strong>28 348 190 ночёвок</strong> (+2,3% YoY).<br />
+- Costa Brava brand: <strong>7 511 218 туристов, 26 204 256 ночёвок</strong> (+3,3%).<br />
+- Pirineu de Girona: 967 017 туристов, 2 097 881 ночёвок (−8%).<br />
+[Источник: Newsletter Costa Brava https://newsletter.costabrava.org/es/noticia/datos-de-turismo-de-2024/].</p>
+<p><strong>12.2. Структура мест размещения</strong><br />
+- <strong>270 000 регламентированных коек</strong> (отели, апартаменты, кемпинги, rural).<br />
+- <strong>Отели — 13,6 млн ночёвок</strong> (#1), Кемпинги — 11,6 млн, Апартаменты — 2,8 млн, Rural — ~0,5 млн.<br />
+- Средняя стоянка Коста-Брава: 3,49 ночи; Пиренеи: 2,17.</p>
+<p><strong>12.3. Туристические рынки (% международных ночёвок 2024)</strong><br />
+- <strong>Международный рынок: 53% всех ночёвок</strong> (восстановил историческое лидерство).<br />
+- <strong>Французский — #1</strong> (+2 п.п.).<br />
+- <strong>Benelux</strong> — стабилен.<br />
+- <strong>Немецкий — +6 п.п.</strong><br />
+- <strong>Британский — +11 п.п.</strong><br />
+- <strong>Итальянский — +16 п.п.</strong> (бурный рост).<br />
+- <strong>Североамериканский — +25 п.п.</strong> (рекорд).</p>
+<p><strong>12.4. Туристический расход</strong><br />
+- Средний расход международного туриста в Каталонии: <strong>1 169 €/поездка/чел</strong> (+20 € vs 2023), <strong>216 €/день/чел</strong> (+7 €).<br />
+- Расход международного туризма в Каталонии <strong>+12% YoY</strong>.</p>
+<p><strong>12.5. Аэропорт Жирона—Коста-Брава</strong><br />
+- 2024: <strong>1 997 571 пассажиров</strong> (+26% YoY). #1 британцы, #2 немцы, #3 голландцы.</p>
+<p><strong>12.6. Круизы</strong><br />
+- Паламос + Розес: 58 заходов, <strong>53 000 пассажиров</strong> (+1%), экономический эффект 5,1 млн €.</p>
+<p><strong>12.7. Влияние на лавашный спрос</strong><br />
+- Mediterranean basin tourists (французы, итальянцы, голландцы) — <strong>уже знакомы с pita/lavash</strong> через свои локальные cuisines.<br />
+- 270 000 коек × средняя загрузка 70% × 200 дней сезона = ~<strong>38 млн человеко-ночей</strong>.<br />
+- При допущении что 5% завтраков/buffets/late-night kebab-bar содержат лаваш, и 1 порция ≈ 60 г → <strong>~115 тонн/год чисто туристического спроса в Жироне</strong>.<br />
+- Если включить хостельный завтрак (хлебная корзина с pita), цифра удваивается до ~230 тонн/год.</p>
+<hr />
+<h2>Раздел 13: Trends 2026 — подтверждённые данными</h2>
+<p><strong>13.1. Ethnic food в mainstream</strong><br />
+- Граница ethnic/mainstream размывается; <strong>67,2% volumen ethnic — через supermercados (+1,8% YoY)</strong> [Alimarket Informe 2024].<br />
+- Mexican/asiático — лидеры роста.<br />
+- Sushi corners в retail растут; gyozas, fideos deshidratados.</p>
+<p><strong>13.2. Km0 / proximidad</strong><br />
+- Bonpreu +12% YoY в KM0 (300+ млн €).<br />
+- Caprabo — Proximidad как стратегическая ось.<br />
+- Aldi +37% закупок national 1H2024.<br />
+- Lidl 82,5% national-origin.</p>
+<p><strong>13.3. Healthy positioning</strong><br />
+- 2024 — IVA superreducido на pan integral, multicereal, sin gluten = +6 п.п. ценовая компонента.<br />
+- Pan integral, masa madre, fermentación lenta — основные buy words.</p>
+<p><strong>13.4. Frozen growth</strong><br />
+- Frozen bakery Spain CAGR <strong>+8,75%</strong> vs <strong>+3,46%</strong> общий bread market.<br />
+- HoReCa drives frozen.</p>
+<p><strong>13.5. Consolidation</strong><br />
+- 2024: CVC → Monbake.<br />
+- 2025/26: Monbake → IPASA/Sanbrandán.<br />
+- 2026: Bridor → Panamar 600 млн € → группа &gt;3 100 млн €.<br />
+- Окно для <strong>specialized small player</strong> в нишах, где гиганты не работают.</p>
+<hr />
+<h2>Раздел 14: Экспортные возможности</h2>
+<p><strong>14.1. Главные ЕС-рынки испанского бэйкери</strong><br />
+- <strong>Франция — 341,28 млн €</strong> (#1 в категории confitería/galletas/bakery).<br />
+- <strong>Португалия — 281,32 млн €</strong>.<br />
+- <strong>UK — 206,09 млн €</strong>.<br />
+[Источник: Cargo Flores анализ ICEX data https://www.cargoflores.com/exportaciones-del-sector-alimentario-espanol/].</p>
+<p><strong>14.2. ICEX поддержка</strong><br />
+- Программа <strong>Spain Food Nation</strong> (MAPA + ICEX) на международную промоцию.<br />
+- Финансирование сертификаций (halal, kosher) до 80% для SME через камеры коммерции.<br />
+[Источник: ICEX https://www.icex.es/].</p>
+<p><strong>14.3. Конкретно для лаваша</strong><br />
+- Франция — крупнейший halal market Европы (5 500–6 000 млн €/год), активная diaspora; <strong>франко-каталонский трансфер по A9 = 1,5 часа от Жироны до Перпиньяна → Сет → Монпелье → Марсель</strong>. Реалистичный 2-летний горизонт.<br />
+- Португалия: меньший halal-рынок, но крупная бразильская диаспора, любящая wraps; реалистично через дистрибьютора.</p>
+<hr />
+<h2>Раздел 15: Прецеденты успеха маленьких производителей</h2>
+<p><strong>15.1. Структурное наблюдение</strong><br />
+- В Каталонии прецеденты входа маленькой artisan-pekarni в large retail — <strong>редки и обычно через KM0-программы</strong>.<br />
+- Известные «крупные» каталонские пекарни (Turris, Baluard, Forn Mistral) сохраняют artisan-formato, отказываясь от scaling в retail [Источник: Cronicaglobal https://cronicaglobal.elespanol.com/creacion/20180818/las-panaderias-artesanales-que-triunfan-en-cataluna/331216917_0.html + Forn Mistral https://www.bakering.es/en/forn-mistral].<br />
+- <strong>Granier</strong> — пример франчайз-skaling, цель 1 000 точек, но это retail-формат, а не B2B-вход [Источник: Cronicaglobal https://cronicaglobal.elespanol.com/business/20160125/granier-imperio-quiere-llegar-establecimientos-cinco-anos/97240311_0.html].</p>
+<p><strong>15.2. Главные паттерны успеха</strong><br />
+- (а) Через KM0-программы Bonpreu и Caprabo (мало public кейсов, но это validated road — 267 проверенных малых поставщиков Caprabo).<br />
+- (б) Через специализированную HORECA-нишу (Disfribell, Friman).<br />
+- (в) Через mono-категорию + premium positioning (Libanofoods на питу).<br />
+- (г) Через продажу bio-сегменту (Veritas Pro 3 500 центров).</p>
+<p><strong>15.3. Прямого documented case-study «маленькая каталанская пекарня → Bonpreu →национальная сеть» в открытых источниках я не нашёл.</strong><br />
+- [!] Запрос: Bonpreu Press department + интервью с Comarca-buyers даст 3–5 анекдотических кейсов.</p>
+<hr />
+<h2>Раздел 16: M&amp;A в секторе хлеба 2023–2026</h2>
+<p><strong>16.1. CVC → Monbake (март 2024)</strong><br />
+- CVC Capital Partners приобрёл 100% капитала Monbake (специализация: замороженная масса pan и боллерия).<br />
+- Брюссель одобрил без условий 13.06.2024.<br />
+[Источник: Investinspain https://www.investinspain.org/content/icex-invest/es/noticias-main/2024/cvc.html + Swissinfo https://www.swissinfo.ch/spa/bruselas-aprueba-la-adquisici%C3%B3n-del-grupo-panadero-espa%C3%B1ol-monbake-por-parte-del-fondo-cvc/80457377].</p>
+<p><strong>16.2. Monbake → IPASA / Sanbrandán (2025/26)</strong><br />
+- IPASA: ~<strong>17 000 тонн/год пан, боллерии, эмпанад + сеть 44 пекарни Sanbrandán</strong> в Галисии.<br />
+- Стратегия — национальный rollup.<br />
+[Источник: Webcapitalriesgo https://www.webcapitalriesgo.com/monbake-controlada-por-cvc-adquiere-sanbrandan/ + Alimarket https://www.alimarket.es/alimentacion/noticia/404613/].</p>
+<p><strong>16.3. Bridor (Le Duff) → Panamar Bakery Group (2026)</strong><br />
+- <strong>600 млн €</strong>, 2 600 сотрудников, 1 200+ референсов, экспорт в 20+ стран.<br />
+- Bridor + Panamar = <strong>3 100 млн € группа</strong> — обогнала Europastry.<br />
+- Strategic intent: «удвоить бизнес к 2031».<br />
+[Источник: FoodIngredientsFirst https://www.foodingredientsfirst.com/news/bridor-acquires-panamar-frozen-bakery.html + Alimarket https://www.alimarket.es/alimentacion/noticia/423573/].<br />
+- Panamar — был <strong>главным поставщиком пан для Mercadona Hacendado</strong> [FRS].</p>
+<p><strong>16.4. Что это значит для Эль Лаваш</strong><br />
+- <strong>Консолидация на уровне гигантов</strong> освобождает «нишевые SKU» от внимания топ-3. У них фокус на volume products — pan barra, pan rústico, croissant, viennoiserie. Лаваш / pita / lavash остаются «отвлекающим» категорийным продуктом.<br />
+- <strong>Mercadona</strong> будет искать diversification suppliers после того, как Panamar ушёл к Bridor (французская группа = nationality risk для Hacendado), и это может открыть окно для каталонских SME через 18–24 мес.</p>
+<hr />
+<h2>Раздел 17: Производственная экономика 2026 Каталония</h2>
+<p><strong>17.1. Мука (Tahini exclud.) — pшеничная мука</strong><br />
+- Trigo blando europeo (Rouen grade 1): <strong>~198 €/тонна</strong> актуально (упал с 244 €/т в мае 2025).<br />
+- Trigo HRW USA: ~199 €/т.<br />
+- В Испании +11,9% производство 2025/26 — давление на цены вниз.<br />
+- Цена муки T-65 (бакалейская) для мелкооптовых клиентов в Каталонии 2025/26: <strong>0,55–0,75 €/кг</strong> (диапазон по поставщикам Mercabarna, при оптовых заказах ~0,45 €/кг).<br />
+[Источник: Plataforma Tierra https://www.plataformatierra.es/mercados/tendencias-mercado-cerealista-2025-analisis-produccion-precios-trigo-maiz-mundial-espana + MAPA https://www.mapa.gob.es/dam/mapa/contenido/agricultura/temas/producciones-agricolas/cultivos-herbaceos/cereales/evolucion-de-los-precios-de-los-principales-cereales/desde-s1-2025-en-adelante-nuevo/s41_2025.pdf].</p>
+<p><strong>17.2. Дрожжи</strong><br />
+- [?] Открытой цены нет; индустриальная цена fresh yeast (Lesaffre, Puratos): <strong>~1,50–2,20 €/кг (свежие)</strong>, <strong>~10–14 €/кг (instant dry)</strong> при заказах 50+ кг.</p>
+<p><strong>17.3. Аренда производственного помещения (Lloret/Жирона)</strong><br />
+- <strong>Lloret de Mar: 786 м² промышленный нав = 3 950 €/мес = ~5,02 €/м²/мес</strong>.<br />
+- Бланес: 900 м² = 5 000 €/мес = <strong>5,56 €/м²/мес</strong>.<br />
+- Фигерас: 1 103 м² = 5 515 €/мес = <strong>5,00 €/м²/мес</strong>; 599 м² = 1 797 €/мес = <strong>3,00 €/м²/мес</strong> (более старая инфраструктура).<br />
+- Риударенес (Сельва): 1 400 м² = 2 100 €/мес = <strong>1,50 €/м²/мес</strong> (рурáль, недорого).<br />
+[Источник: API.cat https://www.api.cat/es/alquiler/industrial/girona/lloret-de-mar/2536870 + Habitaclia https://english.habitaclia.com/rent-industrial_buildings-girona.htm].</p>
+<p><strong>17.4. Рабочая сила (Convenio Industria Flequera Barcelona / Convenio panadería y pastelería Cataluña)</strong><br />
+- 2025: повышение +3,5% к таблицам salariales [Источник: CCOO Industria PDF https://industria.ccoo.es/4958fd475afa8c26bc35be73e14039de000060.pdf + CCOO App https://ccoo.app/convenio/convenio-colectivo-industria-flequera-panaderia-de-barcelona/].<br />
+- Базовый salario panadero categoría 3 (oficial 2ª) в Каталонии 2025: <strong>~22 000–25 000 €/год bruto</strong> (без extras, без noche, без endoming).<br />
+- С extras (nocturnidad, festivos, plus penosidad) для смены 22:00–06:00: <strong>+25–35% bruto</strong>.<br />
+- Social security empresa: ~30% sobre bruto.<br />
+- Полностью загруженная стоимость работника (2 смены, 6 дней/неделя): <strong>~38 000–45 000 €/год</strong>.</p>
+<p><strong>17.5. Электричество и газ</strong><br />
+- Электричество PYME industrial 2025/26: <strong>0,14–0,16 €/кВтч</strong> mid-range; с discriminación horaria до <strong>0,072–0,095 €/кВтч</strong> в valle [Источник: Evergreen Electrica https://evergreen-electrica.com/precio-kwh-empresas-espana + REE https://www.sistemaelectrico-ree.es/en/spanish-electricity-system/markets/average-final-price].<br />
+- Печь типа лаваш-тоннель (например, Mecateck/Hass tunnel oven) потребляет 35–60 кВт. При работе 8 ч/день, 26 дней/мес — <strong>~7 500–12 500 кВтч/мес</strong>.<br />
+- Газ industrial: 0,06–0,09 €/кВтч (gas natural), если печь газовая, экономия 30–40% vs электричество.<br />
+- [Согласно правилу проекта  — деталь электричества в финальных клиентских документах НЕ упоминается.]</p>
+<p><strong>17.6. Оборудование</strong><br />
+- Полупромышленная тоннельная печь лаваш (3–5 м длина, 0,8 м ширина ленты, мощность 50–150 кг/час): <strong>35 000–90 000 € новая</strong> (Heuft, Mecateck, итальянские б/у — от 15 000 €).<br />
+- Smesitelnaya мешалка пром.: 4 000–12 000 €.<br />
+- Тестораздаточная / divider: 6 000–18 000 €.<br />
+- Холодильная камера/freezer −25 °C 20–40 м³: 12 000–25 000 €.<br />
+- Упаковочная (flow-pack): 8 000–25 000 €.<br />
+- <strong>CAPEX полной линии минимум: ~80 000–130 000 €</strong> для производства 10–20 тонн/мес; <strong>~200 000–350 000 €</strong> для 50+ тонн/мес.</p>
+<p><strong>17.7. Прочее</strong><br />
+- IVA на оборудование: 21% deducible.<br />
+- Subvenciones: ACCIÓ (Generalitat) — Industria 4.0, eficiencia energética; Línea ICO PYME; Línea Verde IDAE.</p>
+<hr />
+<h2>Финальный раздел — Выводы для «Эль Лаваш»</h2>
+<h3>Три самых перспективных канала с цифровым обоснованием</h3>
+<p><strong>1. HORECA Каталонии через специализированных distribuidores (Disfribell + Friman + Transgourmet/GM Cash)</strong><br />
+- 152 кебабные в Каталонии × 1,3 т/мес = ~198 т/мес потенциального спроса в одном лишь kebab-сегменте.<br />
+- 270 000 турист-коек × 70% загрузки = ~190 000 человек/день в сезон → консервативно 1% потребляет лаваш = 1 900 порций × 60 г = <strong>114 кг/день только в туристическом HORECA Жироны</strong>.<br />
+- Disfribell — географически в Palol de Revardit (Жирона), 30 лет на frozen bread, идеальный fit.<br />
+- GM Cash 6 центров в Жироне — прямой канал к индивидуальным ресторанам.<br />
+- <strong>Старт-объём с этим каналом: реалистично 4–8 т/мес через 6 месяцев работы.</strong></p>
+<p><strong>2. Bonpreu KM0 (премиальный retail-вход)</strong><br />
+- 300+ млн € закупок KM0 в 2024, +12% YoY, 600+ малых поставщиков.<br />
+- Bonpreu декларирует готовность работать с малыми объёмами.<br />
+- 2 400+ референсов KM0 — пространство для нового SKU.<br />
+- При входе в 30–50 магазинах comarca (Сельва + Маресме + Барселонес) при базовых rotaciones 1,5 пачки/магазин/день: <strong>30 × 1,5 × 0,4 кг × 30 дней = ~540 кг/мес, 50 × 1,5 × 0,4 × 30 = 900 кг/мес</strong>. Скромно, но это «лицо бренда» и витрина для всех остальных каналов.<br />
+- IFS Food = условие; стоимость ~6 000–12 000 € с консультантом первый год.</p>
+<p><strong>3. Туристический HORECA Коста-Бравы (отели 4-5*, all-inclusive, beach clubs)</strong><br />
+- 270 000 коек × 200 дней сезона × 70% × ~0,15 кг хлеба в день/гостя = <strong>~5 600 тонн/год хлеба в Жироне (включая pita/lavash альтернативы)</strong>.<br />
+- Если занять 1% — <strong>56 тонн/год = 4,7 т/мес стабильно</strong>.<br />
+- Французы (#1 рынок) + британцы (+11 п.п.) + итальянцы (+16 п.п.) + американцы (+25 п.п.) — все привычны к pita/lavash как замене bread basket. Argument для отельных F&amp;B-менеджеров.<br />
+- Ключевые контакты: 4-5* отели Lloret (Rigat, Guitart, Gran Garbi, Evenia), Tossa (Diana, Mar Menuda), Platja d'Aro (S'Agaró, Park Hotel San Jorge), Roses (Vistabella).</p>
+<h3>Минимальный объём продаж для break-even</h3>
+<p><strong>Базовая модель (предполагается):</strong><br />
+- Розничная отпускная цена производителя (через дистрибьютора): <strong>2,40–3,20 €/кг</strong> (продукт frozen, упаковка 400 г).<br />
+- В Bonpreu / Caprabo: 3,20–4,20 €/кг закупочная.<br />
+- Прямо HORECA: 2,80–3,60 €/кг.<br />
+- Усреднённая отпускная цена производителя: <strong>2,90 €/кг</strong>.</p>
+<p><strong>Себестоимость на килограмм (производственная):</strong><br />
+- Мука: 0,55 €/кг продукта (тонкий лаваш на 100% муки и воды требует 0,7 кг муки на 1 кг готового продукта, ~0,45 €/кг муки × 0,7 = 0,32 €; компенсация воды и потерь = 0,55 €).<br />
+- Дрожжи + соль + олийное масло (если есть): 0,12 €.<br />
+- Упаковка (flow-pack + этикетка): 0,25 €.<br />
+- Электричество/газ: 0,15 €.<br />
+- Прочие переменные (CIP, моющие, расход воды): 0,08 €.<br />
+- <strong>Direct variable cost ≈ 1,15 €/кг.</strong><br />
+- Contribución marginal: 2,90 − 1,15 = <strong>1,75 €/кг</strong>.</p>
+<p><strong>Постоянные затраты в месяц (минимальная конфигурация Lloret/Сельва):</strong><br />
+- Аренда нав 400–600 м² в комарке Сельва: ~2 000 €.<br />
+- Зарплата 2 операторов + 1 мастера: ~9 000 €.<br />
+- Соц.отчисления (~30%): 2 700 €.<br />
+- Управление, бухгалтерия, transport: 1 800 €.<br />
+- Сертификации (IFS amortizada): 800 €.<br />
+- CAPEX-амортизация (100 000 € / 60 мес): 1 700 €.<br />
+- <strong>Total fixed ≈ 18 000 €/мес.</strong></p>
+<p><strong>Break-even объём:</strong><br />
+- 18 000 € / 1,75 €/кг = <strong>~10 300 кг/мес = ~10,3 тонны/мес</strong>.<br />
+- При среднем закупочном чеке HORECA 50 кг/заказ → <strong>~206 заказов/мес = ~7 заказов/день</strong>.</p>
+<p><strong>Запас прочности: 30–50%</strong> → <strong>целевой volume 13–15 тонн/мес к 9–12 месяцу работы</strong>.</p>
+<h3>5 критических решений на первые 90 дней</h3>
+<p><strong>Решение 1. RSIPAC + IFS заявка одновременно (день 1–30)</strong><br />
+- Подать RSIPAC через tramits.gencat.cat для производственной мощности (даже арендованной).<br />
+- Параллельно — выбрать консультанта IFS (Tandem HSE, Bellmas Enginyers, Sigesmar) и подписать договор. IFS даже без сертификации — это структурный план на 6–9 месяцев.</p>
+<p><strong>Решение 2. Halal-стратегия: yes/no (день 1–30)</strong><br />
+- Подать quotation в Instituto Halal (24-часовой ответ).<br />
+- Если confirmed budget &lt;8 000 € — идти; halal открывает пакистанский Барселона (#1 в Испании) + кебаб + экспорт во Францию.<br />
+- Если &gt;12 000 € — отложить на 12 мес.</p>
+<p><strong>Решение 3. Первичные 3 SKU (день 1–60)</strong><br />
+- <strong>SKU 1</strong>: лаваш тонкий армянский 25×35 см, упаковка 5 шт. (400 г) — frozen, retail-формат, целевой для Bonpreu KM0.<br />
+- <strong>SKU 2</strong>: лаваш индустриальный 30×40 см, weight 80 г/штука, упаковка 50 шт. (4 кг) — frozen, HORECA.<br />
+- <strong>SKU 3</strong>: пита 15 см круглая, 6 шт. (380 г) — для арабских и сирийских ресторанов.<br />
+- Это <strong>минимально достаточная линейка</strong> для покрытия 3 каналов без распыления.</p>
+<p><strong>Решение 4. Дистрибьютор первого порядка (день 30–60)</strong><br />
+- Назначить встречи с <strong>Disfribell</strong> (Palol, Жирона), <strong>Friman</strong> (Manresa), и одним из 6 GM Cash Жироны.<br />
+- Цель — pilot order 200–500 кг каждые 2 недели в течение 90 дней; condiciones de pago 30 días.<br />
+- Это создаёт revenue baseline без зависимости от ритейл-цикла Bonpreu (он минимум 6 мес).</p>
+<p><strong>Решение 5. Bonpreu KM0 application (день 45–90)</strong><br />
+- Подача через bonpreuesclat.cat → коммерческая встреча → presentation pack (продукт + IFS roadmap + Каталонский Origin + сертификат RSIPAC).<br />
+- Цель: получить решение «yes, after IFS» в течение 90 дней; в случае yes — pilot in 5–10 магазинов в comarca Сельва к месяцу 9–12.</p>
+<hr />
+<h2>Все источники (URL list)</h2>
+<h3>Sektorale otrasli i regulator</h3>
+<ul>
+<li>ASEMAC 2024 datos: https://www.asemac.es/noticias-asemac/45-la-industria-de-panaderia-y-bolleria-roza-el-millon-de-toneladas-de-produccion-de-masas-congeladas</li>
+<li>ASEMAC 2025 datos (Pressdigital): https://www.pressdigital.es/articulo/economia/2026-04-28/5861524-industria-espanola-panaderia-bolleria-facturo-record-2000-millones-2025-320</li>
+<li>Revista Aral: https://www.revistaaral.com/texto-diario/mostrar/5861136/industria-panaderia-bolleria-supera-2000-millones-euros-2025-32</li>
+<li>Retail Actual Asemac: https://www.retailactual.com/noticias/20260428/industria-panaderia-bolleria-datos-produccion-asemac</li>
+<li>Bolsamania Asemac 2024: https://www.bolsamania.com/noticias/empresas/economia--el-sector-del-pan-y-la-bolleria-facturo-casi-2000-millones-en-2024-un-29-mas-segun-asemac--19398672.html</li>
+<li>BOE-A-2025-3950 IVA pan: https://www.boe.es/buscar/doc.php?id=BOE-A-2025-3950</li>
+<li>Cuatrecasas IVA pan: https://www.cuatrecasas.com/es/spain/fiscalidad/art/iva-pan-dgt-clarifica-tributacion</li>
+<li>CEC IVA superreducido: https://www.cec.es/tipo-impositivo-del-iva-superreducido-del-4-a-todos-los-panes/</li>
+<li>MAPA consumo 2024: https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/consumo-y-tendencias-en-alimentacion/panel-de-consumo-alimentario/ultimos-datos/consumo-2024/informe-consumo-2024-baja.pdf</li>
+<li>Xataka analysis: https://www.xataka.com/magnet/gran-crisis-pan-espana-esta-dejando-consumirlo-nadie-tiene-explicaciones-convincentes</li>
+<li>RSIPAC tramits: https://tramits.gencat.cat/en/tramits/tramits-temes/Registre-sanitari-dindustries-i-productes-alimentaris-de-Catalunya-RSIPAC-00001</li>
+<li>ASPB RSIPAC: https://www.aspb.cat/es/tramits/rsipac/</li>
+<li>AESAN RGSEAA guía: https://www.aesan.gob.es/AECOSAN/docs/documentos/seguridad_alimentaria/registro/Guia_RGSEAA.pdf</li>
+<li>EUR-Lex 1169/2011: https://eur-lex.europa.eu/legal-content/ES/ALL/?uri=celex:32011R1169</li>
+</ul>
+<h3>Мажоритарные операторы и М&amp;A</h3>
+<ul>
+<li>Europastry 1,5 млрд €: https://europastry.com/es/es/europastry-alcanza-ventas-de-1-506-millones-de-euros-un-12-mas-que-en-2024/</li>
+<li>El Economista Europastry: https://www.eleconomista.es/actualidad/noticias/13260943/03/25/europastry-alcanza-ventas-de-1506-millones-de-euros-un-12-mas-que-en-2024.html</li>
+<li>FRS Europastry 2025: https://www.foodretail.es/fabricantes/europastry-factura-1630-millones-en-2025-el-8-mas.html</li>
+<li>CVC Monbake: https://www.investinspain.org/content/icex-invest/es/noticias-main/2024/cvc.html</li>
+<li>Brüssel Monbake aprobación: https://www.agrodiario.com/articulo/industria-agroalimentaria/bruselas-aprueba-adquisicion-grupo-panadero-espanol-monbake-parte-fondo-cvc/20240613085441045330.html</li>
+<li>Monbake → IPASA: https://capital-riesgo.es/es/articles/monbake-propiedad-de-cvc-adquiere-sanbrand-n/</li>
+<li>Alimarket Monbake-IPASA: https://www.alimarket.es/alimentacion/noticia/404613/cvc-engrosa-el-negocio-de-monbake-con-la-compra-de--sanbrandan-</li>
+<li>Bridor-Panamar 600 млн: https://www.foodingredientsfirst.com/news/bridor-acquires-panamar-frozen-bakery.html</li>
+<li>Alimarket Bridor-Panamar: https://www.alimarket.es/alimentacion/noticia/423573/bridor-compra-panamar-bakery-y-crea-un-grupo-de-mas-de-3-000-m--en-panaderia-y-bolleria-congelada</li>
+<li>FRS Le Duff Panamar: https://www.foodretail.es/fabricantes/le-duff-adquiere-panamar-bakery-group-proveedor-de-pan-de-mercadona.html</li>
+<li>Bellsolà: https://es.wikipedia.org/wiki/Bellsol%C3%A0</li>
+<li>Don Pan 3000: https://empresite.eleconomista.es/DON-PAN-3000.html</li>
+<li>Don Pan lavash Eroski: https://www.komparing.com/es/supermercados/pan-lavash-don-pan-200-g/eroski</li>
+<li>Libanofoods: https://libanofoods.com/en</li>
+<li>Libanofoods Einforma: https://www.einforma.com/informacion-empresa/libanofoods</li>
+</ul>
+<h3>Distribuidores HORECA</h3>
+<ul>
+<li>Bidfood Iberia: https://bidfoodiberia.com/</li>
+<li>Profesional Horeca Bidfood: https://www.profesionalhoreca.com/2017/06/29/gigante-del-foodservice-bidfood-entra-espana-al-comprar-guzman-gastronomia/</li>
+<li>Transgourmet Mercabarna: https://www.logisticaprofesional.com/texto-diario/mostrar/5879492/transgourmet-iberica-refuerza-atencion-sector-horeca-nueva-plataforma-logistica-centro-cash-carry-mercabarna</li>
+<li>Transgourmet Girona reforma: https://www.transgourmet.es/blog/transgourmet-completa-la-reforma-del-gm-cash-de-girona-con-una-inversion-total-de-22-millones/</li>
+<li>Inforetail Makro/GM Cash: https://www.revistainforetail.com/noticiadet/makro-y-gm-cash-lideran-el-cashcarry-en-tres-comunidades-autonomas/</li>
+<li>Friman: https://friman.es/</li>
+<li>frimanGO: https://www.frimango.cat/es_ES/</li>
+<li>Disfribell: https://www.proveedores.com/proveedores/disfribell/</li>
+<li>Disfribell Empresite: https://empresite.eleconomista.es/DISFRIBELL.html</li>
+<li>Mercabarna HORECA: https://www.mercabarna.es/sectors-activitat/servei-al-restaurador/es_index/</li>
+<li>Assocome: https://www.assocome.com/</li>
+</ul>
+<h3>Retail-программы</h3>
+<ul>
+<li>Bonpreu KM0 600 млн: https://www.viaempresa.cat/es/economia/buen-precio-supermercado-catalan-supera-300-millones-euros-en-productos-km0_2205215_102.html</li>
+<li>Bonpreu 314 млн: https://www.elnacional.cat/oneconomia/es/empresas/bonpreu-esclat-ingresan-314-millones-con-venta-productos-proximidad_1312075_102.html</li>
+<li>Sweetpress Bon Preu 2,4 млрд: https://www.sweetpress.com/distribucion/bon-preu-facturo-mas-de-2400-millones-de-euros-en-2024-AG18699382</li>
+<li>FRS Bon Preu 7%: https://www.foodretail.es/retailers/bon-preu-elevo-su-facturacion-el-7-en-2024-hasta-superar-los-2400-millones.html</li>
+<li>Caprabo Qcom escaparate: https://www.qcom.es/alimentacion/reportajes/caprabo--escaparate-para-el-pequeno-productor_26373_2_28739_0_1_in.html</li>
+<li>Caprabo proximidad 15%: https://www.caprabo.com/es/conoce-caprabo/sala-de-prensa/La-venta-de-productos-de-proximidad-se-incrementa-un-15-en-Caprabo/</li>
+<li>Carrefour De Nuestra Tierra: https://www.carrefour.es/grupo-carrefour/productos-locales/</li>
+<li>Carrefour rediseña packaging: https://www.revistaaral.com/texto-diario/mostrar/3184255/carrefour-cambia-el-packaging-de-los-productos-de-nuestra-tierra</li>
+<li>Veritas: https://veritas.es/</li>
+<li>Veritas Pro: https://www.veritas.es/pro/</li>
+<li>FRS Veritas: https://www.foodretail.es/retailers/Veritas-retail-ecologico-sostenible_0_1831616821.html</li>
+<li>Aldi national 82,5%: https://www.aldi.es/somos-aldi/conocenos/sala-prensa/nuestras-noticias/aldi-mantiene-compromiso-proveedores-nacionales.html</li>
+<li>Aldi +37%: https://www.aldi.es/somos-aldi/conocenos/sala-prensa/nuestras-noticias/aldi-aumenta-compras-proveedores-nacionales.html</li>
+<li>Lidl/Aldi españolización: https://www.eldiario.es/economia/espanolizacion-lidl-aldi-alemanes-conquistando-productores-nacionales_1_7303447.html</li>
+<li>Mercadona interproveedores: https://www.elespanol.com/reportajes/20220930/proveedores-fabricaran-mercadona-partir-ahora-mapa-completo/706929798_0.html</li>
+</ul>
+<h3>Sertifikatsii</h3>
+<ul>
+<li>IFS Food Bureau Veritas: https://www.bureauveritas.es/certificacion/agroalimentario/certificacion-ifs-food</li>
+<li>IFS Food AENOR: https://www.en.aenor.com/certificacion/empresas/alimentacion/ifs-seguridad-alimentaria</li>
+<li>BRCGS AENOR: https://www.en.aenor.com/certificacion/empresas/alimentacion/brcgs-protocolos-alimentarios</li>
+<li>Tecoal comparison: https://tecoal.net/normas-de-calidad/certificaciones-de-seguridad-alimentaria-ifs-brcgs-o-iso-22000-fssc-22000-guia-para-elegir/</li>
+<li>Instituto Halal: https://institutohalal.com/</li>
+<li>Instituto Halal proceso: https://institutohalal.com/proceso-de-certificacion-halal/</li>
+<li>Instituto Halal ayudas 2025: https://www.institutohalal.com/ayudas-certificacion-halal-2025-camara-comercio-internacionalizacion-empresas-espanolas/</li>
+<li>ICEX halal certificado: https://www.icex.es/es/todos-nuestros-servicios/informacion-de-mercados/tramites-gestiones-exportacion/documentos-y-certificados-especificos/agroalimentarios/otros-documentos/certificado-halal</li>
+<li>ACCIÓ certificación halal: https://www.accio.gencat.cat/web/.content/bancconeixement/documents/International_Business_Days/ACCIO-la-certificacio-halal.pdf</li>
+</ul>
+<h3>CCPAE</h3>
+<ul>
+<li>Bio Eco Actual CCPAE 2024: https://www.bioecoactual.com/2025/07/27/produccion-ecologica-catalunya-creciendo-superficie-e-industria-2024/</li>
+<li>Viaempresa CCPAE: https://www.viaempresa.cat/es/economia/produccion-ecologica-catalana-resiste-dificultades-2024-vuelve-crecer_2218045_102.html</li>
+<li>CCPAE: https://www.ccpae.org/</li>
+<li>CCPAE guia directori: https://guia.ccpae.org/</li>
+</ul>
+<h3>Demografía</h3>
+<ul>
+<li>Idescat población extranjera: https://www.idescat.cat/poblacioestrangera/?b=12&amp;lang=es</li>
+<li>Idescat ucranianos: https://www.idescat.cat/pub/?id=ua&amp;lang=es</li>
+<li>El Nacional 18%: https://www.elnacional.cat/es/sociedad/estas-son-comarcas-catalunya-donde-residen-mas-extranjeros-ya-son-18-poblacion_1371275_102.html</li>
+<li>Time Out 2 comarcas: https://www.timeout.es/barcelona/es/noticias/estas-son-las-dos-comarcas-con-mas-poblacion-extranjera-de-cataluna-030125</li>
+<li>Maresme Actualitat Lloret: https://www.maresmeactualitat.cat/maresme/el-peso-de-la-inmigracion-crece-en-la-selva-y-el-maresme-con-lloret-de-mar-a-la-cabeza/</li>
+<li>Padrón pakistaníes BCN: https://padron.com.es/pakistan%C3%ADes-en-barcelona/</li>
+<li>The Objective 50% pakistaníes: https://theobjective.com/espana/2025-04-06/barcelona-mitad-pakistanies/</li>
+<li>Wikipedia diáspora armenia: https://es.wikipedia.org/wiki/Di%C3%A1spora_armenia_en_Espa%C3%B1a</li>
+<li>Padrón armenios Spain: https://padron.com.es/armenios-en-espa%C3%B1a/</li>
+<li>Lloret Buen Barrio: https://buenbarrio.com/municipio/lloret-de-mar</li>
+</ul>
+<h3>Turismo</h3>
+<ul>
+<li>Costa Brava 2024: https://newsletter.costabrava.org/es/noticia/datos-de-turismo-de-2024/</li>
+<li>Patronat datos estadísticos: https://newsletter.costabrava.org/es/categoria/datos-estadisticos-1/</li>
+</ul>
+<h3>Halal / mercado</h3>
+<ul>
+<li>Lexpress halal Spain: https://lexpress-franchise.com/es/articulos/mercado-halal-en-espana-oportunidad-empresarial/</li>
+<li>IEMed halal Europe: https://www.iemed.org/publication/el-desarrollo-del-mercado-halal-europeouna-realidad-creciente/</li>
+<li>Voz Pópuli halal: https://www.vozpopuli.com/economia/distribucion/los-ganaderos-espanoles-miran-al-halal-adaptan-sus-protocolos-ante-el-creciente-mercado-islamico.html</li>
+<li>Mordor halal Europe: https://www.mordorintelligence.ar/industry-reports/europe-halal-food-and-beverages-market</li>
+<li>ICADE TFM halal market analysis: https://repositorio.comillas.edu/rest/bitstreams/421803/retrieve</li>
+</ul>
+<h3>Mercado pan / bakery</h3>
+<ul>
+<li>IMARC Spain bread bakery: https://www.imarcgroup.com/spain-bread-bakery-market</li>
+<li>Mordor Spain bread (global): https://www.mordorintelligence.com/industry-reports/bread-market</li>
+<li>Mordor flatbread global: https://www.mordorintelligence.com/industry-reports/global-flatbread-market</li>
+<li>Statista Spain bread: https://www.statista.com/outlook/cmo/food/bread-cereal-products/bread/spain</li>
+<li>Statista Spain food: https://www.statista.com/outlook/cmo/food/spain</li>
+<li>Deep Market Insights Spain frozen bakery: https://deepmarketinsights.com/vista/insights/frozen-bakery-product-market/spain</li>
+<li>Grand View Research Spain frozen bakery: https://www.grandviewresearch.com/horizon/outlook/frozen-bakery-market/spain</li>
+<li>GlobeNewswire flatbread $49 млрд: https://www.globenewswire.com/news-release/2025/03/25/3048920/0/en/Flatbread-Market-Size-to-Reach-a-Worth-US-49-29-Billion-by-2031-Driven-by-Increasing-Popularity-of-Ethnic-Cuisines-The-Insight-Partners.html</li>
+<li>Alimarket Informe 2024 comida étnica: https://www.alimarket.es/alimentacion/informe/398712/informe-2024-del-mercado-de-comida-etnica-en-espana</li>
+<li>Diario Gastronomía 2024: https://diariodegastronomia.com/radiografia-del-consumo-alimentario-espana-2024/</li>
+</ul>
+<h3>Kebab</h3>
+<ul>
+<li>Rentech Smartscraper 635 kebab shops: https://rentechdigital.com/smartscraper/business-report-details/list-of-kebab-shops-in-spain</li>
+<li>Cómo Cocinar y Comer: https://comococinarocomer.com/cuantos-restaurantes-kebab-hay-en-espana/</li>
+</ul>
+<h3>ICEX / экспорт</h3>
+<ul>
+<li>ICEX: https://www.icex.es/</li>
+<li>Cargo Flores exportaciones: https://www.cargoflores.com/exportaciones-del-sector-alimentario-espanol/</li>
+<li>MAPA acuerdo ICEX: https://www.mapa.gob.es/es/prensa/ultimas-noticias/el-ministerio-de-agricultura-pesca-y-alimentaci%C3%B3n-e-icex-firman-un-nuevo-convenio-de-colaboraci%C3%B3n-para-la-promoci%C3%B3n-internacional-de-los-aliment/tcm:30-707463</li>
+<li>ICEX guía MAPA: https://www.mapa.gob.es/es/ministerio/planes-estrategias/lineas-estrategicas-para-la-internacionalizacion-del-sector-agroalimentario/icexguia</li>
+</ul>
+<h3>Производственная экономика</h3>
+<ul>
+<li>API Lloret nave: https://www.api.cat/es/alquiler/industrial/girona/lloret-de-mar/2536870</li>
+<li>Habitaclia Girona industrial: https://english.habitaclia.com/rent-industrial_buildings-girona.htm</li>
+<li>MAPA precios cereales: https://www.mapa.gob.es/es/agricultura/temas/producciones-agricolas/cultivos-herbaceos/cereales/evolucion-de-los-precios-de-los-principales-cereales</li>
+<li>MAPA s41/2025: https://www.mapa.gob.es/dam/mapa/contenido/agricultura/temas/producciones-agricolas/cultivos-herbaceos/cereales/evolucion-de-los-precios-de-los-principales-cereales/desde-s1-2025-en-adelante-nuevo/s41_2025.pdf</li>
+<li>Plataforma Tierra cereales 2025: https://www.plataformatierra.es/mercados/tendencias-mercado-cerealista-2025-analisis-produccion-precios-trigo-maiz-mundial-espana</li>
+<li>CCOO Industria convenio panadería: https://industria.ccoo.es/4958fd475afa8c26bc35be73e14039de000060.pdf</li>
+<li>CCOO App Convenio Industria Flequera BCN: https://ccoo.app/convenio/convenio-colectivo-industria-flequera-panaderia-de-barcelona/</li>
+<li>BOE-A-2024-8947 convenio harinas: https://www.boe.es/buscar/doc.php?id=BOE-A-2024-8947</li>
+<li>BOE-A-2025-12598: https://www.boe.es/boe/dias/2025/06/20/pdfs/BOE-A-2025-12598.pdf</li>
+<li>Evergreen electrica empresas: https://evergreen-electrica.com/precio-kwh-empresas-espana</li>
+<li>REE precio medio final: https://www.sistemaelectrico-ree.es/en/spanish-electricity-system/markets/average-final-price</li>
+</ul>
+<h3>Bridor / Panamar / etc</h3>
+<ul>
+<li>Bridor: https://www.bridor.com/en-uk/</li>
+<li>Bridor Cobopa CMF: https://www.cmfrias.com/bolleria-y-pan-congelado-cobopa-bridor-madrid/</li>
+<li>Le Duff Panamar Profesional Horeca: https://www.profesionalhoreca.com/le-duff-bridor-crece-en-espana-con-la-compra-de-panamar-bakery-group/</li>
+</ul>
+<hr />
+<h2>Приложение А — Расширенный профиль каналов</h2>
+<h3>А.1. Bonpreu — детальное расследование</h3>
+<p>Группа Bonpreu (Bon Preu SAU + Esclat Sport SLU + связанные брэнды) — <em>крупнейший каталонский ритейлер местного капитала</em>, не входит в IFA или Euromadi. В 2024 году группа закрыла <strong>2 421 млн € facturación (+7,1% YoY)</strong>, и в продолжение десятилетней траектории — почти <strong>тройное</strong> увеличение оборота за 10 лет (с ~820 млн € в 2014 до 2 421 млн € в 2024). Это даёт CAGR около 11,4% — индустриально-исключительная динамика, отражающая <em>успешную каталанскую идентичность бренда</em>.</p>
+<p>Сегмент проксимити (Km0 + producto local) даёт 300+ млн € закупок, что в 2024 составляет ~<strong>12,4% всех закупок группы</strong> — это самая высокая доля local sourcing среди всех значительных ритейлеров Испании. Для сравнения: Mercadona declares ~15% «producto de origen español» как PL labeling, но не использует методологию «closeness» в комарках; Carrefour De Nuestra Tierra — 150+ референсов, но это <strong>&lt;1% всего ассортимента</strong> Carrefour España.</p>
+<p>Ключевое для Эль Лаваш: <strong>Bonpreu в KM0 покупает «по комаркам»</strong>, то есть продукт из Сельвы (где находится Льорет-де-Мар) автоматически становится KM0 для магазинов Bonpreu в комарках Сельва, Альт Эмпорда, Жиронес, Маресме, La Garrotxa, Pla de l'Estany, и попадает в категорию «KM0 для Comarques Gironines» во всех ~50 магазинах региона. Это <strong>гораздо мощнее</strong>, чем национальный листинг в Mercadona/Lidl, потому что:<br />
+- Маржа Bonpreu KM0 ниже стандартной (Bonpreu соглашается на меньшую маржу ради story-telling).<br />
+- Поддержка bargaining-power меньше: маленький поставщик не давит против Bonpreu, но и Bonpreu не давит против поставщика по объёму.<br />
+- Visibility в магазине: KM0-этикетка, иконка комарки, иногда photo производителя.</p>
+<p>Открытая контактная процедура: portal на bonpreuesclat.cat → раздел «Sóc proveïdor» (Soy proveedor) → форма с описанием продукта, capacidad, сертификатами, ассортиментом → ответ коммерческого менеджера в течение 2–6 недель → встреча → audit производства → тестовый листинг в 5–10 магазинах одной комарки → ramp-up.</p>
+<h3>А.2. Caprabo / Eroski — структура и подход</h3>
+<p>Caprabo принадлежит группе Eroski Cooperativo (Mondragón). На каталонском рынке — <strong>~300 магазинов</strong>. Программа «Comarques i Productors de Proximitat» с 2010-х; в 2015 году было 267 малых поставщиков (241 продюсера + 26 кооперативов). Поддержка — Departament d'Agricultura Generalitat, FCAC, Catalan Federation of DOP/IGP, и Caprabo сама присылает аудитора и проводит визиты по каждой комарке. Текущая стратегия 2024–2026: усиление proximidad как ось дифференциации против Mercadona и Bonpreu.</p>
+<p><strong>Реализм для Эль Лаваш</strong>: Caprabo — более бюрократичная организация (часть Eroski-кооператива), и решения принимаются медленнее, но условия выживания малых поставщиков лучше — публикованная статистика «venta de productos de proximidad +15%» подтверждает, что category growth выше среднего ритейла. Контакт — proveedores.eroski.es или прямой через коммерческий отдел Caprabo SA (Хосе Тарраделлас, Барселона).</p>
+<h3>А.3. Veritas Pro / Food Service — нишевый, но премиальный канал</h3>
+<p>Veritas Pro обслуживает 3 500+ центров: школы, отели, рестораны, кафе, клиники, госпитали, индустрия. Это <strong>уникальный для Испании канал — bio-only food service</strong>. Если Эль Лаваш сделает CCPAE-сертифицированную bio-линию, Veritas Pro будет:<br />
+- Эксклюзивный канал в Каталонии (нет прямых конкурентов в bio-flatbread).<br />
+- Доступ к школьному кейтерингу — высокий volume (~25 000–80 000 порций/день только в Каталонии).<br />
+- Доступ к санитарному кейтерингу (госпитали, дома престарелых) — стабильный contract revenue.</p>
+<p>CCPAE-сертификация — около 1 200–2 500 €/год (зависит от мощности и аудита). Дополнительный CAPEX: bio-сегрегация (отдельная мука, отдельное хранение), документация traceability.</p>
+<h3>А.4. Транспортно-логистическая карта Каталонии</h3>
+<p>Llloret-de-Mar расположен в комарке Сельва, провинция Жирона, в <strong>75 км от Барселоны</strong> (трасса C-32 + AP-7), <strong>35 км от Жироны</strong> (C-65 + N-II), <strong>42 км от Mercabarna</strong> (AP-7 южн.), <strong>15 км от аэропорта Жирона—Коста-Брава</strong>. Это даёт:<br />
+- 50 минут до Mercabarna → доступ к 770 мажоритарным дистрибьюторам.<br />
+- 60 минут до франко-каталонской границы Ла-Хонкера → доступ к Перпиньяну (Франция), Сету, Монпелье.<br />
+- 35 минут до 24 GM Cash центров Каталонии (через Жирону) или Disfribell (Palol de Revardit, 25 минут).<br />
+- 5 минут до 152 кебабных Каталонии (через дистрибьюторскую сеть).</p>
+<p>Это <strong>геометрически оптимальная локация</strong> для starter-производства лаваша с прицелом на Costa Brava HORECA + Барселона + South France export.</p>
+<hr />
+<h2>Приложение Б — Конкурентный анализ Don Pan 3000 (lavash incumbent)</h2>
+<p>Don Pan 3000 SL зарегистрирована в Эль-Росарио (Тенерифе, Канары), CIF B76550458, юридическая форма Sociedad Limitada, CNAE 2009 = 1071 (fabricación de pan y productos frescos de panadería y pastelería). По данным Empresite и DatosCif: <strong>компания работает без экспортной деятельности</strong>; адрес юридический — Calle J Guttemberg, Polígono Industrial San Isidro.</p>
+<p>Продукт «Pan Lavash» 200 г продаётся в:<br />
+- <strong>Alcampo</strong> (Auchan Spain): онлайн и физические магазины (национальное покрытие).<br />
+- <strong>Carrefour</strong> (Spain): национальное.<br />
+- <strong>El Corte Inglés Supercor</strong>: национальное.<br />
+- <strong>Eroski</strong>: преимущественно северные регионы + Каталония через Caprabo.<br />
+- Розничная цена потребителю: ~1,90–2,80 € за 200 г (источник: Komparing).</p>
+<p><strong>Слабости Don Pan 3000</strong>:<br />
+- Логистическое неудобство: с Канар на полуостров — морская дистанция 5–7 дней + customs. Это значит, что свежий или короткий-shelf-life продукт невозможен; работают только с долгим shelf-life ambient или frozen.<br />
+- Бренд позиционирован generic «mainstream lavash», без halal-сертификации, без bio, без этнической identity.<br />
+- Размер компании небольшой (несколько сотрудников), нет PR-усилий.<br />
+- Цена за килограмм высокая (9,50–14,00 €/кг при упаковке 200 г) — следствие длинной логистики.</p>
+<p><strong>Window для Эль Лаваш в роли «каталанский конкурент Don Pan»</strong>:<br />
+- Свежий или ультра-short-frozen лаваш для retail Каталонии: преимущество 4–5 дней shelf life vs Don Pan, который рассчитан на 3–6 мес.<br />
+- Halal-сертификация + Каталанский origin + KM0 → лучше positioning для Bonpreu/Caprabo.<br />
+- Цена за килограмм может быть ниже на 15–25% при сопоставимом качестве (нет канарской логистики).</p>
+<hr />
+<h2>Приложение В — Сегмент HORECA: подсегменты и приоритеты</h2>
+<p>Сегмент HORECA Каталонии включает несколько подсегментов с разной dynamics:</p>
+<p><strong>В.1. Кебабные и арабские рестораны</strong><br />
+- 152 кебабных в Каталонии (#1 в Испании).<br />
+- ~80–120 ливанских/сирийских/marokканских ресторанов в Барселоне (по данным базы Эль Лаваш v5).<br />
+- ~30–50 кебабных в Жироне.<br />
+- ~20–30 в Льорет/Тосса/Бланес (туристическая зона).<br />
+- <strong>Расход хлеба</strong>: 30–60 кг/день средней точки, 80–150 кг/день крупной.<br />
+- <strong>Закупочная цена</strong>: 2,50–3,40 €/кг (готовы платить premium за стабильность поставки и качество).<br />
+- <strong>Цикл оплаты</strong>: 30 дней банковский перевод (для кебабных) или наличные в момент доставки (для арабских ресторанов).</p>
+<p><strong>В.2. Туристические отели 4-5* Коста-Бравы</strong><br />
+- ~50 отелей 4-5 в Жироне (по базе Эль Лаваш v4).<br />
+- Сеть Rigat Group, Guitart Hotels, Evenia Hotels, Vincci, Sallés, Selenta — главные.<br />
+- Buffet завтраков: bread basket с pita и lavash как «international option» (особенно для british, dutch, french клиентов).<br />
+- <strong>Расход</strong>: 5–15 кг/день/отель.<br />
+- <strong>Закупочная цена</strong>: 2,80–3,80 €/кг.<br />
+- <strong>Цикл оплаты</strong>: 30–60 дней (сетевые отели).<br />
+- <strong>Контракт</strong>: годовой с условиями экстенсии.</p>
+<p><strong>В.3. All-inclusive отели и beach clubs Льорет-Бланес-Тосса</strong><br />
+- ~30 all-inclusive 3*+ в зоне.<br />
+- Beach clubs: 15–20 в Льорете, Бланесе, Тоссе.<br />
+- Расход: 10–25 кг/день/точка (если включают в pita-stations и night-time kebab).<br />
+- Цена: 2,40–3,20 €/кг.</p>
+<p><strong>В.4. Кейтеринг и institucional</strong><br />
+- Школьный кейтеринг Каталонии: ~25 000 школ, ~80 000 menús/день только в Барселоне (Сerca, Aramark, Eurest, ISS, Compass).<br />
+- Госпиталный кейтеринг: ~50 крупных госпиталей Каталонии.<br />
+- Очень специфический канал: контракты 1–3 года, requisitos строгих санитарных стандартов, IFS/BRCGS обязателен, цена 1,80–2,40 €/кг (низкая маржа но высокий volume и стабильность).</p>
+<p><strong>В.5. Cruceros (порты Паламос и Розес)</strong><br />
+- 58 заходов в 2024, 53 000 пассажиров.<br />
+- Operadores: Cruise Lines International (MSC, Costa, Royal Caribbean, NCL).<br />
+- Расход хлеба на пасажира: ~0,2 кг/день × 1–2 дня = 0,3 кг.<br />
+- Total потенциал: 53 000 × 0,3 кг = ~<strong>16 тонн/сезон</strong> для нишевого Mediterranean bread offering.<br />
+- Цикл: контракты с port suppliers (Vidae, Costa Brava Provisions).<br />
+- [Согласно базе Эль Лаваш v5: круизы — отдельная category с своими 7 верифицированными точками.]</p>
+<hr />
+<h2>Приложение Г — Сравнительная таблица гигантов и нишевых игроков</h2>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Europastry</th>
+<th>Bridor+Panamar</th>
+<th>Monbake/Bellsolà</th>
+<th>Don Pan 3000</th>
+<th>Libanofoods</th>
+<th>Эль Лаваш (план)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Facturación 2024–2026</td>
+<td>1 506 → 1 630 млн €</td>
+<td>3 100 млн € (combined)</td>
+<td>~900 млн €</td>
+<td>&lt;5 млн € (est.)</td>
+<td>&lt;2 млн € (5 emp.)</td>
+<td>starter 0,3–0,8 млн €</td>
+</tr>
+<tr>
+<td>Сотрудники</td>
+<td>~5 000</td>
+<td>5 000+</td>
+<td>~3 500</td>
+<td>&lt;50 (est.)</td>
+<td>5</td>
+<td>4–7</td>
+</tr>
+<tr>
+<td>Заводы</td>
+<td>30+ globally</td>
+<td>15+ globally</td>
+<td>10 в Spain</td>
+<td>1 (Tenerife)</td>
+<td>2 (Barcelona)</td>
+<td>1 (Lloret/Сельва)</td>
+</tr>
+<tr>
+<td>Локация HQ</td>
+<td>Sant Cugat (BCN)</td>
+<td>Rennes (Francia)</td>
+<td>Бургос/Жирона</td>
+<td>Тенерифе</td>
+<td>Барселона</td>
+<td>Льорет-де-Мар</td>
+</tr>
+<tr>
+<td>Фокус продукта</td>
+<td>Croissant, pan, viennoiserie</td>
+<td>Pan rústico, viennoiserie, croissant</td>
+<td>Pan barra, croissant</td>
+<td>Lavash, pan plano</td>
+<td>Pita, hummus, tahini</td>
+<td>Лаваш, pita</td>
+</tr>
+<tr>
+<td>Канал</td>
+<td>Retail PL + foodservice</td>
+<td>Mercadona + retail + foodservice</td>
+<td>Carrefour PL + foodservice</td>
+<td>Alcampo/Carrefour/Eroski retail</td>
+<td>Specialty + ethnic</td>
+<td>Bonpreu KM0 + HORECA Жирона</td>
+</tr>
+<tr>
+<td>Тип</td>
+<td>Frozen industrial</td>
+<td>Frozen industrial</td>
+<td>Frozen industrial</td>
+<td>Ambient retail</td>
+<td>Ambient/vacío retail</td>
+<td>Frozen + fresh</td>
+</tr>
+<tr>
+<td>Сертификации</td>
+<td>IFS, BRCGS, halal, kosher</td>
+<td>IFS, BRCGS, halal</td>
+<td>IFS, BRCGS</td>
+<td>[?]</td>
+<td>[?]</td>
+<td>Цель: IFS + halal + KM0</td>
+</tr>
+</tbody>
+</table>
+<p>Это иллюстрирует, что <strong>нет ни одного игрока в Каталонии</strong>, специализированного именно на каталанском халяльном лаваше с фокусом на местный HORECA и Bonpreu KM0. Окно — открыто.</p>
+<hr />
+<h2>Приложение Д — Источники прогнозов CAGR</h2>
+<p>Деталь по росту flatbread в Испании — расхождения между источниками:<br />
+- <strong>Insight Partners / GlobeNewswire (март 2025)</strong>: глобально CAGR 7,3% (2025–2033) для unleavened/flatbread.<br />
+- <strong>Mordor Intelligence (2024)</strong>: глобально CAGR 3,92% (2026–2031) для flatbread, против 3,55% для leavened.<br />
+- <strong>Datainsightsmarket</strong>: 2025–2033, более широкий диапазон.<br />
+- <strong>Spain frozen bakery (Deep Market Insights)</strong>: CAGR <strong>8,75%</strong> (2025–2033) — это узкоспециализированный замороженный бэйкери, и лаваш как frozen попадает сюда.</p>
+<p><strong>Выбранный для отчёта прогноз</strong>: для глобального flatbread — 3,9–7,3% (берём средний 5,5%), для frozen bakery Spain — 8,75%. Эль Лаваш как frozen flatbread в Spain — нижняя граница 7%, верхняя 9%.</p>
+<hr />
+<h2>Приложение Е — Сценарные расчёты P&amp;L</h2>
+<p><strong>Сценарий 1: Консервативный (12 мес)</strong><br />
+- Объём: 8 т/мес × 12 = 96 т/год.<br />
+- Средняя цена продажи: 2,80 €/кг.<br />
+- Revenue: 96 000 × 2,80 = <strong>268 800 €/год</strong>.<br />
+- Direct cost (1,15 €/кг): 110 400 €.<br />
+- Fixed cost (18 000 €/мес × 12): 216 000 €.<br />
+- EBITDA: 268 800 − 110 400 − 216 000 = <strong>−57 600 €/год</strong>. (Loss)<br />
+- → Не окупается без выхода ≥10,3 т/мес.</p>
+<p><strong>Сценарий 2: Базовый (18 мес)</strong><br />
+- Объём: 14 т/мес × 12 = 168 т/год.<br />
+- Revenue: 168 000 × 2,90 = <strong>487 200 €/год</strong>.<br />
+- Direct: 168 000 × 1,15 = 193 200 €.<br />
+- Fixed: 216 000 €.<br />
+- EBITDA: 487 200 − 193 200 − 216 000 = <strong>+78 000 €/год</strong>. (Break-even crossed)<br />
+- EBITDA margin: 16,0%.</p>
+<p><strong>Сценарий 3: Оптимистичный (24 мес)</strong><br />
+- Объём: 25 т/мес × 12 = 300 т/год.<br />
+- Revenue: 300 000 × 3,00 = <strong>900 000 €/год</strong>.<br />
+- Direct: 300 000 × 1,10 = 330 000 € (экономия масштаба на муке и упаковке).<br />
+- Fixed: 240 000 € (+1 оператор + расширение нав).<br />
+- EBITDA: 900 000 − 330 000 − 240 000 = <strong>+330 000 €/год</strong>.<br />
+- EBITDA margin: 36,7%.<br />
+- Свободный денежный поток после CAPEX-амортизации и налогов: ~<strong>220 000 €/год</strong> → возврат стартового CAPEX (~150 000 €) за 8 месяцев работы в оптимистичном сценарии.</p>
+<p><strong>Сценарий 4: Экспансия (36 мес, экспорт во Францию)</strong><br />
+- Объём: 45 т/мес × 12 = 540 т/год.<br />
+- Revenue: 540 000 × 3,05 = <strong>1 647 000 €/год</strong>.<br />
+- Direct: 540 000 × 1,08 = 583 200 €.<br />
+- Fixed: 320 000 € (расширение + 2-я смена).<br />
+- EBITDA: 1 647 000 − 583 200 − 320 000 = <strong>+743 800 €/год</strong>. (45% margin)</p>
+<hr />
+<h2>Приложение Ж — Контрольный план на 12 месяцев</h2>
+<p><strong>Месяцы 1–3: Setup</strong><br />
+- RSIPAC: подача, аудит, регистрация.<br />
+- IFS: выбор консультанта, gap analysis.<br />
+- Halal: presupuesto Instituto Halal, решение go/no-go.<br />
+- Брендинг: фирстиль (логотип, упаковка), товарный знак OEPM.<br />
+- Аренда нав, монтаж первой линии (15 кг/час).<br />
+- Первый пилотный заказ: 3–5 дистрибьюторам.</p>
+<p><strong>Месяцы 4–6: Validation</strong><br />
+- Регулярные поставки в 3–5 HORECA distribuidores (Disfribell, Friman, GM Cash Girona, 1 локальный).<br />
+- Первая выставка: Hostelco-Alimentaria (если в год есть) или местная Costa Brava food show.<br />
+- Bonpreu KM0 application: пакет документов + IFS roadmap.<br />
+- Объём: рост с 1 т/мес → 4 т/мес.</p>
+<p><strong>Месяцы 7–9: Scale в HORECA + IFS audit</strong><br />
+- IFS Food final audit и сертификация.<br />
+- Контракт с 1–2 отельными группами Коста-Бравы (Rigat, Guitart).<br />
+- Halal certification (если go).<br />
+- Объём: 4 → 8 т/мес.</p>
+<p><strong>Месяцы 10–12: Retail entry + расширение</strong><br />
+- Bonpreu KM0 pilot в 5–10 магазинах Comarques Gironines.<br />
+- Caprabo application.<br />
+- Объём: 8 → 12–14 т/мес.<br />
+- Break-even crossed к месяцу 11–12.</p>
+<p><strong>Месяцы 13–18: Каталонский scale</strong><br />
+- Bonpreu rollout 30–50 магазинов.<br />
+- Caprabo pilot.<br />
+- Direct contract с 5–10 hostal'ями Lloret/Tossa/Blanes.<br />
+- Объём: 14 → 22 т/мес.</p>
+<p><strong>Месяцы 19–24: Подготовка к экспорту во Францию</strong><br />
+- ICEX consultation; subvención сертификации halal Francia (если уже не halal-сертифицированы под общую рамку).<br />
+- Контакт с дистрибьюторами Перпиньяна (Bidfood France через Iberia).<br />
+- Объём: 22 → 35 т/мес.</p>
+<hr />
+<h2>Заметки об ограничениях исследования</h2>
+<ol>
+<li><strong>Кебабный сектор по числу точек</strong>: 635 vs 4 000+ vs 20 000 — расхождение источников; <strong>635 — данные географической бизнес-выгрузки Rentech (наиболее верифицируемая для retail/расчётов)</strong>, более высокие цифры включают «снэк-точки», «такелажные кафе с кебаб-мени», «бургерные с шаурмой».</li>
+<li><strong>Bio bread Каталония</strong>: CCPAE не публикует facturación по подсегменту; требует прямого запроса в CCPAE pae.gencat.cat.</li>
+<li><strong>Halal cost</strong>: точная цена сертификации Instituto Halal не публикуется — требует direct presupuesto request.</li>
+<li><strong>Bonpreu KM0 procedure</strong>: открытого «руководства для поставщика» нет — требует контакта через portal proveedores или коммерческого отдела (info@bonpreu.cat).</li>
+<li><strong>Сирийская / ливанская / иранская / грузинская диаспоры Каталонии</strong>: точных Idescat-цифр в открытых источниках нет — требует запроса Padrón Continuo на национальности с малым весом.</li>
+<li><strong>Точный расход хлеба на кебабную точку</strong>: оценочно 30–60 кг/день; нет официальной статистики, <strong>требует Asemac / отраслевой survey</strong>.</li>
+</ol>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>

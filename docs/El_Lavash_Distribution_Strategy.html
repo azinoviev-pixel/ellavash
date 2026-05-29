@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — Стратегия дистрибуции</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+  --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;letter-spacing:-0.005em;
+  background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+.container{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding-bottom:32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 14px;color:var(--ink)}
+.hero .sub{font-size:17px;color:var(--ink-soft);max-width:780px}
+.pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center;margin:0 6px 6px 0}
+.pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.content h1{font-family:'Fraunces',serif;font-weight:600;font-size:36px;color:var(--brand);margin:48px 0 16px;letter-spacing:-0.02em}
+.content h2{font-family:'Fraunces',serif;font-weight:600;font-size:28px;color:var(--brand);margin:40px 0 14px;letter-spacing:-0.015em}
+.content h3{font-size:18px;text-transform:uppercase;letter-spacing:0.08em;color:var(--brand-soft);font-weight:700;margin:32px 0 12px}
+.content h4{font-size:16px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.content p{margin:12px 0}
+.content ul, .content ol{margin:12px 0;padding-left:24px}
+.content li{padding:4px 0}
+.content strong{color:var(--ink);font-weight:700}
+.content em{color:var(--brand-soft)}
+.content code{background:var(--bg-soft);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--brand)}
+.content blockquote{border-left:4px solid var(--brand);padding:14px 20px;margin:18px 0;background:var(--bg-card);border-radius:0 10px 10px 0;color:var(--ink-soft)}
+.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.content th, .content td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{background:var(--bg-soft);color:var(--brand-soft);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.content tr:hover td{background:var(--bg-soft)}
+.content a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+.content a:hover{color:var(--brand)}
+.content hr{border:none;border-top:1px solid var(--line);margin:32px 0}
+.content pre{background:var(--bg-soft);padding:18px;border-radius:10px;overflow-x:auto;font-size:13px;border:1px solid var(--line)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+@media (max-width:800px){
+  .container{padding:24px 16px 56px}
+  .hero h1{font-size:clamp(28px,8vw,40px)}
+  .content h1{font-size:clamp(24px,7vw,32px)}
+  .content h2{font-size:clamp(20px,6vw,26px)}
+  .content table{font-size:12px}
+  .content th, .content td{padding:8px 10px}
+  .pill{font-size:12px;padding:8px 12px}
+}
+@supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+
+/* Universal mobile fix */
+html, body { overflow-x: hidden; max-width: 100vw; }
+table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+table thead, table tbody { display: table; width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
+.scroll-x { overflow-x: auto !important; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 800px) {
+  .container { max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  table { font-size: 12px; }
+  h1, h2, h3 { word-wrap: break-word; }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">El Lavash · 28.05.2026</div>
+<h1>Стратегия дистрибуции</h1>
+<div class="sub">Кластеры, подходы по каналам, план первых 30 дней.</div>
+<div style="margin-top:20px;">
+<a class="pill primary" href="index_v19.html">← Панель проекта</a>
+<a class="pill" href="El_Lavash_Market_Analysis_v9.html">Анализ рынка</a>
+<a class="pill" href="El_Lavash_Business_Model_v8.html">Бизнес-модель</a>
+<a class="pill" href="El_Lavash_Sales_Strategy_v8.html">Стратегия продаж</a>
+</div>
+</header>
+<div class="content">
+<h1>El Lavash — База точек дистрибуции в Каталонии (v1)</h1>
+<p><strong>Дата:</strong> 28.05.2026<br />
+<strong>Локация производства:</strong> Льорет-де-Мар (Lloret de Mar), провинция Жирона<br />
+<strong>Продукт:</strong> настоящий армянский лаваш + в перспективе пельмени/котлеты/готовая еда<br />
+<strong>Файл данных:</strong> <code>El_Lavash_Distribution_DB_v1.csv</code> — 170+ точек</p>
+<hr />
+<h2>Содержание</h2>
+<ol>
+<li>Распределение базы по категориям</li>
+<li>Приоритетные кластеры — где начать</li>
+<li>Подходы по группам клиентов</li>
+<li>Дистрибьюторы HORECA — стратегические партнёры</li>
+<li>Платформы доставки и онлайн-каталоги</li>
+<li>Ruthless mentor: где могут отказать и почему</li>
+<li>Следующие шаги — first 30 days</li>
+</ol>
+<hr />
+<h2>1. Распределение базы по категориям</h2>
+<table>
+<thead>
+<tr>
+<th>Категория</th>
+<th>Кол-во</th>
+<th>Уровень приоритета (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Русские/славянские магазины (Cataluña)</td>
+<td>~40</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>Армянские магазины и рестораны</td>
+<td>6</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Грузинские рестораны</td>
+<td>8</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>Иранские/персидские точки</td>
+<td>3</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Ливанские/сирийские/арабские рестораны (Барселона)</td>
+<td>~20</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>Халяль-карникерии Льорета</td>
+<td>8</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Кебаб/шаварма Льорета</td>
+<td>~30</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>Кебаб Тосса/Бланес/Калелья/Жирона</td>
+<td>~10</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>HORECA-дистрибьюторы Каталонии</td>
+<td>~25</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>Делиривери-платформы</td>
+<td>5</td>
+<td>4.7</td>
+</tr>
+<tr>
+<td>Каталоги/Yellow Pages</td>
+<td>13</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>Локальные кафе/рестораны Льорета</td>
+<td>~12</td>
+<td>2.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ИТОГО:</strong> ~170 верифицированных и полу-верифицированных точек.</p>
+<hr />
+<h2>2. Приоритетные кластеры — где начать</h2>
+<h3>[HOT] КЛАСТЕР А: Льорет-де-Мар (радиус 0–3 км — пешая доставка)</h3>
+<p>Это ваш домашний рынок. Можно завозить лично, без логистики, ежедневно. <strong>Цель: 15–20 постоянных клиентов в первый месяц.</strong></p>
+<p><strong>Топ-цели:</strong><br />
+1. <strong>Supermercado Russia</strong> (C/ Narcis Macià 12) — единственный русский супер в Льорете, <strong>обязательный визит №1 в день старта</strong><br />
+2. <strong>Carnicería Halal Fátima</strong> (C/ Girona 11) — крупнейшая халяль-карникерия города, супермаркет арабских товаров<br />
+3. <strong>Carnicería Halal El Molí, Souliman, Al Mobaraka, Salam, Al Badr, Amir, Assalam</strong> — 8 халяль-карникерий, все берут лаваш для арабской/мусульманской клиентуры<br />
+4. <strong>Beach Doner Kebab, Pita King, El Shawarma Original, Omar Halal</strong> — самые крупные турецкие/арабские заведения с шаурмой<br />
+5. <strong>Все 25+ кебаб-точек Льорета на Glovo/Uber Eats</strong> — потенциально каждая берёт 50-200 лавашей/неделю</p>
+<h3>[HOT] КЛАСТЕР Б: Жирона — провинциальная столица (35 мин на машине)</h3>
+<ol>
+<li><strong>Slavutich Girona</strong> (Pl. Santa Eugenia 2) — главный русский магазин города</li>
+<li><strong>Bogatyr, Vita, Nostalgia</strong> — три других русских магазина Жироны</li>
+<li><strong>The Kebab Lab, Turkish Pizza Kebab</strong> — арабские заведения Жироны на доставке</li>
+</ol>
+<h3>[HOT] КЛАСТЕР В: Коста-Брава (15–60 мин)</h3>
+<ul>
+<li><strong>Sant Feliu de Guíxols</strong> — Nadezhda (легендарная русская тиенда + ~40 халяль/кебаб точек Guíxols Kebab и др.)</li>
+<li><strong>Platja d'Aro</strong> — Tienda Productos Rusos (C/ Doctor Fleming 3)</li>
+<li><strong>Tossa de Mar</strong> — Pita Döner Kebab + другие заведения</li>
+<li><strong>Blanes</strong> — Tot Brassa и кебаб-точки на Uber Eats</li>
+<li><strong>Palafrugell</strong> — Troika Delikatessen</li>
+<li><strong>Empuriabrava</strong> — Slavutich</li>
+</ul>
+<h3>[HOT] КЛАСТЕР Г: Барселона (1 ч 20 мин по AP-7)</h3>
+<p>Самый объёмный, но логистически сложный. Делать поставки 2 раза в неделю, фургончик с холодильником.</p>
+<p><strong>Топ-цели для первого визита (одна поездка):</strong><br />
+1. <strong>Teremok</strong> (Pg. Sant Joan 125) + <strong>Troika Delicatessen</strong> (Unió 3) — два крупнейших магазина центра<br />
+2. <strong>Anahit</strong> (Mallorca 610) — <strong>АРМЯНСКИЙ</strong> супермаркет, ваша природная аудитория<br />
+3. <strong>Kinza Born</strong> + <strong>Supra</strong> + <strong>Chveni</strong> — три крупнейших грузинских ресторана (закупают шоти+лаваш ежедневно)<br />
+4. <strong>Restaurante Lavash</strong> (Mallorca 287) — потенциальный партнёр или конкурент, прощупать<br />
+5. <strong>Nikomand Iranian Shop</strong> (Blai 43) — иранская диаспора покупает лаваш<br />
+6. <strong>Cesta Selecta</strong> (Consell de Cent 493) — <strong>СТРАТЕГИЧЕСКИЙ B2B-ДИСТРИБЬЮТОР</strong> русских/восточных продуктов в провинции Барселона, с холодильным транспортом</p>
+<h3>[HOT] КЛАСТЕР Д: Маресме (Бадалона/Калелья/Пинеда — по пути)</h3>
+<ul>
+<li><strong>Alfa, Baltika</strong> (Бадалона) — русские магазины</li>
+<li><strong>Selling &amp; Spain</strong> (Бадалона, Pol. Ind. Les Guixeres) — <strong>дистрибьютор СПЕЦИАЛЬНО для кебаб-точек</strong>, ваш стратегич партнёр</li>
+<li><strong>Pizza Rica Kebab Calella, Luna de Anatolia Pineda</strong> — кебабы</li>
+</ul>
+<hr />
+<h2>3. Подходы по группам клиентов</h2>
+<h3>A. Русско-/украиноязычные продуктовые магазины</h3>
+<p><strong>Что предлагать:</strong> 2–3 SKU на старте: классический лаваш тонкий армянский + лаваш с травами + лаваш «грузинский толстый» (если будете делать).<br />
+<strong>Аргументы:</strong> "Свежий, наш, из Льорета, доставка ежедневно, не из Москвы через 3 недели". Скоропортящийся свежий продукт ВСЕГДА бьёт замороженный импорт.<br />
+<strong>Цена ориентир:</strong> оптовая 0.80–1.20€ за лаваш (зависит от размера), розничная клиентом 1.80–2.50€.<br />
+<strong>Подход:</strong> личный визит → пробник → переговоры → еженедельные заявки по WhatsApp.</p>
+<h3>B. Армянские магазины и рестораны</h3>
+<p><strong>Уникальная позиция:</strong> "Настоящий армянский лаваш" — позиционирование. Армянская диаспора в Каталонии примет восторженно.<br />
+<strong>Топ-цель: Anahit</strong> (БСН) и <strong>Tapan/Kinza/Mana'm</strong> — рестораны, где лаваш — обязательная подача.<br />
+<strong>Аргумент:</strong> свежесть + цена против импорта из Армении/Греции.</p>
+<h3>C. Грузинские рестораны</h3>
+<p><strong>Что предлагать:</strong> лаваш-шоти, аджарские лодочки (хачапури-база — отдельный SKU). Объёмы — 30-50 единиц в день у Kinza/Supra.<br />
+<strong>Подход:</strong> прийти к шеф-повару с дегустацией. Грузинская кухня В Каталонии — растущий тренд, ваш продукт обязательная категория.</p>
+<h3>D. Иранская/центральноазиатская сеть</h3>
+<p><strong>Nikomand</strong> (Барселона) — крупнейший иранский магазин, прямой представитель BADR. Иранцы покупают лаваш для каждого приёма пищи.<br />
+<strong>Аргумент:</strong> "Местное производство — не нужно ждать поставки из Германии".</p>
+<h3>E. Халяль-карникерии Льорета (КРИТИЧЕСКИ ВАЖНО)</h3>
+<p>8 точек в радиусе 1 км. Все обслуживают мусульманскую диаспору (марокканцы, пакистанцы, сирийцы, ливанцы) + туристов.<br />
+<strong>Цена:</strong> ниже чем у Selling &amp; Spain (дистрибьютор из Бадалоны) на 10-15% — выиграете на свежести и доставке.<br />
+<strong>Подход:</strong> прийти лично, оставить пробник, через 24 ч позвонить. С хозяином обычно лучше говорить на испанском/арабском (если знаете).</p>
+<h3>F. Кебаб/шаварма точки Льорета и побережья</h3>
+<p>Объёмы — самые большие после HORECA. Каждая точка использует 50-300 лавашей/недель в сезон.<br />
+<strong>Цена решает.</strong> Они сегодня покупают у Selling &amp; Spain (Бадалона) или Libano Foods. Ваш аргумент: свежесть, локальная доставка, эластичность заказа.<br />
+<strong>Подход:</strong> обходить дёнер-точки в 15:00 (после ланча, до ужина) с буклетом и пробником.</p>
+<h3>G. HORECA-дистрибьюторы</h3>
+<p>Это ваш способ масштабироваться без своей логистики. Но они забирают 25-35% маржи.<br />
+<strong>Топ-стратегия:</strong> <strong>Cesta Selecta</strong> (для русско-славянской ниши) + <strong>Selling &amp; Spain</strong> (для кебаб-сегмента) + <strong>Assolim</strong> или <strong>Friman</strong> (для общей HORECA). Идеально подписать с одним эксклюзив на канал.</p>
+<h3>H. Делиривери-платформы</h3>
+<p>Если откроете розничную точку при производстве — обязательно Glovo + Uber Eats. Не Just Eat (комиссия выше + меньше клиентов в Льорете).<br />
+<strong>Yango Eats</strong> — русскоязычный родительский бренд, дружественный к русским брендам, спрос на свежий лаваш по доставке в Льорете очень высок.</p>
+<h3>I. Локальные средиземноморские рестораны Льорета</h3>
+<p><strong>La Parrilla, Tribus, Ca L'Enric</strong> — каталанские рестораны. Лаваш им не профильный, но как «лаваш-чипсы», «лаваш для шашлычной подачи» — возможно. Низкий приоритет в первом месяце.</p>
+<hr />
+<h2>4. HORECA-дистрибьюторы — стратегические партнёры</h2>
+<h3>Топ-7 для contact в первую неделю:</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Компания</th>
+<th>Город</th>
+<th>Почему важно</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Cesta Selecta</strong></td>
+<td>BSN (Eixample)</td>
+<td>Свой холодильный транспорт + русско-восточная ниша + 50€ бесплатная доставка по провинции BSN</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Selling &amp; Spain</strong></td>
+<td>Badalona</td>
+<td>Специализация — кебаб-точки, готовый канал в каждую дёнер-лавку Каталонии</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Assolim</strong></td>
+<td>El Bruc</td>
+<td>60+ грузовиков, цепь холода BSN+Tarragona+часть Жироны. HORECA</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Libano Foods</strong></td>
+<td>España (?)</td>
+<td>Прямой конкурент — производитель пита/durum. Изучить цены и схему. Возможно white-label</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Mercabarna - 70+ HORECA-компаний</strong></td>
+<td>BSN</td>
+<td>Главный B2B-хаб. Через mercabarna.es найти список и предложить производство</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Maheso</strong></td>
+<td>Montcada i Reixac</td>
+<td>Замороженные блюда (крокеты/лазанья). Для пельменей/котлет в будущем — white-label или дистрибьютор</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Marquez Distribucions</strong></td>
+<td>Sant Feliu de Guíxols</td>
+<td>Прямо на Коста-Браве! С 1975. Идеален для покрытия Жироны/Льорета</td>
+</tr>
+</tbody>
+</table>
+<h3>Региональные (Жирона):</h3>
+<ul>
+<li><strong>Dispuig</strong> (Girona) — 72 года HORECA</li>
+<li><strong>Disfribell</strong> (Palol De Revardit) — спецы по хлебу</li>
+<li><strong>Distribuciones Abad Isern</strong> (Girona) — мороженое/замороженные</li>
+<li><strong>Balló</strong> (Figueres) — мульти-HORECA + droguería</li>
+<li><strong>Grupo Miquel</strong> (Vilamalla) — big-box, тяжело попасть напрямую, но если зайти — выходишь на сети</li>
+</ul>
+<hr />
+<h2>5. Платформы доставки и онлайн-каталоги (must-have в первые 2 недели)</h2>
+<p><strong>Делиривери:</strong><br />
+1. <strong>Glovo</strong> — 35-40% комиссия. Доминирует Льорет. Регистрация ~5 дней. ОБЯЗАТЕЛЬНО.<br />
+2. <strong>Uber Eats</strong> — 25-35%. Бесплатная активация. ОБЯЗАТЕЛЬНО.<br />
+3. <strong>Just Eat</strong> — 36% + 0.20€/заказ + 299€ активация. Менее активна в Льорете.<br />
+4. <strong>Bolt Food</strong> — конкурент Glovo.<br />
+5. <strong>Yango Eats</strong> — русскоязычный, дружественный.</p>
+<p><strong>Каталоги (бесплатно или почти):</strong><br />
+1. <strong>Google My Business</strong> — КРИТИЧНО. Без этого вас просто нет.<br />
+2. <strong>Páginas Amarillas</strong> + <strong>QDQ</strong> + <strong>Cylex</strong> — национальные каталоги.<br />
+3. <strong>Botigues de Catalunya</strong> — каталанский каталог независимых магазинов.<br />
+4. <strong>EnLloret.com</strong>, <strong>Lloret.cat / lloretdemar.org</strong> — локальный гид Льорета.<br />
+5. <strong>TheFork / TripAdvisor / Restaurant Guru</strong> — если откроется фронт-офис/магазин.</p>
+<hr />
+<h2>6. Ruthless mentor: где могут отказать и почему</h2>
+<h3>Где могут сказать "НЕТ" и почему:</h3>
+<h4>[STOP] 1. Кебаб-точки: "у нас уже есть поставщик"</h4>
+<p><strong>Реальность:</strong> 70% дёнер-точек закупают замороженную пита/durum у Libano Foods, Selling &amp; Spain или прямо в Mercabarna. У них уже есть лояльные отношения.<br />
+<strong>Ваш ход:</strong> не пытаться сразу заменить — предложить «свежий премиум-лаваш для топовых блюд», а не базовую питу. Иначе ценовая война, в которой замороженный конкурент всегда выигрывает.</p>
+<h4>[STOP] 2. Русские магазины: "наш покупатель ждёт продукт со знакомым брендом из СНГ"</h4>
+<p><strong>Реальность:</strong> Старые русские эмигранты привыкли к маркам "Махеев", "Микоян", "АПК Михайловский". Ваш бренд "El Lavash" незнаком.<br />
+<strong>Ваш ход:</strong> упаковка с кириллицей. "Армянский лаваш — из Каталонии" с понятной отсылкой к Армении. Не пытаться выглядеть как испанский премиум — выглядеть как этнический, "свой".</p>
+<h4>[STOP] 3. Halal-карникерии: "у нас нет места в витрине" / "нам выгоднее печь самим в задней"</h4>
+<p><strong>Реальность:</strong> Некоторые крупные халяль-точки (Fátima, El Molí) уже имеют свою выпечку.<br />
+<strong>Ваш ход:</strong> не конкурировать в их сегменте обычного арабского хлеба. Предложить АРМЯНСКИЙ лаваш как нишевую категорию — другую, не марокканскую. Дополнить, а не заменить.</p>
+<h4>[STOP] 4. Грузинские рестораны: "лаваш мы выпекаем сами в тандыре"</h4>
+<p><strong>Реальность:</strong> Kinza/Supra декларируют традиционность. Часть пекут на месте.<br />
+<strong>Ваш ход:</strong> позиционирование «для не-пиковых часов / стабильности / выходных». Или продавать им только хачапури-базы / шоти если будете делать.</p>
+<h4>[STOP] 5. HORECA-дистрибьюторы: "минимальный объём — 500 кг/неделю"</h4>
+<p><strong>Реальность:</strong> Крупные дистры (Assolim/Friman) работают только с производителями, способными гарантировать стабильность поставок. На старте у вас этого не будет.<br />
+<strong>Ваш ход:</strong> начать с малых (Cesta Selecta, Marquez Distribucions Sant Feliu), доказать стабильность, потом масштабироваться.</p>
+<h4>[STOP] 6. Платформы доставки: "минимальный заказ 6€" срежет вашу маржу</h4>
+<p><strong>Реальность:</strong> Glovo берёт 40% — на лаваше за 2.50€ остаётся 1.50€, минус упаковка минус себестоимость = убыток.<br />
+<strong>Ваш ход:</strong> на Glovo/UberEats продавать ТОЛЬКО НАБОРЫ ("Набор лаваш+хумус+оливки" за 12-15€) или открыть в перспективе своё кафе-точка с шаурмой/армянской кухней — это будет рентабельно.</p>
+<h4>[STOP] 7. Местные каталанские рестораны: "лаваш не часть нашей карты"</h4>
+<p><strong>Реальность:</strong> Они правы. Не тратьте на них время в первые 3 месяца.</p>
+<h4>[STOP] 8. Юридические/санитарные риски</h4>
+<p>В Испании производство хлеба требует:<br />
+- <strong>Registro Sanitario</strong> (RGSEAA) — обязательно<br />
+- <strong>HACCP-протокол</strong> — обязателен<br />
+- <strong>Sello halal</strong> (если претендуете на халяль-сегмент) — через Instituto Halal или Junta Islámica<br />
+- <strong>EAN-штрихкоды</strong> для розницы<br />
+- <strong>Этикетка по EU-стандарту:</strong> ингредиенты, аллергены, дата, лот, состав в граммах, происхождение пшеницы, контактные данные производителя</p>
+<p>Без этих документов ни Cesta Selecta, ни Assolim, ни даже Anahit не возьмут продукт легально.</p>
+<hr />
+<h2>7. Следующие шаги — first 30 days</h2>
+<h3>Неделя 1 (документация и стартовая база)</h3>
+<ul>
+<li>[ ] Получить <strong>Registro Sanitario</strong> (если ещё нет)</li>
+<li>[ ] Создать <strong>Google My Business</strong> для El Lavash</li>
+<li>[ ] Зарегистрироваться в <strong>Páginas Amarillas + QDQ + Cylex + EnLloret + Botigues de Catalunya</strong></li>
+<li>[ ] Подготовить пробники на 30 точек (по 5 лавашей в брендированной упаковке)</li>
+<li>[ ] Напечатать буклет с прайс-листом на испанском + русском</li>
+</ul>
+<h3>Неделя 2 (Льорет пеший обход)</h3>
+<ul>
+<li>[ ] Обойти <strong>все 8 халяль-карникерий + Supermercado Russia</strong> (1 день)</li>
+<li>[ ] Обойти <strong>15-20 кебаб-точек Льорета</strong> (2 дня, 14:00-17:00)</li>
+<li>[ ] Зайти в <strong>Privet</strong> (если работает), <strong>Ugolok</strong> найти физическую точку</li>
+<li>[ ] Получить минимум <strong>5 первых клиентов</strong></li>
+</ul>
+<h3>Неделя 3 (Коста-Брава радиус)</h3>
+<ul>
+<li>[ ] <strong>Sant Feliu de Guíxols</strong> — Nadezhda (русский) + Guíxols Kebab + Marquez Distribucions</li>
+<li>[ ] <strong>Platja d'Aro</strong> — русский магазин на Doctor Fleming 3</li>
+<li>[ ] <strong>Tossa de Mar</strong> — Pita Döner Kebab + остальные</li>
+<li>[ ] <strong>Blanes</strong> — Tot Brassa и кебаб-сцена</li>
+<li>[ ] <strong>Calella/Pineda</strong> — Pizza Rica Kebab, Luna de Anatolia + если найдёте русский Bazar de Rusia на c/Iglesia</li>
+</ul>
+<h3>Неделя 4 (Жирона + Барселона день 1)</h3>
+<ul>
+<li>[ ] <strong>Жирона:</strong> Slavutich + Bogatyr + Vita + Nostalgia + The Kebab Lab + Turkish Pizza</li>
+<li>[ ] <strong>Барселона день 1</strong> (один длинный день): Teremok → Troika → Anahit → Cesta Selecta (B2B встреча) → Kinza Born → Tapan</li>
+<li>[ ] Подписать договор с <strong>минимум 1 HORECA-дистрибьютором</strong> (Cesta Selecta — наиболее реалистично)</li>
+</ul>
+<h3>Параллельно весь месяц:</h3>
+<ul>
+<li>[ ] Открыть <strong>Instagram + Facebook + Telegram-канал El Lavash</strong> на испанском+русском</li>
+<li>[ ] Регистрация на <strong>Glovo + Uber Eats</strong> для будущей розничной точки</li>
+<li>[ ] Создать <strong>landing page</strong> на ellavash.es (или .com) с прайсом и формой заявки B2B</li>
+</ul>
+<hr />
+<h2>Финальная заметка</h2>
+<p>База на 170+ точек — это ваш стартовый список. Реалистично из них:<br />
+- <strong>30-50</strong> станут активными клиентами в первые 3 месяца<br />
+- <strong>5-10</strong> — постоянными VIP-клиентами с еженедельной поставкой<br />
+- <strong>1-3</strong> — стратегическими дистрибьюторами или ресторанами-флагманами, через которых пойдёт основной объём</p>
+<p>Не пытайтесь покрыть всё сразу. Лучше захватить <strong>домашний рынок Льорет-де-Мар на 100%</strong> за месяц, чем разбросать ресурсы и проиграть везде.</p>
+<p><strong>Льорет — это ваша крепость. Барселона — это ваш рост. HORECA-дистрибьюторы — это ваш масштаб.</strong></p>
+<p>— Файл будет дополняться в версиях v2, v3... Каждая итерация = новые верифицированные контакты, новые ниши, новые подходы.</p>
+</div>
+<footer><p>El Lavash · 28.05.2026</p></footer>
+</div>
+</body>
+</html>
