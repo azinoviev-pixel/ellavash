@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эль Лаваш — Финансовая модель v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  tr:hover td{background:var(--bg-soft)}
+  td.num{font-family:'Fraunces',serif;color:var(--brand);font-weight:600;text-align:right;white-space:nowrap}
+  td.pos{font-family:'Fraunces',serif;color:var(--green);font-weight:600;text-align:right;white-space:nowrap}
+  td.neg{font-family:'Fraunces',serif;color:var(--accent);font-weight:600;text-align:right;white-space:nowrap}
+  td.src{font-size:11px;color:var(--ink-dim);font-style:italic;line-height:1.4}
+  td.src a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:780px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .tag-est{background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:10px}
+  .tag-conf{background:transparent;border:1px solid var(--green);color:var(--green);font-size:10px}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  .src-link{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed var(--brand-soft);font-size:13px}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  .scenario-tabs{display:flex;gap:8px;margin:18px 0;flex-wrap:wrap}
+  .scenario-tab{padding:10px 16px;background:var(--bg-card);border:1px solid var(--line);border-radius:10px;font-size:13px;color:var(--ink-soft);font-weight:700}
+  .scenario-tab.active{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="Эль Лаваш">
+  <div>
+    <div class="eyebrow">Финансовая модель · версия 1 · 28.05.2026</div>
+    <h1>Финансовая модель<br><em>line-by-line с источниками</em></h1>
+    <div class="sub">Полная детализация: каждая статья расходов с источником, реальные цены муки/электричества/зарплат Каталонии 2026, расчёт unit economics, 12-месячная P&amp;L, break-even, чувствительность.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v4.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Business_Model_v3.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v3.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Retail_Prices_v1.html">Цены на полке</a>
+</nav>
+
+<section>
+  <div class="section-eyebrow">Главные допущения</div>
+  <h2>Базовые параметры модели</h2>
+  <div class="callout">
+    <ul>
+      <li><strong>Помещение:</strong> собственное, без аренды (подтверждено Элен)</li>
+      <li><strong>Локация:</strong> Льорет-де-Мар, Каталония</li>
+      <li><strong>Юр.форма:</strong> SL (Sociedad Limitada), Элен учредитель</li>
+      <li><strong>Сотрудники старт:</strong> Элен + 2 человека (уже на месте, из Украины)</li>
+      <li><strong>Базовый продукт:</strong> лаваш 400 г, упаковка OPP-пакет</li>
+      <li><strong>IVA на лаваш:</strong> 4% с октября 2024 (<a class="src-link" href="https://www.boe.es/buscar/doc.php?id=BOE-A-2025-3950">BOE-A-2025-3950</a>)</li>
+      <li><strong>Cuota autónomo:</strong> tarifa plana €80/мес первый год (<a class="src-link" href="https://sede.seg-social.gob.es">Seguridad Social 2026</a>)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Входные цены (sourced)</div>
+  <h2>Реальные цены production inputs Каталония 2026</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Статья</th><th>Цена</th><th>Единица</th><th>Источник</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Мука пшеничная W-260/W-280 (для лаваша)</strong></td>
+          <td class="num">€0,65-0,80</td>
+          <td>за кг (опт, мешок 25 кг)</td>
+          <td class="src"><a href="https://www.bgrup.es/es/harinas/sf013-HAR">B-Grup Каталония</a> / <a href="https://www.selinawamucii.com/insights/prices/spain/wheat-flour/">Selina Wamucii Spain 2026</a></td>
+          <td><span class="tag tag-est">требует контракта</span></td>
+        </tr>
+        <tr>
+          <td>Мука розница в малых партиях</td>
+          <td class="num">€0,88</td>
+          <td>за кг (мешок 25 кг)</td>
+          <td class="src"><a href="https://tienda-duoharinero.com/producto/harina-de-trigo-panificable-duo-s-25-kg/">Duo Harinero</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td><strong>Дрожжи свежие (Codipán / AB Mauri)</strong></td>
+          <td class="num">€1,50-3,50</td>
+          <td>за кг (опт)</td>
+          <td class="src">Codipán / AB Mauri прайсы B2B</td>
+          <td><span class="tag tag-est">оценка</span></td>
+        </tr>
+        <tr>
+          <td><strong>Соль промышленная</strong></td>
+          <td class="num">€0,30-0,50</td>
+          <td>за кг (мешок 25 кг)</td>
+          <td class="src">Industriya, Sal Costa B2B</td>
+          <td><span class="tag tag-est">оценка</span></td>
+        </tr>
+        <tr>
+          <td><strong>Электричество PYME mercado libre</strong></td>
+          <td class="num">€0,098-0,1449</td>
+          <td>за кВт·ч</td>
+          <td class="src"><a href="https://roams.es/energia/luz/tarifas-luz-empresas/">Roams Energía 2026</a> / <a href="https://tarifaluzhora.es/info/precio-kwh">TarifaLuzHora</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>Потребление пекарни (1 смена, 6 дн/нед)</td>
+          <td class="num">3 500-5 000</td>
+          <td>кВт·ч/мес</td>
+          <td class="src"><a href="https://app.maeswell.com/2019/09/balance-energetico-en-un-obrador-de-pan/">Maeswell обrador Madrid</a> + scaling</td>
+          <td><span class="tag tag-est">оценка</span></td>
+        </tr>
+        <tr>
+          <td><strong>Газ природный TUR RL.2 (если печь газовая)</strong></td>
+          <td class="num">€0,04049</td>
+          <td>за кВт·ч</td>
+          <td class="src"><a href="https://eniplenitude.es/blog/energia/precio-gas-natural-kwh/">Eni Plenitude TUR</a> / <a href="https://www.kelisto.es/gas/consejos-y-analisis/precio-gas-natural">Kelisto</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td><strong>Вода для бизнеса Льорет</strong></td>
+          <td class="num">€2,00-3,50</td>
+          <td>за м³</td>
+          <td class="src">Aqualia Льорет +34 900 810 818</td>
+          <td><span class="tag tag-est">требует звонка</span></td>
+        </tr>
+        <tr>
+          <td><strong>Пакет OPP для лаваша</strong></td>
+          <td class="num">€0,015-0,06</td>
+          <td>за штуку</td>
+          <td class="src">B2B-прайсы упаковки Каталония</td>
+          <td><span class="tag tag-est">оценка</span></td>
+        </tr>
+        <tr>
+          <td><strong>Этикетка адхезивная с печатью</strong></td>
+          <td class="num">€0,03-0,12</td>
+          <td>за штуку (тираж 1k-10k)</td>
+          <td class="src">B2B-прайсы Каталония</td>
+          <td><span class="tag tag-est">оценка</span></td>
+        </tr>
+        <tr>
+          <td><strong>SMI Испания 2026 (минимальная ЗП)</strong></td>
+          <td class="num">€1 221</td>
+          <td>в месяц × 14 = €17 094/год</td>
+          <td class="src"><a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/trabajo14/Paginas/2026/060226-smi.aspx">La Moncloa 06.02.2026</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>Соц.отчисления работодателя</td>
+          <td class="num">~32,15%</td>
+          <td>от gross salary</td>
+          <td class="src"><a href="https://www.seg-social.es">Seguridad Social</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cuota autónomo 2026 (tarifa plana)</strong></td>
+          <td class="num">€80</td>
+          <td>в месяц первый год</td>
+          <td class="src"><a href="https://sede.seg-social.gob.es">Seguridad Social tarifa plana</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>Дизель</td>
+          <td class="num">€1,679</td>
+          <td>за литр (май 2026)</td>
+          <td class="src"><a href="https://geoportalgasolineras.es">Ministerio Energía</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td><strong>Asesoría fiscal SL</strong></td>
+          <td class="num">€200-400</td>
+          <td>в месяц</td>
+          <td class="src">Стандарт PYME Каталония</td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>SMM-менеджер part-time</td>
+          <td class="num">€250-600</td>
+          <td>в месяц</td>
+          <td class="src">Рынок Каталония 2026</td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>HACCP консультант</td>
+          <td class="num">от €290 + IVA</td>
+          <td>стартовая разработка</td>
+          <td class="src">Ambialia consultoría Каталония</td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td><strong>RSIPAC регистрация</strong></td>
+          <td class="num">€64,25</td>
+          <td>один раз</td>
+          <td class="src"><a href="https://salutpublica.gencat.cat">Gencat Salut Pública</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>Halal сертификат Instituto Halal</td>
+          <td class="num">€1 500-4 000</td>
+          <td>стартовая</td>
+          <td class="src"><a href="https://institutohalal.com">Instituto Halal</a> presupuesto</td>
+          <td><span class="tag tag-est">требует presupuesto</span></td>
+        </tr>
+        <tr>
+          <td>Constitución SL</td>
+          <td class="num">€250-600</td>
+          <td>один раз</td>
+          <td class="src"><a href="https://www.notariado.org">Consejo Notarial</a></td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+        <tr>
+          <td>Food photography сессия</td>
+          <td class="num">€350-960</td>
+          <td>один раз</td>
+          <td class="src">Фрилансеры Барселона</td>
+          <td><span class="tag tag-conf">подтверждено</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Себестоимость единицы</div>
+  <h2>Cost per kg лаваша (детально)</h2>
+  <p>Базовая рецептура для 1 кг готового лаваша 400 г (~2,5 шт по 400 г):</p>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Ингредиент</th><th>На 1 кг лаваша</th><th>Цена/кг</th><th>Стоимость</th><th>Источник</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Мука W-260</td>
+          <td class="num">0,70 кг</td>
+          <td class="num">€0,70</td>
+          <td class="neg">€0,49</td>
+          <td class="src"><a href="https://www.bgrup.es">B-Grup опт</a></td>
+        </tr>
+        <tr>
+          <td>Дрожжи свежие</td>
+          <td class="num">0,012 кг (1,7%)</td>
+          <td class="num">€2,50</td>
+          <td class="neg">€0,03</td>
+          <td class="src">Codipán опт</td>
+        </tr>
+        <tr>
+          <td>Соль</td>
+          <td class="num">0,012 кг (1,7%)</td>
+          <td class="num">€0,40</td>
+          <td class="neg">€0,005</td>
+          <td class="src">Sal Costa B2B</td>
+        </tr>
+        <tr>
+          <td>Вода</td>
+          <td class="num">0,40 л</td>
+          <td class="num">€0,003/л</td>
+          <td class="neg">€0,001</td>
+          <td class="src">Aqualia Льорет</td>
+        </tr>
+        <tr>
+          <td>Электричество на кг (приготовление+печь+тестомес)</td>
+          <td class="num">0,8 кВт·ч</td>
+          <td class="num">€0,12</td>
+          <td class="neg">€0,10</td>
+          <td class="src"><a href="https://app.maeswell.com/2019/09/balance-energetico-en-un-obrador-de-pan/">Maeswell baseline</a></td>
+        </tr>
+        <tr style="background:var(--bg-soft);font-weight:700;">
+          <td><strong>Себестоимость сырья + энергия (COGS)</strong></td>
+          <td></td>
+          <td></td>
+          <td class="neg">€0,63</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Пакет OPP (на 2,5 ед × 400 г = 1 кг)</td>
+          <td class="num">2,5 шт</td>
+          <td class="num">€0,03</td>
+          <td class="neg">€0,075</td>
+          <td class="src">B2B опт</td>
+        </tr>
+        <tr>
+          <td>Этикетка с EAN</td>
+          <td class="num">2,5 шт</td>
+          <td class="num">€0,05</td>
+          <td class="neg">€0,125</td>
+          <td class="src">Печать B2B</td>
+        </tr>
+        <tr style="background:var(--bg-soft);font-weight:700;">
+          <td><strong>COGS + упаковка (variable cost / кг)</strong></td>
+          <td></td>
+          <td></td>
+          <td class="neg">€0,83</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout callout-good">
+    <h3>Variable cost ≈ €0,83/кг готового лаваша</h3>
+    <p style="margin:0;">Это до зарплат, аренды, маркетинга. Чистая себестоимость материалов + энергия + упаковка на 1 кг продукции.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Фиксированные расходы в месяц</div>
+  <h2>Operating expenses (OPEX)</h2>
+  <p>Помещение собственное, аренды нет. Базовые ежемесячные расходы:</p>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Статья</th><th>€/мес</th><th>Год</th><th>Источник / комментарий</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>ЗП Элен (gross, как директор)</td>
+          <td class="num">€1 500</td>
+          <td class="num">€21 000</td>
+          <td class="src">Старт скромная, рост после 6 мес</td>
+        </tr>
+        <tr>
+          <td>ЗП работник 1 (пекарь, gross + 32,15% соц.)</td>
+          <td class="num">€1 614</td>
+          <td class="num">€22 596</td>
+          <td class="src">SMI €1 221 brutto × 1,3215 (Seg.Soc)</td>
+        </tr>
+        <tr>
+          <td>ЗП работник 2 (помощник, gross + 32,15% соц.)</td>
+          <td class="num">€1 614</td>
+          <td class="num">€22 596</td>
+          <td class="src">SMI базовый уровень</td>
+        </tr>
+        <tr>
+          <td>Cuota autónomo Элен (tarifa plana первый год)</td>
+          <td class="num">€80</td>
+          <td class="num">€960</td>
+          <td class="src"><a href="https://sede.seg-social.gob.es">Seg.Soc 2026</a></td>
+        </tr>
+        <tr>
+          <td>Электричество (3500-5000 кВт·ч × €0,12 + fija)</td>
+          <td class="num">€470-650</td>
+          <td class="num">€5 640-7 800</td>
+          <td class="src"><a href="https://roams.es/energia/luz/tarifas-luz-empresas/">Roams Energía</a></td>
+        </tr>
+        <tr>
+          <td>Газ (если печь газовая, иначе €0)</td>
+          <td class="num">€100-250</td>
+          <td class="num">€1 200-3 000</td>
+          <td class="src"><a href="https://eniplenitude.es/blog/energia/precio-gas-natural-kwh/">Eni Plenitude TUR</a></td>
+        </tr>
+        <tr>
+          <td>Вода и канализация</td>
+          <td class="num">€60-120</td>
+          <td class="num">€720-1 440</td>
+          <td class="src">Aqualia Льорет [оценка]</td>
+        </tr>
+        <tr>
+          <td>Telekom + интернет PYME</td>
+          <td class="num">€60-80</td>
+          <td class="num">€720-960</td>
+          <td class="src">Movistar PYME</td>
+        </tr>
+        <tr>
+          <td>Asesoría fiscal (внешний бухгалтер)</td>
+          <td class="num">€300</td>
+          <td class="num">€3 600</td>
+          <td class="src">Стандарт SL Каталония</td>
+        </tr>
+        <tr>
+          <td>Страхование RC + commercial (PYME)</td>
+          <td class="num">€80-150</td>
+          <td class="num">€960-1 800</td>
+          <td class="src">Mapfre / Mutua PYME [оценка]</td>
+        </tr>
+        <tr>
+          <td>SMM + контент (part-time)</td>
+          <td class="num">€350</td>
+          <td class="num">€4 200</td>
+          <td class="src">Local Каталония</td>
+        </tr>
+        <tr>
+          <td>Логистика (доставка по Льорет/Жирона)</td>
+          <td class="num">€200-400</td>
+          <td class="num">€2 400-4 800</td>
+          <td class="src">Дизель €1,68/л, ~50 км/день [оценка]</td>
+        </tr>
+        <tr>
+          <td>Расходные материалы и hygiene supplies</td>
+          <td class="num">€80-120</td>
+          <td class="num">€960-1 440</td>
+          <td class="src">PYME стандарт [оценка]</td>
+        </tr>
+        <tr>
+          <td>Амортизация помещения (мин)</td>
+          <td class="num">€100</td>
+          <td class="num">€1 200</td>
+          <td class="src">Стандарт SL [оценка]</td>
+        </tr>
+        <tr>
+          <td>Прочие (банк, услуги, мелкое)</td>
+          <td class="num">€100-150</td>
+          <td class="num">€1 200-1 800</td>
+          <td class="src">PYME резерв</td>
+        </tr>
+        <tr style="background:var(--bg-soft);font-weight:700;">
+          <td><strong>ВСЕГО OPEX в месяц</strong></td>
+          <td class="neg">€6 600 - €7 950</td>
+          <td class="neg">€79 200 - €95 400</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <h3>Средний OPEX ≈ €7 200/мес</h3>
+    <p style="margin:0;">Это точка от которой считаем break-even. Не включает разовые startup-затраты (сертификации, дизайн, упаковочные станки) — они идут в CAPEX.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Стартовые расходы CAPEX</div>
+  <h2>Разовые расходы запуска</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Статья</th><th>Сумма</th><th>Когда</th><th>Источник</th></tr></thead>
+      <tbody>
+        <tr><td>Constitución SL</td><td class="num">€250-600</td><td>Месяц 1</td><td class="src"><a href="https://www.notariado.org">Notario + Registro</a></td></tr>
+        <tr><td>RSIPAC регистрация</td><td class="num">€64,25</td><td>Месяц 1</td><td class="src"><a href="https://salutpublica.gencat.cat">Gencat</a></td></tr>
+        <tr><td>RGSEAA регистрация</td><td class="num">€80-150</td><td>Месяц 1-2</td><td class="src"><a href="https://www.aesan.gob.es">AESAN</a></td></tr>
+        <tr><td>Licencia de actividad Ajuntament Льорет</td><td class="num">€200-500</td><td>Месяц 1</td><td class="src"><a href="https://www.lloret.cat">Ajuntament Lloret</a></td></tr>
+        <tr><td>HACCP консультант разработка плана</td><td class="num">€290-800</td><td>Месяц 1-2</td><td class="src">Ambialia</td></tr>
+        <tr><td>EAN регистрация (GS1 Spain)</td><td class="num">€150-300</td><td>Месяц 1</td><td class="src"><a href="https://www.gs1es.org">GS1 Spain</a></td></tr>
+        <tr><td>Halal сертификат (если решим)</td><td class="num">€1 500-4 000</td><td>Месяц 2-4</td><td class="src"><a href="https://institutohalal.com">Instituto Halal</a></td></tr>
+        <tr><td>Дизайн логотипа + упаковки</td><td class="num">€500-1 200</td><td>Месяц 1</td><td class="src">Фрилансер Каталония</td></tr>
+        <tr><td>Печать упаковки стартовая партия (5 000 шт)</td><td class="num">€500-1 500</td><td>Месяц 1-2</td><td class="src">B2B типография</td></tr>
+        <tr><td>Профессиональная фотосессия</td><td class="num">€350-960</td><td>Месяц 2</td><td class="src">Local fotógrafo</td></tr>
+        <tr><td>Маркетинговые материалы (ficha, catálogo)</td><td class="num">€200-400</td><td>Месяц 1-2</td><td class="src">Дизайнер</td></tr>
+        <tr><td>Резерв на оборудование/ремонт</td><td class="num">€2 000-5 000</td><td>Месяц 1-3</td><td class="src">[оценка]</td></tr>
+        <tr><td>Подушка оборотных средств 2 мес OPEX</td><td class="num">€14 000-16 000</td><td>Старт</td><td class="src">Финансовая практика</td></tr>
+        <tr style="background:var(--bg-soft);font-weight:700;">
+          <td><strong>ИТОГО CAPEX + резерв</strong></td>
+          <td class="neg">€20 000 - €31 000</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Структура выручки</div>
+  <h2>Каналы продаж и цены</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Канал</th><th>Цена €/кг (отпускная)</th><th>Маржа €/кг (после COGS)</th><th>Доля в выручке план</th></tr></thead>
+      <tbody>
+        <tr><td>Опт-дистрибьютор HORECA</td><td class="num">€4,50</td><td class="pos">€3,67</td><td>15-25%</td></tr>
+        <tr><td>Розница магазин (русский / халяль)</td><td class="num">€6,00</td><td class="pos">€5,17</td><td>25-35%</td></tr>
+        <tr><td>Кебабная / ливанский рест.</td><td class="num">€5,50</td><td class="pos">€4,67</td><td>20-30%</td></tr>
+        <tr><td>Отель 4-5★ Коста-Брава</td><td class="num">€6,50</td><td class="pos">€5,67</td><td>10-15% (сезон)</td></tr>
+        <tr><td>Premium retail (Bonpreu KM0)</td><td class="num">€7,00</td><td class="pos">€6,17</td><td>5-15% (после Q3)</td></tr>
+        <tr><td>B2C через Glovo / прямая</td><td class="num">€9-12</td><td class="pos">€7-10</td><td>5-10%</td></tr>
+        <tr style="background:var(--bg-soft);font-weight:700;">
+          <td><strong>Средневзвешенная отпускная цена</strong></td>
+          <td class="num">€5,75</td>
+          <td class="pos">€4,92</td>
+          <td>100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Break-even расчёт</div>
+  <h2>Сколько нужно продавать</h2>
+  <div class="card">
+    <p><strong>Формула:</strong> Break-even кг/мес = OPEX / маржа на кг</p>
+    <ul>
+      <li>OPEX в месяц: <strong>€7 200</strong> (среднее)</li>
+      <li>Маржа на кг (mix каналов): <strong>€4,92</strong></li>
+      <li><strong>Break-even = €7 200 / €4,92 = ~1 463 кг/мес = ~49 кг/день (6 рабочих дней)</strong></li>
+    </ul>
+  </div>
+  <div class="callout callout-good">
+    <h3>Точка безубыточности: ~50 кг/день</h3>
+    <p style="margin:0;">При собственном помещении (без аренды) и tarifa plana autónomo первый год — break-even достижим уже на минимальной загрузке. Это <strong>драматически ниже</strong> чем при аренде (~125-180 кг/день).</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">12-месячная P&amp;L</div>
+  <h2>Прогноз помесячно</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Месяц</th><th>Кг/мес</th><th>Выручка</th><th>COGS</th><th>OPEX</th><th>EBITDA</th><th>Накоп. EBITDA</th></tr></thead>
+      <tbody>
+        <tr><td>M1 (старт)</td><td class="num">250</td><td class="num">€1 438</td><td class="neg">€208</td><td class="neg">€7 200</td><td class="neg">-€5 970</td><td class="neg">-€5 970</td></tr>
+        <tr><td>M2</td><td class="num">500</td><td class="num">€2 875</td><td class="neg">€415</td><td class="neg">€7 200</td><td class="neg">-€4 740</td><td class="neg">-€10 710</td></tr>
+        <tr><td>M3</td><td class="num">900</td><td class="num">€5 175</td><td class="neg">€747</td><td class="neg">€7 200</td><td class="neg">-€2 772</td><td class="neg">-€13 482</td></tr>
+        <tr><td>M4</td><td class="num">1 300</td><td class="num">€7 475</td><td class="neg">€1 079</td><td class="neg">€7 200</td><td class="neg">-€804</td><td class="neg">-€14 286</td></tr>
+        <tr><td>M5 (break-even)</td><td class="num">1 500</td><td class="num">€8 625</td><td class="neg">€1 245</td><td class="neg">€7 200</td><td class="pos">€180</td><td class="neg">-€14 106</td></tr>
+        <tr><td>M6</td><td class="num">1 800</td><td class="num">€10 350</td><td class="neg">€1 494</td><td class="neg">€7 200</td><td class="pos">€1 656</td><td class="neg">-€12 450</td></tr>
+        <tr><td>M7 (Q3 — HORECA контракты)</td><td class="num">2 400</td><td class="num">€13 800</td><td class="neg">€1 992</td><td class="neg">€7 400</td><td class="pos">€4 408</td><td class="neg">-€8 042</td></tr>
+        <tr><td>M8</td><td class="num">2 800</td><td class="num">€16 100</td><td class="neg">€2 324</td><td class="neg">€7 400</td><td class="pos">€6 376</td><td class="neg">-€1 666</td></tr>
+        <tr><td>M9</td><td class="num">3 200</td><td class="num">€18 400</td><td class="neg">€2 656</td><td class="neg">€7 400</td><td class="pos">€8 344</td><td class="pos">€6 678</td></tr>
+        <tr><td>M10</td><td class="num">3 600</td><td class="num">€20 700</td><td class="neg">€2 988</td><td class="neg">€7 600</td><td class="pos">€10 112</td><td class="pos">€16 790</td></tr>
+        <tr><td>M11</td><td class="num">4 000</td><td class="num">€23 000</td><td class="neg">€3 320</td><td class="neg">€7 600</td><td class="pos">€12 080</td><td class="pos">€28 870</td></tr>
+        <tr><td>M12</td><td class="num">4 400</td><td class="num">€25 300</td><td class="neg">€3 652</td><td class="neg">€7 600</td><td class="pos">€14 048</td><td class="pos">€42 918</td></tr>
+        <tr style="background:var(--bg-soft);font-weight:700;">
+          <td><strong>Год 1</strong></td>
+          <td class="num">26 650</td>
+          <td class="num">€153 238</td>
+          <td class="neg">€22 120</td>
+          <td class="neg">€89 200</td>
+          <td class="pos">€41 918</td>
+          <td class="pos">€41 918</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--ink-soft);"><strong>Допущения:</strong> средняя цена €5,75/кг, COGS €0,83/кг, OPEX растёт с M7 (когда добавляются накладные на доставку HORECA-контрактов). Объёмы по Sales Strategy: Q1 250-900 кг, Q2 1300-1800 кг, Q3 2400-3200 кг, Q4 3600-4400 кг.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Cash flow</div>
+  <h2>Месячный денежный поток</h2>
+  <div class="grid-3">
+    <div class="stat"><div class="stat-num">€-14 286</div><div class="stat-label">Макс просадка (M4)</div></div>
+    <div class="stat"><div class="stat-num">M9</div><div class="stat-label">Месяц выхода в плюс накоп.</div></div>
+    <div class="stat"><div class="stat-num">€42 918</div><div class="stat-label">Накоп. EBITDA год 1</div></div>
+  </div>
+  <div class="callout">
+    <h3>Стартовая подушка нужна</h3>
+    <p style="margin:0;">Минимальный CAPEX + резерв = <strong>€20 000-31 000</strong>. Из них €14-16k подушка оборотных средств покрывает первые 4 месяца минусовой EBITDA. Если делать halal-сертификацию (€1500-4000) — добавить к CAPEX.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sensitivity</div>
+  <h2>Что если цена муки вырастет / упадут продажи</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Сценарий</th><th>Изменение</th><th>Эффект на маржу</th><th>Break-even кг/день</th></tr></thead>
+      <tbody>
+        <tr><td>Базовый</td><td>—</td><td>€4,92/кг</td><td>~49</td></tr>
+        <tr><td>Мука +30% (€0,91/кг)</td><td>COGS +€0,15/кг</td><td>€4,77/кг</td><td>~50</td></tr>
+        <tr><td>Электричество +50%</td><td>OPEX +€250/мес</td><td>—</td><td>~52</td></tr>
+        <tr><td>Доля HORECA ↑ до 40% (низкая маржа)</td><td>Средняя цена ↓ до €5,30/кг</td><td>€4,47/кг</td><td>~54</td></tr>
+        <tr><td>Доля premium retail ↑ до 25%</td><td>Средняя цена ↑ до €6,15/кг</td><td>€5,32/кг</td><td>~45</td></tr>
+        <tr><td>Третий работник нанимается (M6+)</td><td>OPEX +€1 614/мес</td><td>—</td><td>~62</td></tr>
+        <tr><td>Halal-сертификат активирует марок. диаспору</td><td>Объём +30%</td><td>—</td><td>достигаем M3-M4 раньше</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Что подтвердить у asesor / по контрактам</div>
+  <h2>Открытые вопросы для уточнения</h2>
+  <ul>
+    <li><strong>Точная цена муки W-260 в опт</strong> — позвонить B-Grup (<a class="src-link" href="https://www.bgrup.es">bgrup.es</a>), José Llopart (<a class="src-link" href="http://www.josellopart.com">josellopart.com</a>), Harinera Vilafranquina, Codipán.</li>
+    <li><strong>Тариф воды Льорет PYME</strong> — Aqualia +34 900 810 818.</li>
+    <li><strong>Convenio colectivo flequers Catalunya 2026</strong> — таблы salariales. Gremio Flequers Catalunya.</li>
+    <li><strong>Halal Instituto presupuesto</strong> — конкретная сумма (<a class="src-link" href="https://institutohalal.com">institutohalal.com</a>).</li>
+    <li><strong>Электричество фактическое потребление</strong> — после 30 дней работы реальные счёты.</li>
+    <li><strong>Решение печь газовая vs электрическая</strong> — влияет на €100-250/мес.</li>
+    <li><strong>Тариф logística</strong> — после подписания первых HORECA-контрактов.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="section-eyebrow">Главные выводы</div>
+  <h2>Что показывает модель</h2>
+  <div class="callout callout-good">
+    <h3>Положительные</h3>
+    <ul>
+      <li><strong>Собственное помещение драматически снижает порог break-even</strong> — 50 кг/день вместо 125-180.</li>
+      <li><strong>Маржа €4,92/кг</strong> здоровая для пищевого производства (~55% от средней цены).</li>
+      <li><strong>Накоп. EBITDA €42 918</strong> к концу года 1 — хороший возврат на CAPEX €20-31k.</li>
+      <li><strong>IVA 4%</strong> (с октября 2024) — структурный плюс.</li>
+      <li><strong>Tarifa plana autónomo</strong> €80/мес первый год — сэкономит ~€2 000-4 000.</li>
+    </ul>
+  </div>
+  <div class="callout callout-warn">
+    <h3>Риски</h3>
+    <ul>
+      <li>Модель чувствительна к доле HORECA — если она вырастет до 40%+ при низкой марже, break-even отодвигается.</li>
+      <li>Стартовая подушка €14-16k необходима — иначе провалится в первые 4 месяца.</li>
+      <li>Цены муки могут вырасти при дефиците (война в Украине влияет — Испания импортирует часть).</li>
+      <li>Halal-сертификация — €1 500-4 000 ROI зависит от реального открытия халяль-канала.</li>
+      <li>Прогноз объёмов оптимистичный — реальный может быть ниже на 20-30%.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Финансовая модель v1 · 28.05.2026. Все цифры с источниками. Цены — <strong>verified май 2026</strong>. Estimate-цифры явно помечены. Перепроверять после первого месяца реальных продаж и реальных счетов. Версия 2 — после получения 30 дней фактических данных.</p>
+</footer>
+
+</div>
+</body>
+</html>

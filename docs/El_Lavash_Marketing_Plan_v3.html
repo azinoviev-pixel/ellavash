@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эль Лаваш — Маркетинг-план v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:56px 32px 96px}
+  .hero{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .hero img{width:140px;height:auto;filter:drop-shadow(0 8px 24px rgba(248,210,2,0.15))}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .hero .sub{font-size:18px;max-width:720px;color:var(--ink-soft)}
+  .nav-pills{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+  .pill{padding:10px 16px;background:var(--bg-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+  .pill:hover{background:var(--brand);color:var(--bg)}
+  .pill.primary{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:32px;margin:56px 0 20px;letter-spacing:-0.02em}
+  h3{font-size:18px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand);font-weight:700;margin:32px 0 14px}
+  .section-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand-soft);font-weight:700;margin-bottom:4px}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  ul{padding-left:0;list-style:none}
+  ul li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+  ul li:last-child{border-bottom:none}
+  ul li::before{content:"▸";position:absolute;left:0;color:var(--brand);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--brand-soft);background:var(--bg-soft)}
+  .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;margin:16px 0;padding-bottom:8px}
+  .scroll-x table{margin:0;border:none;min-width:700px}
+  .stat{padding:22px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px}
+  .stat-num{font-family:'Fraunces',serif;font-size:38px;color:var(--brand);line-height:1;font-weight:600;letter-spacing:-0.02em}
+  .stat-label{margin-top:8px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .tag{display:inline-block;padding:3px 9px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;border-radius:4px;margin:2px 4px 2px 0}
+  .tag-hot{background:var(--accent);color:#FFF}
+  .tag-warm{background:var(--brand);color:var(--bg)}
+  .tag-cool{background:var(--green);color:var(--bg)}
+  .tag-dim{background:var(--bg-soft);color:var(--ink-soft);border:1px solid var(--line)}
+  .callout{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border-left:4px solid var(--brand);border-radius:10px;padding:22px 26px;margin:24px 0}
+  .callout-warn{border-left-color:var(--accent)}
+  .callout-good{border-left-color:var(--green)}
+  .callout h3{color:var(--brand);margin-top:0}
+  .callout-warn h3{color:var(--accent)}
+  .callout-good h3{color:var(--green)}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+  @media (max-width:800px){
+    .container{padding:28px 18px 64px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-bottom:24px;margin-bottom:28px}
+    .hero img{width:90px}
+    .hero h1{font-size:clamp(28px,8vw,42px)}
+    h2{font-size:clamp(22px,6vw,30px);margin:36px 0 16px}
+    h3{font-size:15px;margin:24px 0 10px}
+    .grid-2,.grid-3{grid-template-columns:1fr;gap:12px}
+    .grid-4{grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:16px}
+    .stat{padding:16px}
+    .stat-num{font-size:28px}
+    .pill{padding:8px 12px;font-size:12px}
+    table{font-size:12px}
+    th,td{padding:8px 10px}
+  }
+  @media (max-width:480px){.grid-4{grid-template-columns:1fr}.container{padding:22px 14px 56px}}
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <img src="logo_web.png" alt="Эль Лаваш">
+  <div>
+    <div class="eyebrow">Маркетинг-план · версия 3 · 28.05.2026</div>
+    <h1>Маркетинг-план<br><em>бренд, контент, каналы, PR</em></h1>
+    <div class="sub">90-day контент-календарь, brand positioning, Instagram + WhatsApp + LinkedIn стратегия, PR-возможности.</div>
+  </div>
+</header>
+
+<nav class="nav-pills">
+  <a class="pill primary" href="index.html">Панель проекта</a>
+  <a class="pill" href="El_Lavash_Market_Analysis_v4.html">Анализ рынка</a>
+  <a class="pill" href="El_Lavash_Business_Model_v3.html">Бизнес-модель</a>
+  <a class="pill" href="El_Lavash_Sales_Strategy_v3.html">Стратегия продаж</a>
+  <a class="pill" href="El_Lavash_Competitive_Analysis_v3.html">Конкуренты</a>
+</nav>
+
+<section>
+  <div class="section-eyebrow">Brand Positioning</div>
+  <h2>Кто мы и почему</h2>
+  <div class="card">
+    <h3>Главное позиционирование</h3>
+    <p style="font-size:19px;color:var(--ink);line-height:1.5;"><strong>«Authentic armenian-style lavash, baked fresh in Lloret de Mar — the only one in Costa Brava.»</strong></p>
+    <p style="color:var(--ink-soft);">Артезанальный лаваш, локальное производство в Льорет-де-Мар, единственный такой на Коста-Браве. Свежий, не замороженный, проксимити-история, армянская традиция.</p>
+  </div>
+  <div class="grid-2">
+    <div class="callout">
+      <h3>Нарратив 1: Русско-/украиноязычная аудитория</h3>
+      <p style="margin-top:0;"><strong>«Лаваш как дома, теперь в Льорете».</strong></p>
+      <p>Артезанальный свежий лаваш для нашей диаспоры. Не Monolith замороженный из дистрибьютора, а свежий и локальный. История Элен — переезд, семья, армянская традиция через украинскую перспективу.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Аудитория: 89k славяноязычных в Каталонии + 241k марокканцев (вторая параллельная аудитория)</p>
+    </div>
+    <div class="callout callout-good">
+      <h3>Нарратив 2: Каталанский KM0 / Premium</h3>
+      <p style="margin-top:0;"><strong>«Pa pla artesà fet a Lloret — el primer lavash de la Costa Brava».</strong></p>
+      <p>Локальный артезанал для catalanских ритейл-сетей (Bonpreu, Valvi). KM0 история, проксимити (Lloret → Comarques Gironines), качество, нестандартный flatbread для middle-class покупателя.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:0;">Аудитория: catalanские foodies, buyers Bonpreu KM0, ритейл-сети</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Caналы</div>
+  <h2>Где работаем</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Instagram (приоритет 1)</h3>
+      <ul>
+        <li>Reels: производство, разворачивание лаваша, рецепты</li>
+        <li>Stories: ежедневно — рутина пекарни</li>
+        <li>Posts: продуктовые фото, упаковка, клиенты</li>
+        <li>Хештеги: #ellavash #lloretdemar #panplano #armenianlavash #costabravafoods</li>
+        <li>Геотеги Льорет-де-Мар, Жирона, Барселона</li>
+      </ul>
+      <p><span class="tag tag-warm">Главный bottoм-of-funnel канал для B2C</span></p>
+    </div>
+    <div class="card">
+      <h3>WhatsApp Business</h3>
+      <ul>
+        <li>Каталог продукции</li>
+        <li>Авто-приветствие</li>
+        <li>Рабочие часы</li>
+        <li>Прямые заказы B2C</li>
+        <li>Аккаунт-менеджмент B2B</li>
+      </ul>
+      <p><span class="tag tag-hot">Главный sales-канал в Испании</span></p>
+    </div>
+    <div class="card">
+      <h3>LinkedIn (приоритет 2)</h3>
+      <ul>
+        <li>Личный профиль Élen — founder voice</li>
+        <li>Корпоративная страница Эль Лаваш</li>
+        <li>Outreach к buyers: Bonpreu Neus Roca, Valvi, Bidfood KAM</li>
+        <li>Posts про производство и дистрибуцию</li>
+      </ul>
+      <p><span class="tag tag-warm">Для B2B опт и сетевого ритейла</span></p>
+    </div>
+    <div class="card">
+      <h3>Google Business + Maps</h3>
+      <ul>
+        <li>Карточка производства (Льорет)</li>
+        <li>3D-просмотр пекарни</li>
+        <li>Отзывы клиентов</li>
+        <li>Часы работы, контакты</li>
+        <li>Foto-стрим</li>
+      </ul>
+      <p><span class="tag tag-cool">Локальный SEO</span></p>
+    </div>
+    <div class="card">
+      <h3>TikTok (опционально)</h3>
+      <ul>
+        <li>Reels-формат адаптированный</li>
+        <li>Hook: «pan árabe vs lavash armenio»</li>
+        <li>Behind-the-scenes производство</li>
+        <li>Целевая аудитория: foodies Испании 18-35</li>
+      </ul>
+      <p><span class="tag tag-dim">Эксперимент после 3 мес</span></p>
+    </div>
+    <div class="card">
+      <h3>Site ellavash.es</h3>
+      <ul>
+        <li>Главная: история + продукты</li>
+        <li>/docs: документы проекта</li>
+        <li>Catálogo SKU + ficha técnica для B2B</li>
+        <li>Контакты, WhatsApp кнопка</li>
+        <li>SEO: lavash, pan plano, Lloret de Mar</li>
+      </ul>
+      <p><span class="tag tag-warm">B2B credibility + locales SEO</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">90-day контент-календарь</div>
+  <h2>Что публикуем</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Неделя</th><th>Тема</th><th>Instagram Reels</th><th>Posts</th><th>Stories</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Знакомство</td><td>Hello, who is Эль Лаваш (Élen + production)</td><td>Логотип + история + продукт</td><td>Setup пекарни, первый день</td></tr>
+        <tr><td>2</td><td>Производство</td><td>Печь в работе</td><td>Производство + крупный план лаваша</td><td>Утренний замес, печь</td></tr>
+        <tr><td>3</td><td>Качество</td><td>Lavash изнутри (разворачивание)</td><td>Сертификаты + ингредиенты</td><td>Поставка муки, тест</td></tr>
+        <tr><td>4</td><td>Первые клиенты</td><td>Доставка в первый магазин</td><td>Партнёрство #1, отзыв</td><td>Дорога к клиенту</td></tr>
+        <tr><td>5</td><td>Рецепты</td><td>3 рецепта с лавашем (роллы)</td><td>Хумус + лаваш + лимон</td><td>Тест рецептов</td></tr>
+        <tr><td>6</td><td>Команда</td><td>Команда из Украины — представление</td><td>Семья за продуктом</td><td>За работой</td></tr>
+        <tr><td>7</td><td>Эль Лаваш в Mercat Lloret</td><td>Тур по локальному рынку</td><td>Местные purveyors + мы</td><td>Парадные точки</td></tr>
+        <tr><td>8</td><td>Шотис vs Лаваш vs Пита</td><td>Различия flatbreads</td><td>Сравнение SKU</td><td>Дегустация типов</td></tr>
+        <tr><td>9</td><td>Кебаб партнёры</td><td>Лаваш под durum</td><td>Фото готового кебаба в наш лаваш</td><td>Кебабная в Льорете</td></tr>
+        <tr><td>10</td><td>Сертификации</td><td>Halal-процесс</td><td>Halal сертификат — почему важно</td><td>За оформлением</td></tr>
+        <tr><td>11</td><td>Жирона</td><td>Доставка в Aroma Catering</td><td>Premium-кейтер Жироны</td><td>В пути</td></tr>
+        <tr><td>12</td><td>Отельная отгрузка</td><td>Лаваш для буфета</td><td>Фото из отеля</td><td>Подача</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Brand assets to create</div>
+  <h2>Что нужно сделать</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Визуальные</h3>
+      <ul>
+        <li>SVG-логотип (перерисовка из PDF/AI)</li>
+        <li>Цветовая палитра: саффрон #F8D202, томатный #E61E28, кофейный #6F3E22, кремовый #FFF3D9</li>
+        <li>Шрифты: Fraunces (display) + Manrope (body)</li>
+        <li>Pattern: армянские орнаменты / геометрия</li>
+        <li>Иконки: SVG-набор</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Фото и видео</h3>
+      <ul>
+        <li>Профессиональная фотосессия после запуска производства</li>
+        <li>Hero shot печи / оборудования</li>
+        <li>Крупный план лаваша (свежий)</li>
+        <li>Упаковка с разных ракурсов</li>
+        <li>Команда за работой</li>
+        <li>10 продуктовых фото с разными приготовлениями</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Упаковка</h3>
+      <ul>
+        <li>Стандарт 400 г (розница magaz)</li>
+        <li>Стандарт 700 г (HORECA / семейный)</li>
+        <li>Дизайн с EAN, ficha питания, аллергены</li>
+        <li>Языки: ES обязательно + RU optional</li>
+        <li>Качество печати: matte, мин 350 gsm</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Маркетинговые материалы</h3>
+      <ul>
+        <li>Ficha técnica на каждый SKU (PDF)</li>
+        <li>Catálogo для B2B (PDF + print)</li>
+        <li>Леаф-лет для розничных магазинов</li>
+        <li>Плакат для Mercat Lloret парады</li>
+        <li>Шаблоны Instagram постов</li>
+        <li>Шаблон email-подписи + landing-page</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Influencer и PR</div>
+  <h2>Где можем попасть в медиа</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Local food influencers Каталония</h3>
+      <ul>
+        <li>@gastronomistas.com (премиум фуд)</li>
+        <li>@catalunyabarcelona.com (туристы)</li>
+        <li>@enlloret_oficial (локально)</li>
+        <li>@bcn.foodies (Барселона)</li>
+        <li>Local Жирона food bloggers — Mercat Lleó, Boqueria</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Local media</h3>
+      <ul>
+        <li>RAC1 / Catalunya Ràdio — местная радио-сеть</li>
+        <li>TV3 (информационные блоки про местных продуцентов)</li>
+        <li>Diari de Girona / El Punt Avui</li>
+        <li>EnLloret.com (туристический портал)</li>
+        <li>Aral.es (отраслевой ритейл)</li>
+        <li>Alimarket — если выйдет интересный кейс</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Event opportunities</h3>
+      <ul>
+        <li><strong>Gastronomic Forum Barcelona 2-4 ноября 2026</strong> — стенд (€250-268/м², early bird до 1 мая)</li>
+        <li>Local catalan food fairs Льорет/Жирона</li>
+        <li>Mercat de la Terra (Slow Food)</li>
+        <li>Mercat Boqueria — sample-сессия</li>
+        <li>Festival гастрономии Коста-Брава</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Партнёрские коллаборации</h3>
+      <ul>
+        <li>Бар «Manakish» Барселона — co-branded event</li>
+        <li>Mas Marroch (Roca brothers) — sample-сессия</li>
+        <li>Local catalan winery (vino + lavash)</li>
+        <li>Slow Food Catalunya</li>
+        <li>Halal Institute — promotional content</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Бюджет (минимальный)</div>
+  <h2>Куда тратить</h2>
+  <div class="scroll-x">
+    <table>
+      <thead><tr><th>Статья</th><th>Бюджет/мес</th><th>Первые 3 мес</th><th>Приоритет</th></tr></thead>
+      <tbody>
+        <tr><td>Профессиональная фотосессия</td><td>—</td><td>€800-1500 (1 раз)</td><td><span class="tag tag-hot">КРИТИЧНО</span></td></tr>
+        <tr><td>Дизайн упаковки</td><td>—</td><td>€500-800 (1 раз)</td><td><span class="tag tag-hot">КРИТИЧНО</span></td></tr>
+        <tr><td>Печать упаковки (стартовая партия)</td><td>—</td><td>€500-1500</td><td><span class="tag tag-hot">КРИТИЧНО</span></td></tr>
+        <tr><td>Видео (Reels пакет 12 шт)</td><td>—</td><td>€600-1200 (1 раз)</td><td><span class="tag tag-warm">Высокий</span></td></tr>
+        <tr><td>SMM-щица (зарплата)</td><td>€400-800</td><td>€1200-2400</td><td><span class="tag tag-warm">Высокий</span></td></tr>
+        <tr><td>Sample-материал и логистика</td><td>€100-200</td><td>€300-600</td><td><span class="tag tag-warm">Высокий</span></td></tr>
+        <tr><td>Печать маркетинговых материалов</td><td>€50-150</td><td>€150-450</td><td><span class="tag tag-warm">Средний</span></td></tr>
+        <tr><td>Google Ads (опционально)</td><td>€100-300</td><td>€300-900</td><td><span class="tag tag-dim">Низкий — только после ROI test</span></td></tr>
+        <tr><td>Instagram Ads (опционально)</td><td>€100-300</td><td>€300-900</td><td><span class="tag tag-dim">Низкий</span></td></tr>
+        <tr><td><strong>ВСЕГО первые 3 мес</strong></td><td>—</td><td><strong>€4 650 - 10 250</strong></td><td>—</td></tr>
+        <tr><td><strong>Поддержка месяц/мес</strong></td><td><strong>€450-1 350</strong></td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Что НЕ делать</div>
+  <h2>Жёсткие запреты</h2>
+  <div class="callout callout-warn">
+    <ul>
+      <li><strong>Никаких stock-фоток в Instagram до запуска производства.</strong> В food это убивает доверие моментально.</li>
+      <li><strong>Никаких платных постов в первые 3 месяца.</strong> Сначала органическая аудитория и качество фото, потом ads.</li>
+      <li><strong>Не нанимать большое SMM-агентство.</strong> Одна местная SMM-щица + Élen-голос — лучше чем 5 анонимных пост-фабрик.</li>
+      <li><strong>Не делать веб-магазин на старте.</strong> Лендинг + WhatsApp + Glovo достаточно для первых 6 мес.</li>
+      <li><strong>Не публиковать в Instagram пустую страницу.</strong> Если нет 12 постов и 30 stories — лучше пока не запускать публично.</li>
+      <li><strong>Не позиционировать как «дешёвый pita».</strong> Цена €6-9/кг premium — наш ценовой коридор. Mass-market не наш.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Marketing Plan v3 · 28.05.2026. План на основе verified рыночных данных + brand strategy. Корректировать после первых 30 дней Instagram-активности и реальных откликов аудитории.</p>
+</footer>
+
+</div>
+</body>
+</html>
