@@ -186,10 +186,39 @@ pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
       <div class="meta"><span class="tag html">HTML</span><span class="tag archive">Архив</span></div>
     </a>
 
-    <a class="doc" href="El_Lavash_Starter_10_v1.html">
-      <div class="title">Старт: 10 точек (v1)</div>
-      <div class="descr">Первая версия. Содержала филлерный блок «логика маршрута одной фразой» — убран в v2.</div>
-      <div class="meta"><span class="tag html">HTML</span><span class="tag archive">Архив v1</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Транскрипция разговора</div>
+  <h2>Полная транскрипция</h2>
+  <p style="color:var(--ink-soft);">Голосовая переписка Антона с Элен 28.05.2026 — содержит личные темы (Вероника), поэтому только в AZ.</p>
+  <div class="doc-grid">
+
+    <a class="doc" href="Transkripciya_v1.html">
+      <div class="title">Транскрипция — HTML (для чтения с телефона)</div>
+      <div class="descr">Мобильный формат. 25 сообщений + Telegram-чат + извлечённые бизнес-факты. Цветовая разметка: жёлтый = Антон, зелёный = Элен, красный = личная тема.</div>
+      <div class="meta"><span class="tag html">HTML</span><span class="tag new">Новое</span></div>
+    </a>
+
+    <a class="doc" href="Transkripciya_v2.md">
+      <div class="title">Транскрипция — MD (для копирования)</div>
+      <div class="descr">Markdown-источник. 20 замен «клиентка» → «Элен» в v2. Содержание идентично HTML-версии.</div>
+      <div class="meta"><span class="tag md">MD</span></div>
+    </a>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">База контактов — дополнительные данные</div>
+  <h2>Свежие точки и заметки</h2>
+  <div class="doc-grid">
+
+    <a class="doc" href="El_Lavash_New_Points_v1.csv">
+      <div class="title">71 новая точка (последний research)</div>
+      <div class="descr">Маресма 33 кебабные, отели 4★ 20, халяль BCN 10, русско-славянские 6, ливанский 1. Уже включены в Distribution_DB v15.</div>
+      <div class="meta"><span class="tag" style="background:var(--accent);color:var(--bg)">CSV</span></div>
     </a>
 
   </div>
@@ -200,31 +229,26 @@ pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
   <h2>Внутренние документы</h2>
   <div class="doc-grid">
 
-    <a class="doc" href="Transkripciya_v1.html">
-      <div class="title">Полная транскрипция разговора</div>
-      <div class="descr">Голосовая переписка с Элен 28.05.2026 со всеми темами (включая личные).</div>
+    <a class="doc" href="CLAUDE.md">
+      <div class="title">CLAUDE.md (методология)</div>
+      <div class="descr">Жёсткие правила работы над проектом. Эмодзи / мобильная / версионирование / язык.</div>
       <div class="meta"><span class="tag md">MD</span></div>
     </a>
 
-    <a class="doc" href="#">
-      <div class="title">Правила проекта</div>
+    <a class="doc" href="PROJECT_COMPACT_v2.md">
+      <div class="title">PROJECT_COMPACT v2 (handover)</div>
+      <div class="descr">Снимок проекта на 2026-05-29 без токена. Для быстрого восстановления контекста в новом чате. Токен отдельно в DEPLOY_TOKEN.md.</div>
+      <div class="meta"><span class="tag md">MD</span></div>
+    </a>
+
+    <a class="doc" href="PROJECT_RULES_v2.md">
+      <div class="title">Правила проекта v2</div>
       <div class="descr">13 разделов: дизайн, мобильная, эмодзи, версионирование, чек-лист.</div>
       <div class="meta"><span class="tag md">MD</span></div>
     </a>
 
-    <a class="doc" href="CLAUDE.md">
-      <div class="title">CLAUDE.md (методология)</div>
-      <div class="descr">Жёсткие правила работы над проектом.</div>
-      <div class="meta"><span class="tag md">MD</span></div>
-    </a>
-
-    <a class="doc" href="#">
-      <div class="title">PROJECT_COMPACT v1 (handover)</div>
-      <div class="descr">Снимок проекта на 2026-05-29: правила, файлы, цифры, статусы. Для быстрого восстановления контекста в новом чате.</div>
-      <div class="meta"><span class="tag md">MD</span></div>
-    </a>
-
   </div>
+  <p style="color:var(--ink-dim);font-size:13px;margin-top:14px;">Файлы PROJECT_COMPACT / DEPLOY_TOKEN / CLAUDE / PROJECT_RULES лежат только локально у Антона (/Users/forril/Documents/ELLAVASH/) — в репо не пушатся (защита .gitignore). Ссылки здесь работают только если открывать страницу с диска.</p>
 </section>
 
 <section>
@@ -232,13 +256,13 @@ pre, code { max-width: 100%; overflow-x: auto; word-wrap: break-word; }
   <h2>Для Элен</h2>
   <p style="color:var(--ink-soft);">Эти документы видит Элен на главной странице:</p>
   <div style="margin-top:16px;">
-    <a class="pill primary" href="index.html">Открыть публичную панель проекта (v25)</a>
+    <a class="pill primary" href="index.html">Открыть публичную панель проекта</a>
   </div>
-  <p style="font-size:14px;color:var(--ink-dim);margin-top:12px;">Там: <strong>план месяца 1</strong> (новое — единый документ вместо TOP_Action + Starter_10), протокол, анализ рынка, бизнес-модель, стратегия продаж, маркетинг, конкуренты, цены, доставка, финансовая модель, базы Excel. <strong>Эту страницу az она не видит — ссылка не публикуется.</strong></p>
+  <p style="font-size:14px;color:var(--ink-dim);margin-top:12px;">Там: <strong>план месяца 1 v2</strong> (с 14-пунктным pre-check, 3 ветками сценария, обновлёнными порогами на день 30), протокол, анализ рынка, бизнес-модель, стратегия продаж, маркетинг, конкуренты, цены, доставка, финансовая модель, базы Excel. <strong>Эту страницу az она не видит — ссылка не публикуется.</strong></p>
 </section>
 
 <footer>
-  <p>El Lavash · AZ private · v3. Эта страница для Антона. Ссылка не указывается публично. Тэг noindex поставлен.</p>
+  <p>El Lavash · AZ private · v4. Эта страница для Антона. Ссылка не указывается публично. Тэг noindex поставлен.</p>
 </footer>
 
 </div>

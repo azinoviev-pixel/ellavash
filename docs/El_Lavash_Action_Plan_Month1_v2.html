@@ -117,23 +117,35 @@
 
 <section class="precheck">
   <h2>Прежде чем начать — статус-чек</h2>
-  <p style="color:var(--ink-soft);margin-top:0;">Шесть пунктов решают, по какой ветке идём. Отметить за 5 минут перед стартом недели 1.</p>
+  <p style="color:var(--ink-soft);margin-top:0;">14 пунктов решают, по какой ветке идём. Отметить за 5 минут перед стартом недели 1. Порядок — по блокирующей последовательности: нет первого = не имеет смысла делать следующее.</p>
   <ul class="checklist">
-    <li><strong>RGSEAA</strong> — регистрация в Реестре пищевых предприятий (AESAN, бесплатно, 30-60 дней)</li>
-    <li><strong>RSIPAC</strong> — региональная регистрация Каталонии (Generalitat, €64,25, 15-30 дней)</li>
-    <li><strong>Licencia de actividad</strong> — лицензия от Ajuntament Льорет-де-Мар на помещение</li>
-    <li><strong>HACCP / APPCC</strong> — простой план по безопасности (шаблон Gencat, можно сделать самим)</li>
-    <li><strong>SKU выбран</strong> — вес одной упаковки, тип упаковки, штрих-код (если будет розница)</li>
-    <li><strong>Прайс утверждён</strong> — опт €5,50/кг, розница €7-9/кг (диапазон по <a href="#" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">SOURCE_OF_TRUTH</a>)</li>
+    <li><strong>1. Электричество 50 кВт</strong> — заявка в <a href="https://www.endesa.es" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Endesa</a> / <a href="https://www.iberdrola.es" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Iberdrola</a> на расширение лимита. Сейчас это <strong>основной блокер</strong> — без 50 кВт печь не запустится. Сроки 2-8 недель.</li>
+    <li><strong>2. Autónomo в Hacienda</strong> — Элен зарегистрирована как autónomo (Modelo 036/037)? Без этого нельзя выставить ни одного инвойса.</li>
+    <li><strong>3. Бизнес-банк-счёт</strong> — IBAN для инвойсов: <a href="https://www.bancsabadell.com/cs/Satellite/SabAtl/Cuenta-Negocios-Sabadell-PRO/6000023049783-es.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Sabadell Negocios Pro</a> или <a href="https://www.bbva.es/empresas.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">BBVA Empresas</a> (€0-15/мес).</li>
+    <li><strong>4. IVA решён</strong> — лаваш как pan común (4%) или специальный продукт (10%)? Влияет на прайс. Консультация с gestor €150-300.</li>
+    <li><strong>5. RGSEAA</strong> — регистрация в Реестре пищевых предприятий (<a href="https://www.aesan.gob.es/AECOSAN/web/seguridad_alimentaria/subseccion/registro_general_sanitario.htm" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">AESAN</a>, бесплатно, 30-60 дней).</li>
+    <li><strong>6. RSIPAC</strong> — региональная регистрация Каталонии (<a href="https://web.gencat.cat/ca/tramits/tramits-temes/9342_Inscripcio-al-Registre-Sanitari-d-Indu" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Generalitat</a>, €64,25, 15-30 дней). С ней одной можно продавать в Каталонии.</li>
+    <li><strong>7. Licencia de actividad</strong> — лицензия от Ajuntament Льорет-де-Мар на помещение.</li>
+    <li><strong>8. HACCP / APPCC</strong> — план по безопасности (<a href="https://salutpublica.gencat.cat/ca/ambits/seguretat_alimentaria/empreses-i-establiments/autocontrols/" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">шаблон Gencat</a>, 5 страниц, можно самим).</li>
+    <li><strong>9. Упаковка готова</strong> — пакеты 400 г со штрих-кодом (для розницы) или generic-пакеты на старт (для опта). Минимум 200 шт.</li>
+    <li><strong>10. Фото продукта + ficha técnica</strong> — без фото пустые карточки в GBP/Instagram/каталогах. Снять сразу как подключат свет.</li>
+    <li><strong>11. SKU зафиксирован</strong> — вес одной упаковки, тип, штрих-код испанский (есть у Элен).</li>
+    <li><strong>12. Прайс утверждён</strong> — опт €5,50/кг, розница €7-9/кг — диапазон обоснован в <a href="El_Lavash_Retail_Prices_v7.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Retail Prices v7</a> и <a href="El_Lavash_Financial_Model_v7.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Financial Model v7</a>.</li>
+    <li><strong>13. Способ оплаты</strong> — наличные / Bizum / банк-перевод / POS-терминал (<a href="https://sumup.es" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">SumUp Air €19</a>).</li>
+    <li><strong>14. Халяль-сертификация (опционально)</strong> — <a href="https://institutohalal.com/" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Instituto Halal</a> €3500-8000, открывает доступ к 252 843 марокканцам Каталонии. См. обоснование в <a href="El_Lavash_Market_Analysis_DEEP.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Market Analysis DEEP</a>. Реалистично на месяц 3-6, не сейчас.</li>
   </ul>
   <div class="branches">
     <div class="branch">
-      <div class="lab">Ветка A — все или почти все «да»</div>
-      <p>Можно легально выставлять инвойсы и принимать оплаты. Идём в продажи с недели 1. Лицензии параллельно достраиваем (HACCP, халяль если решено).</p>
+      <div class="lab">Ветка A — лицензии + autónomo + банк готовы</div>
+      <p>Можно легально выставлять инвойсы и принимать оплаты по всей Испании. Идём в продажи с недели 1. HACCP, халяль (если решено) — параллельно достраиваем.</p>
+    </div>
+    <div class="branch">
+      <div class="lab" style="color:var(--brand-soft)">Ветка C — RSIPAC есть, RGSEAA нет</div>
+      <p>Промежуточный сценарий. Продавать можно <strong>только в Каталонии</strong> (Льорет, Бланес, Тосса, Жирона, Барселона). Это весь план месяца 1 покрывает. RGSEAA дойдёт фоном — Мадрид/Валенсия откроются на месяц 2-3.</p>
     </div>
     <div class="branch">
       <div class="lab b">Ветка B — лицензий пока нет</div>
-      <p>Юр. часть — приоритет №1 недели 1. Параллельно делаем разведочные визиты («познакомимся, образец привезу через 2-3 недели») и онлайн-видимость. Первый инвойс — когда придёт RSIPAC (15-30 дней).</p>
+      <p>Юр. часть — приоритет №1 недели 1 (плюс электричество 50 кВт). Параллельно делаем разведочные визиты («познакомимся, образец привезу через 2-3 недели») и онлайн-видимость. Первый инвойс — когда придёт RSIPAC (15-30 дней).</p>
     </div>
   </div>
 </section>
@@ -158,10 +170,11 @@
       </div>
       <ul>
         <li><span class="bA">A</span>Обход первых 5 точек Льорета с образцами лично в руки. <a href="https://www.google.com/maps/search/?api=1&query=Passeig+d%27Agust%C3%AD+Font+3+Lloret+de+Mar">Beach Doner</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+Emili+Martinez+Passapera+12+Lloret">Pita King</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+del+Carme+24+Lloret">Carme Doner</a>, <a href="https://www.google.com/maps/search/?api=1&query=Av.+Puig+de+Castellet+7+Lloret">Bollywood Doner</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+de+Girona+11+Lloret">Carniceria Halal Fátima</a></li>
-        <li><span class="bB">B</span>Те же 5 адресов — но как «знакомство». Цель: имя ЛПР, текущий поставщик, что в ассортименте, телефон. Без инвойса.</li>
+        <li><span class="bA">A</span><strong>Зайти в «Наш магазин» Льорет</strong> (русский супермаркет, уже договорено по транскрипции) — забрать первый retail-заказ, понять формат (паллет/коробка/частота). Это конкретная победа №1.</li>
+        <li><span class="bB">B</span>Те же 5 адресов + Наш магазин — но как «знакомство». Цель: имя ЛПР, текущий поставщик, что в ассортименте, телефон. Без инвойса.</li>
         <li><strong>Не больше 2 визитов в день</strong>: остаться в памяти важнее, чем обежать всех</li>
         <li>Время визита: 10:00-13:00 (после утреннего пика, до обеда)</li>
-        <li>Что брать: образец 400 г, ficha técnica (1 страница), визитка, фото производства в телефоне</li>
+        <li>Что брать: образец 400 г, ficha técnica (1 страница), визитка, фото производства в телефоне. Скрипты ответов на возражения — <a href="El_Lavash_Battlecard_v2.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Battlecard v2</a></li>
       </ul>
     </div>
 
@@ -171,8 +184,9 @@
         <div class="nm">Маркетинг и видимость</div>
       </div>
       <ul>
+        <li><strong>Фотосессия продукта</strong> — снять как только подключат свет: процесс замеса, печь, готовый лаваш, упаковка, Элен в фартуке. Без этого все следующие пункты — пустые карточки.</li>
         <li>Создать <a href="https://business.google.com">Google Business Profile</a> на адрес производства — 30 мин, бесплатно. Категория: Bakery / Wholesale food</li>
-        <li>Загрузить 10-15 фото: продукт, процесс, печь, Элен в фартуке. Описание ES/CA/RU</li>
+        <li>Загрузить 10-15 фото из фотосессии. Описание ES/CA/RU. Контент-стратегию — см. <a href="El_Lavash_Marketing_Plan_v9.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Marketing Plan v9</a></li>
         <li>Перевести <a href="https://www.instagram.com/mar.elien/">Instagram @mar.elien</a> в Business-режим, добавить кнопку «Заказать через WhatsApp»</li>
         <li>Скачать <a href="https://business.whatsapp.com">WhatsApp Business</a>, привязать к рабочему номеру, создать каталог продукции с фото и ценой</li>
         <li>Войти в 5-7 русско/украино/арабоязычных Telegram-чатов Льорета (поиск: «Льорет», «Lloret чат», «Льорет объявления»)</li>
@@ -185,10 +199,12 @@
         <div class="nm">Операционка и юр.</div>
       </div>
       <ul>
+        <li><strong>50 кВт</strong> — подать заявку в Endesa/Iberdrola на расширение лимита. Получить trámite-номер для отслеживания. Это блокер №1.</li>
+        <li><strong>Закупка упаковки</strong> — минимум 200 пакетов + наклейки. Если retail (Наш магазин) — со штрих-кодом.</li>
         <li><span class="bB">B</span>Подать заявление на <a href="https://www.aesan.gob.es/AECOSAN/web/seguridad_alimentaria/subseccion/registro_general_sanitario.htm">RGSEAA</a> через портал AESAN — бесплатно</li>
         <li><span class="bB">B</span>Оплатить <a href="https://web.gencat.cat/ca/tramits/tramits-temes/9342_Inscripcio-al-Registre-Sanitari-d-Indu">RSIPAC €64,25</a> в Generalitat — выдают 15-30 дней</li>
         <li><span class="bB">B</span>Подать запрос на <a href="https://www.lloret.cat/ca/seccions/empresa-i-comerc">licencia de actividad</a> в Ajuntament Льорет</li>
-        <li>Подготовить ficha técnica на 1 страницу (название, состав, граммаж, срок, цена опт/розница, контакты)</li>
+        <li>Подготовить ficha técnica на 1 страницу (название, состав, граммаж, срок, цена опт/розница, контакты). С фото с фотосессии.</li>
         <li>Заказать 100 визиток в <a href="https://www.vistaprint.es/">Vistaprint.es</a> или <a href="https://www.moo.com/es/">Moo.com</a> — €15-30</li>
         <li><span class="bA">A</span>Проверить срок действия RSIPAC (срок 1 год — продление не пропустить)</li>
       </ul>
@@ -218,8 +234,9 @@
       <ul>
         <li><span class="bA">A</span>Обход следующих 5 точек: <a href="https://www.google.com/maps/search/?api=1&query=Nash+Supermarket+Lloret">Nash Supermarket</a>, <a href="https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+Santa+Cristina+Lloret">El Shawarma Original</a>, <a href="https://www.google.com/maps/search/?api=1&query=Av.+Cam%C3%AD+de+l%27%C3%80ngel+45+Lloret">Restaurante Omar Halal</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+Poeta+Lope+Mateo+16+Lloret">Doner Kebab El Molí</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+de+la+Vila+52+Lloret">Jaan's Kebab</a></li>
         <li><span class="bA">A</span>Follow-up по визитам недели 1 (звонок / WhatsApp). Цель — подтвердить 1-2 заказа</li>
+        <li><span class="bA">A</span><strong>Фидбек по «Наш магазин»</strong> — что покупают, как быстро уходит, какие просьбы по упаковке. Это калибровка retail-формата.</li>
         <li><span class="bB">B</span>Те же 5 точек разведочно. Если по визитам недели 1 кто-то спросил «когда привезёшь» — записать в журнал, перезвонить когда RSIPAC придёт</li>
-        <li>Завести таблицу учёта: дата визита, точка, ЛПР, реакция, дата follow-up, статус</li>
+        <li>Завести таблицу учёта: дата визита, точка, ЛПР, реакция, дата follow-up, статус. Полная база — <a href="El_Lavash_Distribution_DB_v15.xlsx" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Distribution DB v15</a>. Шаблоны разговора — <a href="El_Lavash_Sales_Strategy_v9.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Sales Strategy v9</a></li>
       </ul>
     </div>
 
@@ -233,7 +250,9 @@
         <li>Регистрация в <a href="https://www.enlloret.com/">EnLloret</a> — локальный каталог Льорета</li>
         <li>Регистрация в <a href="https://botiguesdecatalunya.cat/">Botigues Catalunya</a> — каталог локальных производств Каталонии</li>
         <li>Снять 5 коротких видео (15-30 сек): замес, выпекание, упаковка, готовый продукт, Элен говорит «hola»</li>
+        <li><strong>Видео для GBP</strong> — 30 сек с печью и продуктом. Резко поднимает видимость в локальном поиске Google.</li>
         <li>Выложить в Instagram (3 поста + 5 сторис), привязать к WhatsApp каталогу</li>
+        <li>Первая ficha técnica с фото из недели 1. Готовый PDF в WhatsApp каталог.</li>
       </ul>
     </div>
 
@@ -244,8 +263,8 @@
       </div>
       <ul>
         <li>Простой план HACCP/APPCC на 5 страниц — шаблон Gencat (<a href="https://salutpublica.gencat.cat/ca/ambits/seguretat_alimentaria/empreses-i-establiments/autocontrols/">здесь</a>)</li>
-        <li>Проверить регистрацию в Hacienda как autónomo / SL — если работает как «без оформления», это блокер на инвойс. Консультация с <a href="https://www.collegieconomistes.cat/">gestor</a> €150-300</li>
-        <li>Решение по IVA: лаваш как pan común — 4% IVA. Если как продукт «специальный» — 10%. Спросить gestor</li>
+        <li><strong>Записаться к gestor</strong> — конкретно: имя, телефон, дата встречи. Не «нужна консультация», а «вторник 15:00, gestor X, €200». Консультация с <a href="https://www.collegieconomistes.cat/">Col·legi d'Economistes</a> €150-300</li>
+        <li>Решение по IVA: лаваш как pan común — 4% IVA. Если как продукт «специальный» — 10%. Спросить gestor. Влияет на маржу — см. <a href="El_Lavash_Financial_Model_v7.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Financial Model v7</a></li>
         <li><span class="bB">B</span>Отслеживать заявления: расписка от Ajuntament, AESAN-ID (по email)</li>
         <li>Шаблон инвойса в <a href="https://www.facturadirecta.com/">FacturaDirecta</a> или <a href="https://quaderno.io/es/">Quaderno</a> (€10-20/мес) либо просто Excel</li>
       </ul>
@@ -289,8 +308,9 @@
         <div class="nm">Продажи и визиты</div>
       </div>
       <ul>
-        <li><span class="bA">A</span>Вторая волна: 5 халяль-карникерий (R081, R082, R083, R084 из <a href="El_Lavash_Distribution_DB_v15.xlsx">базы v15</a>), 4 кебабные второго приоритета (R094, R098, R100, R103), 1 локальный ресторан (R202 La Parrilla)</li>
-        <li><span class="bA">A</span>Заказ #2 у первого подтвердившего клиента — это сигнал что продукт принят</li>
+        <li><span class="bA">A</span>Вторая волна: 5 халяль-карникерий (R081, R082, R083, R084 из <a href="El_Lavash_Distribution_DB_v15.xlsx" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">базы v15</a>), 4 кебабные второго приоритета (R094, R098, R100, R103), 1 локальный ресторан (R202 La Parrilla)</li>
+        <li><span class="bA">A</span>Заказ #2 у первого подтвердившего клиента — повтор = валидация продукта. <strong>Определение повтора:</strong> один и тот же клиент сделал ≥2 заказа в течение 30 дней.</li>
+        <li><span class="bA">A</span><strong>Армянские ресторанчики Льорета</strong> (уже договорено по транскрипции) — обойти 3-5 точек, начать поставки в опт. Точные адреса добрать у Элен.</li>
         <li><span class="bA">A</span>Зайти к <strong>Yerevan Pastisseria</strong> на Mercat Municipal — армянский владелец, потенциальный мост на парадиста-перепродавца</li>
         <li><span class="bB">B</span>Если RSIPAC пришёл — первый малый инвойс (Nash Supermarket — самая тёплая точка по транскрипции голосового)</li>
         <li><span class="bB">B</span>Если RSIPAC не пришёл — продолжить разведку, 5 халяль-карникерий</li>
@@ -306,6 +326,7 @@
         <li>Первый пост на <a href="https://es.wallapop.com/">Wallapop</a> и <a href="https://www.milanuncios.com/">Milanuncios</a> с фото — локальные доски объявлений, бесплатно</li>
         <li>Договориться с одним из Telegram-чатов Льорета о платном или бартерном анонсе (€20-50 или 5 пачек лаваша)</li>
         <li>Instagram — выложить «закадровый» контент: процесс ночной смены, прихватки, замес. Сторис ежедневно</li>
+        <li><strong>Отзыв от первого клиента</strong> — попросить короткое видео (15 сек) или фото клиента с продуктом. Это золото для месяца 2.</li>
         <li>Проверить GBP — сколько просмотров за 2 недели, кликов по кнопке «маршрут», по телефону</li>
       </ul>
     </div>
@@ -317,9 +338,9 @@
       </div>
       <ul>
         <li>Учёт заказов в Excel / Google Sheets: дата, клиент, кг, €, оплата, статус доставки</li>
-        <li>Открыть бизнес-счёт если ещё нет: <a href="https://www.bancsabadell.com/cs/Satellite/SabAtl/Cuenta-Negocios-Sabadell-PRO/6000023049783-es.html">Sabadell Negocios Pro</a> или <a href="https://www.bbva.es/empresas.html">BBVA Empresas</a> (€0-15/мес)</li>
+        <li><strong>Первая ревизия cash flow</strong> — посчитать реальные траты на муку, газ, упаковку, доставку (а не по модели). Сравнить с <a href="El_Lavash_Financial_Model_v7.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Financial Model v7</a>.</li>
         <li>Простой контракт-шаблон для регулярного клиента (1 страница: SKU, цена, минимальная партия, оплата, ответственность)</li>
-        <li>Если планируется халяль-сертификация — консультация в <a href="https://institutohalal.com/">Instituto Halal</a> (бесплатно, €3500-8000 за полную процедуру — но не сейчас, а на месяц 3-6)</li>
+        <li>Если планируется халяль-сертификация — консультация в <a href="https://institutohalal.com/">Instituto Halal</a> (бесплатно, €3500-8000 за полную процедуру — но не сейчас, а на месяц 3-6). Обоснование рынка — <a href="El_Lavash_Market_Analysis_DEEP.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Market Analysis DEEP</a></li>
       </ul>
     </div>
 
@@ -346,10 +367,11 @@
       </div>
       <ul>
         <li>Подсчёт: сколько точек ответило, сколько взяли образцы, сколько подтвердили заказ, сколько повторили</li>
-        <li>Если 3+ повторных → подготовка к Бланесу / Тоссе (5 точек разведать на неделе 5)</li>
+        <li>Если 3+ повторных → подготовка к Бланесу / Тоссе (5 точек разведать на неделе 5). План месяца 2 — см. <a href="roadmap_v8.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">roadmap v8</a></li>
         <li>Если 1-2 повторных → итерируем продукт (формат, размер, упаковка) по фидбеку</li>
         <li>Если 0 повторных → стоп и разбор причин. Гипотезы: цена, вкус, толщина, упаковка, презентация</li>
         <li>Журнал отказов: что слышали («дорого», «толстый», «у нас уже есть», «нужен халяль») — это карта будущей итерации</li>
+        <li><strong>Обзвон отказников</strong> — позвонить тем, кто сказал «нет» в Week 1-2, спросить почему. Часто за 3 недели меняется ответ.</li>
       </ul>
     </div>
 
@@ -360,8 +382,9 @@
       </div>
       <ul>
         <li>Первый «кейс» в Instagram: фото клиента с продуктом или короткий отзыв (с разрешения)</li>
+        <li><strong>Запросить Google-отзывы</strong> у 2-3 первых клиентов — критично для GBP, обычно забывают. 5★ × 3 отзыва = заметный буст в локальном поиске.</li>
         <li>Анализ <a href="https://business.google.com">GBP</a>: просмотры, клики, маршруты, звонки за месяц</li>
-        <li>Анализ Instagram: какие посты собрали реакцию, что не зашло. Стратегия на месяц 2</li>
+        <li>Анализ Instagram: какие посты собрали реакцию, что не зашло. Стратегия на месяц 2 — см. <a href="El_Lavash_Marketing_Plan_v9.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Marketing Plan v9</a></li>
         <li>Решение по платной рекламе на месяц 2: нужна ли (только если есть стабильный продукт и заказы)</li>
       </ul>
     </div>
@@ -375,7 +398,8 @@
         <li>Закрытие месяца: выручка, COGS (мука, газ, упаковка, доставка), фикс-расходы (аренда, комм), чистая прибыль</li>
         <li>Проверка кеша на счёте — хватит ли на месяц 2 без новой выручки</li>
         <li>Список открытых юр.задач на месяц 2: что подано, что в работе, что просрочено</li>
-        <li>Если оборот €1500+ — записаться на консультацию gestor по оптимизации налогов</li>
+        <li><strong>Заплатить gestor</strong> за консультацию (Q1) + проверку IVA. Конкретный action, не «по необходимости».</li>
+        <li>Если оборот €2500+ — записаться на расширенную консультацию gestor по оптимизации налогов</li>
       </ul>
     </div>
 
@@ -384,19 +408,19 @@
 
 <section class="decision">
   <h2>Точка решения — день 30</h2>
-  <p style="color:var(--ink-soft);margin-top:0;">Не «оценка результата вообще», а конкретное решение что делаем на месяц 2. Три сценария — у каждого свой план.</p>
+  <p style="color:var(--ink-soft);margin-top:0;">Не «оценка результата вообще», а конкретное решение что делаем на месяц 2. Определение «повтор»: один и тот же клиент сделал ≥2 заказа в течение 30 дней.</p>
   <div class="scenarios">
     <div class="scenario">
-      <div class="lab ok">3+ повторов / выручка €1500+</div>
-      <p><strong>SCALE.</strong> Месяц 2 — расширение в Бланес/Тоссу (10 новых точек), удвоение производственных смен, разговор с локальным курьером для разгрузки логистики.</p>
+      <div class="lab ok">3+ повторов / выручка €2500+</div>
+      <p><strong>SCALE.</strong> Месяц 2 — расширение в Бланес/Тоссу/Жирону (10 новых точек), удвоение производственных смен, разговор с локальным курьером для разгрузки логистики. €2500 — это уже не break-even, а реальный плюс. Если выручка €1500-2500 при 3+ повторах — «контролируемый Scale» (только Бланес, без Жироны).</p>
     </div>
     <div class="scenario">
-      <div class="lab">1-2 повтора / выручка €600-1500</div>
-      <p><strong>ITERATE.</strong> Месяц 2 — те же 20 точек, но с учётом фидбека: формат изменён, цена скорректирована, новая презентация. Цель — добрать ещё 3 повтора.</p>
+      <div class="lab">1-2 повтора / выручка €600-2500</div>
+      <p><strong>ITERATE.</strong> Месяц 2 — те же 20 точек, но с учётом фидбека: формат изменён, цена скорректирована, новая презентация. Цель — добрать ещё 3 повтора. Подробности корректировки — <a href="El_Lavash_Sales_Strategy_v9.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Sales Strategy v9</a>.</p>
     </div>
     <div class="scenario">
-      <div class="lab warn">0 повторов / выручка &lt;€600</div>
-      <p><strong>STOP &amp; INVESTIGATE.</strong> Месяц 2 — пауза в продажах. Глубокий разбор отказов, тест-кухня (3-5 версий продукта), повторный фидбек у 5 точек первой волны. Без новых визитов до прояснения.</p>
+      <div class="lab warn">0 повторов независимо от €</div>
+      <p><strong>STOP &amp; INVESTIGATE.</strong> Месяц 2 — пауза в продажах. Глубокий разбор отказов, тест-кухня (3-5 версий продукта), повторный фидбек у 5 точек первой волны. Без новых визитов до прояснения. Критерии принятия решений — <a href="El_Lavash_Financial_Model_v7.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Financial Model v7</a> (сценарий «Минимум»).</p>
     </div>
   </div>
 </section>
@@ -405,12 +429,14 @@
   <strong>Чего НЕ делаем в месяц 1 (важно):</strong>
   <ul>
     <li>Визиты в Барселону, Жирону, Бланес — это месяц 2 минимум (когда есть кейс)</li>
-    <li>Холодные email на <a href="https://www.bonpreuesclat.cat">Bonpreu</a>, <a href="https://www.veritas.es">Veritas</a>, <a href="https://www.caprabo.com">Caprabo</a>, дистрибьюторов (Bidfood, Transgourmet, Friman) — цикл 6-12 мес, без референции пустая трата</li>
+    <li>Холодные email на <a href="https://www.bonpreuesclat.cat">Bonpreu</a>, <a href="https://www.veritas.es">Veritas</a>, <a href="https://www.caprabo.com">Caprabo</a>, дистрибьюторов (Bidfood, Transgourmet, Friman) — цикл 6-12 мес, без референции пустая трата. Контекст — <a href="El_Lavash_Competitive_Analysis_v9.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Competitive Analysis v9</a></li>
     <li>Сертификация халяль €3500-8000 (это месяц 3-6 если докажется спрос)</li>
     <li>Сайт e-commerce, платная реклама Facebook/Google (преждевременно)</li>
-    <li>Подача в Glovo / Just Eat / Uber Eats (это месяц 2-3, нужна отдельная схема цен)</li>
+    <li>Подача в Glovo / Just Eat / Uber Eats (это месяц 2-3, нужна отдельная схема цен). Подробности платформ — <a href="El_Lavash_Delivery_Platforms_Guide.html" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">Delivery Platforms Guide</a></li>
     <li>Аренда стенда на Gastronomic Forum / Alimentaria (€3-8k, год 2 минимум)</li>
-    <li>Найм помощника (когда оборот стабильно €3000+/мес)</li>
+    <li>Найм помощника / упаковщика (когда оборот стабильно €3000+/мес)</li>
+    <li>Покупка дополнительного домена (ellavash.es уже есть)</li>
+    <li>Заказ новой упаковки с лого — потратить на это в месяц 2, когда понятен формат</li>
   </ul>
 </div>
 
@@ -422,10 +448,18 @@
   <a href="El_Lavash_Sales_Strategy_v9.html">Стратегия продаж</a>
   <a href="El_Lavash_Retail_Prices_v7.html">Цены ритейл</a>
   <a href="El_Lavash_Financial_Model_v7.html">Финансовая модель</a>
+  <a href="El_Lavash_Business_Model_v9.html">Бизнес-модель</a>
+  <a href="El_Lavash_Marketing_Plan_v9.html">Маркетинг-план</a>
+  <a href="El_Lavash_Battlecard_v2.html">Battlecard конкурентов</a>
+  <a href="El_Lavash_Market_Analysis_v10.html">Анализ рынка</a>
+  <a href="El_Lavash_Market_Analysis_DEEP.html">Анализ рынка (полный)</a>
+  <a href="El_Lavash_Competitive_Analysis_v9.html">Анализ конкурентов</a>
+  <a href="El_Lavash_Delivery_Plan_v5.html">Службы доставки</a>
+  <a href="El_Lavash_Delivery_Platforms_Guide.html">Гайд по платформам</a>
 </div>
 
 <footer>
-  <p>El Lavash · План месяца 1 · 4 недели · 3 трека · 2 ветки сценария.</p>
+  <p>El Lavash · План месяца 1 · 4 недели · 3 трека · 3 ветки сценария (A / C / B).</p>
 </footer>
 
 </div>
