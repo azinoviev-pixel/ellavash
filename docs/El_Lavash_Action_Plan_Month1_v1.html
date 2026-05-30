@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Lavash — План месяца 1 (4 недели, 3 трека)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#2A1810; --bg-soft:#3A2417; --bg-card:#4A2E1D; --ink:#FFF3D9; --ink-soft:#C8AB7E; --ink-dim:#8A6F50;
+    --line:#5A3923; --brand:#F8D202; --brand-soft:#C8A902; --accent:#E61E28; --coffee:#6F3E22; --green:#A9C26C; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0;overflow-x:hidden;max-width:100vw}
+  body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;letter-spacing:-0.005em;
+    background-image:radial-gradient(at 10% 5%,rgba(248,210,2,0.06) 0%,transparent 45%),radial-gradient(at 90% 95%,rgba(230,30,40,0.05) 0%,transparent 45%);background-attachment:fixed;}
+  .container{max-width:1180px;margin:0 auto;padding:48px 28px 80px}
+  .hero{padding-bottom:36px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--brand);font-weight:700;margin-bottom:12px}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.5vw,56px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 14px;color:var(--ink)}
+  h1 em{font-style:italic;color:var(--brand);font-weight:500}
+  .sub{font-size:17px;color:var(--ink-soft);max-width:820px}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.6vw,32px);color:var(--brand);margin:48px 0 16px;letter-spacing:-0.015em}
+  h3{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(19px,2.6vw,22px);color:var(--brand-soft);margin:24px 0 10px}
+  .nav-back{display:inline-block;color:var(--ink-soft);text-decoration:none;font-size:13px;margin-bottom:24px;padding:6px 14px;border:1px solid var(--line);border-radius:999px}
+  .nav-back:hover{border-color:var(--brand);color:var(--brand)}
+
+  /* Pre-check */
+  .precheck{background:linear-gradient(135deg,#3A2417 0%,#4A2E1D 100%);border:1px solid var(--brand);border-radius:14px;padding:28px;margin:24px 0 40px}
+  .precheck h2{margin-top:0;color:var(--brand)}
+  .precheck .checklist{list-style:none;padding:0;margin:14px 0;font-size:15px}
+  .precheck .checklist li{padding:8px 0 8px 30px;position:relative;color:var(--ink)}
+  .precheck .checklist li::before{content:"";position:absolute;left:0;top:14px;width:16px;height:16px;border:1.5px solid var(--brand);border-radius:3px}
+  .branches{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .branch{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .branch .lab{font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--brand);font-weight:700;margin-bottom:6px}
+  .branch .lab.b{color:var(--accent)}
+  .branch p{font-size:14px;color:var(--ink-soft);margin:4px 0}
+
+  /* Week block */
+  .week{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:28px;margin:22px 0}
+  .week-head{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .week-num{font-family:'Fraunces',serif;font-size:54px;color:var(--brand);font-weight:600;line-height:1;letter-spacing:-0.03em}
+  .week-title{font-family:'Fraunces',serif;font-size:24px;color:var(--ink);font-weight:600;margin:0}
+  .week-days{font-size:13px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:0.14em}
+  .week-goal{font-size:13px;color:var(--brand);text-align:right;font-weight:700;text-transform:uppercase;letter-spacing:0.12em}
+
+  /* Tracks */
+  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .track{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .track-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .track-head svg{width:22px;height:22px;color:var(--brand)}
+  .track-head .nm{font-weight:700;font-size:14px;color:var(--ink);text-transform:uppercase;letter-spacing:0.08em}
+  .track ul{list-style:none;padding:0;margin:0;font-size:14px;line-height:1.55}
+  .track ul li{padding:7px 0 7px 18px;position:relative;color:var(--ink-soft);border-bottom:1px dashed var(--line)}
+  .track ul li:last-child{border-bottom:none}
+  .track ul li::before{content:"▸";position:absolute;left:0;top:6px;color:var(--brand);font-weight:700}
+  .track .bA, .track .bB{display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.08em;padding:2px 6px;border-radius:3px;margin-right:5px;vertical-align:middle}
+  .track .bA{background:var(--brand);color:var(--bg)}
+  .track .bB{background:var(--accent);color:#FFF}
+  .track ul li strong{color:var(--ink)}
+  .track ul li a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed}
+
+  /* Route 10 inline */
+  .route{background:var(--bg-soft);border-left:4px solid var(--brand);border-radius:0 10px 10px 0;padding:18px 22px;margin:18px 0;font-size:14px}
+  .route .route-h{font-weight:700;color:var(--brand);font-size:13px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px}
+  .route ol{padding-left:20px;margin:0;color:var(--ink-soft);line-height:1.7}
+  .route ol li{padding:3px 0}
+  .route ol li strong{color:var(--ink)}
+  .route a{color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed}
+
+  /* Decision */
+  .decision{background:linear-gradient(135deg,#4A2E1D 0%,#3A2417 100%);border:1px solid var(--brand);border-radius:14px;padding:28px;margin:30px 0}
+  .decision h2{margin-top:0;color:var(--brand)}
+  .decision .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+  .scenario{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .scenario .lab{font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--brand);font-weight:700;margin-bottom:6px}
+  .scenario .lab.warn{color:var(--accent)}
+  .scenario .lab.ok{color:var(--green)}
+  .scenario p{font-size:14px;color:var(--ink-soft);margin:4px 0}
+
+  /* Not now block */
+  .notnow{background:var(--bg-card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:20px 24px;margin:24px 0;font-size:15px;color:var(--ink-soft)}
+  .notnow strong{color:var(--accent)}
+  .notnow ul{margin:8px 0 0 0;padding-left:20px;line-height:1.7}
+
+  /* Links bottom */
+  .related{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:18px 0}
+  .related a{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;transition:all 0.15s}
+  .related a:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-1px)}
+
+  footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px}
+
+  @media (max-width:800px){
+    .container{padding:24px 16px 56px}
+    .week{padding:18px}
+    .week-head{grid-template-columns:1fr;gap:8px;text-align:left}
+    .week-num{font-size:42px}
+    .week-goal{text-align:left}
+    .tracks{grid-template-columns:1fr;gap:14px}
+    .branches{grid-template-columns:1fr;gap:12px}
+    .decision .scenarios{grid-template-columns:1fr;gap:12px}
+    .precheck{padding:18px}
+  }
+  @supports (padding:max(0px)){body{padding-bottom:env(safe-area-inset-bottom)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="nav-back" href="index.html">← К панели проекта</a>
+
+<header class="hero">
+  <div class="eyebrow">El Lavash · план месяца 1</div>
+  <h1>План на первый месяц<br><em>4 недели, 3 трека, 1 точка решения</em></h1>
+  <div class="sub">Один документ вместо разрозненных «что делать сегодня» и «10 точек». Конкретные действия по неделям. Три параллельных трека: <strong>продажи/визиты</strong>, <strong>маркетинг/видимость</strong>, <strong>операционка/юр.часть</strong>. Две ветки сценария в зависимости от готовности лицензий. К концу месяца — точка решения: масштабируем или итерируем.</div>
+</header>
+
+<section class="precheck">
+  <h2>Прежде чем начать — статус-чек</h2>
+  <p style="color:var(--ink-soft);margin-top:0;">Шесть пунктов решают, по какой ветке идём. Отметить за 5 минут перед стартом недели 1.</p>
+  <ul class="checklist">
+    <li><strong>RGSEAA</strong> — регистрация в Реестре пищевых предприятий (AESAN, бесплатно, 30-60 дней)</li>
+    <li><strong>RSIPAC</strong> — региональная регистрация Каталонии (Generalitat, €64,25, 15-30 дней)</li>
+    <li><strong>Licencia de actividad</strong> — лицензия от Ajuntament Льорет-де-Мар на помещение</li>
+    <li><strong>HACCP / APPCC</strong> — простой план по безопасности (шаблон Gencat, можно сделать самим)</li>
+    <li><strong>SKU выбран</strong> — вес одной упаковки, тип упаковки, штрих-код (если будет розница)</li>
+    <li><strong>Прайс утверждён</strong> — опт €5,50/кг, розница €7-9/кг (диапазон по <a href="SOURCE_OF_TRUTH_v1.md" style="color:var(--brand-soft);text-decoration:none;border-bottom:1px dashed">SOURCE_OF_TRUTH</a>)</li>
+  </ul>
+  <div class="branches">
+    <div class="branch">
+      <div class="lab">Ветка A — все или почти все «да»</div>
+      <p>Можно легально выставлять инвойсы и принимать оплаты. Идём в продажи с недели 1. Лицензии параллельно достраиваем (HACCP, халяль если решено).</p>
+    </div>
+    <div class="branch">
+      <div class="lab b">Ветка B — лицензий пока нет</div>
+      <p>Юр. часть — приоритет №1 недели 1. Параллельно делаем разведочные визиты («познакомимся, образец привезу через 2-3 недели») и онлайн-видимость. Первый инвойс — когда придёт RSIPAC (15-30 дней).</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 1 -->
+<section class="week">
+  <div class="week-head">
+    <div class="week-num">1</div>
+    <div>
+      <h3 class="week-title">Подготовка фундамента</h3>
+      <div class="week-days">Дни 1-7</div>
+    </div>
+    <div class="week-goal">Старт</div>
+  </div>
+
+  <div class="tracks">
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l4-4h10l4 4"/><path d="M3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9"/><circle cx="12" cy="14" r="2.5"/></svg>
+        <div class="nm">Продажи и визиты</div>
+      </div>
+      <ul>
+        <li><span class="bA">A</span>Обход первых 5 точек Льорета с образцами лично в руки. <a href="https://www.google.com/maps/search/?api=1&query=Passeig+d%27Agust%C3%AD+Font+3+Lloret+de+Mar">Beach Doner</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+Emili+Martinez+Passapera+12+Lloret">Pita King</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+del+Carme+24+Lloret">Carme Doner</a>, <a href="https://www.google.com/maps/search/?api=1&query=Av.+Puig+de+Castellet+7+Lloret">Bollywood Doner</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+de+Girona+11+Lloret">Carniceria Halal Fátima</a></li>
+        <li><span class="bB">B</span>Те же 5 адресов — но как «знакомство». Цель: имя ЛПР, текущий поставщик, что в ассортименте, телефон. Без инвойса.</li>
+        <li><strong>Не больше 2 визитов в день</strong>: остаться в памяти важнее, чем обежать всех</li>
+        <li>Время визита: 10:00-13:00 (после утреннего пика, до обеда)</li>
+        <li>Что брать: образец 400 г, ficha técnica (1 страница), визитка, фото производства в телефоне</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        <div class="nm">Маркетинг и видимость</div>
+      </div>
+      <ul>
+        <li>Создать <a href="https://business.google.com">Google Business Profile</a> на адрес производства — 30 мин, бесплатно. Категория: Bakery / Wholesale food</li>
+        <li>Загрузить 10-15 фото: продукт, процесс, печь, Элен в фартуке. Описание ES/CA/RU</li>
+        <li>Перевести <a href="https://www.instagram.com/mar.elien/">Instagram @mar.elien</a> в Business-режим, добавить кнопку «Заказать через WhatsApp»</li>
+        <li>Скачать <a href="https://business.whatsapp.com">WhatsApp Business</a>, привязать к рабочему номеру, создать каталог продукции с фото и ценой</li>
+        <li>Войти в 5-7 русско/украино/арабоязычных Telegram-чатов Льорета (поиск: «Льорет», «Lloret чат», «Льорет объявления»)</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        <div class="nm">Операционка и юр.</div>
+      </div>
+      <ul>
+        <li><span class="bB">B</span>Подать заявление на <a href="https://www.aesan.gob.es/AECOSAN/web/seguridad_alimentaria/subseccion/registro_general_sanitario.htm">RGSEAA</a> через портал AESAN — бесплатно</li>
+        <li><span class="bB">B</span>Оплатить <a href="https://web.gencat.cat/ca/tramits/tramits-temes/9342_Inscripcio-al-Registre-Sanitari-d-Indu">RSIPAC €64,25</a> в Generalitat — выдают 15-30 дней</li>
+        <li><span class="bB">B</span>Подать запрос на <a href="https://www.lloret.cat/ca/seccions/empresa-i-comerc">licencia de actividad</a> в Ajuntament Льорет</li>
+        <li>Подготовить ficha técnica на 1 страницу (название, состав, граммаж, срок, цена опт/розница, контакты)</li>
+        <li>Заказать 100 визиток в <a href="https://www.vistaprint.es/">Vistaprint.es</a> или <a href="https://www.moo.com/es/">Moo.com</a> — €15-30</li>
+        <li><span class="bA">A</span>Проверить срок действия RSIPAC (срок 1 год — продление не пропустить)</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- WEEK 2 -->
+<section class="week">
+  <div class="week-head">
+    <div class="week-num">2</div>
+    <div>
+      <h3 class="week-title">Первый контакт + бесплатные карточки</h3>
+      <div class="week-days">Дни 8-14</div>
+    </div>
+    <div class="week-goal">1-2 первых заказа</div>
+  </div>
+
+  <div class="tracks">
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l4-4h10l4 4"/><path d="M3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9"/><circle cx="12" cy="14" r="2.5"/></svg>
+        <div class="nm">Продажи и визиты</div>
+      </div>
+      <ul>
+        <li><span class="bA">A</span>Обход следующих 5 точек: <a href="https://www.google.com/maps/search/?api=1&query=Nash+Supermarket+Lloret">Nash Supermarket</a>, <a href="https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a+de+Santa+Cristina+Lloret">El Shawarma Original</a>, <a href="https://www.google.com/maps/search/?api=1&query=Av.+Cam%C3%AD+de+l%27%C3%80ngel+45+Lloret">Restaurante Omar Halal</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+Poeta+Lope+Mateo+16+Lloret">Doner Kebab El Molí</a>, <a href="https://www.google.com/maps/search/?api=1&query=C%2F+de+la+Vila+52+Lloret">Jaan's Kebab</a></li>
+        <li><span class="bA">A</span>Follow-up по визитам недели 1 (звонок / WhatsApp). Цель — подтвердить 1-2 заказа</li>
+        <li><span class="bB">B</span>Те же 5 точек разведочно. Если по визитам недели 1 кто-то спросил «когда привезёшь» — записать в журнал, перезвонить когда RSIPAC придёт</li>
+        <li>Завести таблицу учёта: дата визита, точка, ЛПР, реакция, дата follow-up, статус</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        <div class="nm">Маркетинг и видимость</div>
+      </div>
+      <ul>
+        <li>Регистрация в <a href="https://www.paginasamarillas.es/">Páginas Amarillas</a> — бесплатно, листинг бизнеса в Каталонии</li>
+        <li>Регистрация в <a href="https://www.enlloret.com/">EnLloret</a> — локальный каталог Льорета</li>
+        <li>Регистрация в <a href="https://botiguesdecatalunya.cat/">Botigues Catalunya</a> — каталог локальных производств Каталонии</li>
+        <li>Снять 5 коротких видео (15-30 сек): замес, выпекание, упаковка, готовый продукт, Элен говорит «hola»</li>
+        <li>Выложить в Instagram (3 поста + 5 сторис), привязать к WhatsApp каталогу</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        <div class="nm">Операционка и юр.</div>
+      </div>
+      <ul>
+        <li>Простой план HACCP/APPCC на 5 страниц — шаблон Gencat (<a href="https://salutpublica.gencat.cat/ca/ambits/seguretat_alimentaria/empreses-i-establiments/autocontrols/">здесь</a>)</li>
+        <li>Проверить регистрацию в Hacienda как autónomo / SL — если работает как «без оформления», это блокер на инвойс. Консультация с <a href="https://www.collegieconomistes.cat/">gestor</a> €150-300</li>
+        <li>Решение по IVA: лаваш как pan común — 4% IVA. Если как продукт «специальный» — 10%. Спросить gestor</li>
+        <li><span class="bB">B</span>Отслеживать заявления: расписка от Ajuntament, AESAN-ID (по email)</li>
+        <li>Шаблон инвойса в <a href="https://www.facturadirecta.com/">FacturaDirecta</a> или <a href="https://quaderno.io/es/">Quaderno</a> (€10-20/мес) либо просто Excel</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="route">
+    <div class="route-h">Маршрут первых 10 точек — короткий справочник</div>
+    <ol>
+      <li><strong>Beach Doner Kebab</strong> — Passeig d'Agustí Font 3 — <a href="tel:+34972363032">+34 972 363 032</a></li>
+      <li><strong>Pita King Kebab</strong> — C/ Emili Martinez Passapera 12 — <a href="tel:+34631460419">+34 631 460 419</a></li>
+      <li><strong>Carme Doner Kebab y Pizzería</strong> — C/ del Carme 24 — <a href="tel:+34670742555">+34 670 742 555</a></li>
+      <li><strong>Bollywood Doner Kebab</strong> — Av. Puig de Castellet 7 — <a href="tel:+34972979897">+34 972 979 897</a></li>
+      <li><strong>Carniceria Halal Fátima</strong> — C/ de Girona 11 — <a href="tel:+34631464370">+34 631 464 370</a> · <a href="mailto:info@carniceriafatimalloret.com">email</a></li>
+      <li><strong>Nash Supermarket</strong> — C/ Narcis Macia i Domenech 12, local 7A — <a href="tel:+34972364615">+34 972 36 46 15</a></li>
+      <li><strong>El Shawarma Original</strong> — Plaça de Santa Cristina 1 — <a href="tel:+34632920781">+34 632 920 781</a></li>
+      <li><strong>Restaurante Omar Halal</strong> — Av. Camí de l'Àngel 45 — <a href="tel:+34602080057">+34 602 080 057</a></li>
+      <li><strong>Doner Kebab El Molí</strong> — C/ Poeta Lope Mateo 16 — <a href="tel:+34632301250">+34 632 301 250</a></li>
+      <li><strong>Jaan's Kebab</strong> — C/ de la Vila 52 — <a href="tel:+34602398913">+34 602 398 913</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- WEEK 3 -->
+<section class="week">
+  <div class="week-head">
+    <div class="week-num">3</div>
+    <div>
+      <h3 class="week-title">Вторая волна + первый повтор</h3>
+      <div class="week-days">Дни 15-21</div>
+    </div>
+    <div class="week-goal">3+ работающих точки</div>
+  </div>
+
+  <div class="tracks">
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l4-4h10l4 4"/><path d="M3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9"/><circle cx="12" cy="14" r="2.5"/></svg>
+        <div class="nm">Продажи и визиты</div>
+      </div>
+      <ul>
+        <li><span class="bA">A</span>Вторая волна: 5 халяль-карникерий (R081, R082, R083, R084 из <a href="El_Lavash_Distribution_DB_v15.xlsx">базы v15</a>), 4 кебабные второго приоритета (R094, R098, R100, R103), 1 локальный ресторан (R202 La Parrilla)</li>
+        <li><span class="bA">A</span>Заказ #2 у первого подтвердившего клиента — это сигнал что продукт принят</li>
+        <li><span class="bA">A</span>Зайти к <strong>Yerevan Pastisseria</strong> на Mercat Municipal — армянский владелец, потенциальный мост на парадиста-перепродавца</li>
+        <li><span class="bB">B</span>Если RSIPAC пришёл — первый малый инвойс (Nash Supermarket — самая тёплая точка по транскрипции голосового)</li>
+        <li><span class="bB">B</span>Если RSIPAC не пришёл — продолжить разведку, 5 халяль-карникерий</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        <div class="nm">Маркетинг и видимость</div>
+      </div>
+      <ul>
+        <li>Первый пост на <a href="https://es.wallapop.com/">Wallapop</a> и <a href="https://www.milanuncios.com/">Milanuncios</a> с фото — локальные доски объявлений, бесплатно</li>
+        <li>Договориться с одним из Telegram-чатов Льорета о платном или бартерном анонсе (€20-50 или 5 пачек лаваша)</li>
+        <li>Instagram — выложить «закадровый» контент: процесс ночной смены, прихватки, замес. Сторис ежедневно</li>
+        <li>Проверить GBP — сколько просмотров за 2 недели, кликов по кнопке «маршрут», по телефону</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        <div class="nm">Операционка и юр.</div>
+      </div>
+      <ul>
+        <li>Учёт заказов в Excel / Google Sheets: дата, клиент, кг, €, оплата, статус доставки</li>
+        <li>Открыть бизнес-счёт если ещё нет: <a href="https://www.bancsabadell.com/cs/Satellite/SabAtl/Cuenta-Negocios-Sabadell-PRO/6000023049783-es.html">Sabadell Negocios Pro</a> или <a href="https://www.bbva.es/empresas.html">BBVA Empresas</a> (€0-15/мес)</li>
+        <li>Простой контракт-шаблон для регулярного клиента (1 страница: SKU, цена, минимальная партия, оплата, ответственность)</li>
+        <li>Если планируется халяль-сертификация — консультация в <a href="https://institutohalal.com/">Instituto Halal</a> (бесплатно, €3500-8000 за полную процедуру — но не сейчас, а на месяц 3-6)</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- WEEK 4 -->
+<section class="week">
+  <div class="week-head">
+    <div class="week-num">4</div>
+    <div>
+      <h3 class="week-title">Подсчёт результата + точка решения</h3>
+      <div class="week-days">Дни 22-30</div>
+    </div>
+    <div class="week-goal">Scale или Iterate</div>
+  </div>
+
+  <div class="tracks">
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l4-4h10l4 4"/><path d="M3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9"/><circle cx="12" cy="14" r="2.5"/></svg>
+        <div class="nm">Продажи и визиты</div>
+      </div>
+      <ul>
+        <li>Подсчёт: сколько точек ответило, сколько взяли образцы, сколько подтвердили заказ, сколько повторили</li>
+        <li>Если 3+ повторных → подготовка к Бланесу / Тоссе (5 точек разведать на неделе 5)</li>
+        <li>Если 1-2 повторных → итерируем продукт (формат, размер, упаковка) по фидбеку</li>
+        <li>Если 0 повторных → стоп и разбор причин. Гипотезы: цена, вкус, толщина, упаковка, презентация</li>
+        <li>Журнал отказов: что слышали («дорого», «толстый», «у нас уже есть», «нужен халяль») — это карта будущей итерации</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        <div class="nm">Маркетинг и видимость</div>
+      </div>
+      <ul>
+        <li>Первый «кейс» в Instagram: фото клиента с продуктом или короткий отзыв (с разрешения)</li>
+        <li>Анализ <a href="https://business.google.com">GBP</a>: просмотры, клики, маршруты, звонки за месяц</li>
+        <li>Анализ Instagram: какие посты собрали реакцию, что не зашло. Стратегия на месяц 2</li>
+        <li>Решение по платной рекламе на месяц 2: нужна ли (только если есть стабильный продукт и заказы)</li>
+      </ul>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        <div class="nm">Операционка и юр.</div>
+      </div>
+      <ul>
+        <li>Закрытие месяца: выручка, COGS (мука, газ, упаковка, доставка), фикс-расходы (аренда, комм), чистая прибыль</li>
+        <li>Проверка кеша на счёте — хватит ли на месяц 2 без новой выручки</li>
+        <li>Список открытых юр.задач на месяц 2: что подано, что в работе, что просрочено</li>
+        <li>Если оборот €1500+ — записаться на консультацию gestor по оптимизации налогов</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="decision">
+  <h2>Точка решения — день 30</h2>
+  <p style="color:var(--ink-soft);margin-top:0;">Не «оценка результата вообще», а конкретное решение что делаем на месяц 2. Три сценария — у каждого свой план.</p>
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="lab ok">3+ повторов / выручка €1500+</div>
+      <p><strong>SCALE.</strong> Месяц 2 — расширение в Бланес/Тоссу (10 новых точек), удвоение производственных смен, разговор с локальным курьером для разгрузки логистики.</p>
+    </div>
+    <div class="scenario">
+      <div class="lab">1-2 повтора / выручка €600-1500</div>
+      <p><strong>ITERATE.</strong> Месяц 2 — те же 20 точек, но с учётом фидбека: формат изменён, цена скорректирована, новая презентация. Цель — добрать ещё 3 повтора.</p>
+    </div>
+    <div class="scenario">
+      <div class="lab warn">0 повторов / выручка &lt;€600</div>
+      <p><strong>STOP &amp; INVESTIGATE.</strong> Месяц 2 — пауза в продажах. Глубокий разбор отказов, тест-кухня (3-5 версий продукта), повторный фидбек у 5 точек первой волны. Без новых визитов до прояснения.</p>
+    </div>
+  </div>
+</section>
+
+<div class="notnow">
+  <strong>Чего НЕ делаем в месяц 1 (важно):</strong>
+  <ul>
+    <li>Визиты в Барселону, Жирону, Бланес — это месяц 2 минимум (когда есть кейс)</li>
+    <li>Холодные email на <a href="https://www.bonpreuesclat.cat">Bonpreu</a>, <a href="https://www.veritas.es">Veritas</a>, <a href="https://www.caprabo.com">Caprabo</a>, дистрибьюторов (Bidfood, Transgourmet, Friman) — цикл 6-12 мес, без референции пустая трата</li>
+    <li>Сертификация халяль €3500-8000 (это месяц 3-6 если докажется спрос)</li>
+    <li>Сайт e-commerce, платная реклама Facebook/Google (преждевременно)</li>
+    <li>Подача в Glovo / Just Eat / Uber Eats (это месяц 2-3, нужна отдельная схема цен)</li>
+    <li>Аренда стенда на Gastronomic Forum / Alimentaria (€3-8k, год 2 минимум)</li>
+    <li>Найм помощника (когда оборот стабильно €3000+/мес)</li>
+  </ul>
+</div>
+
+<h2>Связанные документы</h2>
+<div class="related">
+  <a href="El_Lavash_Distribution_DB_v15.xlsx">База контактов v15 (527 точек)</a>
+  <a href="roadmap_v8.html">Дорожная карта проекта</a>
+  <a href="protocol_v14.html">Протокол разговора с Элен</a>
+  <a href="El_Lavash_Sales_Strategy_v9.html">Стратегия продаж</a>
+  <a href="El_Lavash_Retail_Prices_v7.html">Цены ритейл</a>
+  <a href="El_Lavash_Financial_Model_v7.html">Финансовая модель</a>
+</div>
+
+<footer>
+  <p>El Lavash · План месяца 1 · 4 недели · 3 трека · 2 ветки сценария.</p>
+</footer>
+
+</div>
+</body>
+</html>
