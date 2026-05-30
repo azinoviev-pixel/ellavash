@@ -1,0 +1,27 @@
+# Шаблон .gitignore для deploy репо azinoviev-pixel/ellavash
+#
+# Использование (новый Claude / новый чат, при первом деплое):
+#   1. Клонируешь репо как обычно (через токен из DEPLOY_TOKEN.md)
+#   2. Копируешь содержимое этого файла в /tmp/ellavash-deploy/.gitignore
+#   3. git add .gitignore && git commit -m "add: gitignore for private files" && git push
+#   4. Дальше .gitignore автоматом блокирует случайное попадание приватных файлов
+#
+# После этого если случайно скопируешь PROJECT_COMPACT в docs/ — git его не подхватит.
+
+# Приватные файлы — никогда не пушим
+docs/PROJECT_COMPACT_*.md
+docs/DEPLOY_TOKEN.md
+docs/CLAUDE.md
+docs/PROJECT_RULES_*.md
+docs/INVENTORY_*.md
+docs/SOURCE_OF_TRUTH_*.md
+docs/CRITICAL_REVIEW_*.md
+docs/VERIFICATION_REPORT_*.md
+docs/.env
+docs/.deploy_token
+docs/*.secret
+
+# Системные
+.DS_Store
+*.swp
+*~
